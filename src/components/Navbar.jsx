@@ -4,7 +4,7 @@ import logo from "../assets/logo-removebg.png";
 const Navbar = () => {
   return (
     <>
-      <nav className="w-full flex justify-between items-center mt-2">
+      <nav className="w-full flex justify-between items-center mt-2 xl:mt-3 2xl:mt-4">
         <picture className="w-14 h-14 flex items-center justify-center rounded-full bg-zinc-800 border-[1px] border-gray-500">
           <img className="w-full" src={logo} alt="logo" />
         </picture>

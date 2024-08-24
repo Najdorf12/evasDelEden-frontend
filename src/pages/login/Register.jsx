@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const Register = () => {
   const {
@@ -41,7 +42,7 @@ const Register = () => {
         backgroundImage:
           "linear-gradient(to right top, #242427, #2b2a30, #33303a, #3c3542, #463b4b, #554255, #65495e, #765066, #905a6f, #aa6575, #c37278, #da8078)",
       }}
-      className=" h-screen w-full flex flex-col px-4 gap-14 items-center"
+      className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:px-10 2xl:gap-20 2xl:px-12"
     >
       <Navbar />
       <div
@@ -51,14 +52,14 @@ const Register = () => {
         }}
         className="max-w-md w-full  rounded-xl shadow-2xl shadow-gray-900 overflow-hidden py-8 px-4 space-y-8"
       >
-         {registerError?.map((error, i) => (
-        <div
-          key={i}
-          className="absolute right-0 left-0 flex justify-center items-center top-[13rem] bg-red-400 text-white  p-2  mr-1 rounded-md mt-12 font-semibold text-lg max-w-[300px]"
-        >
-          <p> {error} </p>
-        </div>
-      ))} 
+        {registerError?.map((error, i) => (
+          <div
+            key={i}
+            className="absolute right-0 left-0 flex justify-center items-center top-[13rem] bg-red-400 text-white  p-2  mr-1 rounded-md mt-12 font-semibold text-lg max-w-[300px]"
+          >
+            <p> {error} </p>
+          </div>
+        ))}
         <h2 className="text-center font-title text-6xl font-extrabold text-white">
           Register
         </h2>
@@ -71,18 +72,18 @@ const Register = () => {
               placeholder="Joe Doe"
               className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
               name="username"
-                 {...register("username", {
-                  required: {
-                    value: true,
-                    message: "Username is required",
-                  },
-                })}
+              {...register("username", {
+                required: {
+                  value: true,
+                  message: "Username is required",
+                },
+              })}
             />
             <label className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
               Username
-               <p className="error absolute left-32  -top-2 m-2 text-base font-semibold text-[#da8e88] w-64">
-              {errors.username?.message}
-            </p> 
+              <p className="error absolute left-32  -top-2 m-2 text-base font-semibold text-[#da8e88] w-64">
+                {errors.username?.message}
+              </p>
             </label>
           </div>
           <div className="relative font-text">
@@ -105,8 +106,8 @@ const Register = () => {
             >
               Email
               <p className="error absolute left-32  -top-2 m-2 text-base font-semibold text-[#da8e88] w-64">
-              {errors.email?.message}
-            </p> 
+                {errors.email?.message}
+              </p>
             </label>
           </div>
           <div className="relative font-text">
@@ -149,6 +150,9 @@ const Register = () => {
             Login
           </Link>
         </div>
+      </div>
+      <div className="absolute bottom-2">
+        <Footer />
       </div>
     </section>
   );

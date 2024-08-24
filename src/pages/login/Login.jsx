@@ -1,4 +1,5 @@
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
@@ -46,7 +47,7 @@ const Login = () => {
           backgroundImage:
             "linear-gradient(to right top, #242427, #2b2a30, #33303a, #3c3542, #463b4b, #554255, #65495e, #765066, #905a6f, #aa6575, #c37278, #da8078)",
         }}
-        className=" h-screen w-full flex flex-col px-4 gap-14 items-center"
+        className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:px-10 2xl:gap-24 2xl:px-12"
       >
         <Navbar />
         <div
@@ -56,7 +57,6 @@ const Login = () => {
           }}
           className="max-w-md w-full  rounded-xl shadow-2xl shadow-gray-900 overflow-hidden py-8 px-4 space-y-8"
         >
-         
           <h2 className="text-center font-title text-6xl font-extrabold text-white">
             Welcome
           </h2>
@@ -68,7 +68,9 @@ const Login = () => {
               <p> {error} </p>
             </div>
           ))}
-          <p className="font-text text-center text-gray-200">Sign in to your account</p>
+          <p className="font-text text-center text-gray-200">
+            Sign in to your account
+          </p>
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
             <div className="relative font-text">
               <input
@@ -88,7 +90,7 @@ const Login = () => {
                 className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm"
                 htmlFor="email"
               >
-                Email 
+                Email
                 <p className="error absolute left-32  -top-2 m-2 text-base font-semibold text-[#da8e88] w-64">
                   {errors.email?.message}
                 </p>
@@ -129,11 +131,17 @@ const Login = () => {
           </form>
           <div className="text-center text-gray-300 font-text">
             Don't have an account?
-            <Link className="text-[#da8e88] ml-2 hover:underline" to="/register">
+            <Link
+              className="text-[#da8e88] ml-2 hover:underline"
+              to="/register"
+            >
               {" "}
               Register
             </Link>
           </div>
+        </div>
+        <div className="absolute bottom-2">
+          <Footer />
         </div>
       </section>
     </>
