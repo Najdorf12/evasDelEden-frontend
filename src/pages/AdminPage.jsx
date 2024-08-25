@@ -1,10 +1,12 @@
+import imgLogo from "../assets/logo-removebg.png";
+import Footer from "../components/Footer";
+import CardAdminEva from "../components/CardAdminEva";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import axios from "../api/axios";
 import { useCookies } from "react-cookie";
-import imgLogo from "../assets/logo-removebg.png";
-import Footer from "../components/Footer";
+import axios from "../api/axios";
 
 const AdminPage = () => {
   const {
@@ -154,11 +156,11 @@ const AdminPage = () => {
         .then(() => getEvas())
         .catch((error) => console.error(error));
     }
-    alert("Su producto se creó exitosamente");
+    alert("EVA CREADA EXITOSAMENTE");
   };
   return (
     <section className="relative w-full bg-[#212121] min-h-[140vh] flex flex-col items-center  pb-10">
-      <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3">
+      <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12">
         <picture className="w-14 h-14 flex items-center justify-center rounded-full bg-zinc-800 border-[1px] border-gray-500">
           <img src={imgLogo} alt="logo" />
         </picture>
