@@ -1,49 +1,90 @@
 import imgWoman from "../assets/woman.jpg";
+import { Link } from "react-router-dom";
+import axios from "../api/axios.js";
+import {getEvas} from "../api/handlers.js"
 
-const CardAdminEva = ({ eva, getEvas, selectEva }) => {
-  const { name, wttp, category, location, description, images } = eva;
+const CardAdminEva = ({ eva, selectEva }) => {
+  const {
+    _id,
+    name,
+    wttp,
+    age,
+    category,
+    location,
+    description,
+    images,
+    isActive,
+  } = eva;
 
-  const deleteProduct = (id) => {
+  const deleteEva = (id) => {
     axios
       .delete(`/evas/${id}`)
-      .then(() => getEvas())
+      .then(() => getEvas() )
       .catch((error) => console.error(error));
   };
   return (
     <>
-      <section className="relative bg-[#212121] w-[95%] border border-[#92856e]  sm:w-[400px] xl:w-[400px] rounded-md h-[138px] flex justify-center items-center hover:scale-105 duration-500">
-        <picture className="h-full mr-1 sm:mr-3 lg:mr-5">
+      <section className="relative p-[6px] bg-[#212121] w-full border border-[#92856e]  max-w-[320px] rounded-3xl flex flex-col justify-center items-center hover:scale-105 duration-500">
+        <picture className="w-full h-72">
           <Link to={`/${_id}`}>
             <img
               loading="lazy"
-              className="w-[130px] md:max-w-[120px] h-full rounded-md lg:w-full object-cover"
+              className="w-full h-full rounded-2xl object-cover"
               src={imgWoman}
             />
           </Link>
         </picture>
 
-        <article className="w-[80%] lg:w-[70%] pl-2  h-full pt-2">
-          <p className="text-lg  font-text font-semibold text-amber-500 leading-5 mb-1">
-            {name?.toUpperCase()?.substring(0, 20)}
+        <article className="h-full mt-3 flex flex-col gap-1 ">
+          <p className="text-2xl  font-text text-center font-semibold text-white leading-5 border-b border-[#92856e] py-2">
+            {name.toUpperCase()}
           </p>
-          <span className="font-text mt-2 font-base text-md  text-gray-400 tracking-wide rounded-lg">
-            {category}
+          
+          <span className="mt-2 px-2 font-text font-semibold text-xl text-[#ad648f] tracking-wide rounded-lg flex justify-between items-center">
+            {category.toUpperCase()}
+            <p className="text-white text-lg">
+              {isActive ? "Activa" : "Inactiva"}
+            </p>
           </span>
-          <p className="text-sm mt-1 font-text text-gray-200 leading-6">
-            {description?.medidas}
+          <p className="pl-2 font-semibold text-lg text-white">
+            EDAD : 29 {age}
           </p>
-          <div className="flex justify-between pr-4  w-full items-center mt-2">
-            <section className="flex gap-5 text-3xl  text-stone-600">
-              <i
-                onClick={() => selectEva(eva)}
-                className="bx bxs-edit-alt cursor-pointer hover:scale-110 hover:text-gray-100 duration-300"
-              ></i>
-              <i
-                onClick={() => deleteEva(_id)}
-                className="bx bxs-trash-alt  cursor-pointer hover:scale-110 hover:text-gray-100 duration-300"
-              ></i>
+          <div className="flex justify-between px-2 font-semibold text-lg text-stone-400">
+            <p>{location}</p>
+            <p className="flex items-center gap-1">
+              <i className="bx bxl-whatsapp text-xl"></i>
+              {wttp}
+            </p>
+          </div>
+          <div className="text-stone-600 pl-2 ">
+            <div className="flex justify-between items-center pr-2">
+              <p className="">- {description?.medidas}</p>
+            </div>
+
+            <p className="">- {description?.detail}</p>
+            <p className="">
+              - {description?.more} Lorem ipsum dolor sit, amet consect
+              adipisicing elit.
+            </p>
+          </div>
+
+          <div className="w-full  mt-4 mb-1">
+            <section className="flex justify-evenly items-center text-[#ad648f]  mr-2 ">
+              <div className="flex items-center gap-2 text-[1rem]">
+                <i
+                  onClick={() => selectEva(eva)}
+                  className="bx bxs-edit-alt cursor-pointer hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
+                ></i>
+                Editar
+              </div>
+              <div className="flex items-center gap-2 text-[1rem]">
+                <i
+                  onClick={() => deleteEva(_id)}
+                  className="bx bxs-trash-alt  cursor-pointer hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
+                ></i>
+                Eliminar
+              </div>
             </section>
-            
           </div>
         </article>
       </section>

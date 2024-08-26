@@ -1,4 +1,4 @@
-import Navbar from "../../components/Navbar";
+import NavbarAdmin from "../../components/NavbarAdmin";
 import Footer from "../../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -49,7 +49,7 @@ const Login = () => {
         }}
         className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:px-10 2xl:gap-24 2xl:px-12"
       >
-        <Navbar />
+        <NavbarAdmin />
         <div
           style={{
             backgroundImage:

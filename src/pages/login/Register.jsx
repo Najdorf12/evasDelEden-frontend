@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
-import Navbar from "../../components/Navbar";
+import NavbarAdmin from "../../components/NavbarAdmin";
 import Footer from "../../components/Footer";
 
 const Register = () => {
@@ -44,7 +44,7 @@ const Register = () => {
       }}
       className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:px-10 2xl:gap-20 2xl:px-12"
     >
-      <Navbar />
+      <NavbarAdmin />
       <div
         style={{
           backgroundImage:
