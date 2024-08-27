@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 import { getEvas } from "../api/handlers";
 import axios from "../api/axios";
 
-const AdminPage = ({ allEvas }) => {
+const AdminPage = ({ allEvas, setAllEvas }) => {
   const {
     handleSubmit,
     register,
@@ -31,11 +31,12 @@ const AdminPage = ({ allEvas }) => {
   useEffect(() => {
     verifyAuth();
     getEvas();
-  }, []);
+  }, [allEvas]);
 
   useEffect(() => {
     if (evaSelected !== null) {
       reset({
+        _id: evaSelected._id,
         name: evaSelected.name,
         wttp: evaSelected.wttp,
         location: evaSelected.location,
@@ -85,18 +86,38 @@ const AdminPage = ({ allEvas }) => {
       console.error(error);
     }
   };
-  const selectEva = (user) => {
-    setEvaSelected(user);
+  const selectEva = (eva, _id) => {
+    console.log("Selected Eva:", eva);
+    console.log("ID:", _id); 
+     
+    setEvaSelected(eva);
   };
 
-  const editEva = (eva) => {
+  const deleteEva = (id) => {
     axios
-      .put(`/evas/${eva._id}`, eva)
+      .delete(`/evas/${id}`)
       .then(() => {
-        getEvas();
-        setEvaSelected(null);
+        // Filtrar la EVA eliminada del estado actual
+        setAllEvas((prevEvas) => prevEvas.filter((eva) => eva._id !== id));
       })
       .catch((error) => console.error(error));
+  };
+
+  const editEva = (eva ,id) => {
+    console.log("Eva to edit:", eva); // Para depurar
+    console.log("id to edit:", id); // Para depurar
+   
+    axios
+      .put(`/evas/${eva._id}`, eva)
+      .then((res) => {
+        const updatedEva = res.data;
+        const updatedEvas = allEvas.map((item) =>
+          item._id === updatedEva._id ? updatedEva : item
+        );
+        setAllEvas(updatedEvas);
+        setEvaSelected(null);
+      })
+      .catch((error) => console.error(error)); 
   };
 
   async function handleImage(e) {
@@ -116,7 +137,6 @@ const AdminPage = ({ allEvas }) => {
         }
       );
       const file = await res.json();
-      console.log(file)
       setImages([
         ...images,
         {
@@ -124,7 +144,6 @@ const AdminPage = ({ allEvas }) => {
           secure_url: file.secure_url,
         },
       ]);
-    
     } catch (error) {
       console.log(error);
     } finally {
@@ -136,7 +155,6 @@ const AdminPage = ({ allEvas }) => {
   }
 
   const submit = (data) => {
-    console.log(data);
     if (evaSelected !== null) {
       editEva(data);
     } else {
@@ -156,7 +174,9 @@ const AdminPage = ({ allEvas }) => {
       };
       axios
         .post("/evas", newEva)
-        .then(() => getEvas())
+        .then((res) => {
+          setAllEvas([...allEvas, newEva]);
+        })
         .catch((error) => console.error(error));
     }
     alert("EVA CREADA EXITOSAMENTE");
@@ -195,7 +215,7 @@ const AdminPage = ({ allEvas }) => {
             Create your bitch
           </p>
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
-            <div className="flex flex-col gap-6 xl:flex xl:flex-row ">
+            <div className="flex flex-col gap-8 xl:flex xl:flex-row ">
               <div className="relative font-text xl:w-1/2">
                 <input
                   placeholder="Joe Doe"
@@ -224,7 +244,7 @@ const AdminPage = ({ allEvas }) => {
                     },
                   })}
                 />
-                <label className="absolute left-0 -top-3.5  text-sm   transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                <label className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                   Whatsapp
                 </label>
               </div>
@@ -339,13 +359,15 @@ const AdminPage = ({ allEvas }) => {
                   <path
                     d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
                     pathLength="575.0541381835938"
-                    class="path"
+                    className="path"
                   ></path>
                 </svg>
               </label>
             </div>
             <div className="flex flex-col items-center gap-5 ">
-              <label className="font-light text-gray-400 text-xl">Imágenes</label>
+              <label className="font-light text-gray-400 text-xl">
+                Imágenes
+              </label>
               <input
                 type="file"
                 name="image"
@@ -389,9 +411,16 @@ const AdminPage = ({ allEvas }) => {
         </section>
 
         <section className="flex flex-wrap gap-y-6 gap-x-4 my-16 justify-center items-center xl:mt-24 xl:gap-x-10 xl:gap-y-8">
-          {allEvas.map((eva) => (
-            <CardAdminEva key={eva._id} eva={eva} selectEva={selectEva} />
-          ))}
+          {allEvas !== null &&
+            allEvas?.map((eva, index) => (
+              <div key={eva?._id || index}>
+                <CardAdminEva
+                  eva={eva}
+                  selectEva={selectEva}
+                  deleteEva={deleteEva}
+                />
+              </div>
+            ))}
         </section>
 
         <div className="absolute bottom-2">

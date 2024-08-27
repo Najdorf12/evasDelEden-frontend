@@ -14,6 +14,7 @@ function App() {
     const fetchEvas = async () => {
       try {
         const evasData = await getEvas();
+        console.log("Evas Data:", evasData);
         setAllEvas(evasData);
       } catch (error) {
         console.error("Failed to fetch evas:", error);
@@ -27,12 +28,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home allEvas={allEvas} />} />
+          <Route path="/" element={<Home allEvas={allEvas} setAllEvas={setAllEvas}/>} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route path="/admin" element={<AdminPage allEvas={allEvas} />} />
+          <Route path="/admin" element={<AdminPage allEvas={allEvas} setAllEvas={setAllEvas} />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "../api/axios.js";
 import {getEvas} from "../api/handlers.js"
 
-const CardAdminEva = ({ eva, selectEva }) => {
+const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
   const {
     _id,
     name,
@@ -16,12 +16,7 @@ const CardAdminEva = ({ eva, selectEva }) => {
     isActive,
   } = eva;
 
-  const deleteEva = (id) => {
-    axios
-      .delete(`/evas/${id}`)
-      .then(() => getEvas() )
-      .catch((error) => console.error(error));
-  };
+  
   return (
     <>
       <section className="relative p-[6px] bg-[#212121] w-full border border-[#92856e]  max-w-[320px] rounded-3xl flex flex-col justify-center items-center hover:scale-105 duration-500">
@@ -30,7 +25,7 @@ const CardAdminEva = ({ eva, selectEva }) => {
             <img
               loading="lazy"
               className="w-full h-full rounded-2xl object-cover"
-              src={imgWoman}
+              src={!images[0]?.secure_url ? imgWoman : images[0]?.secure_url }
             />
           </Link>
         </picture>
@@ -47,7 +42,7 @@ const CardAdminEva = ({ eva, selectEva }) => {
             </p>
           </span>
           <p className="pl-2 font-semibold text-lg text-white">
-            EDAD : 29 {age}
+            EDAD :   {age}
           </p>
           <div className="flex justify-between px-2 font-semibold text-lg text-stone-400">
             <p>{location}</p>
@@ -72,7 +67,7 @@ const CardAdminEva = ({ eva, selectEva }) => {
             <section className="flex justify-evenly items-center text-[#ad648f]  mr-2 ">
               <div className="flex items-center gap-2 text-[1rem]">
                 <i
-                  onClick={() => selectEva(eva)}
+                  onClick={() => selectEva(eva, _id)}
                   className="bx bxs-edit-alt cursor-pointer hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
                 ></i>
                 Editar

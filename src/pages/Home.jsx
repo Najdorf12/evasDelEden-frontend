@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 const Home = ({ allEvas }) => {
  
-    console.log(allEvas);
 
   return (
     <main className="">
