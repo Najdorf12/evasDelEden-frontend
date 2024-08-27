@@ -42,7 +42,7 @@ const Register = () => {
         backgroundImage:
           "linear-gradient(to right top, #242427, #2b2a30, #33303a, #3c3542, #463b4b, #554255, #65495e, #765066, #905a6f, #aa6575, #c37278, #da8078)",
       }}
-      className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:px-10 2xl:gap-20 2xl:px-12"
+      className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:gap-0 xl:px-10 2xl:gap-20 2xl:px-12"
     >
       <NavbarAdmin />
       <div

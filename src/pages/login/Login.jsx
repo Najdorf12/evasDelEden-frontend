@@ -47,7 +47,7 @@ const Login = () => {
           backgroundImage:
             "linear-gradient(to right top, #242427, #2b2a30, #33303a, #3c3542, #463b4b, #554255, #65495e, #765066, #905a6f, #aa6575, #c37278, #da8078)",
         }}
-        className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:px-10 2xl:gap-24 2xl:px-12"
+        className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:gap-2 xl:px-10 2xl:gap-24 2xl:px-12"
       >
         <NavbarAdmin />
         <div
@@ -63,7 +63,7 @@ const Login = () => {
           {loginError?.map((error, i) => (
             <div
               key={i}
-              className="absolute right-0 left-0 flex justify-center items-center top-[10rem] bg-red-400 text-white  p-2  mr-1 rounded-md mt-12 font-semibold text-lg max-w-[300px]"
+              className="absolute right-0 left-0 flex justify-center items-center top-[10rem]  text-white  p-2  mr-1 rounded-md mt-12 font-semibold text-lg max-w-[300px]"
             >
               <p> {error} </p>
             </div>
