@@ -88,8 +88,8 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
   };
   const selectEva = (eva, _id) => {
     console.log("Selected Eva:", eva);
-    console.log("ID:", _id); 
-     
+    console.log("ID:", _id);
+
     setEvaSelected(eva);
   };
 
@@ -103,10 +103,10 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
       .catch((error) => console.error(error));
   };
 
-  const editEva = (eva ,id) => {
+  const editEva = (eva, id) => {
     console.log("Eva to edit:", eva); // Para depurar
     console.log("id to edit:", id); // Para depurar
-   
+
     axios
       .put(`/evas/${eva._id}`, eva)
       .then((res) => {
@@ -117,7 +117,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
         setAllEvas(updatedEvas);
         setEvaSelected(null);
       })
-      .catch((error) => console.error(error)); 
+      .catch((error) => console.error(error));
   };
 
   async function handleImage(e) {
@@ -175,7 +175,9 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
       axios
         .post("/evas", newEva)
         .then((res) => {
-          setAllEvas([...allEvas, newEva]);
+          // Utiliza la respuesta del backend para obtener la nueva EVA con el _id asignado
+          const createdEva = res.data;
+          setAllEvas([...allEvas, createdEva]); // Agrega la EVA con su _id al estado
         })
         .catch((error) => console.error(error));
     }
@@ -410,7 +412,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
           </form>
         </section>
 
-        <section className="flex flex-wrap gap-y-6 gap-x-4 my-16 justify-center items-center xl:mt-24 xl:gap-x-10 xl:gap-y-8">
+        <section className="flex flex-wrap  gap-y-6 gap-x-4 my-16 justify-center items-center md:gap-y-10 xl:mt-24 xl:gap-x-10 xl:gap-y-8">
           {allEvas !== null &&
             allEvas?.map((eva, index) => (
               <div key={eva?._id || index}>
