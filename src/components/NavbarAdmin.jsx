@@ -9,7 +9,7 @@ const Navbar = () => {
           <img className="w-full" src={logo} alt="logo" />
         </picture>
         <Link to={"/"}>
-          <button className="text-white font-title pl-2 py-1  flex justify center items-center  text-[2.2rem] 2xl:text-[2.5rem] border-l-[3px] border-gray-600  hover:scale-105 hover:text-gray-600 duration-500 ">
+          <button className="text-white font-text pl-2 py-1  flex justify center items-center  text-[1.4rem] xl:text-[1.5rem] 2xl:text-[2rem] border-l-[3px] border-gray-600  hover:scale-105 hover:text-gray-600  hover:border-white duration-500 xl:pl-3">
             Home
           </button>
         </Link>
