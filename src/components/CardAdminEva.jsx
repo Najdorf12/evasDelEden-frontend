@@ -8,7 +8,6 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
     _id,
     name,
     wttp,
-    age,
     category,
     location,
     description,
@@ -42,7 +41,7 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
             </p>
           </span>
           <p className="pl-2 font-semibold text-lg text-white">
-            EDAD :   {age}
+            EDAD :   {description.edad}
           </p>
           <div className="flex justify-between px-2 font-semibold text-lg text-stone-400">
             <p>{location}</p>

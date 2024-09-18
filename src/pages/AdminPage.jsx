@@ -27,13 +27,13 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
   const [loadingImage, setLoadingImage] = useState(false);
 
   const navigate = useNavigate();
-
   useEffect(() => {
     verifyAuth();
   }, []);
+
   useEffect(() => {
     getEvas();
-  }, [allEvas]);
+  }, []);
 
   useEffect(() => {
     if (evaSelected !== null) {
@@ -42,11 +42,15 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
         name: evaSelected.name,
         wttp: evaSelected.wttp,
         location: evaSelected.location,
-        age: evaSelected.age,
         category: evaSelected.category,
-        detail: evaSelected.description.detail,
+        edad: evaSelected.description.edad,
+        altura: evaSelected.description.altura,
+        peso: evaSelected.description.peso,
         medidas: evaSelected.description.medidas,
-        more: evaSelected.description.more,
+        depilacion: evaSelected.description.depilacion,
+        servicio: evaSelected.description.servicio,
+        horario: evaSelected.description.horario,
+        extendDescription: evaSelected.description.extendDescription,
         isActive: false,
       });
     } else {
@@ -54,12 +58,16 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
         name: "",
         wttp: "",
         location: "",
-        age: "",
         category: "",
-        detail: "",
-        medidas: "",
-        more: "",
         isActive: false,
+        edad: "",
+        altura: "",
+        peso: "",
+        medidas: "",
+        depilacion: "",
+        servicio: "",
+        horario: "",
+        extendDescription: "",
       });
     }
   }, [evaSelected]);
@@ -74,24 +82,13 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
   };
   const verifyAuth = async () => {
     try {
-      const res = await axios
-        .get("/auth/verify")
-        .then((res) => {
-          setUser(res.data);
-        })
-        .catch((error) => {
-          if (error) {
-            navigate("/login");
-          }
-        });
+      const res = await axios.get("/auth/verify");
+      setUser(res.data);
     } catch (error) {
-      console.error(error);
+      navigate("/login");
     }
   };
   const selectEva = (eva, _id) => {
-    console.log("Selected Eva:", eva);
-    console.log("ID:", _id);
-
     setEvaSelected(eva);
   };
 
