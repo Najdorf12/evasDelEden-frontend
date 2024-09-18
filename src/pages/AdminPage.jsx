@@ -30,6 +30,8 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
 
   useEffect(() => {
     verifyAuth();
+  }, []);
+  useEffect(() => {
     getEvas();
   }, [allEvas]);
 
@@ -97,16 +99,12 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
     axios
       .delete(`/evas/${id}`)
       .then(() => {
-        // Filtrar la EVA eliminada del estado actual
         setAllEvas((prevEvas) => prevEvas.filter((eva) => eva._id !== id));
       })
       .catch((error) => console.error(error));
   };
 
   const editEva = (eva, id) => {
-    console.log("Eva to edit:", eva); // Para depurar
-    console.log("id to edit:", id); // Para depurar
-
     axios
       .put(`/evas/${eva._id}`, eva)
       .then((res) => {
@@ -162,27 +160,31 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
         name: data.name,
         wttp: data.wttp,
         location: data.location,
-        age: data.age,
         category: data.category,
         images: images,
-        description: {
-          detail: data.detail,
-          medidas: data.medidas,
-          more: data.more,
-        },
         isActive: data.isActive,
+        description: {
+          edad: data.edad,
+          altura: data.altura,
+          peso: data.peso,
+          medidas: data.medidas,
+          depilacion: data.depilacion,
+          servicio: data.servicio,
+          horario: data.horario,
+          extendDescription: data.extendDescription,
+        },
       };
       axios
         .post("/evas", newEva)
         .then((res) => {
-          // Utiliza la respuesta del backend para obtener la nueva EVA con el _id asignado
           const createdEva = res.data;
-          setAllEvas([...allEvas, createdEva]); // Agrega la EVA con su _id al estado
+          setAllEvas([...allEvas, createdEva]);
         })
         .catch((error) => console.error(error));
     }
     alert("EVA CREADA EXITOSAMENTE");
   };
+
   return (
     <section className="relative w-full bg-[#212121] min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
@@ -220,6 +222,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
             <div className="flex flex-col gap-8 xl:flex xl:flex-row ">
               <div className="relative font-text xl:w-1/2">
                 <input
+                  autoComplete="off"
                   placeholder="Joe Doe"
                   className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
                   name="name"
@@ -236,6 +239,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
               </div>
               <div className="relative font-text xl:w-1/2">
                 <input
+                  autoComplete="off"
                   placeholder="john@example.com"
                   className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white "
                   name="wttp"
@@ -255,40 +259,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
             <div className="flex flex-col gap-6 xl:flex xl:flex-row  ">
               <div className="relative font-text xl:w-1/2">
                 <input
-                  placeholder="location"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="location"
-                  {...register("location", {
-                    required: {
-                      value: true,
-                      message: "Location is required",
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Location
-                </label>
-              </div>
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  placeholder="edad"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="edad"
-                  {...register("age", {
-                    required: {
-                      value: false,
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Edad
-                </label>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6 xl:flex xl:flex-row">
-              <div className="relative font-text xl:w-1/2">
-                <input
+                  autoComplete="off"
                   placeholder="category"
                   className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
                   name="category"
@@ -303,20 +274,56 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
                   Category
                 </label>
               </div>
-
               <div className="relative font-text xl:w-1/2">
                 <input
-                  placeholder="detail"
+                  autoComplete="off"
+                  placeholder="location"
                   className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="detail"
-                  {...register("detail", {
+                  name="location"
+                  {...register("location", {
+                    required: {
+                      value: true,
+                      message: "Location is required",
+                    },
+                  })}
+                />
+                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                  Location
+                </label>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-6 xl:flex xl:flex-row">
+              <div className="relative font-text xl:w-1/2">
+                <input
+                  autoComplete="off"
+                  placeholder="edad"
+                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
+                  name="edad"
+                  {...register("edad", {
                     required: {
                       value: false,
                     },
                   })}
                 />
                 <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Detail
+                  Edad
+                </label>
+              </div>
+              <div className="relative font-text xl:w-1/2">
+                <input
+                  autoComplete="off"
+                  placeholder="altura"
+                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
+                  name="altura"
+                  {...register("altura", {
+                    required: {
+                      value: false,
+                    },
+                  })}
+                />
+                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                  Altura
                 </label>
               </div>
             </div>
@@ -324,6 +331,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
             <div className="flex flex-col gap-6 xl:flex xl:flex-row xl:gap-6">
               <div className="relative font-text xl:w-1/2">
                 <input
+                  autoComplete="off"
                   placeholder="medidas"
                   className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
                   name="medidas"
@@ -339,32 +347,99 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
               </div>
               <div className="relative font-text xl:w-1/2">
                 <input
-                  placeholder="more"
+                  autoComplete="off"
+                  placeholder="peso"
                   className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="more"
-                  {...register("more", {
+                  name="peso"
+                  {...register("peso", {
                     required: {
                       value: false,
                     },
                   })}
                 />
                 <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  More
+                  Peso
                 </label>
               </div>
             </div>
-            <div className="relative font-text flex gap-6 items-center">
-              <p className="text-gray-400">Is Active?</p>
-              <label className="container-checkbox">
-                <input type="checkbox" {...register("isActive")} />
-                <svg viewBox="0 0 64 64" height="2em" width="2em">
-                  <path
-                    d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                    pathLength="575.0541381835938"
-                    className="path"
-                  ></path>
-                </svg>
-              </label>
+
+            <div className="flex flex-col gap-6 xl:flex xl:flex-row xl:gap-6">
+              <div className="relative font-text xl:w-1/2">
+                <input
+                  autoComplete="off"
+                  placeholder="depilacion"
+                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
+                  name="depilacion"
+                  {...register("depilacion", {
+                    required: {
+                      value: false,
+                    },
+                  })}
+                />
+                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                  Depilación
+                </label>
+              </div>
+              <div className="relative font-text xl:w-1/2">
+                <input
+                  autoComplete="off"
+                  placeholder="servicio"
+                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
+                  name="servicio"
+                  {...register("servicio", {
+                    required: {
+                      value: false,
+                    },
+                  })}
+                />
+                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                  Servicio
+                </label>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-6 xl:flex xl:flex-row xl:gap-6">
+              <div className="relative font-text xl:w-1/2">
+                <input
+                  autoComplete="off"
+                  placeholder="horario"
+                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
+                  name="horario"
+                  {...register("horario", {
+                    required: {
+                      value: false,
+                    },
+                  })}
+                />
+                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                  Horario
+                </label>
+              </div>
+              <div className="relative font-text flex gap-6 items-center">
+                <p className="text-gray-400">Is Active?</p>
+                <label className="container-checkbox">
+                  <input type="checkbox" {...register("isActive")} />
+                  <svg viewBox="0 0 64 64" height="2em" width="2em">
+                    <path
+                      d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                      pathLength="575.0541381835938"
+                      className="path"
+                    ></path>
+                  </svg>
+                </label>
+              </div>
+            </div>
+            <div className="relative font-text text-gray-400  flex gap-2 flex-col justify-center items-center">
+              <p className="self-start text-base">Descripción</p>{" "}
+              <textarea
+                placeholder=""
+                className=" text-white bg-transparent border-[2px]  w-full xl:text-base rounded-lg p-2"
+                name="extendDescription"
+                id="extendDescription"
+                {...register("extendDescription")}
+                rows="5"
+                cols="30"
+              />
             </div>
             <div className="flex flex-col items-center gap-5 ">
               <label className="font-light text-gray-400 text-xl">
