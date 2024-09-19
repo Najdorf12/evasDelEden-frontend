@@ -17,7 +17,7 @@ const AgeVerification = ({ onConfirm }) => {
   };
 
   return (
-    <section className="relative flex flex-col items-center pt-32 w-full h-[dvh] overflow-hidden">
+    <section className="relative flex flex-col items-center pt-32 w-full h-[100dvh] overflow-hidden">
       <nav className="absolute top-2 left-2 z-50  ">
         <picture className="">
           <img src={imgLogo} 
