@@ -2,8 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
-import imgBg from "../assets/bg/bg1.jpg";
-
+import imgLogo from "../assets/logo-removebg.png"
 const AgeVerification = ({ onConfirm }) => {
   const navigate = useNavigate();
 
@@ -19,7 +18,13 @@ const AgeVerification = ({ onConfirm }) => {
 
   return (
     <section className="relative flex flex-col items-center pt-32 w-full h-screen overflow-hidden">
-      
+      <nav className="absolute top-2 left-2 z-50  ">
+        <picture className="">
+          <img src={imgLogo} 
+          className="w-14"
+          alt="logo" />
+        </picture>
+      </nav>
       <section id="verification" className="w-full h-screen absolute inset-0 ">
       </section>
         <article id="box-glass" className="flex flex-col justify-center font-text items-center gap-3 z-50 py-6 px-3 w-[95%] rounded-3xl">
@@ -44,7 +49,7 @@ const AgeVerification = ({ onConfirm }) => {
             </button>
           </div>
         </article>
-        <footer className="absolute bottom-1">
+        <footer className="absolute bottom-2 text-white font-semibold">
           <Footer />
         </footer>
     </section>
