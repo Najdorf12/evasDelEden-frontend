@@ -39,16 +39,16 @@ const AgeVerification = ({ onConfirm }) => {
       ></section>
       <article
         id="box-glass"
-        className="flex flex-col justify-center font-text items-center gap-3 z-50 py-6 px-2 w-[95%] rounded-3xl max-w-[650px] 2xl:max-w-[750px] lg:gap-4 lg:shadow-xl lg:shadow-gray-400"
+        className="flex flex-col justify-center font-text items-center gap-3 z-50 py-6 px-2 w-[95%] rounded-3xl max-w-[650px] 2xl:max-w-[750px] lg:gap-4 shadow-xl shadow-zinc-700 lg:shadow-xl lg:shadow-gray-400"
       >
-        <h6 className="text-[2.50rem] text-zinc-700 font-title font-semibold lg:text-5xl xl:text-6xl">
+        <h6 className="text-[2.50rem] text-zinc-800 font-title font-semibold lg:text-5xl xl:text-6xl">
           Verificación de Edad
         </h6>
         <p className="text-stone-700 text-sm text-center text-balance lg:text-base">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro
           explicabo est quam, omnis tenetur repellendus.
         </p>
-        <p className="text-lg text-zinc-700 lg:text-xl 2xl:text-2xl">
+        <p className="text-lg text-stone-700 lg:text-xl 2xl:text-2xl">
           ¿Eres mayor de edad?
         </p>
         <div className="flex justify-evenly items-center gap-4 text-base mt-3 lg:text-lg xl:text-xl lg:gap-6 2xl:gap-10 2xl:text-xl">
