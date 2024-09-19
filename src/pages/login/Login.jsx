@@ -74,6 +74,7 @@ const Login = () => {
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
             <div className="relative font-text">
               <input
+              autoComplete="off"
                 placeholder="john@example.com"
                 className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
                 required=""

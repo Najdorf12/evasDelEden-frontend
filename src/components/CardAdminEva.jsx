@@ -76,8 +76,9 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
             </div>
             <div className="flex flex-col ">
               <li>
-              <span className="text-stone-600">Servicio:</span>{" "}
-                {description?.servicio}</li>
+                <span className="text-stone-600">Servicio:</span>{" "}
+                {description?.servicio}
+              </li>
               <li>
                 <span className="text-stone-600">Descripción:</span>{" "}
                 {isExpanded
@@ -95,19 +96,19 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
             </div>
           </ul>
 
-          <div className="w-full  mt-4 mb-1">
-            <section className="flex justify-evenly items-center text-cyan-800 mr-2 ">
-              <div className="flex items-center gap-2 text-[1rem]">
+          <div className="w-full  mt-4 mb-1 font-semibold">
+            <section className="flex justify-evenly items-center  mr-2 ">
+              <div className="flex items-center gap-2 text-[1rem] text-stone-300">
                 <i
                   onClick={() => selectEva(eva, _id)}
-                  className="bx bxs-edit-alt cursor-pointer hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
+                  className="bx bxs-edit-alt cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
                 ></i>
                 Editar
               </div>
-              <div className="flex items-center gap-2 text-[1rem]">
+              <div className="flex items-center gap-2 text-[1rem]  text-stone-300">
                 <i
                   onClick={() => deleteEva(_id)}
-                  className="bx bxs-trash-alt  cursor-pointer hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
+                  className="bx bxs-trash-alt  cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
                 ></i>
                 Eliminar
               </div>
