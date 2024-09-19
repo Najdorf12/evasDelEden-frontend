@@ -27,11 +27,11 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
         </picture>
 
         <article className="h-full mt-3 flex flex-col gap-1  text-base w-full px-2">
-          <p className="text-xl  font-text text-center  text-stone-400 leading-5 border-b border-[#92856e] py-2 ">
+          <p className="text-xl  font-text text-center  text-white leading-5 border-b border-[#92856e] py-2 ">
             {name}
           </p>
 
-          <div className="mt-2 font-semibold font-text text-cyan-800 tracking-wide rounded-lg flex justify-between items-center ">
+          <div className="mt-2 font-semibold font-text text-white tracking-wide rounded-lg flex justify-between items-center ">
             {category.toUpperCase()}
             <p className="text-white ">{isActive ? "Activa" : "Inactiva"}</p>
           </div>
@@ -96,19 +96,19 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
             </div>
           </ul>
 
-          <div className="w-full  mt-4 mb-1 font-semibold">
+          <div className="w-full  mt-4 mb-1 font-normal">
             <section className="flex justify-evenly items-center  mr-2 ">
-              <div className="flex items-center gap-2 text-[1rem] text-stone-300">
+              <div className="flex items-center gap-2 text-[1rem] text-white">
                 <i
                   onClick={() => selectEva(eva, _id)}
-                  className="bx bxs-edit-alt cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
+                  className="bx bxs-edit-alt cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
                 ></i>
                 Editar
               </div>
-              <div className="flex items-center gap-2 text-[1rem]  text-stone-300">
+              <div className="flex items-center gap-2 text-[1rem]  text-white">
                 <i
                   onClick={() => deleteEva(_id)}
-                  className="bx bxs-trash-alt  cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-3xl"
+                  className="bx bxs-trash-alt  cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
                 ></i>
                 Eliminar
               </div>
