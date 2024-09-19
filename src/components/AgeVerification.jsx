@@ -23,15 +23,15 @@ const AgeVerification = ({ onConfirm }) => {
       <section id="verification" className="w-full h-screen absolute inset-0 ">
       </section>
         <article id="box-glass" className="flex flex-col justify-center font-text items-center gap-3 z-50 py-6 px-3 w-[95%] rounded-3xl">
-          <h6 className="text-2xl text-stone-700">Verificación de Edad</h6>
-          <p className="text-white text-sm text-center text-balance">
+          <h6 className="text-4xl text-zinc-800 font-title font-semibold">Verificación de Edad</h6>
+          <p className="text-zinc-700 text-sm text-center text-balance">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro
             explicabo est quam, omnis tenetur repellendus.
           </p>
           <p className="text-lg text-stone-700">¿Eres mayor de edad?</p>
           <div className="flex justify-evenly items-center gap-3 text-base mt-3">
             <button
-              className="rounded-full px-6 border border-stone-600 text-white bg-zinc-700"
+              className="rounded-full px-6 border border-stone-600 text-primary bg-zinc-700"
               onClick={handleYes}
             >
               Sí, soy mayor.

@@ -15,9 +15,16 @@ export default {
       "2xl": "1600px",
     },
     extend: {
+      colors:{
+        primary:"#F28705",
+        darkOrange:"#F24405",
+        lightOrange:"#F25C05",
+        whiteCustom:"#F2F0E4",
+      },
       fontFamily: {
         title: ["Bebas Neue", "sans-serif"],
         text: ["Roboto", "sans-serif"],
+        text2: ["Montserrat", "sans-serif"],
       },
     },
   },
