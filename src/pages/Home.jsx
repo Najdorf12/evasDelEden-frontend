@@ -19,7 +19,7 @@ const Home = ({ allEvas }) => {
             <button className="pl-3 text-base  border-l-[3px] border-zinc-600  font-text2 text-whiteCustom">Contacto</button>
           </nav>
           <article className="self-start pl-3 flex flex-col items-start mt-4">
-          <h2 className="font-title text-zinc-700 text-7xl sm:text-8xl">Evas del Eden</h2>
+          <h2 className="font-title text-zinc-700 text-7xl ">Evas del Eden</h2>
           <h3 className="text-whiteCustom text-2xl font-text2">Escorts Mendoza</h3>
           </article>
           <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start pl-3">
