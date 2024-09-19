@@ -16,7 +16,7 @@ const Home = ({ allEvas }) => {
               className="w-16"
               />
             </div>
-            <button className="px-5 text-base rounded-full border border-zinc-600  font-text2 text-whiteCustom">Contacto</button>
+            <button className="pl-3 text-base  border-l-[3px] border-zinc-600  font-text2 text-whiteCustom">Contacto</button>
           </nav>
           <article className="self-start pl-3 flex flex-col items-start mt-4">
           <h2 className="font-title text-zinc-700 text-7xl sm:text-8xl">Evas del Eden</h2>
