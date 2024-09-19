@@ -21,7 +21,7 @@ const AgeVerification = ({ onConfirm }) => {
       <nav className="absolute top-2 left-2 z-50  ">
         <picture className="">
           <img src={imgLogo} 
-          className="w-14"
+          className="w-16"
           alt="logo" />
         </picture>
       </nav>
@@ -49,7 +49,7 @@ const AgeVerification = ({ onConfirm }) => {
             </button>
           </div>
         </article>
-        <footer className="absolute bottom-2 text-white font-semibold">
+        <footer className="absolute bottom-0 text-white font-medium">
           <Footer />
         </footer>
     </section>
