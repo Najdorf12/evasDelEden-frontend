@@ -183,7 +183,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
   };
 
   return (
-    <section className="relative w-full bg-[#212121] min-h-[140vh] flex flex-col items-center  pb-10">
+    <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
         <picture className="w-14 h-14 flex items-center justify-center rounded-full bg-zinc-800 border-[1px] border-gray-500 2xl:w-16 2xl:h-16 ">
           <img src={imgLogo} alt="logo" />
@@ -205,7 +205,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
         <section
           style={{
             backgroundImage:
-              "linear-gradient(to right top, #242427, #2b2a30, #33303a, #3c3542, #463b4b, #554255, #65495e, #765066, #905a6f, #aa6575, #c37278, #da8078)",
+              "linear-gradient(to top left, #bdc3c7, #2c3e50)",
           }}
           className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[700px]"
         >
