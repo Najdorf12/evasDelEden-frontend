@@ -7,8 +7,8 @@ const Home = ({ allEvas }) => {
 
   return (
     <main className="bg-zinc-800 relative overflow-hidden">
-      <div className="absolute -right-[50%] top-[60%] w-[120%] h-[1px] bg-lightOrange rotate-[120deg]"></div>
-      <div className="absolute -right-[50%] top-[65%] w-[80%] h-[1px] bg-lightOrange rotate-[120deg]"></div>
+      <div className="absolute -right-[50%] top-[60%] w-[110%] h-[1px] bg-lightOrange rotate-[130deg]"></div>
+      <div className="absolute -right-[50%] top-[65%] w-[70%] h-[1px] bg-lightOrange rotate-[130deg]"></div>
         <section className="w-full h-[100dvh] flex flex-col items-center">
           <nav className=" w-full flex  justify-between items-center pr-1 mt-2">   
             <div>
