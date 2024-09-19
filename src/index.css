@@ -5,6 +5,29 @@
 @tailwind components;
 @tailwind utilities;
 
+#verification{
+  width: 100vw;
+  height: 100vh;
+  background:url("./assets/bg/bg1.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  filter: grayscale(100%);
+}
+
+@media (min-width: 1000px) {
+  #verification{
+    background:url("./assets/bg/bg1-removebg.png");
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+  }
+}
+#box-glass{
+  background: rgba( 255, 255, 255, 0.4);
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+}
 /* checkbox */
 .container-checkbox {
     cursor: pointer;
