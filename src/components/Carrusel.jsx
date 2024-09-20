@@ -5,8 +5,9 @@ import imgWoman4 from "../assets/imgWoman4.jpg";
 import imgWoman5 from "../assets/imgWoman5.jpg";
 
 import CardEva from "./CardEva";
+import { forwardRef } from "react";
 
-const Carrusel = () => {
+const Carrusel = forwardRef((props, ref) => {
   const allEvasPlatinum = [
     {
       name: "Erica Martinez",
@@ -41,12 +42,15 @@ const Carrusel = () => {
   ];
 
   return (
-    <div className="flex items-center h-[95%] w-full pl-2 bg-red-500 absolute inset-0 gap-3">
-       {allEvasPlatinum.map((evaPlatinum, i) => (
+    <div
+      ref={ref}
+      className="flex items-center h-[95%] w-full pl-2 bg-red-500 absolute inset-0 gap-3"
+    >
+      {allEvasPlatinum.map((evaPlatinum, i) => (
         <CardEva key={i} evaPlatinum={evaPlatinum} />
       ))}
     </div>
   );
-};
+});
 
 export default Carrusel;

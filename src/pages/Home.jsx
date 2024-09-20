@@ -3,6 +3,11 @@ import imgLogo from "../assets/logo-removebg.png";
 import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
 
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+gsap.registerPlugin(useGSAP);
+
 const Home = ({ allEvas }) => {
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
   const locations = ["Mendoza", "Córdoba", "Santa Fe", "Buenos Aires"];
@@ -10,7 +15,20 @@ const Home = ({ allEvas }) => {
   const [selectedMenu, setSelectedMenu] = useState("Categorias");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
+  const carruselRef = useRef(); // Referencia para el carrusel
 
+  // Definir la animación con useGSAP
+  useGSAP(
+    () => {
+      // Esta animación se ejecutará al hacer clic en el botón
+      gsap.to(carruselRef.current, {
+        x: '-=200px', // Mover 200px hacia la izquierda
+        duration: 1, // Duración de la animación
+        ease: 'power2.inOut',
+      });
+    },
+    { scope: carruselRef } // Scope es el elemento que queremos animar
+  );
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh]">
       <section className="w-full flex flex-col items-center">
@@ -108,10 +126,10 @@ const Home = ({ allEvas }) => {
       </section>
 
       <section className="bg-teal-500 w-full h-[20rem] mt-12 relative flex justify-center items-center">
-        <button className="text-6xl text-zinc-600 fixed right-0 z-50">
+        <button onClick={() => gsap.to(carruselRef.current, { x: '-=200px', duration: 1 })} className="text-6xl text-zinc-600 fixed right-0 z-50">
           <i className="bx bxs-chevrons-right"></i>
         </button>
-        <Carrusel />
+        <Carrusel ref={carruselRef} />
       </section>
 
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
