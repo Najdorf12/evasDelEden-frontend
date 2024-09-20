@@ -7,6 +7,7 @@ import imgWoman2 from "../assets/imgWoman2.jpg";
 import imgWoman3 from "../assets/imgWoman3.jpg";
 import imgWoman4 from "../assets/imgWoman4.jpg";
 import imgWoman5 from "../assets/imgWoman5.jpg";
+import AgeVerification from "../components/AgeVerification";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -17,17 +18,18 @@ const Home = ({ allEvas }) => {
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
   const locations = ["Mendoza", "Córdoba", "Santa Fe", "Buenos Aires"];
 
+  const [isVerified, setIsVerified] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState("Categorias");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
 
-  const slides = [
-    imgWoman1,
-    imgWoman2,
-    imgWoman3,
-    imgWoman4,
-    imgWoman5,
-  ]
+  const slides = [imgWoman1, imgWoman2, imgWoman3, imgWoman4, imgWoman5];
+  const handleVerification = () => {
+    setIsVerified(true); // Cambia el estado a verdadero cuando el usuario es mayor de edad
+  };
+  if (!isVerified) {
+    return <AgeVerification onConfirm={handleVerification} />; // Muestra el componente de verificación si no está verificado
+  }
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh]">
       <section className="w-full flex flex-col items-center">
@@ -91,9 +93,9 @@ const Home = ({ allEvas }) => {
         </ul>
         {selectedMenu === "Categorias" ? (
           <div className="flex gap-4 w-full pl-3">
-            {categories.map((category) => (
+            {categories.map((category, i) => (
               <button
-                key={category}
+                key={i}
                 onClick={() => setSelectedCategory(category)}
                 className={` mt-3 rounded-full px-4 py-[1px] text-sm ${
                   selectedCategory === category
@@ -125,16 +127,17 @@ const Home = ({ allEvas }) => {
       </section>
 
       <section className="bg-teal-500 py-1 w-full px-3 h-[25rem] mt-12 relative flex justify-center items-center">
-      <div className="flex justify-center items-center gap-3  w-fit bg-rose-700">
-      <div className=" w-fit ">
-        <Carrusel autoSlide={false} >
-          {[...slides.map((s) => (
-            <img className="w-[200px] rounded-2xl object-cover" src={s} />
-          ))]}
-        </Carrusel>
-
-      </div>
-    </div>
+        <div className="flex justify-center items-center gap-3  w-fit bg-rose-700">
+          <div className=" w-fit ">
+            <Carrusel autoSlide={false}>
+              {[
+                ...slides.map((s) => (
+                  <img className="w-[200px] rounded-2xl object-cover" src={s} />
+                )),
+              ]}
+            </Carrusel>
+          </div>
+        </div>
       </section>
 
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
