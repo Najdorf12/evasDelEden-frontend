@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import imgLogo from "../assets/logo-removebg.png";
 import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
-import imgWoman1 from "../assets/imgWoman1.jpg";
+/* import imgWoman1 from "../assets/imgWoman1.jpg";
 import imgWoman2 from "../assets/imgWoman2.jpg";
 import imgWoman3 from "../assets/imgWoman3.jpg";
 import imgWoman4 from "../assets/imgWoman4.jpg";
-import imgWoman5 from "../assets/imgWoman5.jpg";
+import imgWoman5 from "../assets/imgWoman5.jpg"; */
 import AgeVerification from "../components/AgeVerification";
+import CardEva from "../components/CardEva"; 
+import { getEvas } from "../api/handlers";
 
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
+/* import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP); */
 
-const Home = ({ allEvas }) => {
+const Home = () => {
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
   const locations = ["Mendoza", "Córdoba", "Santa Fe", "Buenos Aires"];
 
@@ -23,7 +24,20 @@ const Home = ({ allEvas }) => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
 
-  const slides = [imgWoman1, imgWoman2, imgWoman3, imgWoman4, imgWoman5];
+  const [allEvas, setAllEvas] = useState([]);
+
+  useEffect(() => {
+    const fetchEvas = async () => {
+      try {
+        const evasData = await getEvas();
+        setAllEvas(evasData);
+      } catch (error) {
+        console.error("Failed to fetch evas:", error);
+      }
+    };
+
+    fetchEvas();
+  }, []);
   const handleVerification = () => {
     setIsVerified(true); // Cambia el estado a verdadero cuando el usuario es mayor de edad
   };
@@ -126,15 +140,13 @@ const Home = ({ allEvas }) => {
         )}
       </section>
 
-      <section className="bg-teal-500 py-1 w-full px-3 h-[25rem] mt-12 relative flex justify-center items-center">
-        <div className="flex justify-center items-center gap-3  w-fit bg-rose-700">
+      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start">
+        <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
           <div className=" w-fit ">
             <Carrusel autoSlide={false}>
-              {[
-                ...slides.map((s) => (
-                  <img className="w-[200px] rounded-2xl object-cover" src={s} />
-                )),
-              ]}
+            {[...allEvas.map((eva) => (
+                <CardEva key={eva._id} eva={eva} />
+              ))]}
             </Carrusel>
           </div>
         </div>

@@ -1,17 +1,16 @@
-const CardEva = ({ evaPlatinum }) => {
-  const { name, location, description, image } = evaPlatinum;
-  console.log(evaPlatinum);
+const CardEva = ({ eva }) => {
+  const { name, location, description, images } = eva;
+
   return (
-    <div>
-      <figure className="w-48 h-[18rem]">
-        <img src={image} alt="" 
+    <div className="h-[23rem]">
+    <figure className="w-52 h-full">
+      <img
+        src={images[0]?.secure_url}
+        alt=""
         className="w-full h-full rounded-2xl object-cover"
-        />
-      </figure>
-      {/* <article>
-        <p className="text-2xl text-white">{name}</p>
-      </article> */}
-    </div>
+      />
+    </figure>
+  </div>
   );
 };
 
