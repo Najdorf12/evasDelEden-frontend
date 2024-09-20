@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import imgLogo from "../assets/logo-removebg.png";
 import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
+import imgWoman1 from "../assets/imgWoman1.jpg";
+import imgWoman2 from "../assets/imgWoman2.jpg";
+import imgWoman3 from "../assets/imgWoman3.jpg";
+import imgWoman4 from "../assets/imgWoman4.jpg";
+import imgWoman5 from "../assets/imgWoman5.jpg";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -15,20 +20,14 @@ const Home = ({ allEvas }) => {
   const [selectedMenu, setSelectedMenu] = useState("Categorias");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
-  const carruselRef = useRef(); // Referencia para el carrusel
 
-  // Definir la animación con useGSAP
-  useGSAP(
-    () => {
-      // Esta animación se ejecutará al hacer clic en el botón
-      gsap.to(carruselRef.current, {
-        x: '-=200px', // Mover 200px hacia la izquierda
-        duration: 1, // Duración de la animación
-        ease: 'power2.inOut',
-      });
-    },
-    { scope: carruselRef } // Scope es el elemento que queremos animar
-  );
+  const slides = [
+    imgWoman1,
+    imgWoman2,
+    imgWoman3,
+    imgWoman4,
+    imgWoman5,
+  ]
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh]">
       <section className="w-full flex flex-col items-center">
@@ -125,11 +124,17 @@ const Home = ({ allEvas }) => {
         )}
       </section>
 
-      <section className="bg-teal-500 w-full h-[20rem] mt-12 relative flex justify-center items-center">
-        <button onClick={() => gsap.to(carruselRef.current, { x: '-=200px', duration: 1 })} className="text-6xl text-zinc-600 fixed right-0 z-50">
-          <i className="bx bxs-chevrons-right"></i>
-        </button>
-        <Carrusel ref={carruselRef} />
+      <section className="bg-teal-500 py-1 w-full px-3 h-[25rem] mt-12 relative flex justify-center items-center">
+      <div className="flex justify-center items-center gap-3  w-fit bg-rose-700">
+      <div className=" w-fit ">
+        <Carrusel autoSlide={false} >
+          {[...slides.map((s) => (
+            <img className="w-[200px] rounded-2xl object-cover" src={s} />
+          ))]}
+        </Carrusel>
+
+      </div>
+    </div>
       </section>
 
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">

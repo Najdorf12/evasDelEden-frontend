@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 import { getEvas } from "../api/handlers";
 import axios from "../api/axios";
 
-const AdminPage = ({ allEvas, setAllEvas }) => {
+const AdminPage = () => {
   const {
     handleSubmit,
     register,
@@ -17,8 +17,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
     formState: { errors },
   } = useForm();
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
-
-  const [user, setUser] = useState({});
+  const [allEvas, setAllEvas] = useState([]);
   const [evaSelected, setEvaSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,15 +26,38 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
   const [loadingImage, setLoadingImage] = useState(false);
 
   const navigate = useNavigate();
+
   useEffect(() => {
     verifyAuth();
   }, []);
 
   useEffect(() => {
-    getEvas();
+    const fetchEvas = async () => {
+      try {
+        const evasData = await getEvas();
+        setAllEvas(evasData);
+      } catch (error) {
+        console.error("Failed to fetch evas:", error);
+      }
+    };
+
+    fetchEvas();
   }, []);
 
+  const verifyAuth = async () => {
+    try {
+      const res = await axios.get("/auth/verify").catch((error) => {
+        if (error) {
+          navigate("/login");
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
+    console.log(evaSelected);
     if (evaSelected !== null) {
       reset({
         _id: evaSelected._id,
@@ -43,14 +65,14 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
         wttp: evaSelected.wttp,
         location: evaSelected.location,
         category: evaSelected.category,
-        edad: evaSelected.description.edad,
-        altura: evaSelected.description.altura,
-        peso: evaSelected.description.peso,
-        medidas: evaSelected.description.medidas,
-        depilacion: evaSelected.description.depilacion,
-        servicio: evaSelected.description.servicio,
-        horario: evaSelected.description.horario,
-        extendDescription: evaSelected.description.extendDescription,
+        edad: evaSelected.description?.edad,
+        altura: evaSelected.description?.altura,
+        peso: evaSelected.description?.peso,
+        medidas: evaSelected.description?.medidas,
+        depilacion: evaSelected.description?.depilacion,
+        servicio: evaSelected.description?.servicio,
+        horario: evaSelected.description?.horario,
+        extendDescription: evaSelected.description?.extendDescription,
         isActive: false,
       });
     } else {
@@ -80,14 +102,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
       })
       .catch((error) => console.error(error));
   };
-  const verifyAuth = async () => {
-    try {
-      const res = await axios.get("/auth/verify");
-      setUser(res.data);
-    } catch (error) {
-      navigate("/login");
-    }
-  };
+
   const selectEva = (eva, _id) => {
     setEvaSelected(eva);
   };
@@ -96,14 +111,49 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
     axios
       .delete(`/evas/${id}`)
       .then(() => {
+        // Filtrar la EVA eliminada del estado actual
         setAllEvas((prevEvas) => prevEvas.filter((eva) => eva._id !== id));
       })
       .catch((error) => console.error(error));
   };
 
   const editEva = (eva, id) => {
+    console.log("editEva eva", eva);
+    const {
+      name,
+      location,
+      category,
+      wttp,
+      isActive,
+      edad,
+      altura,
+      peso,
+      medidas,
+      depilacion,
+      horario,
+      servicio,
+      extendDescription,
+    } = eva;
+    const evaToEdit = {
+      name,
+      location,
+      category,
+      wttp,
+      isActive,
+      description: {
+        edad,
+        altura,
+        peso,
+        medidas,
+        depilacion,
+        horario,
+        servicio,
+        extendDescription,
+      },
+    };
+
     axios
-      .put(`/evas/${eva._id}`, eva)
+      .put(`/evas/${eva._id}`, evaToEdit)
       .then((res) => {
         const updatedEva = res.data;
         const updatedEvas = allEvas.map((item) =>
@@ -114,7 +164,6 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
       })
       .catch((error) => console.error(error));
   };
-
   async function handleImage(e) {
     const files = e.target.files;
     const data = new FormData();
@@ -150,6 +199,8 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
   }
 
   const submit = (data) => {
+    console.log("datasubmit", data);
+    console.log("evaSelected", evaSelected);
     if (evaSelected !== null) {
       editEva(data);
     } else {
@@ -204,8 +255,7 @@ const AdminPage = ({ allEvas, setAllEvas }) => {
       <section className="mt-12 w-full flex flex-col items-center px-4  ">
         <section
           style={{
-            backgroundImage:
-              "linear-gradient(to top left, #bdc3c7, #2c3e50)",
+            backgroundImage: "linear-gradient(to top left, #bdc3c7, #2c3e50)",
           }}
           className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[700px]"
         >

@@ -27,20 +27,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        {/* Verifica si el usuario está verificado antes de mostrar el Home */}
-        {!isVerified ? (
-          <Route path="/" element={<AgeVerification onConfirm={() => setIsVerified(true)} />} />
-        ) : (
-          <>
-            <Route path="/" element={<Home allEvas={allEvas} setAllEvas={setAllEvas}/>} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/admin" element={<AdminPage allEvas={allEvas} setAllEvas={setAllEvas} />} />
-          </>
-        )}
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/admin" element={<AdminPage />} />
+    </Routes>
+  </BrowserRouter>
   );
 }
 
