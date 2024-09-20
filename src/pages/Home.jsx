@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import imgLogo from "../assets/logo-removebg.png";
+import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
 
 const Home = ({ allEvas }) => {
-  const [selectedMenu, setSelectedMenu] = useState("Categorias");
-  const [selectedCategory, setSelectedCategory] = useState("Todas");
-  const [selectedLocation, setSelectedLocation] = useState("Mendoza");
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
   const locations = ["Mendoza", "Córdoba", "Santa Fe", "Buenos Aires"];
 
+  const [selectedMenu, setSelectedMenu] = useState("Categorias");
+  const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [selectedLocation, setSelectedLocation] = useState("Mendoza");
+
   return (
-    <main className="bg-zinc-800 relative overflow-hidden">
-      <section className="w-full h-[100dvh] flex flex-col items-center">
+    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh]">
+      <section className="w-full flex flex-col items-center">
         <nav className="w-full flex justify-between items-center pr-1 mt-2">
           <div>
-            <img src={imgLogo} alt="logo" className="w-16" />
+            <img src={imgLogo} alt="logo" className="w-14" />
           </div>
           <button className="pl-3 text-base border-l-[3px] border-zinc-600 font-text2 text-whiteCustom">
             Contacto
@@ -103,6 +105,13 @@ const Home = ({ allEvas }) => {
             ))}
           </div>
         )}
+      </section>
+
+      <section className="bg-teal-500 w-full h-[20rem] mt-12 relative flex justify-center items-center">
+        <button className="text-6xl text-zinc-600 fixed right-0 z-50">
+          <i className="bx bxs-chevrons-right"></i>
+        </button>
+        <Carrusel />
       </section>
 
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
