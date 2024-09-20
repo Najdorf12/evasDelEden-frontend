@@ -35,10 +35,18 @@ const Home = ({ allEvas }) => {
                 setSelectedMenu("Categorias");
               }}
               className={`relative flex items-center ml-8 cursor-pointer ${
-                selectedMenu === "Categorias" ? "text-primary" : "text-zinc-500"
+                selectedMenu === "Categorias"
+                  ? "text-whiteCustom"
+                  : "text-zinc-500"
               }`}
             >
-              <i className="bx bxs-doughnut-chart text-lg absolute -left-6"></i>
+              <i
+                className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-6 ${
+                  selectedMenu === "Categorias"
+                    ? "text-primary"
+                    : "text-zinc-500"
+                }`}
+              ></i>
               Categorias
             </div>
           </li>
@@ -46,10 +54,18 @@ const Home = ({ allEvas }) => {
             <div
               onClick={() => setSelectedMenu("Ubicacion")}
               className={`relative  flex items-center ml-8 cursor-pointer ${
-                selectedMenu === "Ubicacion" ? "text-primary" : "text-zinc-500"
+                selectedMenu === "Ubicacion"
+                  ? "text-whiteCustom"
+                  : "text-zinc-500"
               }`}
             >
-              <i className="bx bxs-map text-lg absolute -left-6"></i>
+              <i
+                className={`bx bxs-map text-lg absolute text-primary -left-6 ${
+                  selectedMenu === "Ubicacion"
+                    ? "text-primary"
+                    : "text-zinc-500"
+                }`}
+              ></i>
               Ubicacion
             </div>
           </li>
@@ -76,7 +92,7 @@ const Home = ({ allEvas }) => {
               <button
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-full px-[9px] py-[1px] text-sm ${
+                className={` mt-3 rounded-full px-[10px] py-[1px] text-sm ${
                   selectedLocation === location
                     ? "bg-zinc-700 text-primary"
                     : "border border-zinc-700 text-zinc-500"
