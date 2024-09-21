@@ -36,6 +36,11 @@
   backdrop-filter: blur( 1px );
   -webkit-backdrop-filter: blur( 1px );
 }
+#box-glass3{
+  background: rgba( 255, 255, 255, 0.5);
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+}
 /* checkbox */
 .container-checkbox {
     cursor: pointer;

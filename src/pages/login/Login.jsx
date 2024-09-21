@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
+import imgLogo from "../../assets/logo-removebg.png";
+
 
 const Login = () => {
   const [loginError, setLoginError] = useState([]);
@@ -49,7 +51,7 @@ const Login = () => {
       >
        <nav className="font-text2 text-xl  relative flex justify-between items-center w-full  mt-2 px-5 xl:mt-3 xl:px-16 xl:text-2xl  2xl:px-20 ">
         <picture className="w-16 h-16 flex items-center justify-center rounded-full  2xl:w-20 2xl:h-20 ">
-          <img className="rounded-full"  alt="logo" />
+          <img src={imgLogo} className="rounded-full"  alt="logo" />
         </picture>
         <ul className="flex gap-6 xl:gap-10 2xl:gap-12">
           <li className="text-gray-50 border-l-2 pl-2 xl:pl-3 py-1 hover:scale-105 hover:text-white duration-500 ">

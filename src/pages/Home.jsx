@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import imgLogo from "../assets/logo-removebg.png";
 import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
-/* import imgWoman1 from "../assets/imgWoman1.jpg";
-import imgWoman2 from "../assets/imgWoman2.jpg";
-import imgWoman3 from "../assets/imgWoman3.jpg";
-import imgWoman4 from "../assets/imgWoman4.jpg";
-import imgWoman5 from "../assets/imgWoman5.jpg"; */
 import AgeVerification from "../components/AgeVerification";
 import CardEva from "../components/CardEva";
 import { getEvas } from "../api/handlers";
@@ -23,7 +19,7 @@ const Home = () => {
   const [selectedMenu, setSelectedMenu] = useState("Categorias");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
-
+  
   const [allEvas, setAllEvas] = useState([]);
 
   useEffect(() => {
@@ -47,13 +43,16 @@ const Home = () => {
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-16">
       <section className="w-full flex flex-col items-center">
-        <nav className="w-full flex justify-between items-center pr-1 mt-2">
+        <nav className="w-full flex justify-between items-center pr-2 mt-2">
           <div>
             <img src={imgLogo} alt="logo" className="w-14" />
           </div>
-          <button className="pl-3 text-base border-l-[3px] border-zinc-600 font-text2 text-whiteCustom">
+          <Link to={"/contacto"}>
+          <button className="pl-2 text-base border-l-[3px] border-zinc-600 font-text2 text-whiteCustom">
             Contacto
           </button>
+          
+          </Link>
         </nav>
 
         <article className="self-start pl-3 flex flex-col items-start mt-4">
