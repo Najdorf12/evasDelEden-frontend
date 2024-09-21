@@ -8,7 +8,7 @@ import imgWoman3 from "../assets/imgWoman3.jpg";
 import imgWoman4 from "../assets/imgWoman4.jpg";
 import imgWoman5 from "../assets/imgWoman5.jpg"; */
 import AgeVerification from "../components/AgeVerification";
-import CardEva from "../components/CardEva"; 
+import CardEva from "../components/CardEva";
 import { getEvas } from "../api/handlers";
 
 /* import { useGSAP } from "@gsap/react";
@@ -144,9 +144,31 @@ const Home = () => {
         <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
           <div className=" w-fit ">
             <Carrusel autoSlide={false}>
-            {[...allEvas.map((eva) => (
-                <CardEva key={eva._id} eva={eva} />
-              ))]}
+              {[...allEvas.map((eva) => <CardEva key={eva._id} eva={eva} />)]}
+            </Carrusel>
+          </div>
+        </div>
+      </section>
+
+      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-3"></div>
+      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm"></div>
+
+      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start">
+        <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
+          <div className=" w-fit ">
+            <Carrusel autoSlide={false}>
+              {[...allEvas.map((eva) => <CardEva key={eva._id} eva={eva} />)]}
+            </Carrusel>
+          </div>
+        </div>
+      </section>
+      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-3"></div>
+      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm"></div>
+      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start">
+        <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
+          <div className=" w-fit ">
+            <Carrusel autoSlide={false}>
+              {[...allEvas.map((eva) => <CardEva key={eva._id} eva={eva} />)]}
             </Carrusel>
           </div>
         </div>
