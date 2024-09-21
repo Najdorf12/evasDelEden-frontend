@@ -45,7 +45,7 @@ const Home = () => {
     return <AgeVerification onConfirm={handleVerification} />; // Muestra el componente de verificación si no está verificado
   }
   return (
-    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh]">
+    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-16">
       <section className="w-full flex flex-col items-center">
         <nav className="w-full flex justify-between items-center pr-1 mt-2">
           <div>
