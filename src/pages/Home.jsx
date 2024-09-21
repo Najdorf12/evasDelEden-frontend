@@ -162,8 +162,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-3"></div>
-      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm"></div>
+      <div className="w-full flex flex-col items-end">
+        
+      <div className="self-end w-[30%] h-3 bg-primary rounded-l-sm mt-3"></div>
+      <div className="self-end w-[35%] h-4 bg-zinc-700 rounded-l-sm"></div>
+      </div>
       <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start">
         <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
           <div className=" w-fit ">
