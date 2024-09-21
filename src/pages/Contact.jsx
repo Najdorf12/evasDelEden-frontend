@@ -95,7 +95,7 @@ const Contact = () => {
               </div>
 
               <button
-                class="w-full py-2 px-4 bg-white rounded-full shadow-lg text-zinc-800 font-semibold transition duration-200 text-base"
+                class="w-full py-2 px-4  rounded-full shadow-lg text-zinc-800 font-semibold transition duration-200 text-base bg-primary"
                 type="submit"
               >
                 Enviar
