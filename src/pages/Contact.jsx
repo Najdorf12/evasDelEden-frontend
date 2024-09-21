@@ -28,12 +28,12 @@ const Contact = () => {
         ></section>
         <article
           /* id="box-glass2" */
-          className="flex flex-col justify-center font-text2 items-center z-50 py-6 px-2  w-[98%] rounded-2xl mt-12 lg:shadow-gray-400"
+          className="flex flex-col justify-center font-text2 items-center z-50 py-6 px-  w-[98%] rounded-2xl mt-12 lg:shadow-gray-400"
         >
           <h6 className="text-7xl text-zinc-900 font-title font-semibold">
             CONTACTO
           </h6>
-          <p className="mt-2 text-white text-base font-medium text-center text-balance lg:text-xl">
+          <p className="mt-2 text-white text-base font-semibold text-center text-balance lg:text-xl">
             Contact us to learn about pricing, deployment options and the lorem
             impsum.
           </p>
@@ -43,22 +43,22 @@ const Contact = () => {
           <div
             /* id="box-glass2" */
             style={{ animation: "slideInFromLeft 1s ease-out" }}
-            class=" mt-4 max-w-md w-full rounded-2xl  overflow-hidden py-8 space-y-8"
+            class="max-w-md w-full rounded-2xl  overflow-hidden py-6 space-y-4"
           >
             <h2
               style={{ animation: "appear 2s ease-out" }}
-              class="text-center text-[3rem] font-extrabold text-white"
+              class="text-center text-[3rem]  font-extrabold text-white"
             >
               Welcome
             </h2>
             <p
               style={{ animation: "appear 3s ease-out" }}
-              class="text-black text-base font-medium text-center text-balance lg:text-xl"
+              class="text-black text-base font-semibold text-center text-balance lg:text-xl"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
               impsum.
             </p>
-            <form method="POST" action="#" class="space-y-6 px-6">
+            <form method="POST" action="#" class="space-y-8 px-6">
               <div class="relative">
                 <input
                   autoComplete="off"
@@ -90,7 +90,7 @@ const Contact = () => {
                   class="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-base font-medium"
                   for="password"
                 >
-                  Password
+                  WhatsApp
                 </label>
               </div>
 
