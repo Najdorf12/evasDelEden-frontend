@@ -1,72 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-#verification{
+#verification {
   width: 100vw;
   height: 100vh;
-  background:url("./assets/bg/bg1.jpg");
-  background-size:cover;
+  background: url("./assets/bg/bg1.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   filter: grayscale(100%);
 }
+#contact {
+  width: 100vw;
+  height: 100vh;
+  background: url("./assets/bg/bg4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  /*  filter: grayscale(100%); */
+}
 
 @media (min-width: 1000px) {
-  #verification{
-    background:url("./assets/bg/bg1-removebg.png");
+  #verification {
+    background: url("./assets/bg/bg1-removebg.png");
     background-size: 25%;
     background-position: left bottom;
     background-repeat: no-repeat;
     filter: grayscale(100%);
   }
+  #contact {
+    #verification {
+      background: url("./assets/bg/bg1-removebg.png");
+      background-size: 25%;
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      filter: grayscale(100%);
+    }
+  }
 }
-#box-glass{
-  background: rgba( 255, 255, 255, 0.4);
-  backdrop-filter: blur( 1px );
-  -webkit-backdrop-filter: blur( 1px );
+#box-glass {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
-#box-glass2{
-  background: rgba( 255, 255, 255, 0.3);
-  backdrop-filter: blur( 1px );
-  -webkit-backdrop-filter: blur( 1px );
+#box-glass2 {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
-#box-glass3{
-  background: rgba( 255, 255, 255, 0.5);
-  backdrop-filter: blur( 1px );
-  -webkit-backdrop-filter: blur( 1px );
+#box-glass3 {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 /* checkbox */
 .container-checkbox {
-    cursor: pointer;
-  }
-  
-  .container-checkbox input {
-    display: none;
-  }
-  
-  .container-checkbox svg {
-    overflow: visible;
-  }
-  
-  .path {
-    fill: none;
-    stroke: white;
-    stroke-width: 6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
-    stroke-dasharray: 241 9999999;
-    stroke-dashoffset: 0;
-  }
-  
-  .container-checkbox input:checked ~ svg .path {
-    stroke-dasharray: 70.5096664428711 9999999;
-    stroke-dashoffset: -262.2723388671875;
-  }
-  
+  cursor: pointer;
+}
+
+.container-checkbox input {
+  display: none;
+}
+
+.container-checkbox svg {
+  overflow: visible;
+}
+
+.path {
+  fill: none;
+  stroke: white;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.container-checkbox input:checked ~ svg .path {
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}

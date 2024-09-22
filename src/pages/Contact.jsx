@@ -23,17 +23,17 @@ const Contact = () => {
           </Link>
         </nav>
         <section
-          id="verification"
+          id="contact"
           className="w-full h-screen absolute inset-0 "
         ></section>
         <article
           /* id="box-glass2" */
-          className="flex flex-col justify-center font-text2 items-center z-50 py-6 px-  w-[98%] rounded-2xl mt-12 lg:shadow-gray-400"
+          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl mt-12 lg:shadow-gray-400"
         >
-          <h6 className="text-7xl text-zinc-900 font-title font-semibold">
+          <h6 className="text-7xl text-zinc-900 Custom font-title font-semibold">
             CONTACTO
           </h6>
-          <p className="mt-2 text-white text-base font-semibold text-center text-balance lg:text-xl">
+          <p className="mt-2 text-stone-500 text-base font-semibold text-center text-balance lg:text-xl">
             Contact us to learn about pricing, deployment options and the lorem
             impsum.
           </p>
@@ -53,7 +53,7 @@ const Contact = () => {
             </h2>
             <p
               style={{ animation: "appear 3s ease-out" }}
-              class="text-black text-base font-semibold text-center text-balance lg:text-xl"
+              class="text-stone-500 text-base font-semibold text-center text-balance lg:text-xl"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
               impsum.
@@ -70,7 +70,7 @@ const Contact = () => {
                   type="email"
                 />
                 <label
-                  class="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-base font-medium"
+                  class="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-500 peer-focus:text-base font-normal"
                   for="email"
                 >
                   Email address
@@ -87,7 +87,7 @@ const Contact = () => {
                   type="password"
                 />
                 <label
-                  class="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-300 peer-focus:text-base font-medium"
+                  class="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-500 peer-focus:text-base font-normal"
                   for="password"
                 >
                   WhatsApp
