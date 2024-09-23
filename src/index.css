@@ -24,7 +24,6 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  /*  filter: grayscale(100%); */
 }
 
 @media (min-width: 1000px) {
@@ -36,13 +35,14 @@
     filter: grayscale(100%);
   }
   #contact {
-    #verification {
-      background: url("./assets/bg/bg1-removebg.png");
-      background-size: 25%;
-      background-position: left bottom;
-      background-repeat: no-repeat;
-      filter: grayscale(100%);
-    }
+    background-size: 40%;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+  }
+}
+@media (min-width: 1300px) {
+  #contact {
+    background-size: 37%;
   }
 }
 #box-glass {

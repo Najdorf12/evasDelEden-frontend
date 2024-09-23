@@ -55,7 +55,9 @@ const Home = () => {
         </nav>
 
         <article className="self-start pl-3 flex flex-col items-start mt-4 lg:pl-[5%] xl:mt-6 2xl:mt-12">
-          <h2 className="font-title text-zinc-700 text-7xl lg:text-8xl 2xl:text-9xl">Evas del Eden</h2>
+          <h2 className="font-title text-zinc-700 text-7xl lg:text-8xl 2xl:text-9xl">
+            Evas del Eden
+          </h2>
           <h3 className="text-whiteCustom text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
             Escorts - Mendoza
           </h3>
@@ -138,11 +140,19 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start py-2 lg:justify-center lg:mt-12 xl:mt-14 2xl:mt-20">
+      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2 lg:justify-center lg:mt-12 xl:mt-14 2xl:mt-20">
         <div className="flex justify-center items-center gap-3  w-fit h-full pl-3 ">
           <div className=" w-fit ">
             <Carrusel autoSlide={false}>
-              {[...allEvas.map((eva) => <CardEva key={eva._id} eva={eva} />)]}
+              {allEvas.map((eva) => (
+                <Link
+                  key={eva._id}
+                  to={`/${eva._id}`}
+                  className="w-full h-full"
+                >
+                  <CardEva eva={eva} />
+                </Link>
+              ))}
             </Carrusel>
           </div>
         </div>

@@ -23,7 +23,7 @@ const Carrusel = ({
     <>
       <div className="overflow-hidden relative">
         <div
-          className="flex gap-3 transition-transform ease-out duration-500 "
+          className="flex gap-3 transition-transform ease-out duration-500 xl:gap-4  "
           style={{ transform: `translateX(-${curr * 200}px)` }}
         >
           {slides}
