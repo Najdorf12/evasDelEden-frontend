@@ -147,8 +147,8 @@ const Home = () => {
               {allEvas.map((eva) => (
                 <Link
                   key={eva._id}
-                  to={`/${eva._id}`} 
-                  className="block w-full h-full relative z-20" 
+                  to={`/${eva._id}`}
+                  className="block w-full h-full relative z-20"
                 >
                   <CardEva eva={eva} />
                 </Link>
@@ -158,9 +158,47 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-3 lg:w-[20%] lg:mt-12"></div>
+      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-9 lg:w-[20%] lg:mt-16"></div>
       <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm lg:w-[25%]"></div>
 
+      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
+        <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
+          <div className=" w-fit  z-10 ">
+            <Carrusel autoSlide={false}>
+              {allEvas.map((eva) => (
+                <Link
+                  key={eva._id}
+                  to={`/${eva._id}`}
+                  className="block w-full h-full relative z-20"
+                >
+                  <CardEva eva={eva} />
+                </Link>
+              ))}
+            </Carrusel>
+          </div>
+        </div>
+      </section>
+
+      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-9 lg:w-[20%] lg:mt-12 "></div>
+      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm lg:w-[25%]"></div>
+
+      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
+        <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
+          <div className=" w-fit  z-10 ">
+            <Carrusel autoSlide={false}>
+              {allEvas.map((eva) => (
+                <Link
+                  key={eva._id}
+                  to={`/${eva._id}`}
+                  className="block w-full h-full relative z-20"
+                >
+                  <CardEva eva={eva} />
+                </Link>
+              ))}
+            </Carrusel>
+          </div>
+        </div>
+      </section>
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
       </footer>
