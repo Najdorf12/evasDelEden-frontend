@@ -19,7 +19,7 @@ const Home = () => {
   const [selectedMenu, setSelectedMenu] = useState("Categorias");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
-  
+
   const [allEvas, setAllEvas] = useState([]);
 
   useEffect(() => {
@@ -43,27 +43,26 @@ const Home = () => {
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-16">
       <section className="w-full flex flex-col items-center">
-        <nav className="w-full flex justify-between items-center pr-2 mt-2">
+        <nav className="w-full flex justify-between items-center pr-2 mt-2 lg:px-[3%] xl:mt-3">
           <div>
-            <img src={imgLogo} alt="logo" className="w-14" />
+            <img src={imgLogo} alt="logo" className="w-14 xl:w-16  2xl:w-20" />
           </div>
           <Link to={"/contacto"}>
-          <button className="pl-2 text-base border-l-[3px] border-zinc-600 font-text2 text-whiteCustom">
-            Contacto
-          </button>
-          
+            <button className="pl-2 text-base border-l-[3px] border-zinc-600 font-text2 text-whiteCustom xl:text-lg 2xl:text-xl">
+              Contacto
+            </button>
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-4">
-          <h2 className="font-title text-zinc-700 text-7xl">Evas del Eden</h2>
-          <h3 className="text-whiteCustom text-2xl font-text2">
+        <article className="self-start pl-3 flex flex-col items-start mt-4 lg:pl-[5%] xl:mt-6 2xl:mt-12">
+          <h2 className="font-title text-zinc-700 text-7xl lg:text-8xl 2xl:text-9xl">Evas del Eden</h2>
+          <h3 className="text-whiteCustom text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
             Escorts - Mendoza
           </h3>
         </article>
 
-        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start">
-          <li className="relative flex flex-col justify-start items-start">
+        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:pl-[5%] lg:text-lg 2xl:text-xl 2xl:mt-10">
+          <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={(e) => {
                 setSelectedMenu("Categorias");
@@ -105,12 +104,12 @@ const Home = () => {
           </li>
         </ul>
         {selectedMenu === "Categorias" ? (
-          <div className="flex gap-4 w-full pl-3">
+          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2">
             {categories.map((category, i) => (
               <button
                 key={i}
                 onClick={() => setSelectedCategory(category)}
-                className={` mt-3 rounded-full px-4 py-[1px] text-sm ${
+                className={` mt-3 rounded-full px-4 py-[1px] text-sm lg:text-base lg:px-[24px] lg:mt-4 2xl:text-lg 2xl:px-[32px] ${
                   selectedCategory === category
                     ? "bg-zinc-700 text-primary"
                     : "border border-zinc-700 text-zinc-500"
@@ -121,12 +120,12 @@ const Home = () => {
             ))}
           </div>
         ) : (
-          <div className="flex gap-4 w-full pl-3">
+          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2">
             {locations.map((location) => (
               <button
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-full px-[10px] py-[1px] text-sm ${
+                className={` mt-3 rounded-full px-[10px] py-[1px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] ${
                   selectedLocation === location
                     ? "bg-zinc-700 text-primary"
                     : "border border-zinc-700 text-zinc-500"
@@ -139,8 +138,8 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start">
-        <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
+      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start py-2 lg:justify-center lg:mt-12 xl:mt-14 2xl:mt-20">
+        <div className="flex justify-center items-center gap-3  w-fit h-full pl-3 ">
           <div className=" w-fit ">
             <Carrusel autoSlide={false}>
               {[...allEvas.map((eva) => <CardEva key={eva._id} eva={eva} />)]}
@@ -149,32 +148,8 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-3"></div>
-      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm"></div>
-
-      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start">
-        <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
-          <div className=" w-fit ">
-            <Carrusel autoSlide={false}>
-              {[...allEvas.map((eva) => <CardEva key={eva._id} eva={eva} />)]}
-            </Carrusel>
-          </div>
-        </div>
-      </section>
-      <div className="w-full flex flex-col items-end">
-        
-      <div className="self-end w-[30%] h-3 bg-primary rounded-l-sm mt-3"></div>
-      <div className="self-end w-[35%] h-4 bg-zinc-700 rounded-l-sm"></div>
-      </div>
-      <section className="w-full px-3 h-[25rem] mt-5 relative flex justify-start items-start">
-        <div className="flex justify-center items-center gap-3  w-fit h-full  pl-3">
-          <div className=" w-fit ">
-            <Carrusel autoSlide={false}>
-              {[...allEvas.map((eva) => <CardEva key={eva._id} eva={eva} />)]}
-            </Carrusel>
-          </div>
-        </div>
-      </section>
+      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-3 lg:w-[20%] lg:mt-12"></div>
+      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm lg:w-[25%]"></div>
 
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
