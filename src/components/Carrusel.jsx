@@ -29,15 +29,18 @@ const Carrusel = ({
           {slides}
         </div>
       </div>
-      <div className="absolute inset-0 flex items-center gap-[70%] w-full  md:gap-[90%] md:px-[3%]">
+      <div className="absolute flex items-center justify-between w-[90%] top-0 bottom-0  pointer-events-none  lg:w-full">
         <button
           onClick={prev}
-          className="z-50 rounded-full   hover:text-primary"
+          className="-ml-6 z-50 rounded-full pointer-events-auto hover:text-primary "
         >
-          <i className="bx bx-chevrons-left text-6xl text-white lg:text-7xl"></i>
+          <i className="bx bx-chevrons-left text-6xl text-white lg:text-7xl 2xl:text-8xl"></i>
         </button>
-        <button onClick={next} className="z-50 rounded-full hover:text-primary">
-          <i className="bx bx-chevrons-right  text-6xl text-white lg:text-7xl"></i>
+        <button
+          onClick={next}
+          className="z-50 -mr-6 rounded-full pointer-events-auto hover:text-primary lg:mr-12 xl:mr-16 2xl:mr-20"
+        >
+          <i className="bx bx-chevrons-right text-6xl text-white lg:text-7xl 2xl:text-8xl"></i>
         </button>
       </div>
     </>

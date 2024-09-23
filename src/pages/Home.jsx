@@ -140,15 +140,15 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2 lg:justify-center lg:mt-12 xl:mt-14 2xl:mt-20">
-        <div className="flex justify-center items-center gap-3  w-fit h-full pl-3 ">
-          <div className=" w-fit ">
+      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
+        <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
+          <div className=" w-fit  z-10 ">
             <Carrusel autoSlide={false}>
               {allEvas.map((eva) => (
                 <Link
                   key={eva._id}
-                  to={`/${eva._id}`}
-                  className="w-full h-full"
+                  to={`/${eva._id}`} 
+                  className="block w-full h-full relative z-20" 
                 >
                   <CardEva eva={eva} />
                 </Link>
