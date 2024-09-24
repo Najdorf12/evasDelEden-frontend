@@ -122,12 +122,12 @@
 }
 @media (min-width: 1500px) {
   .image-gallery-slide {
-    height: 530px;
+    height: 600px;
     border-radius: 12px;
     align-self: center;
   }
   .image-gallery-content .image-gallery-slide .image-gallery-image {
-    width: 650px;
+    width: 600px;
   }
   .image-gallery-left-nav .image-gallery-svg,
   .image-gallery-right-nav .image-gallery-svg {
