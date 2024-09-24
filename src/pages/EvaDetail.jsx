@@ -64,15 +64,15 @@ const EvaDetail = () => {
 
       <section className=" relative flex flex-col items-center lg:flex-row lg:items-center lg:justify-center lg:gap-24  2xl:gap-28 ">
         <div className=" mt-4 lg:mt-8">
-          <article className="font-text2 text-stone-600   w-full flex flex-col justify-center items-center">
-            <h5 className="text-3xl xl:text-4xl 2xl:text-5xl">{evaDetail.name}</h5>
+          <article className="font-text2 text-stone-500   w-full flex flex-col justify-center items-center">
+            <h5 className="text-3xl text-whiteCustom xl:text-4xl 2xl:text-5xl">{evaDetail.name}</h5>
             <p className="text-lg xl:text-xl xl:mt-2 2xl:text-2xl">{evaDetail.location}</p>
             <Link
               to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
               target="blank"
             >
-              <button className="rounded-full px-6 border border-stone-500 mt-3 flex items-center gap-2 text-base xl:text-xl xl:mt-4">
-                <i className="bx bxl-whatsapp text-2xl"></i> Contactame
+              <button className="rounded-full px-6 border border-primary mt-3 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-whiteCustom xl:px-8 2xl:px-9">
+                <i className="bx bxl-whatsapp text-2xl"></i> Contacto
               </button>
             </Link>
           </article>
@@ -93,7 +93,7 @@ const EvaDetail = () => {
           </div>
         </div>
         <article className="mt-8 px-3 max-w-[450px] xl:max-w-[500px]">
-          <ul className="font-text2 text-stone-600 flex flex-col gap-2 text-base xl:text-lg xl:gap-3">
+          <ul className="font-text2 text-stone-400 flex flex-col gap-2 text-base xl:text-lg xl:gap-3">
             <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
               Edad: <span>{evaDetail.description?.edad} </span>
             </li>
@@ -112,13 +112,15 @@ const EvaDetail = () => {
             <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
               Horario: <span>{evaDetail.description?.horario} </span>
             </li>
-            <li className="text-balance text-center mt-2">
+            <li className="text-balance text-center mt-3 text-whiteCustom">
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>
+        
         </article>
       </section>
-
+      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-9 lg:w-[20%] lg:mt-16"></div>
+      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm lg:w-[25%]"></div>
       <footer className="absolute bottom-0 text-zinc-700 font-medium lg:text-zinc-500 ">
         <Footer />
       </footer>
