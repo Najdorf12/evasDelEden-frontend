@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const CardEva = ({ eva }) => {
   const { _id, name, location, description, images } = eva;
-  return (
-    
+
+  return (  
     <div className="h-[23rem] relative xl:h-[25rem]">
     <figure className="w-52 h-full xl:w-64">
       <img

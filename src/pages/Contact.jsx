@@ -17,7 +17,7 @@ const Contact = () => {
             <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
           </div>
           <Link to={"/"}>
-            <button className="pl-2 text-lg border-l-[3px] border-zinc-600 font-text2 text-whiteCustom xl:text-xl ">
+            <button className="pl-2 text-lg border-l-[3px] border-zinc-600 font-text2 text-whiteCustom xl:text-xl 2xl:text-2xl">
               Volver
             </button>
           </Link>

@@ -88,3 +88,50 @@
   stroke-dasharray: 70.5096664428711 9999999;
   stroke-dashoffset: -262.2723388671875;
 }
+
+
+/* SLIDER */
+.image-gallery-slide {
+  height: 500px;
+  border-radius: 12px;
+}
+.image-gallery-thumbnails-bottom {
+  width: 100%;
+}
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  border-radius: 16px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.image-gallery-bullets .image-gallery-bullet {
+  background-color: #521f74d0;
+}
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+  color: #521f74d0;
+}
+
+@media (min-width: 1200px) {
+  .image-gallery-left-nav .image-gallery-svg,
+  .image-gallery-right-nav .image-gallery-svg {
+    height: 100px;
+    width: 50px;
+    color: #521f74d0;
+  }
+}
+@media (min-width: 1500px) {
+  .image-gallery-slide {
+    height: 530px;
+    border-radius: 12px;
+    align-self: center;
+  }
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    width: 650px;
+  }
+  .image-gallery-left-nav .image-gallery-svg,
+  .image-gallery-right-nav .image-gallery-svg {
+    height: 100px;
+    width: 50px;
+  }
+}
