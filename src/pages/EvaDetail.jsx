@@ -17,7 +17,7 @@ const EvaDetail = () => {
       thumbnail: evaDetail?.images
         ? evaDetail?.images[0]?.secure_url
         : evaDetail?.image?.secure_url,
-    }  ,
+    },
     {
       original: evaDetail?.images
         ? evaDetail?.images[1]?.secure_url
@@ -33,7 +33,7 @@ const EvaDetail = () => {
       thumbnail: evaDetail?.images
         ? evaDetail?.images[2]?.secure_url
         : evaDetail?.image?.secure_url,
-    }, 
+    },
   ];
 
   useEffect(() => {
@@ -71,7 +71,9 @@ const EvaDetail = () => {
             <p className="text-lg xl:text-xl xl:mt-2 2xl:text-2xl text-stone-600">
               {evaDetail.location}
             </p>
-            <p className="text-stone-500 text-center text-balance mt-2 ">{evaDetail.description?.servicio} </p>
+            <p className="text-stone-500 text-center text- text-balance mt-2 ">
+              {evaDetail.description?.servicio}{" "}
+            </p>
             <Link
               to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
               target="blank"
@@ -101,33 +103,37 @@ const EvaDetail = () => {
         <article className="mt-8 px-3 max-w-[450px] xl:max-w-[500px]">
           <ul className="font-text2 text-stone-400 flex flex-col gap-2 text-base xl:text-lg xl:gap-3">
             <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
-              Edad: <span>{evaDetail.description?.edad} </span>
-            </li>
-            <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
-              Altura: <span>{evaDetail.description?.altura} </span>
-            </li>
-            <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
-              Medidas: <span>{evaDetail.description?.medidas} </span>
-            </li>
-            <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
-              Peso: <span>{evaDetail.description?.peso} </span>
-            </li>
-           
-            <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
               Horario: <span>{evaDetail.description?.horario} </span>
             </li>
+            <div className="flex items-center gap-2">
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+                Edad: <span>{evaDetail.description?.edad} </span>
+              </li>
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+                Altura: <span>{evaDetail.description?.altura} </span>
+              </li>
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+                Peso: <span>{evaDetail.description?.peso} </span>
+              </li>
+            </div>
+            <div className="flex items-center">
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+                Medidas: <span>{evaDetail.description?.medidas} </span>
+              </li>
+            </div>
+
             <li className="text-balance text-center mt-3 text-whiteCustom">
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>
         </article>
       </section>
-     
+
       <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
         <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
         <div className="w-[30%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
       </div>
-     
+
       <footer className="absolute bottom-0 text-zinc-700 font-medium lg:text-zinc-500 ">
         <Footer />
       </footer>
