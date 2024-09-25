@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
-import NavbarAdmin from "../../components/NavbarAdmin";
+import imgLogo from "../../assets/logo-removebg.png";
 import Footer from "../../components/Footer";
 
 const Register = () => {
@@ -40,17 +40,26 @@ const Register = () => {
     <section
       style={{
         backgroundImage:
-          "linear-gradient(to right top, #242427, #2b2a30, #33303a, #3c3542, #463b4b, #554255, #65495e, #765066, #905a6f, #aa6575, #c37278, #da8078)",
+          "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
       }}
-      className=" h-screen w-full flex flex-col px-4 gap-14 items-center xl:gap-0 xl:px-10 2xl:gap-20 2xl:px-12"
+      className="h-screen w-full flex flex-col  gap-14 items-center xl:gap-0  2xl:gap-20 "
     >
-      <NavbarAdmin />
+      <nav className="font-text2 text-lg pr-2 relative flex justify-between items-center w-full mt-2  xl:mt-3 xl:text-xl   ">
+        <picture className="w-16 h-16 flex items-center justify-center rounded-full  2xl:w-20 2xl:h-20 ">
+          <img src={imgLogo} className="rounded-full" alt="logo" />
+        </picture>
+        <ul className="flex gap-6 xl:gap-10 2xl:gap-12">
+          <li className="text-gray-50 border-l-2 pl-2 xl:pl-3 py-1 hover:scale-105 hover:text-white duration-500 ">
+            <Link to={"/"}>Home </Link>
+          </li>
+        </ul>
+      </nav>
       <div
         style={{
           backgroundImage:
-            "linear-gradient(to right top, #242427, #2b2a30, #33303a, #3c3542, #463b4b, #554255, #65495e, #765066, #905a6f, #aa6575, #c37278, #da8078)",
+            "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
         }}
-        className="max-w-md w-full  rounded-xl shadow-2xl shadow-gray-900 overflow-hidden py-8 px-4 space-y-8"
+        className="max-w-md w-[95%]  rounded-xl shadow-2xl shadow-gray-900 overflow-hidden py-8 px-4 space-y-8"
       >
         {registerError?.map((error, i) => (
           <div
@@ -148,13 +157,13 @@ const Register = () => {
         </form>
         <div className="text-center text-gray-100 font-text">
           Do you have an account?
-          <Link className="text-[#da8e88] ml-1 hover:underline" to="/login">
+          <Link className="text-white ml-1 hover:underline" to="/login">
             {" "}
             Login
           </Link>
         </div>
       </div>
-      <div className="absolute bottom-2">
+      <div className="absolute bottom-0 text-gray-500">
         <Footer />
       </div>
     </section>
