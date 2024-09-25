@@ -236,7 +236,7 @@ const AdminPage = () => {
   return (
     <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
-        <picture className="w-14 h-14 flex items-center justify-center rounded-full bg-zinc-800 border-[1px] border-gray-500 2xl:w-16 2xl:h-16 ">
+        <picture className="w-14 h-14 flex items-center justify-center  2xl:w-16 2xl:h-16 ">
           <img src={imgLogo} alt="logo" />
         </picture>
         <ul className="flex gap-6 xl:gap-8 2xl:gap-12">

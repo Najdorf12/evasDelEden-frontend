@@ -15,7 +15,7 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
   };
   return (
     <>
-      <section className="relative p-[6px]  min-w-[280px] border border-[#92856e]  max-w-[330px] rounded-3xl flex flex-col justify-center items-center hover:scale-105 duration-500">
+      <section className="relative p-[6px]  min-w-[280px] border border-[#92856e]  max-w-[330px] rounded-3xl flex flex-col justify-center items-center hover:scale-105 duration-500 shadow-lg shadow-zinc-900">
         <picture className="w-full h-[15rem] object-cover">
           <Link to={`/${_id}`}>
             <img
