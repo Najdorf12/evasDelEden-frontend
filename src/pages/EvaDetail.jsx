@@ -51,7 +51,7 @@ const EvaDetail = () => {
 
   return (
     <section className="relative bg-zinc-800 pb-24  w-full pt-2  flex flex-col items-center  overflow-hidden xl:pt-4 min-h-screen">
-      <nav className="w-full flex justify-between items-center pr-2 mt-2 z-50 lg:px-[4%]">
+      <nav className="w-full flex justify-between items-center pr-3 mt-2 z-50 lg:px-[4%]">
         <div>
           <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
         </div>
@@ -64,7 +64,7 @@ const EvaDetail = () => {
 
       <section className=" relative flex flex-col items-center lg:flex-row lg:items-center lg:justify-center lg:gap-24  2xl:gap-28 ">
         <div className=" mt-4 lg:mt-8">
-          <article className="font-text2 text-stone-500   w-full flex flex-col justify-center items-center">
+          <article className="font-text2 text-stone-500   w-full flex flex-col pl-3">
             <h5 className="text-3xl text-whiteCustom xl:text-4xl 2xl:text-5xl">
               {evaDetail.name}
             </h5>
@@ -74,17 +74,18 @@ const EvaDetail = () => {
             <Link
               to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
               target="blank"
+              className="self-center"
             >
-              <button className="rounded-full px-6 border border-primary mt-3 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-whiteCustom xl:px-8 2xl:px-9">
+              <button className="rounded-full px-8 border shadow-lg shadow-zinc-900 border-stone-600 mt-3 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-stone-500 xl:px-8 2xl:px-9 ">
                 <i className="bx bxl-whatsapp text-2xl"></i> Contacto
               </button>
             </Link>
           </article>
 
-          <div className="mt-6 sm:mt-8 xl:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden">
+          <div className="mt-6 sm:mt-8 xl:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden ">
             <figure
               loading="lazy"
-              className="imgs w-full flex items-center justify-center "
+              className="imgs w-full flex items-center justify-center shadow-lg shadow-zinc-900"
             >
               <ImageGallery
                 items={images2?.reverse()}
