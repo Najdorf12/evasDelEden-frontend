@@ -42,7 +42,6 @@ const Home = () => {
   }
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 xl:px-32 2xl:pb-40">
-     
       <section className="w-full flex flex-col items-center z-50">
         <nav className="w-full flex justify-between items-center pr-2 mt-2 lg:px-[3%] xl:mt-3 z-50">
           <div>
@@ -160,8 +159,8 @@ const Home = () => {
       </section>
 
       <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
-        <div className="w-[40%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
-        <div className="w-[35%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+        <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
+        <div className="w-[30%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
       </div>
 
       <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
@@ -182,8 +181,8 @@ const Home = () => {
         </div>
       </section>
       <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
-        <div className="w-[40%] h-2 bg-zinc-700 rounded-sm lg:w-[25%]"></div>
-        <div className="w-[35%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+        <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
+        <div className="w-[30%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
       </div>
 
       <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">

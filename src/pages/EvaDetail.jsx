@@ -65,8 +65,12 @@ const EvaDetail = () => {
       <section className=" relative flex flex-col items-center lg:flex-row lg:items-center lg:justify-center lg:gap-24  2xl:gap-28 ">
         <div className=" mt-4 lg:mt-8">
           <article className="font-text2 text-stone-500   w-full flex flex-col justify-center items-center">
-            <h5 className="text-3xl text-whiteCustom xl:text-4xl 2xl:text-5xl">{evaDetail.name}</h5>
-            <p className="text-lg xl:text-xl xl:mt-2 2xl:text-2xl">{evaDetail.location}</p>
+            <h5 className="text-3xl text-whiteCustom xl:text-4xl 2xl:text-5xl">
+              {evaDetail.name}
+            </h5>
+            <p className="text-lg xl:text-xl xl:mt-2 2xl:text-2xl">
+              {evaDetail.location}
+            </p>
             <Link
               to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
               target="blank"
@@ -116,11 +120,14 @@ const EvaDetail = () => {
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>
-        
         </article>
       </section>
-      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-9 lg:w-[20%] lg:mt-16"></div>
-      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm lg:w-[25%]"></div>
+     
+      <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
+        <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
+        <div className="w-[30%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+      </div>
+     
       <footer className="absolute bottom-0 text-zinc-700 font-medium lg:text-zinc-500 ">
         <Footer />
       </footer>
