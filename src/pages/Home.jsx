@@ -22,6 +22,20 @@ const Home = () => {
 
   const [allEvas, setAllEvas] = useState([]);
 
+  // Verificar si el usuario ya confirmó su edad desde el localStorage
+  useEffect(() => {
+    const storedVerification = localStorage.getItem("isVerified");
+    if (storedVerification === "true") {
+      setIsVerified(true);
+    }
+  }, []);
+
+  // Manejar la verificación de edad
+  const handleVerification = () => {
+    setIsVerified(true);
+    localStorage.setItem("isVerified", "true"); // Guardar en el localStorage
+  };
+
   useEffect(() => {
     const fetchEvas = async () => {
       try {
@@ -34,9 +48,7 @@ const Home = () => {
 
     fetchEvas();
   }, []);
-  const handleVerification = () => {
-    setIsVerified(true); // Cambia el estado a verdadero cuando el usuario es mayor de edad
-  };
+
   if (!isVerified) {
     return <AgeVerification onConfirm={handleVerification} />; // Muestra el componente de verificación si no está verificado
   }

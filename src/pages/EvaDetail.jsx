@@ -63,20 +63,21 @@ const EvaDetail = () => {
       </nav>
 
       <section className=" relative flex flex-col items-center lg:flex-row lg:items-center lg:justify-center lg:gap-24  2xl:gap-28 ">
-        <div className=" mt-4 lg:mt-8">
-          <article className="font-text2 text-stone-500   w-full flex flex-col pl-3">
+        <div className="mt-6 lg:mt-8">
+          <article className="font-text2 text-stone-500   w-full flex flex-col justify-center items-center text-balance pl-3">
             <h5 className="text-3xl text-whiteCustom xl:text-4xl 2xl:text-5xl">
               {evaDetail.name}
             </h5>
-            <p className="text-lg xl:text-xl xl:mt-2 2xl:text-2xl">
+            <p className="text-lg xl:text-xl xl:mt-2 2xl:text-2xl text-stone-600">
               {evaDetail.location}
             </p>
+            <p className="text-stone-500 text-center text-balance mt-2 ">{evaDetail.description?.servicio} </p>
             <Link
               to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
               target="blank"
               className="self-center"
             >
-              <button className="rounded-full px-8 border shadow-lg shadow-zinc-900 border-stone-600 mt-3 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-stone-500 xl:px-8 2xl:px-9 ">
+              <button className="rounded-full px-8 border shadow-lg shadow-zinc-900 border-stone-600 mt-4 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-stone-500 xl:px-8 2xl:px-9 ">
                 <i className="bx bxl-whatsapp text-2xl"></i> Contacto
               </button>
             </Link>
@@ -88,7 +89,7 @@ const EvaDetail = () => {
               className="imgs w-full flex items-center justify-center shadow-lg shadow-zinc-900"
             >
               <ImageGallery
-                items={images2?.reverse()}
+                items={images2}
                 showPlayButton={false}
                 showFullscreenButton={false}
                 showThumbnails={false}
@@ -111,9 +112,7 @@ const EvaDetail = () => {
             <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
               Peso: <span>{evaDetail.description?.peso} </span>
             </li>
-            <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
-              Servicio: <span>{evaDetail.description?.servicio} </span>
-            </li>
+           
             <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
               Horario: <span>{evaDetail.description?.horario} </span>
             </li>
