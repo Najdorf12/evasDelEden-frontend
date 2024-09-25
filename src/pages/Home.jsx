@@ -55,11 +55,11 @@ const Home = () => {
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-4 lg:pl-[5%] xl:mt-6 2xl:mt-12  z-50">
-          <h2 className="font-title text-zinc-700 text-7xl lg:text-8xl 2xl:text-9xl">
+        <article className="self-start pl-3 flex flex-col items-start mt-6 lg:pl-[5%] xl:mt-6 2xl:mt-12  z-50 w-full">
+          <h2 className="font-title text-zinc-700 text-7xl lg:text-9xl 2xl:text-[10rem]">
             Evas del Eden
           </h2>
-          <h3 className="text-whiteCustom text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
+          <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
             Escorts - Mendoza
           </h3>
         </article>
