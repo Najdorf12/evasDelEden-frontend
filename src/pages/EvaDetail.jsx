@@ -17,7 +17,7 @@ const EvaDetail = () => {
       thumbnail: evaDetail?.images
         ? evaDetail?.images[0]?.secure_url
         : evaDetail?.image?.secure_url,
-    } /* ,
+    }  ,
     {
       original: evaDetail?.images
         ? evaDetail?.images[1]?.secure_url
@@ -33,7 +33,7 @@ const EvaDetail = () => {
       thumbnail: evaDetail?.images
         ? evaDetail?.images[2]?.secure_url
         : evaDetail?.image?.secure_url,
-    }, */,
+    }, 
   ];
 
   useEffect(() => {

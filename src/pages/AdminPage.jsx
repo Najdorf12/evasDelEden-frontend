@@ -255,7 +255,7 @@ const AdminPage = () => {
       <section className="mt-12 w-full flex flex-col items-center px-4  ">
         <section
           style={{
-            backgroundImage: "linear-gradient(to top left, #bdc3c7, #2c3e50)",
+            backgroundImage: "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
           }}
           className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[700px]"
         >
@@ -547,7 +547,7 @@ const AdminPage = () => {
             ))}
         </section>
 
-        <div className="absolute bottom-2">
+        <div className="absolute bottom-0 text-zinc-700 font-normal">
           <Footer />
         </div>
       </section>

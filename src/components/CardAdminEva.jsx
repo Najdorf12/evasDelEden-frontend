@@ -5,7 +5,7 @@ import { useState } from "react";
 const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
   const { _id, name, wttp, category, location, description, images, isActive } =
     eva;
-    
+
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
@@ -15,8 +15,8 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
   };
   return (
     <>
-      <section className="relative p-[6px] bg-[#212121] min-w-[280px] border border-[#92856e]  max-w-[330px] rounded-3xl flex flex-col justify-center items-center hover:scale-105 duration-500">
-        <picture className="w-full h-44 object-cover">
+      <section className="relative p-[6px]  min-w-[280px] border border-[#92856e]  max-w-[330px] rounded-3xl flex flex-col justify-center items-center hover:scale-105 duration-500">
+        <picture className="w-full h-[15rem] object-cover">
           <Link to={`/${_id}`}>
             <img
               loading="lazy"
@@ -26,12 +26,12 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
           </Link>
         </picture>
 
-        <article className="h-full mt-3 flex flex-col gap-1  text-base w-full px-2">
+        <article className="h-full mt-3 flex flex-col text-base w-full px-2">
           <p className="text-xl  font-text text-center  text-white leading-5 border-b border-[#92856e] py-2 ">
             {name}
           </p>
 
-          <div className="mt-2 font-semibold font-text text-white tracking-wide rounded-lg flex justify-between items-center ">
+          <div className="mt-1 font-semibold font-text text-white tracking-wide rounded-lg flex justify-between items-center ">
             {category.toUpperCase()}
             <p className="text-white ">{isActive ? "Activa" : "Inactiva"}</p>
           </div>
@@ -45,35 +45,34 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
           </div>
           <ul className="flex flex-col text-sm text-stone-400">
             <div className="flex justify-between items-center">
-              <li className="w-[60%]">
+              <li className="">
                 <span className="text-stone-600 ">Edad:</span>{" "}
                 {description?.edad}{" "}
               </li>
-              <li className="w-[40%]">
+              <li className="">
                 <span className="text-stone-600 ">Altura:</span>{" "}
                 {description?.altura}
               </li>
-            </div>
-            <div className="flex justify-between items-center">
-              <li className="w-[60%]">
+              <li className="">
                 <span className="text-stone-600">Peso:</span>{" "}
-                {description?.peso} kg
+                {description?.peso} 
               </li>
-              <li className="w-[40%]">
+            </div>
+           
+            <div className="flex justify-between items-center">
+              <li className="">
                 <span className="text-stone-600">Medidas:</span>{" "}
                 {description?.medidas}
               </li>
-            </div>
-            <div className="flex justify-between items-center">
-              <li className="w-[60%]">
+              <li className="">
                 <span className="text-stone-600">Depilacion:</span>{" "}
                 {description?.depilacion}
               </li>
-              <li className="w-[40%]">
-                <span className="text-stone-600">Horario:</span>{" "}
-                {description?.horario}
-              </li>
             </div>
+            <li className="">
+              <span className="text-stone-600">Horario:</span>{" "}
+              {description?.horario}
+            </li>
             <div className="flex flex-col ">
               <li>
                 <span className="text-stone-600">Servicio:</span>{" "}
@@ -87,7 +86,7 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
                 {description?.extendDescription?.length > 100 && (
                   <span
                     onClick={toggleExpand}
-                    className="cursor-pointer text-cyan-800 ml-1 hover:underline"
+                    className="cursor-pointer text-[#426d89] ml-1 hover:underline"
                   >
                     {isExpanded ? "Ver menos" : "Ver más"}
                   </span>
@@ -101,14 +100,15 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
               <div className="flex items-center gap-2 text-[1rem] text-white">
                 <i
                   onClick={() => selectEva(eva, _id)}
-                  className="bx bxs-edit-alt cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
+                  className="bx bxs-edit-alt cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
                 ></i>
                 Editar
               </div>
+
               <div className="flex items-center gap-2 text-[1rem]  text-white">
                 <i
                   onClick={() => deleteEva(_id)}
-                  className="bx bxs-trash-alt  cursor-pointer text-cyan-800 hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
+                  className="bx bxs-trash-alt  cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
                 ></i>
                 Eliminar
               </div>
