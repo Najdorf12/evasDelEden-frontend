@@ -534,7 +534,7 @@ const AdminPage = () => {
           </form>
         </section>
 
-        <section className="flex flex-wrap  gap-y-6 gap-x-4 my-16 justify-center items-center md:gap-y-10 xl:mt-24 xl:gap-x-10 xl:gap-y-8">
+        <section className="flex flex-wrap  gap-y-6 gap-x-4 my-16 justify-center items-center md:gap-y-10 xl:mt-24 xl:gap-x-10 xl:gap-y-8 xl:px-[10%]">
           {allEvas !== null &&
             allEvas?.map((eva, index) => (
               <div key={eva?._id || index}>

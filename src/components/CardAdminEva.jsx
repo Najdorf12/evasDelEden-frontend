@@ -104,7 +104,6 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
                 ></i>
                 Editar
               </div>
-
               <div className="flex items-center gap-2 text-[1rem]  text-white">
                 <i
                   onClick={() => deleteEva(_id)}

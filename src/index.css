@@ -105,11 +105,12 @@
   object-fit: cover;
 }
 .image-gallery-bullets .image-gallery-bullet {
-  background-color: #f28705;
+  background-color: #000000;
+  border-color: #000000;
 }
 .image-gallery-left-nav .image-gallery-svg,
 .image-gallery-right-nav .image-gallery-svg {
-  color: #f28705;
+  color: white;
 }
 
 @media (min-width: 1200px) {
@@ -117,7 +118,7 @@
   .image-gallery-right-nav .image-gallery-svg {
     height: 100px;
     width: 50px;
-    color: #f28705;
+    color: white;
   }
 }
 @media (min-width: 1500px) {
