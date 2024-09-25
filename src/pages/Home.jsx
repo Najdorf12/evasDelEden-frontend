@@ -22,18 +22,17 @@ const Home = () => {
 
   const [allEvas, setAllEvas] = useState([]);
 
-  // Verificar si el usuario ya confirmó su edad desde el localStorage
   useEffect(() => {
-    const storedVerification = localStorage.getItem("isVerified");
+    const storedVerification = sessionStorage.getItem("isVerified");
     if (storedVerification === "true") {
       setIsVerified(true);
     }
   }, []);
 
-  // Manejar la verificación de edad
+  
   const handleVerification = () => {
     setIsVerified(true);
-    localStorage.setItem("isVerified", "true"); // Guardar en el localStorage
+    sessionStorage.setItem("isVerified", "true"); 
   };
 
   useEffect(() => {
@@ -50,12 +49,13 @@ const Home = () => {
   }, []);
 
   if (!isVerified) {
-    return <AgeVerification onConfirm={handleVerification} />; // Muestra el componente de verificación si no está verificado
+    return <AgeVerification onConfirm={handleVerification} />; 
   }
+
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 xl:px-32 2xl:pb-40">
       <section className="w-full flex flex-col items-center z-50">
-        <nav className="w-full flex justify-between items-center pr-2 mt-2 lg:px-[3%] xl:mt-3 z-50">
+        <nav className="w-full flex justify-between items-center pr-2 mt-2 xl:mt-3 z-50">
           <div>
             <img src={imgLogo} alt="logo" className="w-14 xl:w-16  2xl:w-20" />
           </div>
@@ -66,7 +66,7 @@ const Home = () => {
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-6 lg:pl-[5%] xl:mt-6 2xl:mt-12  z-50 w-full">
+        <article className="self-start pl-3 flex flex-col items-start mt-6 xl:mt-6 2xl:mt-12  z-50 w-full">
           <h2 className="font-title text-zinc-700 text-7xl lg:text-9xl 2xl:text-[10rem]">
             Evas del Eden
           </h2>
@@ -75,7 +75,7 @@ const Home = () => {
           </h3>
         </article>
 
-        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:pl-[5%] lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
+        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
           <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={(e) => {
@@ -118,7 +118,7 @@ const Home = () => {
           </li>
         </ul>
         {selectedMenu === "Categorias" ? (
-          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
+          <div className="flex gap-4 w-full pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
             {categories.map((category, i) => (
               <button
                 key={i}
@@ -134,7 +134,7 @@ const Home = () => {
             ))}
           </div>
         ) : (
-          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
+          <div className="flex gap-4 w-full pl-3  lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
             {locations.map((location) => (
               <button
                 key={location}
