@@ -5,7 +5,7 @@ import { useState } from "react";
 const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
   const { _id, name, wttp, category, location, description, images, isActive } =
     eva;
-
+    
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpand = () => setIsExpanded(!isExpanded);
 

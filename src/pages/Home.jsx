@@ -41,9 +41,10 @@ const Home = () => {
     return <AgeVerification onConfirm={handleVerification} />; // Muestra el componente de verificación si no está verificado
   }
   return (
-    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-16">
-      <section className="w-full flex flex-col items-center">
-        <nav className="w-full flex justify-between items-center pr-2 mt-2 lg:px-[3%] xl:mt-3">
+    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 xl:px-32 2xl:pb-40">
+     
+      <section className="w-full flex flex-col items-center z-50">
+        <nav className="w-full flex justify-between items-center pr-2 mt-2 lg:px-[3%] xl:mt-3 z-50">
           <div>
             <img src={imgLogo} alt="logo" className="w-14 xl:w-16  2xl:w-20" />
           </div>
@@ -54,7 +55,7 @@ const Home = () => {
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-4 lg:pl-[5%] xl:mt-6 2xl:mt-12">
+        <article className="self-start pl-3 flex flex-col items-start mt-4 lg:pl-[5%] xl:mt-6 2xl:mt-12  z-50">
           <h2 className="font-title text-zinc-700 text-7xl lg:text-8xl 2xl:text-9xl">
             Evas del Eden
           </h2>
@@ -63,7 +64,7 @@ const Home = () => {
           </h3>
         </article>
 
-        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:pl-[5%] lg:text-lg 2xl:text-xl 2xl:mt-10">
+        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:pl-[5%] lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
           <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={(e) => {
@@ -106,12 +107,12 @@ const Home = () => {
           </li>
         </ul>
         {selectedMenu === "Categorias" ? (
-          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2">
+          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
             {categories.map((category, i) => (
               <button
                 key={i}
                 onClick={() => setSelectedCategory(category)}
-                className={` mt-3 rounded-full px-4 py-[1px] text-sm lg:text-base lg:px-[24px] lg:mt-4 2xl:text-lg 2xl:px-[32px] ${
+                className={`z-50 mt-3 rounded-full px-4 py-[1px] text-sm lg:text-base lg:px-[24px] lg:mt-4 2xl:text-lg 2xl:px-[32px] ${
                   selectedCategory === category
                     ? "bg-zinc-700 text-primary"
                     : "border border-zinc-700 text-zinc-500"
@@ -122,7 +123,7 @@ const Home = () => {
             ))}
           </div>
         ) : (
-          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2">
+          <div className="flex gap-4 w-full pl-3 lg:pl-[5%] lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
             {locations.map((location) => (
               <button
                 key={location}
@@ -158,8 +159,10 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-9 lg:w-[20%] lg:mt-16"></div>
-      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm lg:w-[25%]"></div>
+      <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
+        <div className="w-[40%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
+        <div className="w-[35%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+      </div>
 
       <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
         <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
@@ -178,9 +181,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <div className="w-[30%] h-3 bg-primary rounded-r-sm mt-9 lg:w-[20%] lg:mt-12 "></div>
-      <div className="w-[35%] h-4 bg-zinc-700 rounded-r-sm lg:w-[25%]"></div>
+      <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
+        <div className="w-[40%] h-2 bg-zinc-700 rounded-sm lg:w-[25%]"></div>
+        <div className="w-[35%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+      </div>
 
       <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
         <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
