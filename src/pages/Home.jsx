@@ -29,10 +29,9 @@ const Home = () => {
     }
   }, []);
 
-  
   const handleVerification = () => {
     setIsVerified(true);
-    sessionStorage.setItem("isVerified", "true"); 
+    sessionStorage.setItem("isVerified", "true");
   };
 
   useEffect(() => {
@@ -49,7 +48,7 @@ const Home = () => {
   }, []);
 
   if (!isVerified) {
-    return <AgeVerification onConfirm={handleVerification} />; 
+    return <AgeVerification onConfirm={handleVerification} />;
   }
 
   return (
@@ -75,7 +74,7 @@ const Home = () => {
           </h3>
         </article>
 
-        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
+        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-8 self-start lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
           <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={(e) => {
@@ -119,30 +118,44 @@ const Home = () => {
         </ul>
         {selectedMenu === "Categorias" ? (
           <div className="flex gap-4 w-full pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
-            {categories.map((category, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedCategory(category)}
-                className={`z-50 mt-3 rounded-full px-4 py-[1px] text-sm lg:text-base lg:px-[24px] lg:mt-4 2xl:text-lg 2xl:px-[32px] ${
-                  selectedCategory === category
-                    ? "bg-zinc-700 text-primary"
-                    : "border border-zinc-700 text-zinc-500"
-                }`}
+            <ul className="flex gap-5 mt-3 font-text2">
+              <li
+                style={{
+                  background:
+                    "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
+                }}
+                className="rounded-lg px-4 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
               >
-                {category}
-              </button>
-            ))}
+                Platinum
+              </li>
+              <li
+                style={{
+                  background: "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
+                }}
+                className="rounded-lg px-8 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
+              >
+                Gold
+              </li>
+              <li
+                style={{
+                  background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
+                }}
+                className="rounded-lg px-7 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
+              >
+                Silver
+              </li>
+            </ul>
           </div>
         ) : (
-          <div className="flex gap-4 w-full pl-3  lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
+          <div className="mt-1 flex gap-4 w-full pl-3  lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
             {locations.map((location) => (
               <button
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-full px-[10px] py-[1px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] ${
+                className={` mt-3 rounded-lg px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 ${
                   selectedLocation === location
                     ? "bg-zinc-700 text-primary"
-                    : "border border-zinc-700 text-zinc-500"
+                    : "border border-zinc-700 text-zinc-400"
                 }`}
               >
                 {location}
@@ -222,3 +235,16 @@ const Home = () => {
 };
 
 export default Home;
+{
+  /* <button
+                key={i}
+                onClick={() => setSelectedCategory(category)}
+                className={`z-50 mt-3 rounded-full px-4 py-[1px] text-sm lg:text-base lg:px-[24px] lg:mt-4 2xl:text-lg 2xl:px-[32px] ${
+                  selectedCategory === category
+                    ? "bg-zinc-700 text-primary"
+                    : "border border-zinc-700 text-zinc-500"
+                }`}
+              >
+                {category}
+              </button> */
+}

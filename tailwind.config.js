@@ -25,6 +25,7 @@ export default {
         title: ["Bebas Neue", "sans-serif"],
         text: ["Roboto", "sans-serif"],
         text2: ["Montserrat", "sans-serif"],
+        text3:["Poppins", "sans-serif"]
       },
     },
   },
