@@ -6,7 +6,16 @@ import Footer from "../components/Footer";
 import AgeVerification from "../components/AgeVerification";
 import CardEva from "../components/CardEva";
 import { getEvas } from "../api/handlers";
-
+import {
+  Carousel,
+  CarouselButtons,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselItem,
+  CarouselNextButton,
+  CarouselPrevButton,
+  CarouselSlides,
+} from "keep-react";
 /* import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 gsap.registerPlugin(useGSAP); */
@@ -130,7 +139,8 @@ const Home = () => {
               </li>
               <li
                 style={{
-                  background: "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
+                  background:
+                    "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
                 }}
                 className="rounded-lg px-8 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
               >
@@ -165,7 +175,74 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
+      <section className="w-full bg-zinc-900 mt-6 p-1 sm:p-2 flex justify-center items-center">
+        <Carousel options={{ slidesToScroll: 2 }}>
+          <CarouselSlides className="flex">
+            {[1, 2, 3, 4, 5].map((slide) => (
+              <CarouselItem key={slide} className="flex-[0_0_50%]">
+                <div className="flex items-center justify-center rounded-xl border border-metal-100 bg-metal-50 h-96 dark:border-metal-900 dark:bg-metal-900">
+                  <h1 className="text-heading-1 font-medium text-metal-900 dark:text-white">
+                    {slide}
+                  </h1>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselSlides>
+          <CarouselControl>
+            <CarouselButtons>
+              <CarouselPrevButton />
+              <CarouselNextButton />
+            </CarouselButtons>
+            <CarouselIndicators />
+          </CarouselControl>
+        </Carousel>
+      </section>
+
+      <section className="w-full bg-zinc-900 mt-6 p-1 sm:p-2 flex justify-center items-center">
+        <Carousel options={{ slidesToScroll: 2 }}>
+          <CarouselSlides className="flex">
+            {[1, 2, 3, 4, 5].map((slide) => (
+              <CarouselItem key={slide} className="flex-[0_0_50%]">
+                <div className="flex items-center justify-center rounded-xl border border-metal-100 bg-metal-50 h-96 dark:border-metal-900 dark:bg-metal-900">
+                  <h1 className="text-heading-1 font-medium text-metal-900 dark:text-white">
+                    {slide}
+                  </h1>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselSlides>
+          <CarouselControl>
+            <CarouselButtons>
+              <CarouselPrevButton />
+              <CarouselNextButton />
+            </CarouselButtons>
+            <CarouselIndicators />
+          </CarouselControl>
+        </Carousel>
+      </section>
+      <section className="w-full bg-zinc-900 mt-6 p-1 sm:p-2 flex justify-center items-center">
+        <Carousel options={{ slidesToScroll: 2 }}>
+          <CarouselSlides className="flex">
+            {[1, 2, 3, 4, 5].map((slide) => (
+              <CarouselItem key={slide} className="flex-[0_0_50%]">
+                <div className="flex items-center justify-center rounded-xl border border-metal-100 bg-metal-50 h-96 dark:border-metal-900 dark:bg-metal-900">
+                  <h1 className="text-heading-1 font-medium text-metal-900 dark:text-white">
+                    {slide}
+                  </h1>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselSlides>
+          <CarouselControl>
+            <CarouselButtons>
+              <CarouselPrevButton />
+              <CarouselNextButton />
+            </CarouselButtons>
+            <CarouselIndicators />
+          </CarouselControl>
+        </Carousel>
+      </section>
+      {/*  <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
         <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
           <div className=" w-fit  z-10 ">
             <Carrusel autoSlide={false}>
@@ -227,6 +304,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      */}
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
       </footer>

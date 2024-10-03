@@ -1,33 +1,33 @@
+import { keepTheme } from "keep-react/keepTheme";
+
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  "darkMode": "class",
+  darkMode: "class",
   theme: {
     screens: {
       sm: "420px",
-
       md: "650px",
-
       lg: "1000px",
-
       xl: "1300px",
-
       "2xl": "1600px",
     },
     extend: {
-      colors:{
-        primary:"#F28705",
-        darkOrange:"#F24405",
-        lightOrange:"#F25C05",
-        whiteCustom:"#F2F0E4",
+      colors: {
+        primary: "#F28705",
+        darkOrange: "#F24405",
+        lightOrange: "#F25C05",
+        whiteCustom: "#F2F0E4",
       },
       fontFamily: {
         title: ["Bebas Neue", "sans-serif"],
         text: ["Roboto", "sans-serif"],
         text2: ["Montserrat", "sans-serif"],
-        text3:["Poppins", "sans-serif"]
+        text3: ["Poppins", "sans-serif"],
       },
     },
   },
   plugins: [],
 };
+
+export default keepTheme(config);

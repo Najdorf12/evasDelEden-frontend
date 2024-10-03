@@ -63,15 +63,23 @@ const EvaDetail = () => {
       </nav>
 
       <section className=" relative flex flex-col items-center lg:flex-row lg:items-center lg:justify-center lg:gap-24  2xl:gap-28 ">
-        <div className="mt-8 lg:mt-8">
-          <article className="font-text3 text-stone-500   w-full flex flex-col justify-center items-center text-balance pl-3">
-            <h5 className="text-3xl text-whiteCustom xl:text-4xl 2xl:text-5xl">
+        <div className="mt-8 lg:mt-8 flex flex-col items-center">
+          <article
+            style={{
+              boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+            }}
+            className="font-text3 text-stone-500   w-[85%] px-2 py-4 flex flex-col justify-center items-center text-balance rounded-2xl"
+          >
+            <h5 className="text-3xl text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 
+            to-purple-300 xl:text-4xl 2xl:text-5xl">
               {evaDetail.name}
             </h5>
-            <p className="font-text2 text-lg xl:text-xl xl:mt-2 2xl:text-2xl text-stone-600">
+            <div className="h-[1px] w-[100%] bg-zinc-600 mt-3"></div>
+            <p className="font-text2 text-lg mt-1 xl:text-xl xl:mt-2 2xl:text-2xl text-stone-600 ">
               {evaDetail.location}
             </p>
-            <p className="font-text2 text-stone-500 text-center text- text-balance mt-2 ">
+            <p className="font-title2 text-stone-500 text-center text- text-balance mt-2  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-100 
+            to-zinc-400">
               {evaDetail.description?.servicio}{" "}
             </p>
             <Link
@@ -79,10 +87,13 @@ const EvaDetail = () => {
               target="blank"
               className="self-center"
             >
-              <button id="btn-evadetail" className="px-6 py-1 mt-7 flex items-center gap-1 text-base xl:text-xl font-semibold">
-               CONTACTO
+              <button
+                id="btn-evadetail"
+                className="px-6 py-1 mt-7 flex items-center gap-1 text-base xl:text-xl font-semibold"
+              >
+                CONTACTO
               </button>
-             {/*  <button className="rounded-full px-8 border shadow-lg shadow-zinc-900 border-stone-600 mt-4 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-stone-500 xl:px-8 2xl:px-9 ">
+              {/*  <button className="rounded-full px-8 border shadow-lg shadow-zinc-900 border-stone-600 mt-4 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-stone-500 xl:px-8 2xl:px-9 ">
                 <i className="bx bxl-whatsapp text-2xl"></i> Contacto
               </button> */}
             </Link>
@@ -105,27 +116,27 @@ const EvaDetail = () => {
         </div>
         <article className="mt-8 px-3 max-w-[450px] xl:max-w-[500px]">
           <ul className="font-text2 text-stone-400 flex flex-col gap-2 text-base xl:text-lg xl:gap-3">
-            <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+            <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3 shadow-md shadow-zinc-900">
               Horario: <span>{evaDetail.description?.horario} </span>
             </li>
             <div className="flex items-center gap-2">
-              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3 shadow-md shadow-zinc-900">
                 Edad: <span>{evaDetail.description?.edad} </span>
               </li>
-              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3 shadow-md shadow-zinc-900">
                 Altura: <span>{evaDetail.description?.altura} </span>
               </li>
-              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3 shadow-md shadow-zinc-900">
                 Peso: <span>{evaDetail.description?.peso} </span>
               </li>
             </div>
             <div className="flex items-center">
-              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3">
+              <li className="border border-stone-700 rounded-full px-3 flex items-center gap-3 shadow-md shadow-zinc-900">
                 Medidas: <span>{evaDetail.description?.medidas} </span>
               </li>
             </div>
 
-            <li className="text-balance text-center mt-3 text-whiteCustom">
+            <li className="text-balance text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-purple-300 to-zinc-300">
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>
@@ -134,7 +145,7 @@ const EvaDetail = () => {
 
       <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
         <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
-        <div className="w-[30%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+        <div className="w-[30%] h-2 bg-purple-800 rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
       </div>
 
       <footer className="absolute bottom-0 text-zinc-700 font-medium lg:text-zinc-500 ">
