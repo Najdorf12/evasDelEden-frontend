@@ -50,7 +50,7 @@ const EvaDetail = () => {
   }, [id]);
 
   return (
-    <section className="relative bg-zinc-800 pb-24  w-full pt-2  flex flex-col items-center  overflow-hidden xl:pt-4 min-h-screen">
+    <section className="relative bg-zinc-800 pb-10  w-full pt-2  flex flex-col items-center  overflow-hidden xl:pt-4 min-h-screen">
       <nav className="w-full flex justify-between items-center pr-3 mt-2 z-50 lg:px-[4%]">
         <div>
           <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
@@ -68,38 +68,43 @@ const EvaDetail = () => {
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
             }}
-            className="font-text3 text-stone-500   w-[85%] px-2 py-4 flex flex-col justify-center items-center text-balance rounded-2xl"
+            className="relative font-text3 text-stone-500   w-[90%] pl-4 pr-2 pt-2 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-stone-700"
           >
-            <h5 className="text-3xl text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 
-            to-purple-300 xl:text-4xl 2xl:text-5xl">
-              {evaDetail.name}
-            </h5>
-            <div className="h-[1px] w-[100%] bg-zinc-600 mt-3"></div>
-            <p className="font-text2 text-lg mt-1 xl:text-xl xl:mt-2 2xl:text-2xl text-stone-600 ">
-              {evaDetail.location}
-            </p>
-            <p className="font-title2 text-stone-500 text-center text- text-balance mt-2  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-100 
-            to-zinc-400">
-              {evaDetail.description?.servicio}{" "}
-            </p>
+            <div className="absolute top-1 left-2">
+            <i className='bx bxs-cube-alt text-3xl'></i>
+            </div>
+            <div className="absolute bottom-1 right-2">
+            <i className='bx bxs-cube-alt text-3xl'></i>
+            </div>
             <Link
               to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
               target="blank"
-              className="self-center"
+              className="self-end"
             >
               <button
                 id="btn-evadetail"
-                className="px-6 py-1 mt-7 flex items-center gap-1 text-base xl:text-xl font-semibold"
+                className="px-6 py-1  flex items-center justify-center gap-1 text-base xl:text-xl font-semibold"
               >
                 CONTACTO
               </button>
-              {/*  <button className="rounded-full px-8 border shadow-lg shadow-zinc-900 border-stone-600 mt-4 flex items-center gap-1 text-base xl:text-xl xl:mt-4 text-stone-500 xl:px-8 2xl:px-9 ">
-                <i className="bx bxl-whatsapp text-2xl"></i> Contacto
-              </button> */}
             </Link>
+            <h5
+              className="text-3xl mt-2 font-medium text-transparent bg-clip-text bg-gradient-to-r from-zinc-200  to-purple-300 xl:text-4xl 2xl:text-5xl"
+            >
+              {evaDetail.name}
+            </h5>
+            <div className="h-[1px] w-[100%] bg-zinc-700 mt-3"></div>
+            <p className="font-text2 text-lg mt-1 xl:text-xl xl:mt-2 2xl:text-2xl text-stone-500 ">
+              {evaDetail.location}
+            </p>
+            <p
+              className="font-text3 font-medium text-stone-500 pr-6 text-balance mt-2  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-100 to-purple-200"
+            >
+              {evaDetail.description?.servicio}{" "}
+            </p>
           </article>
 
-          <div className="mt-6 sm:mt-8 xl:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden ">
+          <div className="mt-3 xl:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden ">
             <figure
               loading="lazy"
               className="imgs w-full flex items-center justify-center shadow-lg shadow-zinc-900"
@@ -136,16 +141,17 @@ const EvaDetail = () => {
               </li>
             </div>
 
-            <li className="text-balance text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-purple-300 to-zinc-300">
+            <li className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-purple-200 to-zinc-500">
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>
         </article>
       </section>
 
-      <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
-        <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
-        <div className="w-[30%] h-2 bg-purple-800 rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+      <div className="flex mt-5 text-8xl">
+        <i className='bx bxs-cube-alt  text-zinc-700'></i>
+        <i className='bx bxs-cube-alt  text-zinc-100'></i>
+        <i className='bx bxs-cube-alt  text-zinc-700'></i>
       </div>
 
       <footer className="absolute bottom-0 text-zinc-700 font-medium lg:text-zinc-500 ">
