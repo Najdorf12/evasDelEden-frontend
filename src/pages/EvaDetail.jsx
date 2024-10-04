@@ -98,6 +98,7 @@ const EvaDetail = () => {
               {evaDetail.location}
             </p>
             <p
+            style={{filter:"drop-shadow(2px 3px 3px rgb(24 24 27))"}}
               className="font-text3 font-medium text-stone-500 pr-6 text-balance mt-2  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-100 to-purple-200"
             >
               {evaDetail.description?.servicio}{" "}
@@ -141,7 +142,7 @@ const EvaDetail = () => {
               </li>
             </div>
 
-            <li className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-200 to-purple-100">
+            <li style={{filter:"drop-shadow(2px 3px 3px rgb(24 24 27))"}} className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-200 to-purple-100">
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>

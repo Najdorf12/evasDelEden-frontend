@@ -68,8 +68,8 @@ const Home = () => {
             <img src={imgLogo} alt="logo" className="w-14 xl:w-16  2xl:w-20" />
           </div>
           <Link to={"/contacto"}>
-            <button className="pl-2 text-base border-l-[3px] border-zinc-600 font-text2 text-whiteCustom xl:text-lg 2xl:text-xl">
-              Contacto
+            <button className="pl-2 text-base border-l-[3px] border-zinc-600 font-text3 text-whiteCustom xl:text-lg 2xl:text-xl">
+              Publicar
             </button>
           </Link>
         </nav>
@@ -127,7 +127,7 @@ const Home = () => {
         </ul>
         {selectedMenu === "Categorias" ? (
           <div className="flex gap-4 w-full  pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
-            <ul className="flex gap-5  font-text2 font-medium">
+            <ul className="flex gap-5  font-text3  font-medium">
               <li
                 style={{
                   background:
@@ -175,7 +175,38 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full  mt-6 p-1 sm:p-2 flex justify-center items-center">
+      <section className="w-full mt-12 p-1 sm:p-2 flex justify-center items-center">
+        <Carousel options={{ slidesToScroll: 2 }}>
+          <CarouselSlides className="flex">
+            {allEvas?.map((eva) => (
+              <CarouselItem
+                key={eva._id}
+                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
+              >
+                <Link
+                  to={`/${eva._id}`}
+                  className="block w-full h-full relative z-20 rounded-sm"
+                >
+                  <CardEva eva={eva} />
+                </Link>
+              </CarouselItem>
+            ))}
+          </CarouselSlides>
+          <CarouselControl>
+            <CarouselButtons>
+              <CarouselPrevButton />
+              <CarouselNextButton />
+            </CarouselButtons>
+            <CarouselIndicators />
+          </CarouselControl>
+        </Carousel>
+      </section>
+      <div className="flex gap-6 mt-6 text-8xl w-full justify-center ">
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+        <i className="bx bxs-cube-alt  text-zinc-100"></i>
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+      </div>
+      <section className="w-full  mt-12 p-1 sm:p-2 flex justify-center items-center">
         <Carousel options={{ slidesToScroll: 2 }}>
           <CarouselSlides className="flex">
             {allEvas?.map((eva) => (
@@ -206,38 +237,7 @@ const Home = () => {
         <i className="bx bxs-cube-alt  text-zinc-100"></i>
         <i className="bx bxs-cube-alt  text-zinc-700"></i>
       </div>
-      <section className="w-full  mt-10 p-1 sm:p-2 flex justify-center items-center">
-        <Carousel options={{ slidesToScroll: 2 }}>
-          <CarouselSlides className="flex">
-            {allEvas?.map((eva) => (
-              <CarouselItem
-                key={eva._id}
-                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
-              >
-                <Link
-                  to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20 rounded-sm"
-                >
-                  <CardEva eva={eva} />
-                </Link>
-              </CarouselItem>
-            ))}
-          </CarouselSlides>
-          <CarouselControl>
-            <CarouselButtons>
-              <CarouselPrevButton />
-              <CarouselNextButton />
-            </CarouselButtons>
-            <CarouselIndicators />
-          </CarouselControl>
-        </Carousel>
-      </section>
-      <div className="flex gap-6 mt-5 text-8xl w-full justify-center">
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-        <i className="bx bxs-cube-alt  text-zinc-100"></i>
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-      </div>
-      <section className="w-full  mt-6 p-1 sm:p-2 flex justify-center items-center">
+      <section className="w-full  mt-12 p-1 sm:p-2 flex justify-center items-center">
         <Carousel options={{ slidesToScroll: 2 }}>
           <CarouselSlides className="flex">
             {allEvas?.map((eva) => (
