@@ -127,13 +127,13 @@ const Home = () => {
         </ul>
         {selectedMenu === "Categorias" ? (
           <div className="flex gap-4 w-full  pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
-            <ul className="flex gap-5 mt-3 font-text2 font-medium">
+            <ul className="flex gap-5  font-text2 font-medium">
               <li
                 style={{
                   background:
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
                 }}
-                className="rounded-full px-4 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900 "
+                className="flex justify-center items-center mt-3 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
               >
                 Platinum
               </li>
@@ -142,7 +142,7 @@ const Home = () => {
                   background:
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
                 }}
-                className="rounded-full px-8 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
+                className="mt-3 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
               >
                 Gold
               </li>
@@ -150,21 +150,21 @@ const Home = () => {
                 style={{
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
                 }}
-                className="rounded-full px-7 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
+                className="mt-3 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
               >
                 Silver
               </li>
             </ul>
           </div>
         ) : (
-          <div className="mt-1 flex gap-4 w-full pl-3  lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
+          <div className="flex gap-4 w-full pl-3  lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
             {locations.map((location) => (
               <button
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-full bg-zinc-700 px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 ${
+                className={` mt-3 rounded-full  px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 md:font-medium ${
                   selectedLocation === location
-                    ? "text-purple-600 border border-whiteCustom bg-whiteCustom"
+                    ? "text-purple-600 border border-whiteCustom bg-white"
                     : "border text-zinc-400  border-purple-400"
                 }`}
               >
