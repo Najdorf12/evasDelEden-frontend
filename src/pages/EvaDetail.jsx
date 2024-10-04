@@ -141,7 +141,7 @@ const EvaDetail = () => {
               </li>
             </div>
 
-            <li className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-purple-200 to-zinc-500">
+            <li className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-200 to-purple-100">
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>

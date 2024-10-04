@@ -98,7 +98,7 @@ const Home = () => {
               <i
                 className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-6 ${
                   selectedMenu === "Categorias"
-                    ? "text-primary"
+                    ? "text-purple-300"
                     : "text-zinc-500"
                 }`}
               ></i>
@@ -117,7 +117,7 @@ const Home = () => {
               <i
                 className={`bx bxs-map text-lg absolute text-primary -left-6 ${
                   selectedMenu === "Ubicacion"
-                    ? "text-primary"
+                    ? "text-purple-300"
                     : "text-zinc-500"
                 }`}
               ></i>
@@ -126,14 +126,14 @@ const Home = () => {
           </li>
         </ul>
         {selectedMenu === "Categorias" ? (
-          <div className="flex gap-4 w-full pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
-            <ul className="flex gap-5 mt-3 font-text2">
+          <div className="flex gap-4 w-full  pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
+            <ul className="flex gap-5 mt-3 font-text2 font-medium">
               <li
                 style={{
                   background:
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
                 }}
-                className="rounded-lg px-4 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
+                className="rounded-full px-4 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900 "
               >
                 Platinum
               </li>
@@ -142,7 +142,7 @@ const Home = () => {
                   background:
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
                 }}
-                className="rounded-lg px-8 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
+                className="rounded-full px-8 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
               >
                 Gold
               </li>
@@ -150,7 +150,7 @@ const Home = () => {
                 style={{
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
                 }}
-                className="rounded-lg px-7 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
+                className="rounded-full px-7 py-[1px] flex items-center justify-center text-whiteCustom border-zinc-600 border shadow-lg shadow-zinc-900"
               >
                 Silver
               </li>
@@ -162,10 +162,10 @@ const Home = () => {
               <button
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-lg px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 ${
+                className={` mt-3 rounded-full bg-zinc-700 px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 ${
                   selectedLocation === location
-                    ? "bg-zinc-700 text-primary"
-                    : "border border-zinc-700 text-zinc-400"
+                    ? "text-purple-600 border border-whiteCustom bg-whiteCustom"
+                    : "border text-zinc-400  border-purple-400"
                 }`}
               >
                 {location}
@@ -175,14 +175,17 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full bg-zinc-900 mt-6 p-1 sm:p-2 flex justify-center items-center">
+      <section className="w-full  mt-6 p-1 sm:p-2 flex justify-center items-center">
         <Carousel options={{ slidesToScroll: 2 }}>
           <CarouselSlides className="flex">
             {allEvas?.map((eva) => (
-              <CarouselItem key={eva._id} className="flex-[0_0_50%]">
+              <CarouselItem
+                key={eva._id}
+                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
+              >
                 <Link
                   to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20"
+                  className="block w-full h-full relative z-20 rounded-sm"
                 >
                   <CardEva eva={eva} />
                 </Link>
@@ -198,17 +201,25 @@ const Home = () => {
           </CarouselControl>
         </Carousel>
       </section>
-
-      <section className="w-full bg-zinc-900 mt-6 p-1 sm:p-2 flex justify-center items-center">
+      <div className="flex gap-6 mt-5 text-8xl w-full justify-center ">
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+        <i className="bx bxs-cube-alt  text-zinc-100"></i>
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+      </div>
+      <section className="w-full  mt-10 p-1 sm:p-2 flex justify-center items-center">
         <Carousel options={{ slidesToScroll: 2 }}>
           <CarouselSlides className="flex">
-            {[1, 2, 3, 4, 5].map((slide) => (
-              <CarouselItem key={slide} className="flex-[0_0_50%]">
-                <div className="flex items-center justify-center rounded-xl border border-metal-100 bg-metal-50 h-96 dark:border-metal-900 dark:bg-metal-900">
-                  <h1 className="text-heading-1 font-medium text-metal-900 dark:text-white">
-                    {slide}
-                  </h1>
-                </div>
+            {allEvas?.map((eva) => (
+              <CarouselItem
+                key={eva._id}
+                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
+              >
+                <Link
+                  to={`/${eva._id}`}
+                  className="block w-full h-full relative z-20 rounded-sm"
+                >
+                  <CardEva eva={eva} />
+                </Link>
               </CarouselItem>
             ))}
           </CarouselSlides>
@@ -221,16 +232,25 @@ const Home = () => {
           </CarouselControl>
         </Carousel>
       </section>
-      <section className="w-full bg-zinc-900 mt-6 p-1 sm:p-2 flex justify-center items-center">
+      <div className="flex gap-6 mt-5 text-8xl w-full justify-center">
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+        <i className="bx bxs-cube-alt  text-zinc-100"></i>
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+      </div>
+      <section className="w-full  mt-6 p-1 sm:p-2 flex justify-center items-center">
         <Carousel options={{ slidesToScroll: 2 }}>
           <CarouselSlides className="flex">
-            {[1, 2, 3, 4, 5].map((slide) => (
-              <CarouselItem key={slide} className="flex-[0_0_50%]">
-                <div className="flex items-center justify-center rounded-xl border border-metal-100 bg-metal-50 h-96 dark:border-metal-900 dark:bg-metal-900">
-                  <h1 className="text-heading-1 font-medium text-metal-900 dark:text-white">
-                    {slide}
-                  </h1>
-                </div>
+            {allEvas?.map((eva) => (
+              <CarouselItem
+                key={eva._id}
+                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
+              >
+                <Link
+                  to={`/${eva._id}`}
+                  className="block w-full h-full relative z-20 rounded-sm"
+                >
+                  <CardEva eva={eva} />
+                </Link>
               </CarouselItem>
             ))}
           </CarouselSlides>
@@ -243,69 +263,12 @@ const Home = () => {
           </CarouselControl>
         </Carousel>
       </section>
-      {/*  <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
-        <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
-          <div className=" w-fit  z-10 ">
-            <Carrusel autoSlide={false}>
-              {allEvas.map((eva) => (
-                <Link
-                  key={eva._id}
-                  to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20"
-                >
-                  <CardEva eva={eva} />
-                </Link>
-              ))}
-            </Carrusel>
-          </div>
-        </div>
-      </section>
-
-      <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
-        <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
-        <div className="w-[30%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
+      <div className="flex gap-6 mt-5 text-8xl justify-center">
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+        <i className="bx bxs-cube-alt  text-zinc-100"></i>
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
       </div>
 
-      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
-        <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
-          <div className=" w-fit  z-10 ">
-            <Carrusel autoSlide={false}>
-              {allEvas.map((eva) => (
-                <Link
-                  key={eva._id}
-                  to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20"
-                >
-                  <CardEva eva={eva} />
-                </Link>
-              ))}
-            </Carrusel>
-          </div>
-        </div>
-      </section>
-      <div className="w-full flex flex-col items-center justify-center lg:mt-16 mt-9">
-        <div className="w-[45%] h-2 bg-zinc-600 rounded-sm lg:w-[25%]"></div>
-        <div className="w-[30%] h-2 bg-primary rounded-bl-sm rounded-br-sm lg:w-[20%] "></div>
-      </div>
-
-      <section className="w-full px-3 h-[25rem] mt-9 relative flex justify-start items-start py-2  lg:mt-12 xl:mt-14 2xl:mt-20 ">
-        <div className="flex justify-center items-center gap-3 w-fit h-full pl-3 ">
-          <div className=" w-fit  z-10 ">
-            <Carrusel autoSlide={false}>
-              {allEvas.map((eva) => (
-                <Link
-                  key={eva._id}
-                  to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20"
-                >
-                  <CardEva eva={eva} />
-                </Link>
-              ))}
-            </Carrusel>
-          </div>
-        </div>
-      </section>
-      */}
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
       </footer>
