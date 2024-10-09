@@ -83,7 +83,7 @@ const Home = () => {
           <h2 className="font-title text-zinc-700 text-7xl lg:text-9xl 2xl:text-[10rem]">
             Evas del Eden
           </h2>
-          w
+        
           <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
             Escorts - Mendoza
           </h3>
