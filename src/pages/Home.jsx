@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import imgLogo from "../assets/logo-removebg.png";
 import Carrusel from "../components/Carrusel";
@@ -23,6 +23,10 @@ gsap.registerPlugin(useGSAP); */
 const Home = () => {
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
   const locations = ["Mendoza", "Córdoba", "Santa Fe", "Buenos Aires"];
+
+  const categoryRefPlatinum = useRef(null);
+  const categoryRefGold = useRef(null);
+  const categoryRefSilver = useRef(null);
 
   const [isVerified, setIsVerified] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState("Categorias");
@@ -79,6 +83,7 @@ const Home = () => {
           <h2 className="font-title text-zinc-700 text-7xl lg:text-9xl 2xl:text-[10rem]">
             Evas del Eden
           </h2>
+          w
           <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
             Escorts - Mendoza
           </h3>
@@ -130,6 +135,12 @@ const Home = () => {
           <div className="flex gap-4 w-full  pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
             <ul className="flex gap-5  font-text3  font-medium">
               <li
+                onClick={() =>
+                  categoryRefPlatinum.current.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center", // Coloca la sección en el centro de la vista
+                  })
+                }
                 style={{
                   background:
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
@@ -138,7 +149,14 @@ const Home = () => {
               >
                 Platinum
               </li>
+
               <li
+                onClick={() =>
+                  categoryRefGold.current.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center", // Coloca la sección en el centro de la vista
+                  })
+                }
                 style={{
                   background:
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
@@ -147,11 +165,18 @@ const Home = () => {
               >
                 Gold
               </li>
+
               <li
+                onClick={() =>
+                  categoryRefSilver.current.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center", // Coloca la sección en el centro de la vista
+                  })
+                }
                 style={{
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
                 }}
-                className="mt-3 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
+                className="mt-3 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
               >
                 Silver
               </li>
@@ -177,39 +202,57 @@ const Home = () => {
       </section>
 
       <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center">
-        {allEvas?.map((category) => (
-          <div key={category._id} className="w-full ">
-            <Carousel options={{ slidesToScroll: 2 }}>
-              <CarouselSlides className="flex">
-                {category.evas.map((eva) => (
-                  <CarouselItem
-                    key={eva._id}
-                    className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
-                  >
-                    <Link
-                      to={`/${eva._id}`}
-                      className="block w-full h-full relative z-20 rounded-sm"
+        {allEvas?.map((category) => {
+          let categoryRef;
+
+          // Asignar la referencia correcta según el nombre de la categoría
+          if (category?._id === "Platinum") {
+            categoryRef = categoryRefPlatinum;
+          } else if (category?._id === "Gold") {
+            categoryRef = categoryRefGold;
+          } else if (category?._id === "Silver") {
+            categoryRef = categoryRefSilver;
+          }
+
+          return (
+            <div
+              ref={categoryRef}
+              id={category?._id}
+              key={category?._id}
+              className="w-full "
+            >
+              <Carousel options={{ slidesToScroll: 2 }}>
+                <CarouselSlides className="flex">
+                  {category?.evas?.map((eva) => (
+                    <CarouselItem
+                      key={eva?._id}
+                      className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
                     >
-                      <CardEva eva={eva} />
-                    </Link>
-                  </CarouselItem>
-                ))}
-              </CarouselSlides>
-              <CarouselControl>
-                <CarouselButtons>
-                  <CarouselPrevButton />
-                  <CarouselNextButton />
-                </CarouselButtons>
-                <CarouselIndicators />
-              </CarouselControl>
-            </Carousel>
-            <div className="flex gap-6 my-6 text-8xl w-full justify-center ">
-              <i className="bx bxs-cube-alt  text-zinc-700"></i>
-              <i className="bx bxs-cube-alt  text-zinc-100"></i>
-              <i className="bx bxs-cube-alt  text-zinc-700"></i>
+                      <Link
+                        to={`/${eva?._id}`}
+                        className="block w-full h-full relative z-20 rounded-sm"
+                      >
+                        <CardEva eva={eva} />
+                      </Link>
+                    </CarouselItem>
+                  ))}
+                </CarouselSlides>
+                <CarouselControl>
+                  <CarouselButtons>
+                    <CarouselPrevButton />
+                    <CarouselNextButton />
+                  </CarouselButtons>
+                  <CarouselIndicators />
+                </CarouselControl>
+              </Carousel>
+              <div className="flex gap-6 my-6 text-8xl w-full justify-center ">
+                <i className="bx bxs-cube-alt  text-zinc-700"></i>
+                <i className="bx bxs-cube-alt  text-zinc-100"></i>
+                <i className="bx bxs-cube-alt  text-zinc-700"></i>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </section>
 
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
@@ -220,16 +263,3 @@ const Home = () => {
 };
 
 export default Home;
-{
-  /* <button
-                key={i}
-                onClick={() => setSelectedCategory(category)}
-                className={`z-50 mt-3 rounded-full px-4 py-[1px] text-sm lg:text-base lg:px-[24px] lg:mt-4 2xl:text-lg 2xl:px-[32px] ${
-                  selectedCategory === category
-                    ? "bg-zinc-700 text-primary"
-                    : "border border-zinc-700 text-zinc-500"
-                }`}
-              >
-                {category}
-              </button> */
-}
