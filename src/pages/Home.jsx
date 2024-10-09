@@ -5,7 +5,7 @@ import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
 import AgeVerification from "../components/AgeVerification";
 import CardEva from "../components/CardEva";
-import { getEvasFilterByCategory } from "../api/handlers";
+import { getEvasFilterByCategoryAndLocation } from "../api/handlers";
 import {
   Carousel,
   CarouselButtons,
@@ -22,7 +22,7 @@ gsap.registerPlugin(useGSAP); */
 
 const Home = () => {
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
-  const locations = ["Mendoza", "Córdoba", "Santa Fe", "Buenos Aires"];
+  const locations = ["Mendoza", "Cordoba", "Santa Fe", "Buenos Aires"];
 
   const categoryRefPlatinum = useRef(null);
   const categoryRefGold = useRef(null);
@@ -51,7 +51,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvas = async () => {
       try {
-        const evasData = await getEvasFilterByCategory();
+        const evasData = await getEvasFilterByCategoryAndLocation(selectedLocation);
         setAllEvas(evasData);
       } catch (error) {
         console.error("Failed to fetch evas:", error);
@@ -59,11 +59,13 @@ const Home = () => {
     };
 
     fetchEvas();
-  }, []);
+  }, [selectedLocation]);
 
   if (!isVerified) {
     return <AgeVerification onConfirm={handleVerification} />;
   }
+
+
 
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 xl:px-32 2xl:pb-40">

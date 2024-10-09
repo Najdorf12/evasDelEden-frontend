@@ -8,9 +8,11 @@ export const getEvas = async () => {
     console.error("Error fetching evas:", error);
     throw error;
   }
-};export const getEvasFilterByCategory = async () => {
+};
+
+export const getEvasFilterByCategoryAndLocation = async (location) => {
   try {
-    const response = await axios.get("/evas/categories");
+    const response = await axios.get(`/evas/evas?location=${location}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching evas:", error);
