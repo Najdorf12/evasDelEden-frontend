@@ -51,7 +51,9 @@ const Home = () => {
   useEffect(() => {
     const fetchEvas = async () => {
       try {
-        const evasData = await getEvasFilterByCategoryAndLocation(selectedLocation);
+        const evasData = await getEvasFilterByCategoryAndLocation(
+          selectedLocation
+        );
         setAllEvas(evasData);
       } catch (error) {
         console.error("Failed to fetch evas:", error);
@@ -64,8 +66,6 @@ const Home = () => {
   if (!isVerified) {
     return <AgeVerification onConfirm={handleVerification} />;
   }
-
-
 
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 xl:px-32 2xl:pb-40">
@@ -85,7 +85,7 @@ const Home = () => {
           <h2 className="font-title text-zinc-700 text-7xl lg:text-9xl 2xl:text-[10rem]">
             Evas del Eden
           </h2>
-        
+
           <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
             Escorts - Mendoza
           </h3>
@@ -208,12 +208,18 @@ const Home = () => {
           let categoryRef;
 
           // Asignar la referencia correcta según el nombre de la categoría
-          if (category?._id === "Platinum") {
-            categoryRef = categoryRefPlatinum;
-          } else if (category?._id === "Gold") {
-            categoryRef = categoryRefGold;
-          } else if (category?._id === "Silver") {
-            categoryRef = categoryRefSilver;
+          switch (category?._id) {
+            case "Platinum":
+              categoryRef = categoryRefPlatinum;
+              break;
+            case "Gold":
+              categoryRef = categoryRefGold;
+              break;
+            case "Silver":
+              categoryRef = categoryRefSilver;
+              break;
+            default:
+              categoryRef = null;
           }
 
           return (
@@ -221,7 +227,7 @@ const Home = () => {
               ref={categoryRef}
               id={category?._id}
               key={category?._id}
-              className="w-full "
+              className="w-full"
             >
               <Carousel options={{ slidesToScroll: 2 }}>
                 <CarouselSlides className="flex">
@@ -247,7 +253,7 @@ const Home = () => {
                   <CarouselIndicators />
                 </CarouselControl>
               </Carousel>
-              <div className="flex gap-6 my-6 text-8xl w-full justify-center ">
+              <div className="flex gap-6 my-6 text-8xl w-full justify-center">
                 <i className="bx bxs-cube-alt  text-zinc-700"></i>
                 <i className="bx bxs-cube-alt  text-zinc-100"></i>
                 <i className="bx bxs-cube-alt  text-zinc-700"></i>
