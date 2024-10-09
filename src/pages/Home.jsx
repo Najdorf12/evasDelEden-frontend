@@ -54,7 +54,14 @@ const Home = () => {
         const evasData = await getEvasFilterByCategoryAndLocation(
           selectedLocation
         );
-        setAllEvas(evasData);
+
+        // Ordenar las evas por la categoría en el orden deseado
+        const orderedEvas = evasData.sort((a, b) => {
+          const order = { Platinum: 1, Gold: 2, Silver: 3 };
+          return order[a._id] - order[b._id];
+        });
+
+        setAllEvas(orderedEvas);
       } catch (error) {
         console.error("Failed to fetch evas:", error);
       }
@@ -224,7 +231,7 @@ const Home = () => {
 
           return (
             <div
-              ref={categoryRef}
+             ref={category?._id === 'Platinum' ? categoryRefPlatinum : category?._id === 'Gold' ? categoryRefGold : categoryRefSilver}
               id={category?._id}
               key={category?._id}
               className="w-full"
@@ -253,10 +260,8 @@ const Home = () => {
                   <CarouselIndicators />
                 </CarouselControl>
               </Carousel>
-              <div className="flex gap-6 my-6 text-8xl w-full justify-center">
-                <i className="bx bxs-cube-alt  text-zinc-700"></i>
-                <i className="bx bxs-cube-alt  text-zinc-100"></i>
-                <i className="bx bxs-cube-alt  text-zinc-700"></i>
+              <div className="flex w-full h-44 absolute bottom-0">
+                <div id="pattern"></div>
               </div>
             </div>
           );
