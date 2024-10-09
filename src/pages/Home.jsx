@@ -5,7 +5,7 @@ import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
 import AgeVerification from "../components/AgeVerification";
 import CardEva from "../components/CardEva";
-import { getEvas } from "../api/handlers";
+import { getEvasFilterByCategory } from "../api/handlers";
 import {
   Carousel,
   CarouselButtons,
@@ -30,6 +30,7 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
 
   const [allEvas, setAllEvas] = useState([]);
+  console.log(allEvas);
 
   useEffect(() => {
     const storedVerification = sessionStorage.getItem("isVerified");
@@ -46,7 +47,7 @@ const Home = () => {
   useEffect(() => {
     const fetchEvas = async () => {
       try {
-        const evasData = await getEvas();
+        const evasData = await getEvasFilterByCategory();
         setAllEvas(evasData);
       } catch (error) {
         console.error("Failed to fetch evas:", error);
@@ -83,7 +84,7 @@ const Home = () => {
           </h3>
         </article>
 
-        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-8 self-start lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
+        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
           <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={(e) => {
@@ -175,99 +176,41 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full mt-12 p-1 sm:p-2 flex justify-center items-center">
-        <Carousel options={{ slidesToScroll: 2 }}>
-          <CarouselSlides className="flex">
-            {allEvas?.map((eva) => (
-              <CarouselItem
-                key={eva._id}
-                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
-              >
-                <Link
-                  to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20 rounded-sm"
-                >
-                  <CardEva eva={eva} />
-                </Link>
-              </CarouselItem>
-            ))}
-          </CarouselSlides>
-          <CarouselControl>
-            <CarouselButtons>
-              <CarouselPrevButton />
-              <CarouselNextButton />
-            </CarouselButtons>
-            <CarouselIndicators />
-          </CarouselControl>
-        </Carousel>
+      <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center">
+        {allEvas?.map((category) => (
+          <div key={category._id} className="w-full ">
+            <Carousel options={{ slidesToScroll: 2 }}>
+              <CarouselSlides className="flex">
+                {category.evas.map((eva) => (
+                  <CarouselItem
+                    key={eva._id}
+                    className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
+                  >
+                    <Link
+                      to={`/${eva._id}`}
+                      className="block w-full h-full relative z-20 rounded-sm"
+                    >
+                      <CardEva eva={eva} />
+                    </Link>
+                  </CarouselItem>
+                ))}
+              </CarouselSlides>
+              <CarouselControl>
+                <CarouselButtons>
+                  <CarouselPrevButton />
+                  <CarouselNextButton />
+                </CarouselButtons>
+                <CarouselIndicators />
+              </CarouselControl>
+            </Carousel>
+            <div className="flex gap-6 my-6 text-8xl w-full justify-center ">
+              <i className="bx bxs-cube-alt  text-zinc-700"></i>
+              <i className="bx bxs-cube-alt  text-zinc-100"></i>
+              <i className="bx bxs-cube-alt  text-zinc-700"></i>
+            </div>
+          </div>
+        ))}
       </section>
-      <div className="flex gap-6 mt-6 text-8xl w-full justify-center ">
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-        <i className="bx bxs-cube-alt  text-zinc-100"></i>
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-      </div>
-      <section className="w-full  mt-12 p-1 sm:p-2 flex justify-center items-center">
-        <Carousel options={{ slidesToScroll: 2 }}>
-          <CarouselSlides className="flex">
-            {allEvas?.map((eva) => (
-              <CarouselItem
-                key={eva._id}
-                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
-              >
-                <Link
-                  to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20 rounded-sm"
-                >
-                  <CardEva eva={eva} />
-                </Link>
-              </CarouselItem>
-            ))}
-          </CarouselSlides>
-          <CarouselControl>
-            <CarouselButtons>
-              <CarouselPrevButton />
-              <CarouselNextButton />
-            </CarouselButtons>
-            <CarouselIndicators />
-          </CarouselControl>
-        </Carousel>
-      </section>
-      <div className="flex gap-6 mt-5 text-8xl w-full justify-center ">
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-        <i className="bx bxs-cube-alt  text-zinc-100"></i>
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-      </div>
-      <section className="w-full  mt-12 p-1 sm:p-2 flex justify-center items-center">
-        <Carousel options={{ slidesToScroll: 2 }}>
-          <CarouselSlides className="flex">
-            {allEvas?.map((eva) => (
-              <CarouselItem
-                key={eva._id}
-                className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
-              >
-                <Link
-                  to={`/${eva._id}`}
-                  className="block w-full h-full relative z-20 rounded-sm"
-                >
-                  <CardEva eva={eva} />
-                </Link>
-              </CarouselItem>
-            ))}
-          </CarouselSlides>
-          <CarouselControl>
-            <CarouselButtons>
-              <CarouselPrevButton />
-              <CarouselNextButton />
-            </CarouselButtons>
-            <CarouselIndicators />
-          </CarouselControl>
-        </Carousel>
-      </section>
-      <div className="flex gap-6 mt-5 text-8xl justify-center">
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-        <i className="bx bxs-cube-alt  text-zinc-100"></i>
-        <i className="bx bxs-cube-alt  text-zinc-700"></i>
-      </div>
 
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
