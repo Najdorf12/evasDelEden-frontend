@@ -44,7 +44,12 @@
 }
 @media (min-width: 1300px) {
   #contact {
-    background-size: 37%;
+    background-size: 40%;
+  }
+}
+@media (min-width: 1500px) {
+  #contact {
+    background-size: 35%;
   }
 }
 #box-glass {
