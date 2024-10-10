@@ -25,7 +25,7 @@ const Contact = () => {
         ></section>
         <article
           /* id="box-glass4" */
-          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl  mt-8  max-w-[600px] lg:ml-[30%] lg:-mt-2  2xl:mt-0"
+          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl  mt-6  max-w-[600px] lg:ml-[30%] lg:-mt-2  2xl:mt-0"
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
@@ -46,7 +46,7 @@ const Contact = () => {
           <div
             /* id="box-glass2" */
             style={{ animation: "slideInFromLeft 1s ease-out" }}
-            class="max-w-md w-full rounded-2xl  overflow-hidden py-6 space-y-4 lg:py-3"
+            class="max-w-md w-full rounded-2xl  overflow-hidden space-y-4 lg:py-3"
           >
             <p
               className="text-stone-400 px-4 text-base font-semibold text-center text-balance xl:px-2"
@@ -91,11 +91,11 @@ const Contact = () => {
                 name=""
                 id="box-glass4"
                 placeholder="Escribe tu consulta aquí"
-                className="border border-whiteCustom rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 "
+                className="border border-whiteCustom text-white rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 "
               ></textarea>
 
               <button
-                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border border-zinc-600 text-zinc-800 font-semibold transition duration-200 text-base bg-primary lg:border-[2px] xl:py-1 2xl:py-2"
+                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border-[2px] border-whiteCustom text-zinc-800 font-semibold transition duration-200 text-base bg-primary lg:border-[2px] xl:py-1 2xl:py-2"
                 type="submit"
               >
                 Enviar
