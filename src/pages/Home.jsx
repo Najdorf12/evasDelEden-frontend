@@ -266,8 +266,25 @@ const Home = () => {
                   <CarouselIndicators />
                 </CarouselControl>
               </Carousel>
-              <div className="flex w-full h-44 absolute bottom-0">
-                <div id="pattern"></div>
+              <div className="w-full mt-5 mb-10 xl:my-8 h-6 flex justify-center items-center">
+              <div className="loader">
+  <div className="circle">
+    <div className="dot"></div>
+    <div className="outline"></div>
+  </div>
+  <div className="circle">
+    <div className="dot"></div>
+    <div className="outline"></div>
+  </div>
+  <div className="circle">
+    <div className="dot"></div>
+    <div className="outline"></div>
+  </div>
+  <div className="circle">
+    <div className="dot"></div>
+    <div className="outline"></div>
+  </div>
+</div>
               </div>
             </div>
           );
