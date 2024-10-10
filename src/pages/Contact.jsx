@@ -14,7 +14,7 @@ const Contact = () => {
             <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
           </div>
           <Link to={"/"}>
-            <button className="pl-2 text-lg border-l-[3px] border-zinc-600 font-text2 text-whiteCustom xl:text-xl 2xl:text-2xl">
+            <button className="pl-2 text-lg border-l-[3px] border-zinc-600 font-text2 text-whiteCustom lg:text-zinc-600 lg:border-zinc-400 xl:text-xl 2xl:text-2xl">
               Volver
             </button>
           </Link>
@@ -25,7 +25,7 @@ const Contact = () => {
         ></section>
         <article
           /* id="box-glass4" */
-          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl  mt-8  max-w-[600px] lg:ml-[30%] xl:mt-0 2xl:mt-12"
+          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl  mt-8  max-w-[600px] lg:ml-[30%] lg:-mt-2  2xl:mt-0"
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
@@ -59,7 +59,7 @@ const Contact = () => {
                 <input
                   autoComplete="off"
                   placeholder="john@example.com"
-                  className="peer h-10 w-full my-1 border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-primary  lg:text-stone-600 2xl:mt-6 lg:border-primary lg:focus:border-zinc-800"
+                  className="peer h-10 w-full my-1 border-b-2 border-primary text-white bg-transparent placeholder-transparent focus:outline-none   lg:text-stone-600 2xl:mt-6  lg:focus:border-zinc-800"
                   required=""
                   id="email"
                   name="email"
@@ -76,7 +76,7 @@ const Contact = () => {
                 <input
                   autoComplete="off"
                   placeholder="Password"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white lg:text-stone-600 bg-transparent placeholder-transparent focus:outline-none focus:border-primary lg:border-primary lg:focus:border-zinc-800"
+                  className="peer h-10 w-full border-b-2  text-white lg:text-stone-600 bg-transparent placeholder-transparent focus:outline-none  border-primary lg:focus:border-zinc-800"
                   required=""
                   id="password"
                   name="password"
@@ -95,7 +95,7 @@ const Contact = () => {
               ></textarea>
 
               <button
-                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border border-zinc-600 text-zinc-800 font-semibold transition duration-200 text-base bg-primary lg:border-[2px]"
+                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border border-zinc-600 text-zinc-800 font-semibold transition duration-200 text-base bg-primary lg:border-[2px] xl:py-1 2xl:py-2"
                 type="submit"
               >
                 Enviar
