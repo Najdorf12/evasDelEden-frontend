@@ -75,7 +75,7 @@ const Home = () => {
   }
 
   return (
-    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 xl:px-32 2xl:pb-40">
+    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 lg:px-14 xl:px-24 2xl:pb-40">
       <section className="w-full flex flex-col items-center z-50">
         <nav className="w-full flex justify-between items-center pr-2 mt-2 xl:mt-3 z-50">
           <div>
@@ -88,51 +88,51 @@ const Home = () => {
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-6 xl:mt-6 2xl:mt-12  z-50 w-full">
-          <h2 className="font-title text-zinc-700 text-7xl lg:text-9xl 2xl:text-[10rem]">
+        <article className="self-start pl-3 flex flex-col items-start mt-6 xl:mt-8 2xl:mt-12  z-50 w-full">
+          <h2 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem]">
             Evas del Eden
           </h2>
 
-          <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl 2xl:text-4xl">
+          <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
             Escorts - Mendoza
           </h3>
         </article>
 
-        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg 2xl:text-xl 2xl:mt-10  z-50">
+        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg lg:mt-10  xl:mt-12 xl:gap-12 2xl:gap-14 2xl:text-xl 2xl:mt-16  z-50">
           <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={(e) => {
                 setSelectedMenu("Categorias");
               }}
-              className={`relative flex items-center ml-8 cursor-pointer ${
+              className={`relative flex items-center ml-8 cursor-pointer text-base lg:text-lg  xl:text-2xl 2xl:text-3xl duration-400  px-1 xl:pb-1 ${
                 selectedMenu === "Categorias"
-                  ? "text-whiteCustom"
+                  ? "text-whiteCustom  border-b-[1px] xl:border-b-[2px] border-zinc-500"
                   : "text-zinc-500"
               }`}
             >
               <i
-                className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-6 ${
+                className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-6 xl:-left-[28px] lg:text-lg xl:text-xl 2xl:-left-[32px] 2xl:text-2xl ${
                   selectedMenu === "Categorias"
-                    ? "text-purple-300"
+                    ? "text-purple-300 "
                     : "text-zinc-500"
                 }`}
               ></i>
               Categorias
             </div>
           </li>
-          <li className="relative flex flex-col justify-start items-start">
+          <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={() => setSelectedMenu("Ubicacion")}
-              className={`relative  flex items-center ml-8 cursor-pointer ${
+              className={`relative  flex items-center ml-8 cursor-pointer text-base lg:text-lg  xl:text-2xl 2xl:text-3xl duration-400  px-1 xl:pb-1 ${
                 selectedMenu === "Ubicacion"
-                  ? "text-whiteCustom"
+                  ? "text-whiteCustom  border-b-[1px] xl:border-b-[2px] border-zinc-500"
                   : "text-zinc-500"
               }`}
             >
               <i
-                className={`bx bxs-map text-lg absolute text-primary -left-6 ${
+                className={`bx bxs-map text-lg absolute text-primary -left-6 xl:-left-[28px] lg:text-lg xl:text-2xl 2xl:-left-[32px] 2xl:text-3xl  ${
                   selectedMenu === "Ubicacion"
-                    ? "text-purple-300"
+                    ? "text-purple-300 "
                     : "text-zinc-500"
                 }`}
               ></i>
@@ -141,8 +141,8 @@ const Home = () => {
           </li>
         </ul>
         {selectedMenu === "Categorias" ? (
-          <div className="flex gap-4 w-full  pl-3 lg:gap-6 lg:mt-1 2xl:mt-2  z-50">
-            <ul className="flex gap-5  font-text3  font-medium">
+          <div className="flex gap-4 w-full  pl-3 mt-1 lg:gap-6  xl:mt-3 2xl:mt-4  z-50">
+            <ul className="flex gap-5  font-text3  font-medium lg:gap-8 2xl:gap-12">
               <li
                 onClick={() =>
                   categoryRefPlatinum.current.scrollIntoView({
@@ -154,7 +154,7 @@ const Home = () => {
                   background:
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
                 }}
-                className="flex justify-center items-center mt-3 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
+                className="flex justify-center items-center mt-3 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
                 Platinum
               </li>
@@ -170,7 +170,7 @@ const Home = () => {
                   background:
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
                 }}
-                className="mt-3 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
+                className="mt-3 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom "
               >
                 Gold
               </li>
@@ -185,21 +185,21 @@ const Home = () => {
                 style={{
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
                 }}
-                className="mt-3 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium border border-zinc-700 text-whiteCustom"
+                className="mt-3 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 2xl:w-40 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
                 Silver
               </li>
             </ul>
           </div>
         ) : (
-          <div className="flex gap-4 w-full pl-3  lg:gap-6 lg:mt-1 2xl:mt-2 z-50">
+          <div className="flex gap-4 w-full pl-3  lg:gap-6 mt-1 xl:mt-3 xl:gap-8 2xl:gap-10 2xl:mt-4 z-50">
             {locations.map((location) => (
               <button
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-full  px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 md:font-medium ${
+                className={` mt-3 rounded-full  px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] xl:px-[28px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 md:font-medium ${
                   selectedLocation === location
-                    ? "text-purple-600 border border-whiteCustom bg-white"
+                    ? "text-purple-600 border border-zinc-500 bg-white"
                     : "border text-zinc-400  border-purple-400"
                 }`}
               >
@@ -231,7 +231,13 @@ const Home = () => {
 
           return (
             <div
-             ref={category?._id === 'Platinum' ? categoryRefPlatinum : category?._id === 'Gold' ? categoryRefGold : categoryRefSilver}
+              ref={
+                category?._id === "Platinum"
+                  ? categoryRefPlatinum
+                  : category?._id === "Gold"
+                  ? categoryRefGold
+                  : categoryRefSilver
+              }
               id={category?._id}
               key={category?._id}
               className="w-full"
