@@ -101,7 +101,6 @@
 .image-gallery-slide {
   height: 500px;
   border-radius: 12px;
-
 }
 .image-gallery-thumbnails-bottom {
   width: 100%;
@@ -130,14 +129,14 @@
     color: white;
   }
 }
-@media (min-width: 1500px) {
+@media (min-width: 1300px) {
   .image-gallery-slide {
     height: 600px;
     border-radius: 12px;
     align-self: center;
   }
   .image-gallery-content .image-gallery-slide .image-gallery-image {
-    width: 600px;
+    width: 550px;
   }
   .image-gallery-left-nav .image-gallery-svg,
   .image-gallery-right-nav .image-gallery-svg {
@@ -145,7 +144,16 @@
     width: 50px;
   }
 }
-
+@media (min-width: 1600px) {
+  .image-gallery-slide {
+    height: 650px;
+    border-radius: 12px;
+    align-self: center;
+  }
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    width: 600px;
+  }
+}
 
 /* BUTTONS */
 #btn-evadetail {
