@@ -255,7 +255,7 @@ const Home = () => {
                 style={{
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="text-base text-stone-500 mb-4 ml-3 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
+                className="text-base text-stone-500 mb-4 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
                 {category?._id}
