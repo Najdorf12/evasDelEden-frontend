@@ -53,13 +53,13 @@ const AgeVerification = ({ onConfirm }) => {
         </p>
         <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-3 lg:text-lg xl:text-xl lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
-            className="rounded-full px-6 border border-purple-600 lg:px-7 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900"
+            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-7 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900"
             onClick={handleYes}
           >
             Sí, soy mayor.
           </button>
           <button
-            className="rounded-full px-6 border border-purple-600 lg:px-7 text-stone-800 shadow-lg shadow-zinc-900 "
+            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-7 text-stone-800 shadow-lg shadow-zinc-900 "
             onClick={handleNo}
           >
             No, soy menor.
