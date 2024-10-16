@@ -77,23 +77,27 @@ const EvaDetail = () => {
               <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
             </div>
             <Link
-              to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
+              to={`https://api.whatsapp.com/send/?phone=${evaDetail?.wttp}`}
               target="blank"
               className="self-end"
             >
               <button
-                id="btn-evadetail"
-                className="px-6 py-1  flex items-center justify-center gap-1 text-base xl:text-lg font-semibold 2xl:text-xl"
+                style={{
+                  boxShadow: "8px 8px 16px #171718, -3px -3px 3px #37373c",
+                }}
+                className="pr-4 pl-2  rounded-full flex items-center justify-start gap-1 text-base xl:text-lg font-semibold 2xl:text-xl border-[2px] border-purple-500 text-whiteCustom"
               >
+                <i className="bx bxl-whatsapp text-2xl text-purple-400"></i>
                 CONTACTO
               </button>
             </Link>
             <h5 className="text-3xl mt-3 font-medium text-transparent bg-clip-text bg-gradient-to-r from-zinc-200  to-purple-300 lg:text-4xl xl:text-5xl xl:mt-4 2xl:mt-6 2xl:text-6xl">
-              {evaDetail.name}
+              {evaDetail?.name}
             </h5>
             <div className="h-[1px] w-[100%] bg-zinc-700 mt-3"></div>
-            <p className="font-text2 text-lg mt-1 xl:text-2xl xl:mt-2 2xl:mt-3 2xl:text-3xl text-stone-500 ">
-              {evaDetail.location}
+            <p className="font-text2 w-full text-lg mt-1 xl:text-2xl xl:mt-2 2xl:mt-3 2xl:text-3xl text-stone-500 flex justify-between items-center">
+              {evaDetail?.location}
+              <div className="flex items-center gap-2 mr-2"><i className='bx bxs-phone text-lg'></i> {evaDetail?.wttp}</div>
             </p>
             <p
               style={{ filter: "drop-shadow(2px 3px 3px rgb(24 24 27))" }}

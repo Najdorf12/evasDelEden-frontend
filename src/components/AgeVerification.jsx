@@ -36,7 +36,7 @@ const AgeVerification = ({ onConfirm }) => {
       ></section>
       <article
         id="box-glass"
-        className="flex flex-col justify-center font-text items-center gap-2 z-50 py-6 px-2 w-[95%] rounded-3xl max-w-[650px] 2xl:max-w-[750px] lg:gap-4 shadow-xl shadow-zinc-700 lg:shadow-xl lg:shadow-gray-400"
+        className="flex flex-col justify-center border border-purple-200 font-text items-center gap-2 z-50 py-6 px-2 w-[95%] rounded-3xl max-w-[650px] 2xl:max-w-[750px] lg:gap-4 shadow-xl shadow-zinc-700 lg:shadow-xl lg:shadow-gray-400"
       >
         <h6 className="text-[2.70rem] text-zinc-800 font-title font-semibold lg:text-5xl xl:text-6xl">
           Verificación de Edad
@@ -53,13 +53,13 @@ const AgeVerification = ({ onConfirm }) => {
         </p>
         <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-3 lg:text-lg xl:text-xl lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
-            className="rounded-full px-6 border border-stone-600 lg:px-7 text-primary bg-zinc-700 shadow-lg shadow-zinc-900"
+            className="rounded-full px-6 border border-purple-600 lg:px-7 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900"
             onClick={handleYes}
           >
             Sí, soy mayor.
           </button>
           <button
-            className="rounded-full px-6 border border-stone-600 lg:px-7 text-stone-800 shadow-lg shadow-zinc-900 "
+            className="rounded-full px-6 border border-purple-600 lg:px-7 text-stone-800 shadow-lg shadow-zinc-900 "
             onClick={handleNo}
           >
             No, soy menor.
