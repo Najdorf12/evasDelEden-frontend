@@ -29,7 +29,7 @@ const Contact = () => {
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
-            className="text-8xl text-primary Custom font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
+            className="text-8xl text-purple-100 Custom font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
           >
             CONTACTO
           </h6>
@@ -59,7 +59,7 @@ const Contact = () => {
                 <input
                   autoComplete="off"
                   placeholder="john@example.com"
-                  className="peer h-10 w-full my-1 border-b-2 border-primary text-white bg-transparent placeholder-transparent focus:outline-none   lg:text-stone-600 2xl:mt-6  lg:focus:border-zinc-800"
+                  className="peer h-10 w-full my-1 border-b-2 border-purple-500 text-white bg-transparent placeholder-transparent focus:outline-none   lg:text-stone-600 2xl:mt-6  lg:focus:border-zinc-800"
                   required=""
                   id="email"
                   name="email"
@@ -76,7 +76,7 @@ const Contact = () => {
                 <input
                   autoComplete="off"
                   placeholder="Password"
-                  className="peer h-10 w-full border-b-2  text-white lg:text-stone-600 bg-transparent placeholder-transparent focus:outline-none  border-primary lg:focus:border-zinc-800"
+                  className="peer h-10 w-full border-b-2  text-white lg:text-stone-600 bg-transparent placeholder-transparent focus:outline-none  border-purple-500 lg:focus:border-zinc-800"
                   required=""
                   id="password"
                   name="password"
@@ -91,11 +91,11 @@ const Contact = () => {
                 name=""
                 id="box-glass4"
                 placeholder="Escribe tu consulta aquí"
-                className="border border-whiteCustom text-white rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 "
+                className="border border-whiteCustom text-white rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 focus:outline-none  focus:border-purple-600 "
               ></textarea>
 
               <button
-                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border-[2px] border-whiteCustom text-zinc-800 font-semibold transition duration-200 text-base bg-primary lg:border-[2px] xl:py-1 2xl:py-2"
+                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border-[2px] border-whiteCustom text-whiteCustom font-semibold transition duration-200 text-base bg-zinc-800 lg:border-[2px] xl:py-1 2xl:py-2"
                 type="submit"
               >
                 Enviar
