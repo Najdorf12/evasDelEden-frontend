@@ -75,7 +75,7 @@ const Home = () => {
   }
 
   return (
-    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-24 lg:px-14 xl:px-24 2xl:pb-40">
+    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 2xl:pb-40">
       <section className="w-full flex flex-col items-center z-50">
         <nav className="w-full flex justify-between items-center pr-2 mt-2 xl:mt-3 z-50">
           <div>
@@ -114,7 +114,7 @@ const Home = () => {
               }`}
             >
               <i
-                className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-6 xl:-left-[28px] lg:text-lg xl:text-xl 2xl:-left-[32px] 2xl:text-2xl ${
+                className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-5 xl:-left-[28px] lg:text-lg xl:text-xl 2xl:-left-[32px] 2xl:text-2xl ${
                   selectedMenu === "Categorias"
                     ? "text-purple-300 "
                     : "text-zinc-500"
@@ -133,7 +133,7 @@ const Home = () => {
               }`}
             >
               <i
-                className={`bx bxs-map text-lg absolute text-primary -left-6 xl:-left-[28px] lg:text-lg xl:text-2xl 2xl:-left-[32px] 2xl:text-3xl  ${
+                className={`bx bxs-map text-lg absolute text-primary -left-5 xl:-left-[28px] lg:text-lg xl:text-2xl 2xl:-left-[32px] 2xl:text-3xl  ${
                   selectedMenu === "Ubicacion"
                     ? "text-purple-300 "
                     : "text-zinc-500"
@@ -309,7 +309,7 @@ const Home = () => {
         })}
       </section>
 
-      <section className="w-full flex justify-center mt-6">
+      <section className="w-full flex justify-center flex-col items-center mt-8 gap-20">
         <article
           style={{
             boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
@@ -328,7 +328,7 @@ const Home = () => {
           <div className="absolute bottom-1 right-2 xl:bottom-2 xl:right-3  text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
-          <h6 className="text-lg text-whiteCustom">
+          <h6 className="text-xl text-whiteCustom">
             Guía de las mejores escorts independientes.
           </h6>
           <p className="text-base">
@@ -336,10 +336,33 @@ const Home = () => {
             independientes. EvasdelEden NO posee relación ni vinculación laboral
             con los anunciantes. Sólo publicamos Fotografías y textos a expresa
             voluntad de los anunciantes. El sitio es un medio Visual
-            Publicitario. Sitio sólo para mayores, en publicación y usuarios
-            visitantes.
+            Publicitario.
           </p>
         </article>
+        <ul className="text-[12px] font-text2 text-stone-500 px-6 flex flex-col gap-1">
+          <li className="flex justify-start items-start ">
+            <i className="bx bx-chevrons-right text-lg -mt-1"></i>Portal para
+            visitantes y clientes anunciantes mayores de 18 años
+          </li>
+          <li className="flex justify-start items-start ">
+            <i className="bx bx-chevrons-right text-lg -mt-1"></i>EvasDelEden no
+            es una agencia por tal motivo no se responsabiliza por las
+            publicaciones de las escorts.
+          </li>
+          <li className="flex justify-start items-start ">
+            <i className="bx bx-chevrons-right text-lg -mt-1"></i>Todas las
+            fotografías son certificadas y verificadas como reales antes de ser
+            publicadas.
+          </li>
+          <li className="flex justify-start items-start ">
+            <i className="bx bx-chevrons-right text-lg -mt-1"></i>Nuestro portal
+            se reserva el derecho de publicación.
+          </li>
+          <li className="flex justify-start items-start ">
+            <i className="bx bx-chevrons-right text-lg -mt-1"></i>EvasDelEden
+            presta el servicio de publicacion y asesoría gráfica.
+          </li>
+        </ul>
       </section>
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
