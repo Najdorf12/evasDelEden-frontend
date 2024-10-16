@@ -29,7 +29,7 @@ const Contact = () => {
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
-            className="text-8xl text-purple-100 Custom font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
+            className="text-8xl text-purple-200 Custom font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
           >
             CONTACTO
           </h6>
@@ -95,7 +95,7 @@ const Contact = () => {
               ></textarea>
 
               <button
-                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border-[2px] border-whiteCustom text-whiteCustom font-semibold transition duration-200 text-base bg-zinc-800 lg:border-[2px] xl:py-1 2xl:py-2"
+                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border-[2px] border-purple-500 text-whiteCustom font-semibold transition duration-200 text-base bg-zinc-800 lg:border-[2px] xl:py-1 2xl:py-2"
                 type="submit"
               >
                 Enviar
