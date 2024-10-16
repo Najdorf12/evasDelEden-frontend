@@ -339,7 +339,7 @@ const Home = () => {
             Publicitario.
           </p>
         </article>
-        <ul className="text-[12px] font-text2 text-stone-500 px-6 flex flex-col gap-1">
+        <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col gap-1">
           <li className="flex justify-start items-start ">
             <i className="bx bx-chevrons-right text-lg -mt-1"></i>Portal para
             visitantes y clientes anunciantes mayores de 18 años
