@@ -29,7 +29,7 @@ const Contact = () => {
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
-            className="text-8xl text-purple-200 Custom font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
+            className="text-8xl text-whiteCustom font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
           >
             CONTACTO
           </h6>
@@ -37,8 +37,7 @@ const Contact = () => {
             style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }}
             className="mt-2 text-stone-100 text-base font-semibold text-center text-balance lg:text-lg 2xl:text-xl "
           >
-            Contact us to learn about pricing, deployment options and the lorem
-            impsum.
+            Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación.
           </p>
         </article>
         {/* FORM */}
@@ -51,8 +50,7 @@ const Contact = () => {
             <p
               className="text-stone-400 px-4 text-base font-semibold text-center text-balance xl:px-2"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-              condimentum nisi lorem, ut congue metus efficitur id.
+              EvasDelEden es un prestigioso sitio creado para scorts y contenido erótico.
             </p>
             <form method="POST" action="#" className="mt-3 space-y-8 px-6 xl:space-y-4 2xl:space-y-8 ">
               <div className="relative">
@@ -91,7 +89,7 @@ const Contact = () => {
                 name=""
                 id="box-glass4"
                 placeholder="Escribe tu consulta aquí"
-                className="border border-whiteCustom text-white rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 focus:outline-none  focus:border-purple-600 "
+                className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 focus:outline-none  focus:border-purple-600 "
               ></textarea>
 
               <button
