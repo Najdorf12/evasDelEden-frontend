@@ -284,7 +284,7 @@ const Home = () => {
                   <CarouselIndicators />
                 </CarouselControl>
               </Carousel>
-              <div className="w-full mt-5 mb-10 xl:my-8 h-6 flex justify-center items-center">
+              <div className="w-full my-8 h-6 flex justify-center items-center">
                 <div className="loader">
                   <div className="circle">
                     <div className="dot"></div>
@@ -314,7 +314,7 @@ const Home = () => {
           style={{
             boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
           }}
-          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-6 flex flex-col justify-center items-start gap-3 text-balance rounded-2xl border border-purple-400 lg:w-[520px]  xl:w-[620px] 2xl:w-[700px]"
+          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-9 flex flex-col justify-center items-start gap-3 text-balance rounded-2xl border border-purple-400 lg:w-[520px]  xl:w-[620px] 2xl:w-[700px]"
         >
           <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
