@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import imgLogo from "../assets/logo-removebg.png";
+
 const AgeVerification = ({ onConfirm }) => {
   const navigate = useNavigate();
 
@@ -22,15 +23,11 @@ const AgeVerification = ({ onConfirm }) => {
         background:
           "linear-gradient(to left, #ada996, #f2f2f2, #dbdbdb, #eaeaea)",
       }}
-      className="relative flex flex-col items-center pt-28 w-full h-[100dvh] overflow-hidden lg:bg-zinc-300 lg:pt-[10%]"
+      className="relative flex flex-col items-center pt-24 w-full h-[100dvh] overflow-hidden lg:bg-zinc-300 lg:pt-[10%]"
     >
       <nav className="absolute top-2 left-2 z-50  lg:w-full lg:flex lg:justify-end  lg:top-3 ">
         <div className=" lg:lg:mr-[3%] flex justify-center items-center">
-          <img
-            src={imgLogo}
-            className="w-16 lg:w-28 2xl:w-28 "
-            alt="logo"
-          />
+          <img src={imgLogo} className="w-16 lg:w-28 2xl:w-28 " alt="logo" />
         </div>
       </nav>
       <section
@@ -45,8 +42,11 @@ const AgeVerification = ({ onConfirm }) => {
           Verificación de Edad
         </h6>
         <p className="text-stone-700 text-sm text-center text-balance lg:text-base">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro
-          explicabo est quam, omnis tenetur repellendus.
+          Sitio para mayores de 18 años. Contenido explicito solo para adultos.
+          La interaccion de los usuarios con la plataforma es exclusiva
+          responsabilidad de los mismo y los anunciantes del sitio. Al ingresar
+          al sitio asumo toda la responsabilidad de la interaccion en el mismo
+          eximiendo de responsabilidad a los responsables de EvasdelEden.
         </p>
         <p className="text-lg font-text mt-3 font-medium text-stone-700 lg:text-xl 2xl:text-2xl">
           ¿Eres mayor de edad?

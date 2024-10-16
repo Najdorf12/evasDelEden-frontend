@@ -82,7 +82,10 @@ const Home = () => {
             <img src={imgLogo} alt="logo" className="w-14 xl:w-16  2xl:w-20" />
           </div>
           <Link to={"/contacto"}>
-            <button className="pl-2 text-base border-l-[3px] border-zinc-600 font-text3 text-whiteCustom xl:text-lg 2xl:text-xl">
+            <button
+              id="btn-evadetail"
+              className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl"
+            >
               Publicar
             </button>
           </Link>
@@ -94,7 +97,7 @@ const Home = () => {
           </h2>
 
           <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
-            Escorts - Mendoza
+            Escorts - {selectedLocation}
           </h3>
         </article>
 
@@ -153,6 +156,7 @@ const Home = () => {
                 style={{
                   background:
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
+                  boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
                 className="flex justify-center items-center mt-3 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
@@ -169,6 +173,7 @@ const Home = () => {
                 style={{
                   background:
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
+                  boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
                 className="mt-3 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom "
               >
@@ -184,6 +189,7 @@ const Home = () => {
                 }
                 style={{
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
+                  boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
                 className="mt-3 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 2xl:w-40 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
@@ -192,12 +198,15 @@ const Home = () => {
             </ul>
           </div>
         ) : (
-          <div className="flex gap-4 w-full pl-3  lg:gap-6 mt-1 xl:mt-3 xl:gap-8 2xl:gap-10 2xl:mt-4 z-50">
+          <div className="flex font-text3 gap-4 w-full pl-3  lg:gap-6 mt-1 xl:mt-3 xl:gap-8 2xl:gap-10 2xl:mt-4 z-50">
             {locations.map((location) => (
               <button
+                style={{
+                  boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+                }}
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-full  px-[10px] py-[2px] text-sm lg:text-base lg:px-[24px] xl:px-[28px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 md:font-medium ${
+                className={` mt-3 rounded-full  px-[10px] py-[2px] text-[12px] lg:text-base lg:px-[24px] xl:px-[28px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium ${
                   selectedLocation === location
                     ? "text-purple-600 border border-zinc-500 bg-white"
                     : "border text-zinc-400  border-purple-400"
@@ -210,7 +219,7 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center">
+      <section className="w-full mt-6 p-1 sm:p-2 flex flex-col items-center">
         {allEvas?.map((category) => {
           let categoryRef;
 
@@ -240,8 +249,17 @@ const Home = () => {
               }
               id={category?._id}
               key={category?._id}
-              className="w-full"
+              className="w-full flex flex-col"
             >
+              <h5
+                style={{
+                  boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+                }}
+                className="text-base text-stone-500 mb-4 ml-3 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
+              >
+                <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
+                {category?._id}
+              </h5>
               <Carousel options={{ slidesToScroll: 2 }}>
                 <CarouselSlides className="flex">
                   {category?.evas?.map((eva) => (
@@ -267,30 +285,62 @@ const Home = () => {
                 </CarouselControl>
               </Carousel>
               <div className="w-full mt-5 mb-10 xl:my-8 h-6 flex justify-center items-center">
-              <div className="loader">
-  <div className="circle">
-    <div className="dot"></div>
-    <div className="outline"></div>
-  </div>
-  <div className="circle">
-    <div className="dot"></div>
-    <div className="outline"></div>
-  </div>
-  <div className="circle">
-    <div className="dot"></div>
-    <div className="outline"></div>
-  </div>
-  <div className="circle">
-    <div className="dot"></div>
-    <div className="outline"></div>
-  </div>
-</div>
+                <div className="loader">
+                  <div className="circle">
+                    <div className="dot"></div>
+                    <div className="outline"></div>
+                  </div>
+                  <div className="circle">
+                    <div className="dot"></div>
+                    <div className="outline"></div>
+                  </div>
+                  <div className="circle">
+                    <div className="dot"></div>
+                    <div className="outline"></div>
+                  </div>
+                  <div className="circle">
+                    <div className="dot"></div>
+                    <div className="outline"></div>
+                  </div>
+                </div>
               </div>
             </div>
           );
         })}
       </section>
 
+      <section className="w-full flex justify-center mt-6">
+        <article
+          style={{
+            boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+          }}
+          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-6 flex flex-col justify-center items-start gap-3 text-balance rounded-2xl border border-purple-400 lg:w-[520px]  xl:w-[620px] 2xl:w-[700px]"
+        >
+          <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700">
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+          <div className="absolute top-1 right-2 xl:bottom-2 xl:right-3  text-stone-700">
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+          <div className="absolute bottom-1 left-2 xl:top-2 xl:left-3 text-stone-700">
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+          <div className="absolute bottom-1 right-2 xl:bottom-2 xl:right-3  text-stone-700">
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+          <h6 className="text-lg text-whiteCustom">
+            Guía de las mejores escorts independientes.
+          </h6>
+          <p className="text-base">
+            Todas los anuncios y publicaciones de productos o servicios son
+            independientes. EvasdelEden NO posee relación ni vinculación laboral
+            con los anunciantes. Sólo publicamos Fotografías y textos a expresa
+            voluntad de los anunciantes. El sitio es un medio Visual
+            Publicitario. Sitio sólo para mayores, en publicación y usuarios
+            visitantes.
+          </p>
+        </article>
+      </section>
       <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
       </footer>

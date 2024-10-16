@@ -71,10 +71,10 @@ const EvaDetail = () => {
             className="relative font-text3 text-stone-500   w-[95%] pl-4 pr-2 pt-2 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-stone-700 lg:w-[520px] lg:pr-3 lg:pt-3 lg:pl-5 xl:w-[620px] xl:pl-6 2xl:pr-4 2xl:pt-4 2xl:w-[700px]"
           >
             <div className="absolute top-1 left-2 xl:top-2 xl:left-3">
-            <i className='bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl'></i>
+              <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
             </div>
             <div className="absolute bottom-1 right-2 xl:bottom-2 xl:right-3">
-            <i className='bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl'></i>
+              <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
             </div>
             <Link
               to={`https://api.whatsapp.com/send/?phone=${evaDetail.wttp}`}
@@ -88,9 +88,7 @@ const EvaDetail = () => {
                 CONTACTO
               </button>
             </Link>
-            <h5
-              className="text-3xl mt-3 font-medium text-transparent bg-clip-text bg-gradient-to-r from-zinc-200  to-purple-300 lg:text-4xl xl:text-5xl xl:mt-4 2xl:mt-6 2xl:text-6xl"
-            >
+            <h5 className="text-3xl mt-3 font-medium text-transparent bg-clip-text bg-gradient-to-r from-zinc-200  to-purple-300 lg:text-4xl xl:text-5xl xl:mt-4 2xl:mt-6 2xl:text-6xl">
               {evaDetail.name}
             </h5>
             <div className="h-[1px] w-[100%] bg-zinc-700 mt-3"></div>
@@ -98,7 +96,7 @@ const EvaDetail = () => {
               {evaDetail.location}
             </p>
             <p
-            style={{filter:"drop-shadow(2px 3px 3px rgb(24 24 27))"}}
+              style={{ filter: "drop-shadow(2px 3px 3px rgb(24 24 27))" }}
               className="font-text3 font-medium text-stone-500 pr-6 text-balance mt-2  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-100 to-purple-200 text-base lg:text-lg lg:mt-3 xl:text-xl xl:pr-[200px] 2xl:pr-[220px] 2xl:mt-4 2xl:text-2xl"
             >
               {evaDetail.description?.servicio}{" "}
@@ -142,7 +140,10 @@ const EvaDetail = () => {
               </li>
             </div>
 
-            <li style={{filter:"drop-shadow(2px 3px 3px rgb(24 24 27))"}} className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-200 to-purple-100 lg:text-xl lg:mt-4 xl:mt-6 xl:text-2xl 2xl:mt-8 2xl:text-3xl">
+            <li
+              style={{ filter: "drop-shadow(2px 3px 3px rgb(24 24 27))" }}
+              className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-200 to-purple-100 lg:text-xl lg:mt-4 xl:mt-6 xl:text-2xl 2xl:mt-8 2xl:text-3xl"
+            >
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>
@@ -150,9 +151,9 @@ const EvaDetail = () => {
       </section>
 
       <div className="flex gap-3 mt-6 text-7xl lg:mt-8 lg:gap-4 xl:gap-8 xl:mt-16 2xl:mt-20 xl:text-8xl 2xl:text-9xl 2xl:gap-12">
-        <i className='bx bxs-cube-alt  text-zinc-700'></i>
-        <i className='bx bxs-cube-alt  text-zinc-100'></i>
-        <i className='bx bxs-cube-alt  text-zinc-700'></i>
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
+        <i className="bx bxs-cube-alt  text-zinc-100"></i>
+        <i className="bx bxs-cube-alt  text-zinc-700"></i>
       </div>
 
       <footer className="absolute bottom-0 text-zinc-700 font-medium lg:text-zinc-500 ">
