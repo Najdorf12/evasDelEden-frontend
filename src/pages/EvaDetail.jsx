@@ -56,10 +56,13 @@ const EvaDetail = () => {
           <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
         </div>
         <Link to={"/"}>
-          <button className="pl-2 text-lg border-l-[3px] border-zinc-600 font-text2 text-whiteCustom xl:text-xl xl:pl-3 2xl:text-2xl">
-            Volver
-          </button>
-        </Link>
+            <button
+              id="btn-evadetail"
+              className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl"
+            >
+              Volver al Inicio
+            </button>
+          </Link>
       </nav>
 
       <section className=" relative flex flex-col items-center lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 2xl:gap-20 ">

@@ -42,8 +42,11 @@ const Contact = () => {
             <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
           </div>
           <Link to={"/"}>
-            <button className="pl-2 text-lg border-l-[3px] border-zinc-600 font-text2 text-whiteCustom lg:text-zinc-600 lg:border-zinc-400 xl:text-xl 2xl:text-2xl">
-              Volver
+            <button
+              id="btn-evadetail"
+              className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl"
+            >
+              Volver al Inicio
             </button>
           </Link>
         </nav>
@@ -57,16 +60,16 @@ const Contact = () => {
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
-            className="text-8xl text-whiteCustom font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
+            className="text-8xl text-stone-400 font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
           >
             CONTACTO
           </h6>
           <p
             style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }}
-            className="mt-2 text-whiteCustom text-base font-semibold text-center px-3 text-balance lg:text-lg 2xl:text-xl "
+            className="mt-2 text-zinc-100 text-base font-semibold text-center px-2 text-balance lg:text-lg 2xl:text-xl "
           >
             Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación. <br />
-            <span className="text-purple-300">EvasDelEden es un prestigioso sitio creado para scorts y contenido erótico.</span>
+            EvasDelEden es un prestigioso sitio creado para scorts y contenido erótico.
           </p>
         </article>
         {/* FORM */}
