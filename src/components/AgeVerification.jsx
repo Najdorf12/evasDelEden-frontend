@@ -41,7 +41,7 @@ const AgeVerification = ({ onConfirm }) => {
         <h6 className="text-[2.70rem] text-zinc-800 font-title font-semibold lg:text-5xl xl:text-6xl">
           Verificación de Edad
         </h6>
-        <p className="text-stone-700 text-sm text-center text-balance lg:text-base">
+        <p className="text-stone-700 text-sm text-center text-balance lg:text-base lg:px-12">
           Sitio para mayores de 18 años. Contenido explicito solo para adultos.
           La interaccion de los usuarios con la plataforma es exclusiva
           responsabilidad de los mismo y los anunciants del sitio. Al ingresar
@@ -53,13 +53,13 @@ const AgeVerification = ({ onConfirm }) => {
         </p>
         <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-2 lg:text-lg xl:text-xl lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
-            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-7 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900"
+            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-10 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900"
             onClick={handleYes}
           >
             Sí, soy mayor.
           </button>
           <button
-            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-7 text-stone-800 shadow-lg shadow-zinc-900 "
+            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-10 text-stone-800 shadow-lg shadow-zinc-900 "
             onClick={handleNo}
           >
             No, soy menor.

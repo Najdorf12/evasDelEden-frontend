@@ -158,7 +158,7 @@ const Home = () => {
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="flex justify-center items-center mt-3 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
+                className="flex justify-center items-center mt-2 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
                 Platinum
               </li>
@@ -175,7 +175,7 @@ const Home = () => {
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="mt-3 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom "
+                className="mt-2 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom "
               >
                 Gold
               </li>
@@ -191,7 +191,7 @@ const Home = () => {
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="mt-3 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 2xl:w-40 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
+                className="mt-2 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 2xl:w-40 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
                 Silver
               </li>
@@ -206,7 +206,7 @@ const Home = () => {
                 }}
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-3 rounded-full  px-[10px] py-[2px] text-[12px] lg:text-base lg:px-[24px] xl:px-[28px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium ${
+                className={` mt-2 rounded-full  px-[10px] py-[2px] text-[12px] lg:text-base lg:px-[24px] xl:px-[28px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium ${
                   selectedLocation === location
                     ? "text-purple-600 border border-zinc-500 bg-white"
                     : "border text-zinc-400  border-purple-400"
@@ -219,7 +219,7 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full mt-6 p-1 sm:p-2 flex flex-col items-center">
+      <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center">
         {allEvas?.map((category) => {
           let categoryRef;
 
@@ -255,7 +255,7 @@ const Home = () => {
                 style={{
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="text-base text-stone-500 mb-4 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
+                className="text-base text-stone-500 mb-5 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
                 {category?._id}
@@ -339,27 +339,27 @@ const Home = () => {
             publicitario.
           </p>
         </article>
-        <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col gap-1">
+        <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col leading-[.9rem] ">
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-1"></i>Portal para
+            <i className="bx bx-chevrons-right text-lg -mt-2"></i>Portal para
             visitantes y clientes anunciantes mayores de 18 años
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-1"></i>EvasDelEden no
+            <i className="bx bx-chevrons-right text-lg -mt-2"></i>EvasDelEden no
             es una agencia por tal motivo no se responsabiliza por las
             publicaciones de las escorts.
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-1"></i>Todas las
+            <i className="bx bx-chevrons-right text-lg -mt-2"></i>Todas las
             fotografías son certificadas y verificadas como reales antes de ser
             publicadas.
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-1"></i>Nuestro portal
+            <i className="bx bx-chevrons-right text-lg -mt-2"></i>Nuestro portal
             se reserva el derecho de publicación.
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-1"></i>EvasDelEden
+            <i className="bx bx-chevrons-right text-lg -mt-2"></i>EvasDelEden
             presta el servicio de publicacion y asesoría gráfica.
           </li>
         </ul>
