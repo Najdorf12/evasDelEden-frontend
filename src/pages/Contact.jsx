@@ -1,12 +1,46 @@
 import imgLogo from "../assets/logo-removebg.png";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Resend } from 'resend';
+
+const resend = new Resend('re_gcgSBD6n_NHfcokuaS34gDp7Rc4bm2yKp');
 
 const Contact = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+
+  const onSubmit = async (data) => {
+    try {
+      const { email, whatsapp, message } = data;
+
+      // Llamada a Resend para enviar el correo
+      const { data: resendData, error } = await resend.emails.send({
+        from: 'TuEmpresa <info@tuempresa.com>',  // Cambia el correo remitente
+        to: ['agustin.morro@gmail.com'], // Correo de destino
+        subject: `Consulta de ${email}`,
+        html: `
+          <h1>Detalles del contacto</h1>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>WhatsApp:</strong> ${whatsapp}</p>
+          <p><strong>Mensaje:</strong> ${message}</p>
+        `,
+      });
+
+      if (error) {
+        console.error('Error al enviar el correo:', error);
+      } else {
+        console.log('Correo enviado:', resendData);
+        reset();  // Resetea el formulario después de enviar el correo
+      }
+    } catch (err) {
+      console.error('Error en la solicitud:', err);
+    }
+  };
+  
   return (
     <>
       <section
-        
         className="relative flex flex-col items-center w-full h-[100dvh] overflow-hidden lg:bg-zinc-300"
       >
         <nav className="w-full flex justify-between items-center pr-2 mt-2 z-50 lg:px-[4%]">
@@ -35,24 +69,21 @@ const Contact = () => {
           </h6>
           <p
             style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }}
-            className="mt-2 text-stone-100 text-base font-semibold text-center text-balance lg:text-lg 2xl:text-xl "
+            className="mt-2 text-whiteCustom text-base font-semibold text-center px-3 text-balance lg:text-lg 2xl:text-xl "
           >
-            Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación.
+            Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación. <br />
+            <span className="text-purple-300">EvasDelEden es un prestigioso sitio creado para scorts y contenido erótico.</span>
           </p>
         </article>
         {/* FORM */}
-        <section className="z-50 font-text2 mt-3 lg:ml-[30%] 2xl:mt-8">
+        <section className="z-50 w-full font-text2 mt-3 lg:ml-[30%] 2xl:mt-8">
           <div
             /* id="box-glass2" */
             style={{ animation: "slideInFromLeft 1s ease-out" }}
             class="max-w-md w-full rounded-2xl  overflow-hidden space-y-4 lg:py-3"
           >
-            <p
-              className="text-stone-400 px-4 text-base font-semibold text-center text-balance xl:px-2"
-            >
-              EvasDelEden es un prestigioso sitio creado para scorts y contenido erótico.
-            </p>
-            <form method="POST" action="#" className="mt-3 space-y-8 px-6 xl:space-y-4 2xl:space-y-8 ">
+           
+            <form  onSubmit={handleSubmit(onSubmit)}  className="mt-3 w-full space-y-8 px-6 xl:space-y-4 2xl:space-y-8 ">
               <div className="relative">
                 <input
                   autoComplete="off"
@@ -62,6 +93,7 @@ const Contact = () => {
                   id="email"
                   name="email"
                   type="email"
+                  {...register("email")}
                 />
                 <label
                   className=" absolute left-0 my-1 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base font-normal lg:text-stone-400 lg:peer-placeholder-shown:text-stone-600 2xl:mt-6"
@@ -73,11 +105,12 @@ const Contact = () => {
               <div className="relative">
                 <input
                   autoComplete="off"
-                  placeholder="Password"
+                  placeholder="wttp"
                   className="peer h-10 w-full border-b-2  text-white lg:text-stone-600 bg-transparent placeholder-transparent focus:outline-none  border-purple-500 lg:focus:border-zinc-800"
                   required=""
-                  id="password"
-                  name="password"
+                  id="wttp"
+                  name="wttp"
+                  {...register("wttp")}
                 />
                 <label
                   className="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base font-normal lg:peer-placeholder-shown:text-stone-600 "
@@ -90,6 +123,7 @@ const Contact = () => {
                 id="box-glass4"
                 placeholder="Escribe tu consulta aquí"
                 className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 focus:outline-none  focus:border-purple-600 "
+                {...register("message")}
               ></textarea>
 
               <button

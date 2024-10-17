@@ -44,14 +44,14 @@ const AgeVerification = ({ onConfirm }) => {
         <p className="text-stone-700 text-sm text-center text-balance lg:text-base">
           Sitio para mayores de 18 años. Contenido explicito solo para adultos.
           La interaccion de los usuarios con la plataforma es exclusiva
-          responsabilidad de los mismo y los anunciantes del sitio. Al ingresar
+          responsabilidad de los mismo y los anunciants del sitio. Al ingresar
           al sitio asumo toda la responsabilidad de la interaccion en el mismo
           eximiendo de responsabilidad a los responsables de EvasdelEden.
         </p>
-        <p className="text-lg font-text mt-3 font-medium text-stone-700 lg:text-xl 2xl:text-2xl">
+        <p className="text-lg font-text mt-1 font-medium text-stone-700 lg:text-xl 2xl:text-2xl">
           ¿Eres mayor de edad?
         </p>
-        <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-3 lg:text-lg xl:text-xl lg:gap-6 2xl:gap-10 2xl:text-xl">
+        <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-2 lg:text-lg xl:text-xl lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
             className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-7 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900"
             onClick={handleYes}

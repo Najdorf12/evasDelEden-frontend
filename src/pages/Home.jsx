@@ -309,7 +309,7 @@ const Home = () => {
         })}
       </section>
 
-      <section className="w-full flex justify-center flex-col items-center mt-8 gap-20">
+      <section className="w-full flex justify-center flex-col items-center mt-8 gap-16">
         <article
           style={{
             boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
@@ -333,10 +333,10 @@ const Home = () => {
           </h6>
           <p className="text-base">
             Todas los anuncios y publicaciones de productos o servicios son
-            independientes. EvasdelEden NO posee relación ni vinculación laboral
-            con los anunciantes. Sólo publicamos Fotografías y textos a expresa
-            voluntad de los anunciantes. El sitio es un medio Visual
-            Publicitario.
+            independientes. <strong>EvasdelEden no posee relación ni vinculación laboral
+            con los anunciantes</strong> . Sólo publicamos fotografías y textos a expresa
+            voluntad de los anunciantes. El sitio es un medio visual
+            publicitario.
           </p>
         </article>
         <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col gap-1">
