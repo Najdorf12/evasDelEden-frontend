@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Resend } from 'resend';
 
-const resend = new Resend('re_gcgSBD6n_NHfcokuaS34gDp7Rc4bm2yKp');
+/* const resend = new Resend('re_gcgSBD6n_NHfcokuaS34gDp7Rc4bm2yKp'); */
 
 const Contact = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,26 +12,20 @@ const Contact = () => {
 
   const onSubmit = async (data) => {
     try {
-      const { email, whatsapp, message } = data;
-
-      // Llamada a Resend para enviar el correo
-      const { data: resendData, error } = await resend.emails.send({
-        from: 'TuEmpresa <info@tuempresa.com>',  // Cambia el correo remitente
-        to: ['agustin.morro@gmail.com'], // Correo de destino
-        subject: `Consulta de ${email}`,
-        html: `
-          <h1>Detalles del contacto</h1>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>WhatsApp:</strong> ${whatsapp}</p>
-          <p><strong>Mensaje:</strong> ${message}</p>
-        `,
+      const response = await fetch('https://tu-backend.com/api/email/send-email', {  // Asegúrate de que sea la URL correcta
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
-
-      if (error) {
-        console.error('Error al enviar el correo:', error);
-      } else {
-        console.log('Correo enviado:', resendData);
+  
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Correo enviado:', result);
         reset();  // Resetea el formulario después de enviar el correo
+      } else {
+        console.error('Error al enviar el correo:', result.error);
       }
     } catch (err) {
       console.error('Error en la solicitud:', err);
