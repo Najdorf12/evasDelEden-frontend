@@ -12,7 +12,7 @@ const Contact = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('https://tu-backend.com/api/email/send-email', {  // Asegúrate de que sea la URL correcta
+      const response = await fetch('https://evas-del-eden-backend.vercel.app/api/email/send-email', {  // Asegúrate de que sea la URL correcta
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
