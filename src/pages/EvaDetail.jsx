@@ -202,7 +202,7 @@ const EvaDetail = () => {
               </div>
             ))
           ) : (
-            <p className="pl-4 text-stone-500 text-balance max-w-[300px] text-sm -mt-2">No hay videos disponibles para esta Eva</p>
+            <p className="pl-1 self-start text-stone-500 text-balance max-w-[300px] text-sm -mt-2">No hay videos disponibles para esta Eva</p>
           )}
         </div>
       </section>
