@@ -56,13 +56,13 @@ const EvaDetail = () => {
           <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
         </div>
         <Link to={"/"}>
-            <button
-              id="btn-evadetail"
-              className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl"
-            >
-              Volver al Inicio
-            </button>
-          </Link>
+          <button
+            id="btn-evadetail"
+            className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl"
+          >
+            Volver al Inicio
+          </button>
+        </Link>
       </nav>
 
       <section className=" relative flex flex-col items-center lg:flex-row lg:items-center lg:justify-center lg:gap-8 xl:gap-12 2xl:gap-20 ">
@@ -133,7 +133,16 @@ const EvaDetail = () => {
             </figure>
           </div>
         </div>
-        <article className="mt-8 px-3 max-w-[450px] lg:-mt-12 xl:-mt-16 xl:max-w-[580px] 2xl:-mt-20 2xl:max-w-[680px]">
+        <h5
+          style={{
+            boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+          }}
+          className="text-base text-stone-500 mt-4 ml-2 font-medium font-text2 self-start pl-2 pr-4 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
+        >
+          <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
+          Info
+        </h5>
+        <article className="mt-4 px-3 max-w-[450px] lg:-mt-12 xl:-mt-16 xl:max-w-[580px] 2xl:-mt-20 2xl:max-w-[680px]">
           <ul className="font-text2 text-stone-400 flex flex-col gap-2 text-base lg:text-lg xl:text-2xl 2xl:text-2xl lg:gap-4">
             <li className="border border-stone-700 rounded-full px-3 lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900">
               Horario: <span>{evaDetail.description?.horario} </span>
@@ -165,7 +174,40 @@ const EvaDetail = () => {
         </article>
       </section>
 
-      <div className="flex gap-3 mt-6 text-7xl lg:mt-8 lg:gap-4 xl:gap-8 xl:mt-16 2xl:mt-20 xl:text-8xl 2xl:text-9xl 2xl:gap-12">
+      <section className="mt-8 flex flex-col items-start self-start w-full">
+        <h5
+          style={{
+            boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+          }}
+          className="text-base text-stone-500 my-2 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
+        >
+          <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
+          Videos
+        </h5>
+
+        {/* Contenedor de videos */}
+        <div className="flex flex-col self-center  items-center gap-4 mt-4 w-[90%] lg:flex-row lg:flex-wrap lg:justify-center lg:gap-8 xl:gap-12">
+          {evaDetail?.videos?.length > 0 ? (
+            evaDetail?.videos?.map((video, index) => (
+              <div
+                key={index}
+                className="w-full lg:w-[80%] xl:w-[70%] 2xl:w-[60%] flex justify-center"
+              >
+                {/* Video */}
+                <video
+                  className="w-full h-auto rounded-lg border-[2px] border-stone-700 shadow-lg shadow-zinc-900"
+                  controls
+                  src={video?.secure_url}
+                />
+              </div>
+            ))
+          ) : (
+            <p className="pl-4 text-stone-500 text-balance max-w-[300px] text-sm -mt-2">No hay videos disponibles para esta Eva</p>
+          )}
+        </div>
+      </section>
+
+      <div className="flex gap-3 mt-12 text-7xl lg:mt-8 lg:gap-4 xl:gap-8 xl:mt-16 2xl:mt-20 xl:text-8xl 2xl:text-9xl 2xl:gap-12">
         <i className="bx bxs-cube-alt  text-zinc-700"></i>
         <i className="bx bxs-cube-alt  text-zinc-100"></i>
         <i className="bx bxs-cube-alt  text-zinc-700"></i>

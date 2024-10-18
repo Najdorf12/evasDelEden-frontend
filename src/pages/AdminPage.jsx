@@ -21,9 +21,10 @@ const AdminPage = () => {
   const [evaSelected, setEvaSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [image, setImage] = useState({});
   const [images, setImages] = useState([]);
+  const [videos, setVideos] = useState([]); // Estado para videos
   const [loadingImage, setLoadingImage] = useState(false);
+  const [loadingVideo, setLoadingVideo] = useState(false);
 
   const navigate = useNavigate();
 
@@ -198,9 +199,43 @@ const AdminPage = () => {
     setImages(images.filter((e) => e !== event));
   }
 
+  async function handleVideo(e) {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "evasDelEdenVideos");
+    data.append("folder", "evasDelEdenVideos"); // Carpeta diferente para videos
+
+    setLoadingVideo(true);
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/najdorf/video/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const file = await res.json();
+      setVideos([
+        ...videos,
+        {
+          public_id: file.public_id,
+          secure_url: file.secure_url,
+        },
+      ]);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoadingVideo(false);
+    }
+  }
+
+  // Función para eliminar videos seleccionados
+  function handleDeleteVideo(event) {
+    setVideos(videos.filter((e) => e !== event));
+  }
+
   const submit = (data) => {
-    console.log("datasubmit", data);
-    console.log("evaSelected", evaSelected);
     if (evaSelected !== null) {
       editEva(data);
     } else {
@@ -210,6 +245,7 @@ const AdminPage = () => {
         location: data.location,
         category: data.category,
         images: images,
+        videos: videos, // Incluir los videos en el nuevo objeto EVA
         isActive: data.isActive,
         description: {
           edad: data.edad,
@@ -232,7 +268,6 @@ const AdminPage = () => {
     }
     alert("EVA CREADA EXITOSAMENTE");
   };
-
   return (
     <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
@@ -255,7 +290,8 @@ const AdminPage = () => {
       <section className="mt-12 w-full flex flex-col items-center px-4  ">
         <section
           style={{
-            backgroundImage: "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
+            backgroundImage:
+              "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
           }}
           className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[700px]"
         >
@@ -522,6 +558,41 @@ const AdminPage = () => {
                   ))}
                 </div>
               )}
+            </div>
+            <div className="relative font-text">
+              <label htmlFor="videoUpload" className="text-white">
+                Subir Video
+              </label>
+              <input
+              className="rounded-lg flex-1  appearance-none w-full  max-w-[400px] py-2 px-4 border border-gray-400 text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
+                type="file"
+                id="videoUpload"
+                accept="video/*"
+                onChange={handleVideo}
+              />
+              {loadingVideo && <p>Cargando video...</p>}
+            </div>
+
+            {/* Mostrar videos cargados */}
+            <div>
+              {videos.map((video) => (
+                <div
+                  key={video.public_id}
+                  className="flex items-center space-x-4"
+                >
+                  <video
+                    src={video.secure_url}
+                    controls
+                    className="w-24 h-24"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteVideo(video)}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              ))}
             </div>
             <div className="flex items-center justify-center ">
               <button
