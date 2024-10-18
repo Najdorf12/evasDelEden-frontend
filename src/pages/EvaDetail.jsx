@@ -71,7 +71,7 @@ const EvaDetail = () => {
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
             }}
-            className="relative font-text3 text-stone-500   w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-stone-700 lg:w-[520px] lg:pr-3 lg:pt-3 lg:pl-5 xl:w-[620px] xl:pl-6 2xl:pr-4 2xl:pt-4 2xl:w-[700px]"
+            className="relative font-text3 text-stone-500 min-w-[370px]  w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-purple-200 lg:w-[520px] lg:pr-3 lg:pt-3 lg:pl-5 xl:w-[620px] xl:pl-6 2xl:pr-4 2xl:pt-4 2xl:w-[700px]"
           >
             {/* <div className="absolute top-1 left-2 xl:top-2 xl:left-3">
               <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
