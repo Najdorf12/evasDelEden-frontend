@@ -37,7 +37,7 @@ const Contact = () => {
       <section
         className="relative flex flex-col items-center w-full h-[100dvh] overflow-hidden lg:bg-zinc-300"
       >
-        <nav className="w-full flex justify-between items-center pr-2 mt-2 z-50 lg:px-[4%]">
+        <nav className="w-full flex justify-between items-center pr-2 mt-1 z-50 lg:px-[4%]">
           <div>
             <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
           </div>
@@ -60,16 +60,15 @@ const Contact = () => {
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
-            className="text-8xl text-stone-400 font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
+            className="text-8xl text-stone-100 font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
           >
             CONTACTO
           </h6>
           <p
-            style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }}
-            className="mt-2 text-zinc-100 text-base font-semibold text-center px-2 text-balance lg:text-lg 2xl:text-xl "
+          /*   style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }} */
+            className="mt-2 text-stone-600 text-base font-semibold text-center px-2 text-balance lg:text-lg 2xl:text-xl "
           >
-            Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación. <br />
-            EvasDelEden es un prestigioso sitio creado para scorts y contenido erótico.
+            Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación. 
           </p>
         </article>
         {/* FORM */}
@@ -80,7 +79,7 @@ const Contact = () => {
             class="max-w-md w-full rounded-2xl  overflow-hidden space-y-4 lg:py-3"
           >
            
-            <form  onSubmit={handleSubmit(onSubmit)}  className="mt-3 w-full space-y-8 px-6 xl:space-y-4 2xl:space-y-8 ">
+            <form  onSubmit={handleSubmit(onSubmit)}  className="mt-3 w-full space-y-7 px-6 xl:space-y-4 2xl:space-y-8 ">
               <div className="relative">
                 <input
                   autoComplete="off"
@@ -119,7 +118,7 @@ const Contact = () => {
                 name=""
                 id="box-glass4"
                 placeholder="Escribe tu consulta aquí"
-                className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[150px] placeholder:text-whiteCustom p-2 focus:outline-none  focus:border-purple-600 "
+                className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[190px] placeholder:text-whiteCustom p-2 focus:outline-none  focus:border-purple-600 "
                 {...register("message")}
               ></textarea>
 

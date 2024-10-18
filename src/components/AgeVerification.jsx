@@ -44,8 +44,8 @@ const AgeVerification = ({ onConfirm }) => {
         <p className="text-stone-700 text-sm text-center text-balance lg:text-base lg:px-12">
           Sitio para mayores de 18 años. Contenido explicito solo para adultos.
           La interaccion de los usuarios con la plataforma es exclusiva
-          responsabilidad de los mismo y los anunciants del sitio. Al ingresar
-          al sitio asumo toda la responsabilidad de la interaccion en el mismo
+          responsabilidad de los mismos y los anunciantes del sitio. Al ingresar
+          al sitio asumo toda la responsabilidad de la interacción en el mismo
           eximiendo de responsabilidad a los responsables de EvasdelEden.
         </p>
         <p className="text-lg font-text mt-1 font-medium text-stone-700 lg:text-xl 2xl:text-2xl">
