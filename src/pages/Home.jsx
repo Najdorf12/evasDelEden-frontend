@@ -32,9 +32,22 @@ const Home = () => {
   const [selectedMenu, setSelectedMenu] = useState("Categorias");
   const [selectedCategory, setSelectedCategory] = useState("Todas");
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
-
   const [allEvas, setAllEvas] = useState([]);
-  console.log(allEvas);
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    const fetchUserLocation = async () => {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        console.log(data)
+        setUserLocation(data?.city); 
+      } catch (error) {
+        console.error("Failed to get Location:", error);
+      }
+    };
+    fetchUserLocation();
+  }, []);
 
   useEffect(() => {
     const storedVerification = sessionStorage.getItem("isVerified");
@@ -97,7 +110,7 @@ const Home = () => {
           </h2>
 
           <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
-            Escorts - {selectedLocation}
+            Escorts - {userLocation}
           </h3>
         </article>
 
@@ -333,10 +346,13 @@ const Home = () => {
           </h6>
           <p className="text-base">
             Todas los anuncios y publicaciones de productos o servicios son
-            independientes. <strong>EvasdelEden no posee relación ni vinculación laboral
-            con los anunciantes</strong> . Sólo publicamos fotografías y textos a expresa
-            voluntad de los anunciantes. El sitio es un medio visual
-            publicitario.
+            independientes.{" "}
+            <strong>
+              EvasdelEden no posee relación ni vinculación laboral con los
+              anunciantes
+            </strong>{" "}
+            . Sólo publicamos fotografías y textos a expresa voluntad de los
+            anunciantes. El sitio es un medio visual publicitario.
           </p>
         </article>
         <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col leading-[.9rem] ">
@@ -349,6 +365,11 @@ const Home = () => {
             es una agencia por tal motivo no se responsabiliza por las
             publicaciones de las escorts.
           </li>
+
+          <li className="flex justify-start items-start">
+            <i className="bx bx-chevrons-right text-lg -mt-2"></i>EvasDelEden
+            presta el servicio de publicacion y asesoría gráfica.
+          </li>
           <li className="flex justify-start items-start ">
             <i className="bx bx-chevrons-right text-lg -mt-2"></i>Todas las
             fotografías son certificadas y verificadas como reales antes de ser
@@ -357,10 +378,6 @@ const Home = () => {
           <li className="flex justify-start items-start ">
             <i className="bx bx-chevrons-right text-lg -mt-2"></i>Nuestro portal
             se reserva el derecho de publicación.
-          </li>
-          <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2"></i>EvasDelEden
-            presta el servicio de publicacion y asesoría gráfica.
           </li>
         </ul>
       </section>
