@@ -38,7 +38,7 @@ const Contact = () => {
       <section
         className="relative flex flex-col items-center w-full h-[100dvh] overflow-hidden lg:bg-zinc-300"
       >
-        <nav className="w-full flex justify-between items-center pr-2 -mt-6 z-50 lg:px-[4%]">
+        <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 lg:px-[4%]">
           <div>
           <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
           </div>

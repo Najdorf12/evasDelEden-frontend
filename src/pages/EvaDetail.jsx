@@ -5,6 +5,7 @@ import imgLogo from "../assets/logo-removebg.png";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Footer from "../components/Footer";
+import logo from "/0004.png"
 
 const EvaDetail = () => {
   const { id } = useParams();
@@ -51,9 +52,9 @@ const EvaDetail = () => {
 
   return (
     <section className="relative bg-zinc-800 pb-12  w-full pt-2  flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24 xl:pt-4 min-h-screen">
-      <nav className="w-full flex justify-between items-center pr-3  z-50 lg:px-[4%]">
+      <nav className="w-full flex justify-between items-center pr-3 -mt-8 z-50 lg:px-[4%]">
         <div>
-          <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
+          <img src={logo} alt="logo" className="w-48 lg:w-16 xl:w-20" />
         </div>
         <Link to={"/"}>
           <button

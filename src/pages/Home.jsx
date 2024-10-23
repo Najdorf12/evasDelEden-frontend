@@ -88,9 +88,9 @@ const Home = () => {
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 2xl:pb-40">
       <section className="w-full flex flex-col items-center z-50">
-        <nav className="w-full flex justify-between items-center pr-2 -mt-4 z-50">
+        <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 -ml-2">
           <div>
-          <img src={logo} className="w-48 2xl:w-56 " alt="logo" />
+          <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
           </div>
           <Link to={"/contacto"}>
             <button
