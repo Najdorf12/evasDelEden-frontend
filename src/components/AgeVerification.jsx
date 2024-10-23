@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import imgLogo from "../assets/logo-removebg.png";
+import logo from "/0004.png"
 
 const AgeVerification = ({ onConfirm }) => {
   const navigate = useNavigate();
@@ -25,9 +26,9 @@ const AgeVerification = ({ onConfirm }) => {
       }}
       className="relative flex flex-col items-center pt-24 w-full h-[100dvh] overflow-hidden lg:bg-zinc-300 lg:pt-[10%]"
     >
-      <nav className="absolute top-2 left-2 z-50  lg:w-full lg:flex lg:justify-end  lg:top-3 ">
-        <div className=" lg:lg:mr-[3%] flex justify-center items-center">
-          <img src={imgLogo} className="w-16 lg:w-28 2xl:w-28 " alt="logo" />
+      <nav className="absolute -top-6 left-2 z-50  lg:w-full lg:flex lg:justify-end  lg:top-3 ">
+        <div className=" lg:mr-[3%] flex justify-center items-center ">
+          <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
         </div>
       </nav>
       <section

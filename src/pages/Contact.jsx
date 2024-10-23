@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Resend } from 'resend';
+import logo from "/0004.png"
 
 /* const resend = new Resend('re_gcgSBD6n_NHfcokuaS34gDp7Rc4bm2yKp'); */
 
@@ -37,9 +38,9 @@ const Contact = () => {
       <section
         className="relative flex flex-col items-center w-full h-[100dvh] overflow-hidden lg:bg-zinc-300"
       >
-        <nav className="w-full flex justify-between items-center pr-2 mt-1 z-50 lg:px-[4%]">
+        <nav className="w-full flex justify-between items-center pr-2 -mt-6 z-50 lg:px-[4%]">
           <div>
-            <img src={imgLogo} alt="logo" className="w-14 lg:w-16 xl:w-20" />
+          <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
           </div>
           <Link to={"/"}>
             <button

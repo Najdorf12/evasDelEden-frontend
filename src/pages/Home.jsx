@@ -16,9 +16,7 @@ import {
   CarouselPrevButton,
   CarouselSlides,
 } from "keep-react";
-/* import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-gsap.registerPlugin(useGSAP); */
+import logo from "/0004.png"
 
 const Home = () => {
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
@@ -90,9 +88,9 @@ const Home = () => {
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 2xl:pb-40">
       <section className="w-full flex flex-col items-center z-50">
-        <nav className="w-full flex justify-between items-center pr-2 mt-2 xl:mt-3 z-50">
+        <nav className="w-full flex justify-between items-center pr-2 -mt-4 z-50">
           <div>
-            <img src={imgLogo} alt="logo" className="w-14 xl:w-16  2xl:w-20" />
+          <img src={logo} className="w-48 2xl:w-56 " alt="logo" />
           </div>
           <Link to={"/contacto"}>
             <button
@@ -104,7 +102,7 @@ const Home = () => {
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-6 xl:mt-8 2xl:mt-12  z-50 w-full">
+        <article className="self-start pl-3 flex flex-col items-start mt-2 xl:mt-8 2xl:mt-12  z-50 w-full">
           <h2 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem]">
             Evas del Eden
           </h2>
