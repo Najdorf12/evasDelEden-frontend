@@ -102,7 +102,7 @@ const Home = () => {
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-2 xl:mt-8 2xl:mt-12  z-50 w-full">
+        <article className="self-start pl-3 flex flex-col items-start mt-0 xl:mt-8 2xl:mt-12  z-50 w-full">
           <h2 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem]">
             Evas del Eden
           </h2>
