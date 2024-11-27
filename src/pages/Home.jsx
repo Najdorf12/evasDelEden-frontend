@@ -88,21 +88,21 @@ const Home = () => {
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 2xl:pb-40">
       <section className="w-full flex flex-col items-center z-50">
-        <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 -ml-2">
+        <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 -ml-2 xl:-mt-4">
           <div>
-          <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
+          <img src={logo} className="w-52 xl:w-56 " alt="logo" />
           </div>
           <Link to={"/contacto"}>
             <button
               id="btn-evadetail"
-              className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl"
+              className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold xl:px-10 2xl:text-xl"
             >
               Publicar
             </button>
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-0 xl:mt-8 2xl:mt-12  z-50 w-full">
+        <article className="self-start pl-3 flex flex-col items-start mt-0 xl:mt-0 2xl:mt-6  z-50 w-full">
           <h2 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem]">
             Evas del Eden
           </h2>
@@ -112,7 +112,7 @@ const Home = () => {
           </h3>
         </article>
 
-        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg lg:mt-10  xl:mt-12 xl:gap-12 2xl:gap-14 2xl:text-xl 2xl:mt-16  z-50">
+        <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg   xl:mt-9 xl:gap-14 2xl:gap-14 2xl:text-xl  z-50">
           <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={(e) => {
@@ -155,7 +155,7 @@ const Home = () => {
           </li>
         </ul>
         {selectedMenu === "Categorias" ? (
-          <div className="flex gap-4 w-full  pl-3 mt-1 lg:gap-6  xl:mt-3 2xl:mt-4  z-50">
+          <div className="flex gap-4 w-full  pl-3 mt-1 lg:gap-6  xl:mt-2 2xl:mt-4  z-50">
             <ul className="flex gap-5  font-text3  font-medium lg:gap-8 2xl:gap-12">
               <li
                 onClick={() =>
@@ -169,7 +169,7 @@ const Home = () => {
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="flex justify-center items-center mt-2 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
+                className="flex justify-center items-center mt-2 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32  xl:w-40 2xl:w-48  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
                 Platinum
               </li>
@@ -186,7 +186,7 @@ const Home = () => {
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="mt-2 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 2xl:w-40 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom "
+                className="mt-2 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 xl:w-40 2xl:w-48 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom "
               >
                 Gold
               </li>
@@ -202,7 +202,7 @@ const Home = () => {
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="mt-2 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 2xl:w-40 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
+                className="mt-2 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 xl:w-40 2xl:w-48 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
               >
                 Silver
               </li>
@@ -230,7 +230,7 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center">
+      <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center xl:mt-10 2xl:mt-12">
         {allEvas?.map((category) => {
           let categoryRef;
 
@@ -266,9 +266,9 @@ const Home = () => {
                 style={{
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="text-base text-stone-500 mb-5 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2"
+                className="text-base text-stone-500 mb-5 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg xl:mb-7"
               >
-                <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
+                <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-purple-400"></i>
                 {category?._id}
               </h5>
               <Carousel options={{ slidesToScroll: 2 }}>
