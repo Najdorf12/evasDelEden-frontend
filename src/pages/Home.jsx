@@ -103,13 +103,13 @@ const Home = () => {
         </nav>
 
         <article className="self-start pl-3 flex flex-col items-start mt-0 xl:mt-0 2xl:mt-6  z-50 w-full">
-          <h2 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem]">
+          <h1 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem]">
             Evas del Eden
-          </h2>
+          </h1>
 
-          <h3 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
+          <h2 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
             Escorts - {userLocation}
-          </h3>
+          </h2>
         </article>
 
         <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg   xl:mt-9 xl:gap-14 2xl:gap-14 2xl:text-xl  z-50">
