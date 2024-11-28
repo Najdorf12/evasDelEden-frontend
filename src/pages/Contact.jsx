@@ -45,9 +45,9 @@ const Contact = () => {
           <Link to={"/"}>
             <button
               id="btn-evadetail"
-              className="px-6 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl"
+              className="px-9 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg  xl:px-12 font-semibold 2xl:text-xl "
             >
-              Volver al Inicio
+              Inicio
             </button>
           </Link>
         </nav>
@@ -57,30 +57,30 @@ const Contact = () => {
         ></section>
         <article
           /* id="box-glass4" */
-          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl  mt-6  max-w-[600px] lg:ml-[30%] lg:-mt-2  2xl:mt-0"
+          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl  mt-6  max-w-[600px] lg:ml-[30%] lg:-mt-12 xl:mt-0 "
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
-            className="text-8xl text-stone-100 font-title font-semibold xl:text-9xl 2xl:text-[9rem]"
+            className="text-8xl text-stone-100 font-title font-semibold lg:text-white  2xl:text-[9rem]"
           >
             CONTACTO
           </h6>
           <p
           /*   style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }} */
-            className="mt-2 text-stone-600 text-base font-semibold text-center px-2 text-balance lg:text-lg 2xl:text-xl "
+            className="mt-2 text-stone-600 text-base font-semibold text-center px-2 text-balance max-w-[500px] 2xl:text-xl "
           >
             Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación. 
           </p>
         </article>
         {/* FORM */}
-        <section className="z-50 w-full font-text2 mt-3 lg:ml-[30%] 2xl:mt-8">
+        <section className="z-50 w-full font-text2 mt-3 flex justify-center items-center lg:mt-0 lg:ml-[30%] 2xl:mt-8 ">
           <div
             /* id="box-glass2" */
             style={{ animation: "slideInFromLeft 1s ease-out" }}
             class="max-w-md w-full rounded-2xl  overflow-hidden space-y-4 lg:py-3"
           >
            
-            <form  onSubmit={handleSubmit(onSubmit)}  className="mt-3 w-full space-y-7 px-6 xl:space-y-4 2xl:space-y-8 ">
+            <form  onSubmit={handleSubmit(onSubmit)}  className="mt-3 w-full space-y-7 px-6 xl:space-y-4 2xl:space-y-8 font-medium ">
               <div className="relative">
                 <input
                   autoComplete="off"
@@ -93,7 +93,7 @@ const Contact = () => {
                   {...register("email")}
                 />
                 <label
-                  className=" absolute left-0 my-1 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base font-normal lg:text-stone-400 lg:peer-placeholder-shown:text-stone-600 2xl:mt-6"
+                  className=" absolute left-0 my-1 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base  lg:text-stone-400 lg:peer-placeholder-shown:text-stone-600 2xl:mt-6"
                   for="email"
                 >
                   Email address
@@ -110,7 +110,7 @@ const Contact = () => {
                   {...register("wttp")}
                 />
                 <label
-                  className="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base font-normal lg:peer-placeholder-shown:text-stone-600 "
+                  className="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base  lg:peer-placeholder-shown:text-stone-600 "
                 >
                   WhatsApp
                 </label>
@@ -119,7 +119,7 @@ const Contact = () => {
                 name=""
                 id="box-glass4"
                 placeholder="Escribe tu consulta aquí"
-                className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[190px] placeholder:text-whiteCustom p-2 focus:outline-none  focus:border-purple-600 "
+                className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[190px] placeholder:text-whiteCustom lg:placeholder:text-stone-400 p-2 focus:outline-none  focus:border-purple-600 lg:border-purple-600 lg:focus:border-whiteCustom"
                 {...register("message")}
               ></textarea>
 

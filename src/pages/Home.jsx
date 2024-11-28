@@ -16,7 +16,7 @@ import {
   CarouselPrevButton,
   CarouselSlides,
 } from "keep-react";
-import logo from "/0004.png"
+import logo from "/0004.png";
 
 const Home = () => {
   const categories = ["Todas", "Platinum", "Gold", "Silver"];
@@ -38,8 +38,8 @@ const Home = () => {
       try {
         const response = await fetch("https://ipapi.co/json/");
         const data = await response.json();
-        console.log(data)
-        setUserLocation(data?.city); 
+        console.log(data);
+        setUserLocation(data?.city);
       } catch (error) {
         console.error("Failed to get Location:", error);
       }
@@ -90,7 +90,7 @@ const Home = () => {
       <section className="w-full flex flex-col items-center z-50">
         <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 -ml-2 xl:-mt-4">
           <div>
-          <img src={logo} className="w-52 xl:w-56 " alt="logo" />
+            <img src={logo} className="w-52 xl:w-56 " alt="logo" />
           </div>
           <Link to={"/contacto"}>
             <button
@@ -103,7 +103,7 @@ const Home = () => {
         </nav>
 
         <article className="self-start pl-3 flex flex-col items-start mt-0 xl:mt-0 2xl:mt-6  z-50 w-full">
-          <h2 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem]">
+          <h2 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem]">
             Evas del Eden
           </h2>
 
@@ -325,7 +325,7 @@ const Home = () => {
           style={{
             boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
           }}
-          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-9 flex flex-col justify-center items-start gap-3 text-balance rounded-2xl border border-purple-400 lg:w-[520px]  xl:w-[620px] 2xl:w-[700px]"
+          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-10 max-w-[750px] 2xl:max-w-[950px] 2xl:py-14"
         >
           <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
@@ -336,13 +336,13 @@ const Home = () => {
           <div className="absolute bottom-1 left-2 xl:top-2 xl:left-3 text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
-          <div className="absolute bottom-1 right-2 xl:bottom-2 xl:right-3  text-stone-700">
+          <div className="absolute bottom-1 right-2 xl:right-3  text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
-          <h6 className="text-xl text-whiteCustom">
+          <h6 className="text-xl text-whiteCustom lg:text-2xl 2xl:text-3xl">
             Guía de las mejores escorts independientes.
-          </h6>
-          <p className="text-base">
+          </h6> 
+          <p className="text-base 2xl:text-lg">
             Todas los anuncios y publicaciones de productos o servicios son
             independientes.{" "}
             <strong>
@@ -353,28 +353,28 @@ const Home = () => {
             anunciantes. El sitio es un medio visual publicitario.
           </p>
         </article>
-        <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col leading-[.9rem] ">
+        <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col leading-[.9rem]  lg:px-0 lg:text-base lg:self-start">
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2"></i>Portal para
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>Portal para
             visitantes y clientes anunciantes mayores de 18 años
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2"></i>EvasDelEden no
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>EvasDelEden no
             es una agencia por tal motivo no se responsabiliza por las
             publicaciones de las escorts.
           </li>
 
           <li className="flex justify-start items-start">
-            <i className="bx bx-chevrons-right text-lg -mt-2"></i>EvasDelEden
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>EvasDelEden
             presta el servicio de publicacion y asesoría gráfica.
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2"></i>Todas las
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>Todas las
             fotografías son certificadas y verificadas como reales antes de ser
             publicadas.
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2"></i>Nuestro portal
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>Nuestro portal
             se reserva el derecho de publicación.
           </li>
         </ul>
