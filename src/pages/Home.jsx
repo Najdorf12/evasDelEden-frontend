@@ -217,9 +217,9 @@ const Home = () => {
                 }}
                 key={location}
                 onClick={() => setSelectedLocation(location)}
-                className={` mt-2 rounded-full  px-[10px] py-[2px] text-[12px] lg:text-base lg:px-[24px] xl:px-[28px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium ${
+                className={` mt-2 rounded-full  px-[10px] py-[2px] text-[12px] lg:text-base lg:px-[24px] xl:px-[28px] 2xl:text-lg 2xl:px-[32px] shadow-lg shadow-zinc-900 font-medium hover:scale-105  hover:border-purple-600 duration-500  ${
                   selectedLocation === location
-                    ? "text-purple-600 border border-zinc-500 bg-white"
+                    ? "text-purple-600 border border-zinc-500 bg-white hover:text-white hover:bg-purple-500"
                     : "border text-zinc-400  border-purple-400"
                 }`}
               >
