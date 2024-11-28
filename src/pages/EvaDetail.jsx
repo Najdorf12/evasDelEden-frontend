@@ -105,9 +105,9 @@ const EvaDetail = () => {
                 style={{
                   boxShadow: "8px 8px 16px #171718, -3px -3px 3px #37373c",
                 }}
-                className="pr-6 pl-5  rounded-full flex items-center justify-start gap-1 text-sm xl:text-lg font-semibold 2xl:text-xl border-[2px] border-purple-300 text-whiteCustom"
+                className="pr-6 pl-5  rounded-full flex items-center justify-start gap-1 text-sm xl:text-lg xl:gap-2 font-semibold 2xl:text-xl border-[2px] border-purple-300 text-whiteCustom"
               >
-                <i className="bx bxl-whatsapp text-2xl text-purple-400"></i>
+                <i className="bx bxl-whatsapp text-2xl text-purple-400 xl:text-3xl"></i>
                 CONTACTO
               </button>
             </Link>

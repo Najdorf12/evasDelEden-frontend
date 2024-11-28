@@ -86,7 +86,7 @@ const Home = () => {
   }
 
   return (
-    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 2xl:pb-40">
+    <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 xl:pb-20 2xl:pb-28">
       <section className="w-full flex flex-col items-center z-50">
         <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 -ml-2 xl:-mt-4">
           <div>
@@ -320,12 +320,12 @@ const Home = () => {
         })}
       </section>
 
-      <section className="w-full flex justify-center flex-col items-center mt-8 gap-16">
+      <section className="w-full flex justify-center flex-col items-center mt-8 gap-16 xl:mt-24">
         <article
           style={{
             boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
           }}
-          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-10 max-w-[750px] 2xl:max-w-[950px] 2xl:py-14"
+          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 max-w-[750px] 2xl:max-w-[950px] 2xl:py-20"
         >
           <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
@@ -379,7 +379,7 @@ const Home = () => {
           </li>
         </ul>
       </section>
-      <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full">
+      <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full ">
         <Footer />
       </footer>
     </main>
