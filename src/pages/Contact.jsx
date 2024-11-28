@@ -12,7 +12,7 @@ const Contact = () => {
   const onSubmit = async (data) => {
     console.log(data)
     try {
-      const response = await api.post("/send-email", data); 
+      const response = await axios.post("/send-email", data); 
       console.log("Correo enviado:", response.data);
     } catch (err) {
       console.error("Error al enviar el correo:", err.response?.data || err.message);

@@ -41,7 +41,6 @@ const EvaDetail = () => {
     const fetchEvaData = async () => {
       try {
         const productResponse = await axios.get(`/evas/${id}`);
-        console.log(productResponse);
         setEvaDetail(productResponse?.data);
       } catch (error) {
         console.error(error);
