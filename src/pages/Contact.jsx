@@ -59,14 +59,14 @@ const Contact = () => {
           </p>
         </article>
         {/* FORM */}
-        <section className="z-50 w-full font-text2 mt-3 flex justify-center items-center lg:mt-0 lg:ml-[30%] 2xl:mt-8 ">
+        <section className="z-50 w-full font-text2 mt-3 flex justify-center items-center lg:mt-0 lg:ml-[30%]  ">
           <div
             /* id="box-glass2" */
             style={{ animation: "slideInFromLeft 1s ease-out" }}
             class="max-w-md w-full rounded-2xl  overflow-hidden space-y-4 lg:py-3"
           >
            
-            <form  onSubmit={handleSubmit(onSubmit)}  className="mt-3 w-full space-y-7 px-6 xl:space-y-4 2xl:space-y-8 font-medium ">
+            <form  onSubmit={handleSubmit(onSubmit)}  className="mt-3 w-full space-y-7 px-6 xl:space-y-4 2xl:space-y-8 font-medium 2xl:mt-0 ">
               <div className="relative">
                 <input
                   autoComplete="off"
