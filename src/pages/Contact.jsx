@@ -1,11 +1,8 @@
-import imgLogo from "../assets/logo-removebg.png";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Resend } from 'resend';
 import logo from "/0004.png"
 
-/* const resend = new Resend('re_gcgSBD6n_NHfcokuaS34gDp7Rc4bm2yKp'); */
 
 const Contact = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,23 +10,24 @@ const Contact = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('https://evas-del-eden-backend.vercel.app/api/email/send-email', {  // Asegúrate de que sea la URL correcta
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-  
+      const response = await fetch(
+        "https://evas-del-eden-backend.vercel.app/api/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
       const result = await response.json();
       if (response.ok) {
-        console.log('Correo enviado:', result);
-        reset();  // Resetea el formulario después de enviar el correo
+        console.log("Correo enviado:", result);
       } else {
-        console.error('Error al enviar el correo:', result.error);
+        console.error("Error al enviar el correo:", result.error);
       }
     } catch (err) {
-      console.error('Error en la solicitud:', err);
+      console.error("Error en la solicitud:", err);
     }
   };
   
@@ -93,7 +91,7 @@ const Contact = () => {
                   {...register("email")}
                 />
                 <label
-                  className=" absolute left-0 my-1 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base  lg:text-stone-400 lg:peer-placeholder-shown:text-stone-600 2xl:mt-6"
+                  className=" absolute left-0 my-1 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base lg:peer-focus:text-stone-400  lg:text-stone-400 lg:peer-placeholder-shown:text-stone-600 2xl:mt-6"
                   for="email"
                 >
                   Email address
@@ -110,7 +108,7 @@ const Contact = () => {
                   {...register("wttp")}
                 />
                 <label
-                  className="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 peer-focus:text-base  lg:peer-placeholder-shown:text-stone-600 "
+                  className="absolute left-0 -top-3.5 text-gray-800 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-100 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-stone-300 lg:peer-focus:text-stone-400 peer-focus:text-base  lg:peer-placeholder-shown:text-stone-600 "
                 >
                   WhatsApp
                 </label>
@@ -119,12 +117,12 @@ const Contact = () => {
                 name=""
                 id="box-glass4"
                 placeholder="Escribe tu consulta aquí"
-                className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[190px] placeholder:text-whiteCustom lg:placeholder:text-stone-400 p-2 focus:outline-none  focus:border-purple-600 lg:border-purple-600 lg:focus:border-whiteCustom"
+                className="border-[2px] border-whiteCustom text-white rounded-2xl w-full h-[190px] placeholder:text-whiteCustom lg:placeholder:text-stone-400 p-2 focus:outline-none  focus:border-purple-600 lg:border-purple-600 lg:focus:border-whiteCustom "
                 {...register("message")}
               ></textarea>
 
               <button
-                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border-[2px] border-purple-500 text-whiteCustom font-semibold transition duration-200 text-base bg-zinc-800 lg:border-[2px] xl:py-1 2xl:py-2"
+                className="w-full py-2 px-4  rounded-full shadow-lg shadow-zinc-900 border-[2px] border-purple-500 text-whiteCustom font-semibold transition duration-200 text-base bg-zinc-800 lg:shadow-none lg:border-[2px] xl:py-1 2xl:py-2"
                 type="submit"
               >
                 Enviar
