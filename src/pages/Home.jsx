@@ -108,7 +108,7 @@ const Home = () => {
           </h1>
 
           <h2 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
-            Escorts - {userLocation}
+            Escorts - Argentina
           </h2>
         </article>
 
