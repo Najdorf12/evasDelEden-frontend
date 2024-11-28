@@ -379,7 +379,7 @@ const Home = () => {
           </li>
         </ul>
       </section>
-      <footer className="absolute bottom-0 text-zinc-700 flex justify-center font-medium w-full ">
+      <footer className="absolute left-0 bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
       </footer>
     </main>
