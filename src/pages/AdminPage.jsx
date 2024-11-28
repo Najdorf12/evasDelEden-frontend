@@ -268,6 +268,7 @@ const AdminPage = () => {
     }
     alert("EVA CREADA EXITOSAMENTE");
   };
+  
   return (
     <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
