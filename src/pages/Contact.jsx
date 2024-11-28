@@ -2,6 +2,7 @@ import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import logo from "/0004.png"
+import axios from "../api/axios";
 
 
 const Contact = () => {
@@ -9,25 +10,12 @@ const Contact = () => {
 
 
   const onSubmit = async (data) => {
+    console.log(data)
     try {
-      const response = await fetch(
-        "https://evas-del-eden-backend.vercel.app/api/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-      const result = await response.json();
-      if (response.ok) {
-        console.log("Correo enviado:", result);
-      } else {
-        console.error("Error al enviar el correo:", result.error);
-      }
+      const response = await api.post("/send-email", data); 
+      console.log("Correo enviado:", response.data);
     } catch (err) {
-      console.error("Error en la solicitud:", err);
+      console.error("Error al enviar el correo:", err.response?.data || err.message);
     }
   };
   
