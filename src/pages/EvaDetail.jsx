@@ -10,32 +10,11 @@ import logo from "/0004.png";
 const EvaDetail = () => {
   const { id } = useParams();
   const [evaDetail, setEvaDetail] = useState({});
-  const images2 = [
-    {
-      original: evaDetail?.images
-        ? evaDetail?.images[0]?.secure_url
-        : evaDetail?.image?.secure_url,
-      thumbnail: evaDetail?.images
-        ? evaDetail?.images[0]?.secure_url
-        : evaDetail?.image?.secure_url,
-    },
-    {
-      original: evaDetail?.images
-        ? evaDetail?.images[1]?.secure_url
-        : evaDetail?.image?.secure_url,
-      thumbnail: evaDetail?.images
-        ? evaDetail?.images[1]?.secure_url
-        : evaDetail?.image?.secure_url,
-    },
-    {
-      original: evaDetail?.images
-        ? evaDetail?.images[2]?.secure_url
-        : evaDetail?.image?.secure_url,
-      thumbnail: evaDetail?.images
-        ? evaDetail?.images[2]?.secure_url
-        : evaDetail?.image?.secure_url,
-    },
-  ];
+  console.log(evaDetail)
+  const images2 = evaDetail?.images?.map((image) => ({
+    original: image?.secure_url,
+    thumbnail: image?.secure_url,
+  })) || [];
 
   useEffect(() => {
     const fetchEvaData = async () => {
@@ -66,12 +45,12 @@ const EvaDetail = () => {
       </nav>
 
       <section className="mt-14 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-8 xl:gap-12 2xl:gap-20 lg:mt-24 2xl:mt-28">
-        <div className="mt-5  flex flex-col items-center lg:mt-0">
+        <div className="mt-5  flex flex-col items-center lg:mt-0 ">
           <article
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
             }}
-            className="relative font-text3 text-stone-500 min-w-[370px]  w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-purple-200 max-w-[550px] lg:max-w-[520px] lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[620px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-5 2xl:pb-6 2xl:max-w-[790px]"
+            className="relative font-text3 text-stone-500 min-w-[370px]  w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-purple-200 max-w-[550px] lg:max-w-[620px] lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[620px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-5 2xl:pb-6 2xl:max-w-[800px]"
           >
             <div className="absolute top-1 right-2 xl:bottom-2 xl:right-3">
               <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
