@@ -118,14 +118,14 @@ const Home = () => {
               onClick={(e) => {
                 setSelectedMenu("Categorias");
               }}
-              className={`relative flex items-center ml-8 cursor-pointer text-base lg:text-lg  xl:text-2xl 2xl:text-3xl duration-400  px-1 xl:pb-1 ${
+              className={`relative flex items-center ml-8 cursor-pointer text-base lg:text-lg  xl:text-2xl 2xl:text-3xl duration-400  px-1 xl:pb-1 hover:text-purple-400 group ${
                 selectedMenu === "Categorias"
                   ? "text-whiteCustom  border-b-[1px] xl:border-b-[2px] border-zinc-500"
                   : "text-zinc-500"
               }`}
             >
               <i
-                className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-5 xl:-left-[28px] lg:text-lg xl:text-xl 2xl:-left-[32px] 2xl:text-2xl ${
+                className={`bx bxs-doughnut-chart text-lg absolute text-primary -left-5 xl:-left-[28px] lg:text-lg xl:text-xl 2xl:-left-[32px] 2xl:text-2xl group-hover:text-white duration-400 ${
                   selectedMenu === "Categorias"
                     ? "text-purple-300 "
                     : "text-zinc-500"
@@ -137,14 +137,14 @@ const Home = () => {
           <li className="relative flex flex-col justify-start items-start ">
             <div
               onClick={() => setSelectedMenu("Ubicacion")}
-              className={`relative  flex items-center ml-8 cursor-pointer text-base lg:text-lg  xl:text-2xl 2xl:text-3xl duration-400  px-1 xl:pb-1 ${
+              className={`relative  flex items-center ml-8 cursor-pointer text-base lg:text-lg  xl:text-2xl 2xl:text-3xl duration-400  px-1 xl:pb-1 hover:text-purple-400 group ${
                 selectedMenu === "Ubicacion"
                   ? "text-whiteCustom  border-b-[1px] xl:border-b-[2px] border-zinc-500"
                   : "text-zinc-500"
               }`}
             >
               <i
-                className={`bx bxs-map text-lg absolute text-primary -left-5 xl:-left-[28px] lg:text-lg xl:text-2xl 2xl:-left-[32px] 2xl:text-3xl  ${
+                className={`bx bxs-map text-lg absolute text-primary -left-5 xl:-left-[28px] lg:text-lg xl:text-2xl 2xl:-left-[32px] 2xl:text-3xl group-hover:text-white duration-400 ${
                   selectedMenu === "Ubicacion"
                     ? "text-purple-300 "
                     : "text-zinc-500"
@@ -169,7 +169,7 @@ const Home = () => {
                     "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="flex justify-center items-center mt-2 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32  xl:w-40 2xl:w-48  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
+                className="flex justify-center items-center mt-2 rounded-full min-w-24  px-[18px] py-[2px] text-sm lg:text-base  lg:w-32  xl:w-40 2xl:w-48  2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom cursor-pointer hover:scale-105 hover:text-zinc-300 duration-500"
               >
                 Platinum
               </li>
@@ -186,7 +186,7 @@ const Home = () => {
                     "linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="mt-2 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 xl:w-40 2xl:w-48 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom "
+                className="mt-2 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base  lg:w-32 xl:w-40 2xl:w-48 2xl:text-lg shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom cursor-pointer hover:scale-105 hover:text-zinc-300 duration-500"
               >
                 Gold
               </li>
@@ -202,7 +202,7 @@ const Home = () => {
                   background: "linear-gradient(to right, #bdc3c7, #2c3e50)",
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="mt-2 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 xl:w-40 2xl:w-48 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom"
+                className="mt-2 z-50 rounded-full  min-w-24 px-[10px]  flex justify-center items-center py-[2px] text-sm lg:text-base lg:px-[24px] 2xl:text-lg  lg:w-32 xl:w-40 2xl:w-48 shadow-lg shadow-zinc-900 font-medium border border-zinc-500 text-whiteCustom cursor-pointer hover:scale-105 hover:text-zinc-300 duration-500"
               >
                 Silver
               </li>

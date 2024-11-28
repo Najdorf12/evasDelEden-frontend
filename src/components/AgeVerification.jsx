@@ -49,18 +49,18 @@ const AgeVerification = ({ onConfirm }) => {
           al sitio asumo toda la responsabilidad de la interacción en el mismo
           eximiendo de responsabilidad a los responsables de EvasdelEden.
         </p>
-        <p className="text-lg font-text mt-1 font-medium text-stone-700 lg:text-xl 2xl:text-2xl">
+        <p className="text-lg font-text mt-1 font-medium text-stone-700 lg:text-lg 2xl:text-2xl">
           ¿Eres mayor de edad?
         </p>
-        <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-2 lg:text-lg xl:text-xl lg:gap-6 2xl:gap-10 2xl:text-xl">
+        <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-2 l xl:text-lg lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
-            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-10 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900"
+            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-10 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900 2xl:px-12"
             onClick={handleYes}
           >
             Sí, soy mayor.
           </button>
           <button
-            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-10 text-stone-800 shadow-lg shadow-zinc-900 "
+            className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-10 text-stone-800 shadow-lg shadow-zinc-900 2xl:px-12"
             onClick={handleNo}
           >
             No, soy menor.
