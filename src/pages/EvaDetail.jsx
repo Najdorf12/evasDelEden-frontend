@@ -44,7 +44,7 @@ const EvaDetail = () => {
         </Link>
       </nav>
 
-      <section className="mt-14 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center   lg:mt-24 lg:w-full 2xl:mt-28 ">
+      <section className="mt-14 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-3   lg:mt-24 lg:w-full 2xl:mt-28 ">
         <div className="mt-5  flex flex-col items-center lg:mt-0  lg:w-[45%]">
           <article
             style={{
@@ -109,7 +109,7 @@ const EvaDetail = () => {
         </div>
    
        
-       <article className="mt-4 px-3  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center  xl:mt-0 ">
+       <article className="mt-4 px-3  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center xl:pl-12 xl:mt-0 ">
         <h5
           style={{
             boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
