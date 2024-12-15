@@ -33,12 +33,14 @@ const Carrusel = ({
         <button
           onClick={prev}
           className="-ml-6 z-50 rounded-full pointer-events-auto hover:text-primary "
+          aria-label="Ir al slide anterior"
         >
           <i className="bx bx-chevrons-left text-6xl text-white lg:text-7xl 2xl:text-8xl"></i>
         </button>
         <button
           onClick={next}
           className="z-50 -mr-6 rounded-full pointer-events-auto hover:text-primary lg:mr-12 xl:mr-16 2xl:mr-20"
+          aria-label="Ir al slide siguiente"
         >
           <i className="bx bx-chevrons-right text-6xl text-white lg:text-7xl 2xl:text-8xl"></i>
         </button>
