@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import imgLogo from "../assets/logo-removebg.png";
 import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
 import AgeVerification from "../components/AgeVerification";
@@ -102,7 +101,7 @@ const Home = () => {
           </Link>
         </nav>
 
-        <article className="self-start pl-3 flex flex-col items-start mt-0 xl:mt-0 2xl:mt-6  z-50 w-full">
+        <div className="self-start pl-3 flex flex-col items-start mt-0 xl:mt-0 2xl:mt-6  z-50 w-full">
           <h1 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem]">
             Evas del Eden
           </h1>
@@ -110,7 +109,7 @@ const Home = () => {
           <h2 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
             Escorts - Argentina
           </h2>
-        </article>
+        </div>
 
         <ul className="flex gap-6 text-base font-text2 text-zinc-500 mt-6 self-start lg:text-lg   xl:mt-9 xl:gap-14 2xl:gap-14 2xl:text-xl  z-50">
           <li className="relative flex flex-col justify-start items-start ">
@@ -230,11 +229,10 @@ const Home = () => {
         )}
       </section>
 
-      <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center xl:mt-10 2xl:mt-12">
+      <section className="w-full mt-8 p-1 sm:p-2 flex flex-col items-center xl:mt-10 2xl:mt-12  min-h-screen">
         {allEvas?.map((category) => {
           let categoryRef;
 
-          // Asignar la referencia correcta según el nombre de la categoría
           switch (category?._id) {
             case "Platinum":
               categoryRef = categoryRefPlatinum;
@@ -320,12 +318,9 @@ const Home = () => {
         })}
       </section>
 
-      <section className="w-full flex justify-center flex-col items-center mt-8 gap-16 xl:mt-24">
+      <div className="w-full flex justify-center flex-col items-center mt-8 gap-16 xl:mt-24">
         <article
-          style={{
-            boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
-          }}
-          className="relative text-center font-text3 text-stone-500  self-center w-[95%] pl-4 pr-2 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 max-w-[750px] 2xl:max-w-[950px] 2xl:py-20"
+          className="relative text-center font-text3 text-stone-500  self-center min-h-[320px] lg:min-h-[250px] w-[95%] pl-4 px-3 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 max-w-[750px] 2xl:max-w-[950px] 2xl:py-20"
         >
           <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
@@ -333,15 +328,15 @@ const Home = () => {
           <div className="absolute top-1 right-2 xl:bottom-2 xl:right-3  text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
-          <div className="absolute bottom-1 left-2 xl:top-2 xl:left-3 text-stone-700">
+          <div className="absolute bottom-1 left-2 xl:bottom-2 xl:left-3 text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
-          <div className="absolute bottom-1 right-2 xl:right-3  text-stone-700">
+          <div className="absolute bottom-1 right-2 xl:left  text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
-          <h6 className="text-xl text-whiteCustom lg:text-2xl 2xl:text-3xl">
+          <div className="text-xl text-whiteCustom lg:text-2xl 2xl:text-3xl">
             Guía de las mejores escorts independientes.
-          </h6> 
+          </div> 
           <p className="text-base 2xl:text-lg">
             Todas los anuncios y publicaciones de productos o servicios son
             independientes.{" "}
@@ -378,7 +373,7 @@ const Home = () => {
             se reserva el derecho de publicación.
           </li>
         </ul>
-      </section>
+      </div>
       <footer className="absolute left-0 bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
       </footer>

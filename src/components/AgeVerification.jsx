@@ -1,8 +1,5 @@
-// src/components/AgeVerification.js
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
-import imgLogo from "../assets/logo-removebg.png";
 import logo from "/0004.png";
 
 const AgeVerification = ({ onConfirm }) => {
@@ -15,7 +12,6 @@ const AgeVerification = ({ onConfirm }) => {
 
   const handleNo = () => {
     alert("Lo siento, debes ser mayor de edad para acceder al sitio.");
-    // Puedes redirigir a otra página o realizar otra acción aquí
   };
 
   return (
@@ -28,7 +24,7 @@ const AgeVerification = ({ onConfirm }) => {
     >
       <nav className="absolute -top-7 -left-2 z-50  lg:w-full lg:flex lg:justify-end  lg:top-3 ">
         <div className=" lg:mr-[3%] flex justify-center items-center ">
-          <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
+          <img src={logo} className="w-52 2xl:w-56 " alt="img-verification" />
         </div>
       </nav>
       <section

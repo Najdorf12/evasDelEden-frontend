@@ -1,4 +1,3 @@
-import imgLogo from "../assets/logo-removebg.png";
 import Footer from "../components/Footer";
 import CardAdminEva from "../components/CardAdminEva";
 
@@ -296,9 +295,9 @@ const AdminPage = () => {
           }}
           className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[700px]"
         >
-          <h2 className="text-center font-title text-6xl font-extrabold text-white xl:text-7xl 2xl:text-8xl">
+          <h6 className="text-center font-title text-6xl font-extrabold text-white xl:text-7xl 2xl:text-8xl">
             ADMIN FORM
-          </h2>
+          </h6>
           <p className="text-center text-gray-200 font-text text-base xl:text-lg 2xl:text-xl">
             Create your bitch
           </p>

@@ -119,7 +119,7 @@ const Contact = () => {
           </div>
         </section>
 
-        <footer className="absolute bottom-0 text-white font-medium lg:text-zinc-500">
+        <footer className="fixed bottom-0 text-white font-medium lg:text-zinc-500">
           <Footer />
         </footer>
       </section>
