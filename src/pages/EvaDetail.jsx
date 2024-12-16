@@ -81,7 +81,7 @@ const EvaDetail = () => {
                 `Hola, vi tu anuncio en Evas del Eden...`
               )}`}
               target="_blank"
-              className="self-end mt-3 mr-2 xl:mt-4"
+              className="self-end mt-3 mr-2 xl:mt-4 relative z-50"
             >
               <button
                 style={{
