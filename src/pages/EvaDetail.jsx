@@ -78,7 +78,7 @@ const EvaDetail = () => {
               to={`https://api.whatsapp.com/send/?phone=${
                 evaDetail?.wttp
               }&text=${encodeURIComponent(
-                `Hola, vi tu anuncio en Evas del Eden...`
+                `Hola, vi tu anuncio en evasdeleden.com.  Me gustaría conocer sobre tu servicio y disponibilidad.`
               )}`}
               target="_blank"
               className="self-end mt-3 mr-2 xl:mt-4 relative z-50"
