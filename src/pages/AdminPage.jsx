@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import CardAdminEva from "../components/CardAdminEva";
-
+import imgLogo from "/0003.png"
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
@@ -271,12 +271,12 @@ const AdminPage = () => {
   return (
     <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
-        <picture className="w-14 h-14 flex items-center justify-center  2xl:w-16 2xl:h-16 ">
+         <picture className=" flex items-center justify-center w-[120px] lg:w-[150px] 2xl:w-[180px] ">
           <img src={imgLogo} alt="logo" />
-        </picture>
+        </picture> 
         <ul className="flex gap-6 xl:gap-8 2xl:gap-12">
           <li className="text-gray-50 border-l-2 pl-2 py-1 hover:scale-105 hover:text-white duration-500 ">
-            <Link to={"/"}>Home </Link>
+            <Link to={"/"}>Home</Link>
           </li>
           <li
             onClick={() => logout()}

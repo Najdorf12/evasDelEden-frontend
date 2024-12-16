@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import Footer from "../../components/Footer";
+import imgLogo from "/0003.png";
 
 const Register = () => {
   const {
@@ -43,8 +44,8 @@ const Register = () => {
       }}
       className="h-screen w-full flex flex-col  gap-14 items-center xl:gap-0  2xl:gap-20 "
     >
-      <nav className="font-text2 text-lg pr-2 relative flex justify-between items-center w-full mt-2  xl:mt-3 xl:text-xl   ">
-        <picture className="w-16 h-16 flex items-center justify-center rounded-full  2xl:w-20 2xl:h-20 ">
+      <nav className="font-text2 text-lg px-3 relative flex justify-between items-center w-full mt-2  xl:mt-3 xl:text-xl  lg:px-12  ">
+        <picture className="flex items-center justify-center rounded-full w-[120px] lg:w-[150px] 2xl:w-[180px] ">
           <img src={imgLogo} className="rounded-full" alt="logo" />
         </picture>
         <ul className="flex gap-6 xl:gap-10 2xl:gap-12">
