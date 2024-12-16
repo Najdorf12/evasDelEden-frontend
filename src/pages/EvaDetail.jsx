@@ -9,11 +9,11 @@ import logo from "/0004.png";
 const EvaDetail = () => {
   const { id } = useParams();
   const [evaDetail, setEvaDetail] = useState({});
-  console.log(evaDetail)
-  const images2 = evaDetail?.images?.map((image) => ({
-    original: image?.secure_url,
-    thumbnail: image?.secure_url,
-  })) || [];
+  const images2 =
+    evaDetail?.images?.map((image) => ({
+      original: image?.secure_url,
+      thumbnail: image?.secure_url,
+    })) || [];
 
   useEffect(() => {
     const fetchEvaData = async () => {
@@ -75,15 +75,19 @@ const EvaDetail = () => {
               {evaDetail.description?.servicio}{" "}
             </p>
             <Link
-              to={`https://api.whatsapp.com/send/?phone=${evaDetail?.wttp}`}
-              target="blank"
+              to={`https://api.whatsapp.com/send/?phone=${
+                evaDetail?.wttp
+              }&text=${encodeURIComponent(
+                `Hola, vi tu anuncio en Evas del Eden...`
+              )}`}
+              target="_blank"
               className="self-end mt-3 mr-2 xl:mt-4"
             >
               <button
                 style={{
                   boxShadow: "8px 8px 16px #171718, -3px -3px 3px #37373c",
                 }}
-                className="pr-6 pl-5  rounded-full flex items-center justify-start gap-1 text-sm xl:text-lg xl:gap-2 font-semibold 2xl:text-xl border-[2px] border-purple-300 text-whiteCustom"
+                className="pr-6 pl-5 rounded-full flex items-center justify-start gap-1 text-sm xl:text-lg xl:gap-2 font-semibold 2xl:text-xl border-[2px] border-purple-300 text-whiteCustom cursor-pointer"
               >
                 <i className="bx bxl-whatsapp text-2xl text-purple-400 xl:text-3xl"></i>
                 CONTACTO
@@ -106,18 +110,17 @@ const EvaDetail = () => {
             </figure>
           </div>
         </div>
-   
-       
-       <article className="mt-4 px-3  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center xl:pl-12 xl:mt-0 ">
-        <h5
-          style={{
-            boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
-          }}
-          className="text-base text-stone-500 mt-5  font-medium font-text2 self-start pl-2 pr-4 w-36  border border-stone-600 rounded-lg flex justify-start items-center gap-2 lg:text-lg lg:w-44 xl:text-xl xl:w-52 "
-        >
-          <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
-          Info
-        </h5>
+
+        <article className="mt-4 px-3  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center xl:pl-12 xl:mt-0 ">
+          <h5
+            style={{
+              boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+            }}
+            className="text-base text-stone-500 mt-5  font-medium font-text2 self-start pl-2 pr-4 w-36  border border-stone-600 rounded-lg flex justify-start items-center gap-2 lg:text-lg lg:w-44 xl:text-xl xl:w-52 "
+          >
+            <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
+            Info
+          </h5>
           <ul className="font-text2 text-stone-400 flex flex-col gap-2 text-base mt-4 lg:max-w-[80%] xl:text-lg  2xl:text-xl lg:gap-4 xl:mt-6">
             <li className="border border-stone-700 rounded-full px-3 lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900">
               Horario: <span>{evaDetail.description?.horario} </span>
@@ -180,9 +183,7 @@ const EvaDetail = () => {
                 </p>
               )}
             </div>
-
           </section>
-
         </article>
       </section>
 
