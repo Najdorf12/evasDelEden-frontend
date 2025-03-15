@@ -10,8 +10,8 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
   const toggleExpand = () => setIsExpanded(!isExpanded);
 
   const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) return text;
-    return text.slice(0, maxLength) + "...";
+    if (text?.length <= maxLength) return text;
+    return text?.slice(0, maxLength) + "...";
   };
   return (
     <>
@@ -32,7 +32,7 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
           </p>
 
           <div className="mt-1 font-semibold font-text text-white tracking-wide rounded-lg flex justify-between items-center ">
-            {category.toUpperCase()}
+            {category?.toUpperCase()}
             <p className="text-white ">{isActive ? "Activa" : "Inactiva"}</p>
           </div>
 
