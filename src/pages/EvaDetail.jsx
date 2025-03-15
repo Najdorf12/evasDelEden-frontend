@@ -111,7 +111,7 @@ const EvaDetail = () => {
           </div>
         </div>
 
-        <article className="mt-4 px-3  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center xl:pl-12 xl:mt-0 ">
+        <article className="mt-4 px-3  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center lg:mt-12 xl:pl-10 ">
           <h5
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
@@ -121,70 +121,69 @@ const EvaDetail = () => {
             <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
             Info
           </h5>
-          <ul className="font-text2 text-stone-400 flex flex-col gap-2 text-base mt-4 lg:max-w-[80%] xl:text-lg  2xl:text-xl lg:gap-4 xl:mt-6">
-            <li className="border border-stone-700 rounded-full px-3 lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900">
+          <ul className="font-text2 text-stone-400 flex flex-col gap-3 text-base mt-5 lg:max-w-[80%] xl:text-lg  2xl:text-xl lg:gap-4 xl:mt-6">
+            <li className="border border-stone-700 rounded-full pl-3 pr-6 py-[2px] lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900">
               Horario: <span>{evaDetail.description?.horario} </span>
             </li>
             <div className="flex items-center gap-2 xl:gap-3">
-              <li className="border border-stone-700 rounded-full px-3 lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
+              <li className="border border-stone-700 rounded-full pl-3 pr-6 py-[2px] lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
                 Edad: <span>{evaDetail.description?.edad} </span>
               </li>
-              <li className="border border-stone-700 rounded-full px-3 lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
+              <li className="border border-stone-700 rounded-full pl-3 pr-6 py-[2px] lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
                 Altura: <span>{evaDetail.description?.altura} </span>
               </li>
-              <li className="border border-stone-700 rounded-full px-3 lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
+              <li className="border border-stone-700 rounded-full pl-3 pr-6 py-[2px] lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
                 Peso: <span>{evaDetail.description?.peso} </span>
               </li>
             </div>
             <div className="flex items-center">
-              <li className="border border-stone-700 rounded-full px-3 lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
+              <li className="border border-stone-700 rounded-full pl-3 pr-6 py-[2px] lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900 lg:px-4 xl:px-6 2xl:px-10">
                 Medidas: <span>{evaDetail.description?.medidas} </span>
               </li>
             </div>
 
             <li
               style={{ filter: "drop-shadow(2px 3px 3px rgb(24 24 27))" }}
-              className="text-balance font-medium text-center mt-3  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-200 to-purple-100 text-base lg:mt-4 lg:text-start xl:mt-6  2xl:mt-8 xl:text-lg 2xl:text-xl"
+              className="text-balance font-medium text-center mt-4  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-200 to-purple-100 text-base lg:mt-4 lg:text-start xl:mt-6  2xl:mt-8 xl:text-lg 2xl:text-xl"
             >
               <span>{evaDetail.description?.extendDescription} </span>
             </li>
           </ul>
-
-          <section className="mt-8 flex flex-col items-start self-start w-full">
-            <h5
-              style={{
-                boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
-              }}
-              className="text-base text-stone-500 my-2 font-medium font-text2 self-start pl-2 w-36   border border-stone-600 rounded-lg flex justify-start items-center gap-2 lg:text-lg lg:w-44 xl:text-xl xl:w-52"
-            >
-              <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
-              Videos
-            </h5>
-
-            {/* Contenedor de videos */}
-            <div className="flex flex-col self-center  items-center gap-4 mt-4 w-[90%] lg:flex-row lg:flex-wrap lg:justify-center lg:gap-8 xl:gap-12">
-              {evaDetail?.videos?.length > 0 ? (
-                evaDetail?.videos?.map((video, index) => (
-                  <div
-                    key={index}
-                    className="w-full lg:w-[80%] xl:w-[70%] 2xl:w-[60%] flex justify-center"
-                  >
-                    {/* Video */}
-                    <video
-                      className="w-full h-auto rounded-lg border-[2px] border-stone-700 shadow-lg shadow-zinc-900"
-                      controls
-                      src={video?.secure_url}
-                    />
-                  </div>
-                ))
-              ) : (
-                <p className="pl-1 self-start text-stone-500 text-balance max-w-[300px] text-sm -mt-2  xl:text-base xl:mt-2 2xl:text-lg">
-                  No hay videos disponibles para esta Eva
-                </p>
-              )}
-            </div>
-          </section>
         </article>
+      </section>
+      <section className="mt-4 px-3 flex flex-col justify-center items-center xl:mt-12 ">
+        <h5
+          style={{
+            boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
+          }}
+          className="text-base text-stone-500 mt-5  font-medium font-text2  pl-2 pr-4 w-36  border border-stone-600 rounded-lg flex justify-start items-center gap-2  lg:text-lg lg:w-44 xl:text-xl xl:w-52"
+        >
+          <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
+          Videos
+        </h5>
+
+        {/* Contenedor de videos */}
+        <div className="flex flex-wrap self-center justify-center items-center gap-4 mt-6 w-full lg:mt-12 lg:gap-6 lg:px-[5%] ">
+          {evaDetail?.videos?.length > 0 ? (
+            evaDetail?.videos?.map((video, index) => (
+              <div
+                key={index}
+                className="w-[90%] max-w-[320px] flex justify-center"
+              >
+                {/* Video */}
+                <video
+                  className="w-full h-auto rounded-lg border-[2px] border-stone-700 shadow-lg shadow-zinc-900 object-cover object-center"
+                  controls
+                  src={video?.secure_url}
+                />
+              </div>
+            ))
+          ) : (
+            <p className="pl-1 self-start text-stone-500 text-balance max-w-[300px] text-sm -mt-2  xl:text-base xl:mt-2 2xl:text-lg">
+              No hay videos disponibles para esta Eva
+            </p>
+          )}
+        </div>
       </section>
 
       <div className="flex gap-3 mt-12 text-7xl lg:mt-8 lg:gap-4 xl:gap-8 xl:mt-16 2xl:mt-20 xl:text-8xl 2xl:text-9xl 2xl:gap-12">
