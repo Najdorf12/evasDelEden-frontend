@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import CardAdminEva from "../components/CardAdminEva";
-import imgLogo from "/0003.png"
+import imgLogo from "/0003.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
@@ -57,7 +57,6 @@ const AdminPage = () => {
   };
 
   useEffect(() => {
-    console.log(evaSelected);
     if (evaSelected !== null) {
       reset({
         _id: evaSelected._id,
@@ -265,15 +264,18 @@ const AdminPage = () => {
         })
         .catch((error) => console.error(error));
     }
+    reset();
+    setImages([]);
+    setVideos([]);
     alert("EVA CREADA EXITOSAMENTE");
   };
-  
+
   return (
     <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
-         <picture className=" flex items-center justify-center w-[120px] lg:w-[150px] 2xl:w-[180px] ">
+        <picture className=" flex items-center justify-center w-[120px] lg:w-[150px] 2xl:w-[180px] ">
           <img src={imgLogo} alt="logo" />
-        </picture> 
+        </picture>
         <ul className="flex gap-6 xl:gap-8 2xl:gap-12">
           <li className="text-gray-50 border-l-2 pl-2 py-1 hover:scale-105 hover:text-white duration-500 ">
             <Link to={"/"}>Home</Link>
@@ -293,12 +295,12 @@ const AdminPage = () => {
             backgroundImage:
               "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
           }}
-          className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[700px]"
+          className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[800px]"
         >
-          <h6 className="text-center font-title text-6xl font-extrabold text-white xl:text-7xl 2xl:text-8xl">
+          <h6 className="text-center font-title text-6xl font-extrabold text-white xl:text-8xl">
             ADMIN FORM
           </h6>
-          <p className="text-center text-gray-200 font-text text-base xl:text-lg 2xl:text-xl">
+          <p className="text-center text-gray-200 font-text text-base xl:text-xl ">
             Create your bitch
           </p>
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
@@ -524,21 +526,33 @@ const AdminPage = () => {
                 cols="30"
               />
             </div>
-            <div className="flex flex-col items-center gap-5 ">
-              <label className="font-light text-gray-400 text-xl">
+            <div className="flex flex-col items-center gap-3 font-text">
+              <label
+                htmlFor="imageUpload"
+                className="font-light text-gray-400 text-xl"
+              >
                 Imágenes
               </label>
-              <input
-                type="file"
-                name="image"
-                accept=".jpg, .png, .jpeg"
-                onChange={(e) => handleImage(e)}
-                className=" rounded-lg flex-1  appearance-none w-full  max-w-[400px] py-2 px-4 border border-gray-400 text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
-              />
+              <div className="relative">
+                <input
+                  id="imageUpload"
+                  type="file"
+                  name="image"
+                  accept=".jpg, .png, .jpeg"
+                  onChange={(e) => handleImage(e)}
+                  className="hidden"
+                />
+                <label
+                  htmlFor="imageUpload"
+                  className="rounded-lg flex-1 appearance-none w-full max-w-[400px] py-3 px-12 border border-zinc-500 text-white placeholder-white text-sm focus:outline-none focus:border-transparent cursor-pointer bg-zinc-700"
+                >
+                  Seleccionar archivo
+                </label>
+              </div>
               {loadingImage ? (
                 <h3>Cargando imagen...</h3>
               ) : (
-                <div className="lg:flex gap-5 xl:gap-10">
+                <div className="flex flex-wrap justify-center items-center  gap-3 xl:gap-7">
                   {images?.map((img) => (
                     <div key={img?.public_id} className="relative">
                       <button
@@ -549,7 +563,7 @@ const AdminPage = () => {
                         X
                       </button>
                       <img
-                        className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
+                        className="w-32 h-32 object-cover  2xl:w-36 2xl:h-36"
                         src={img?.secure_url}
                         alt=""
                         width="300px"
@@ -559,44 +573,55 @@ const AdminPage = () => {
                 </div>
               )}
             </div>
-            <div className="relative font-text">
-              <label htmlFor="videoUpload" className="text-white">
-                Subir Video
+            <div className="relative font-text flex flex-col justify-center items-center gap-3">
+              <label
+                htmlFor="videoUpload"
+                className="font-light text-gray-400 text-lg"
+              >
+                Videos
               </label>
-              <input
-              className="rounded-lg flex-1  appearance-none w-full  max-w-[400px] py-2 px-4 border border-gray-400 text-white placeholder-white text-sm focus:outline-none focus:border-transparent"
-                type="file"
-                id="videoUpload"
-                accept="video/*"
-                onChange={handleVideo}
-              />
+              <div className="relative">
+                <input
+                  type="file"
+                  id="videoUpload"
+                  accept="video/*"
+                  onChange={handleVideo}
+                  className="hidden" 
+                />
+                <label
+                  htmlFor="videoUpload"
+                  className="rounded-lg flex-1 appearance-none w-full max-w-[400px] py-3 px-12 border border-zinc-500 bg-zinc-700 text-white placeholder-white text-sm focus:outline-none focus:border-transparent cursor-pointer "
+                >
+                  Seleccionar archivo
+                </label>
+              </div>
               {loadingVideo && <p>Cargando video...</p>}
             </div>
-
             {/* Mostrar videos cargados */}
-            <div>
-              {videos.map((video) => (
+            <div className="flex flex-wrap justify-center items-center gap-3 xl:gap-7">
+              {videos?.map((video) => (
                 <div
-                  key={video.public_id}
-                  className="flex items-center space-x-4"
+                  key={video?.public_id}
+                  className="flex items-center relative"
                 >
-                  <video
-                    src={video.secure_url}
-                    controls
-                    className="w-24 h-24"
-                  />
                   <button
                     type="button"
                     onClick={() => handleDeleteVideo(video)}
+                    className="absolute right-0 top-0 px-2 border-2 border-gray-400  flex items-center rounded-sm font-bold text-white bg-red-700"
                   >
-                    Eliminar
+                    X
                   </button>
+                  <video
+                    src={video?.secure_url}
+                    controls
+                    className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
+                  />
                 </div>
               ))}
             </div>
             <div className="flex items-center justify-center ">
               <button
-                className="w-full font-text  py-2 px-4 border-[1px] border-slate-100 hover:bg-gray-300 rounded-md shadow-lg text-white font-semibold transition duration-200 hover:text-gray-500 xl:w-[70%] xl:self-center "
+                className="w-full font-text mt-2 py-2 px-4 border-[1px] border-slate-100 hover:bg-gray-300 rounded-md shadow-lg text-white font-semibold transition duration-200 hover:text-gray-500 xl:w-[70%] xl:self-center "
                 type="submit"
               >
                 Submit
