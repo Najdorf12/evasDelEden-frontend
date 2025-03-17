@@ -1,37 +1,40 @@
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import logo from "/0004.png"
+import logo from "/0004.png";
 import axios from "../api/axios";
 
-
 const Contact = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data)
+    console.log(data);
     try {
-      const response = await axios.post("/send-email", data); 
+      const response = await axios.post("/send-email", data);
       console.log("Correo enviado:", response.data);
     } catch (err) {
-      console.error("Error al enviar el correo:", err.response?.data || err.message);
+      console.error(
+        "Error al enviar el correo:",
+        err.response?.data || err.message
+      );
     }
   };
-  
+
   return (
     <>
-      <section
-        className="relative flex flex-col items-center w-full h-[100dvh] overflow-hidden lg:bg-zinc-300"
-      >
-        <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 lg:px-[4%]">
+      <section className="relative flex flex-col items-center w-full h-[100dvh] overflow-hidden lg:bg-zinc-300">
+        <nav className="w-full flex justify-between items-center pr-2 -mt-6 z-50 lg:-mt-4 lg:px-[4%]">
           <div>
-          <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
+            <img src={logo} className="w-52 2xl:w-56 " alt="logo" />
           </div>
           <Link to={"/"}>
             <button
               id="btn-evadetail"
-              className="px-9 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg  xl:px-12 font-semibold 2xl:text-xl "
+              className="px-9 py-1  flex items-center justify-center gap-1 text-sm xl:text-lg xl:px-12 font-semibold 2xl:text-xl "
             >
               Inicio
             </button>
@@ -43,25 +46,51 @@ const Contact = () => {
         ></section>
         <article
           /* id="box-glass4" */
-          className="flex flex-col justify-center font-text2 items-center z-50  w-[98%] rounded-2xl  mt-6  max-w-[600px] lg:ml-[30%] lg:-mt-12 xl:mt-0 "
+          className="flex flex-col justify-center font-text2 items-center z-50 w-[98%] rounded-2xl mt-5 max-w-[600px] lg:ml-[30%] lg:-mt-12 xl:mt-0 2xl:max-w-[800px]"
         >
           <h6
             style={{ filter: "drop-shadow(3px 6px 6px rgb(24 24 27))" }}
-            className="text-8xl text-stone-100 font-title font-semibold lg:text-white  2xl:text-[9rem]"
+            className="text-8xl text-stone-100 font-title font-semibold lg:text-white xl:text-9xl 2xl:text-[10rem]"
           >
             CONTACTO
           </h6>
           <p
-          /*   style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }} */
-            className="mt-2 text-stone-600 text-base font-semibold text-center px-2 text-balance max-w-[500px] 2xl:text-xl "
+            id="box-glass3"
+            /*   style={{ filter: "drop-shadow(3px 3px 3px rgb(24 24 27))" }} */
+            className="mt-5 py-3 rounded-lg text-stone-400 text-base font-semibold text-center px-2 w-[90%] border border-stone-600 text-balance max-w-[500px]  lg:mt-3 lg:border-[0px] lg:text-stone-500 2xl:max-w-[700px] 2xl:text-xl "
           >
-            Contactate para publicarte con nosotros y conocer nuestros servicios, productos disponibles como así también promociones de publicación. 
+            Contactate para publicarte con nosotros y conocer nuestros
+            servicios, productos disponibles como así también promociones de
+            publicación.
           </p>
+          <ul
+            id="box-glass2"
+            className="mt-14 border rounded-lg border-purple-400 text-stone-200 text-base flex flex-col gap-2 px-2 py-3 text-balance w-[90%] lg:border-[0px] max-w-[500px] lg:max-w-[900px] lg:text-nowrap lg:mt-6 lg:text-stone-400   2xl:text-xl "
+          >
+            <li className="flex items-start gap-3">
+              <i className="bx bxs-chevrons-right text-xl text-purple-400"></i>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, unde!
+            </li>
+            <li className="flex items-start gap-3">
+              <i className="bx bxs-chevrons-right text-xl text-purple-400"></i>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, unde!
+            </li>
+            <li className="flex items-start gap-3">
+              <i className="bx bxs-chevrons-right text-xl text-purple-400"></i>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, unde!
+            </li>
+          </ul>
+          <button
+            id="btn-evadetail"
+            className="px-9 py-2 mt-12 flex items-center justify-center gap-1 text-sm xl:text-base xl:px-12 font-semibold 2xl:text-lg 2xl:mt-16"
+          >
+            ESCRIBENOS AL WHATSAPP
+          </button>
         </article>
+
         {/* FORM */}
-        <section className="z-50 w-full font-text2 mt-3 flex justify-center items-center lg:mt-0 lg:ml-[30%]  ">
+        {/*  <section className="z-50 w-full font-text2 mt-3 flex justify-center items-center lg:mt-0 lg:ml-[30%]  ">
           <div
-            /* id="box-glass2" */
             style={{ animation: "slideInFromLeft 1s ease-out" }}
             class="max-w-md w-full rounded-2xl  overflow-hidden space-y-4 lg:py-3"
           >
@@ -117,7 +146,7 @@ const Contact = () => {
               </button>
             </form>
           </div>
-        </section>
+        </section> */}
 
         <footer className="fixed bottom-0 text-white font-medium lg:text-zinc-500">
           <Footer />
