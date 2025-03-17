@@ -23,6 +23,7 @@ const Contact = () => {
       );
     }
   };
+  const wttp = "2615900535";
 
   return (
     <>
@@ -80,12 +81,21 @@ const Contact = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, unde!
             </li>
           </ul>
-          <button
-            id="btn-evadetail"
-            className="px-9 py-2 mt-12 flex items-center justify-center gap-1 text-sm xl:text-base xl:px-12 font-semibold 2xl:text-lg 2xl:mt-16"
+          <Link
+            to={`https://api.whatsapp.com/send/?phone=${
+              wttp
+            }&text=${encodeURIComponent(
+              `Hola, me gustaría publicarme en evasdeleden.com y conocer más sobre sus servicios.`
+            )}`}
+            target="_blank"
           >
-            ESCRIBENOS AL WHATSAPP
-          </button>
+            <button
+              id="btn-evadetail"
+              className="px-9 py-2 mt-12 flex items-center justify-center gap-1 text-sm xl:text-base xl:px-12 font-semibold 2xl:text-lg 2xl:mt-16"
+            >
+              ESCRIBENOS AL WHATSAPP
+            </button>
+          </Link>
         </article>
 
         {/* FORM */}
