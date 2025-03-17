@@ -87,7 +87,7 @@ const Home = () => {
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 xl:pb-20 2xl:pb-28">
       <section className="w-full flex flex-col items-center z-50">
-        <nav className="w-full flex justify-between items-center pr-2 -mt-7 z-50 -ml-2 xl:-mt-4">
+        <nav className="w-full flex justify-between items-center pr-2 -mt-6 z-50 -ml-2 xl:-mt-4">
           <div>
             <img src={logo} className="w-52 xl:w-56 " alt="logo" />
           </div>
