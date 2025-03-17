@@ -29,7 +29,7 @@ const EvaDetail = () => {
 
   return (
     <section className="relative bg-zinc-800 pb-12  w-full  flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24  min-h-screen">
-      <nav className="absolute top-0 w-full flex -mt-6 justify-between items-center pr-3  z-50 lg:-mt-4 lg:px-[4%]">
+      <nav className="absolute top-0 w-full flex -mt-5 justify-between items-center pr-3 z-50 lg:-mt-3 lg:px-[4%]">
         <div>
           <img src={logo} alt="logo" className="w-48 " />
         </div>
@@ -43,7 +43,7 @@ const EvaDetail = () => {
         </Link>
       </nav>
 
-      <section className="mt-14 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-3   lg:mt-24 lg:w-full 2xl:mt-28 ">
+      <section className="mt-16 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-3   lg:mt-24 lg:w-full 2xl:mt-28 ">
         <div className="mt-5  flex flex-col items-center lg:mt-0  lg:w-[45%]">
           <article
             style={{
@@ -95,7 +95,7 @@ const EvaDetail = () => {
             </Link>
           </article>
 
-          <div className="mt-5 lg:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden ">
+          <div className="mt-7 lg:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden ">
             <figure
               loading="lazy"
               className="imgs w-full flex items-center justify-center shadow-lg shadow-zinc-900"
@@ -179,7 +179,7 @@ const EvaDetail = () => {
               </div>
             ))
           ) : (
-            <p className="pl-1 self-start text-stone-500 text-balance max-w-[300px] text-sm -mt-2  xl:text-base xl:mt-2 2xl:text-lg">
+            <p className="pl-1 self-start text-stone-500 text-balance max-w-[300px] text-sm -mt-2 md:text-nowrap  xl:text-base xl:mt-2 2xl:text-lg">
               No hay videos disponibles para esta Eva
             </p>
           )}
