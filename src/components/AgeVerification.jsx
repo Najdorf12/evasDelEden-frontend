@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import logo from "/0004.png";
 
+
 const AgeVerification = ({ onConfirm }) => {
   const navigate = useNavigate();
 

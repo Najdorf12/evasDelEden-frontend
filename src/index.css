@@ -9,13 +9,6 @@
 @tailwind utilities;
 
 #verification {
-  width: 100vw;
-  height: 100vh;
-  background: url("./assets/bg/bg1.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
   filter: grayscale(100%);
 }
 #contact {
@@ -29,13 +22,7 @@
 }
 
 @media (min-width: 1000px) {
-  #verification {
-    background: url("./assets/bg/bg1-removebg.png");
-    background-size: 30%;
-    background-position: left bottom;
-    background-repeat: no-repeat;
-    filter: grayscale(100%);
-  }
+  
   #contact {
     background-size: 40%;
     background-position: left bottom;
@@ -46,9 +33,7 @@
   #contact {
     background-size: 40%;
   }
-  #verification {
-    background-size: 28%;
-  }
+ 
 }
 @media (min-width: 1500px) {
   #contact {
@@ -64,14 +49,14 @@
   -webkit-backdrop-filter: blur(5px);
 }
 #box-glass3 {
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15x);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20x);
 }
 #box-glass4 {
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
 }
-/* checkbox */
+
 .container-checkbox {
   cursor: pointer;
 }

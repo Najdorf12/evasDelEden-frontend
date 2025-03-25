@@ -32,19 +32,6 @@ const Home = () => {
   const [allEvas, setAllEvas] = useState([]);
   const [userLocation, setUserLocation] = useState(null);
 
- /*  useEffect(() => {
-    const fetchUserLocation = async () => {
-      try {
-        const response = await fetch("https://ipapi.co/json/");
-        const data = await response.json();
-        console.log(data);
-        setUserLocation(data?.city);
-      } catch (error) {
-        console.error("Failed to get Location:", error);
-      }
-    };
-    fetchUserLocation();
-  }, []); */
 
   useEffect(() => {
     const storedVerification = sessionStorage.getItem("isVerified");
@@ -65,7 +52,6 @@ const Home = () => {
           selectedLocation
         );
 
-        // Ordenar las evas por la categoría en el orden deseado
         const orderedEvas = evasData.sort((a, b) => {
           const order = { Platinum: 1, Gold: 2, Silver: 3 };
           return order[a._id] - order[b._id];
@@ -264,7 +250,7 @@ const Home = () => {
                 style={{
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="text-base text-stone-500 mb-5 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg xl:mb-7"
+                className="text-base text-stone-500 mb-6 mt-2 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg xl:mb-7"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-purple-400"></i>
                 {category?._id}

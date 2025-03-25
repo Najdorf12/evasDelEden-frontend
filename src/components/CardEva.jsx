@@ -19,13 +19,13 @@ const CardEva = ({ eva }) => {
         )}
       </figure>
       <article className="absolute inset-0 flex flex-col items-center justify-between  font-text2">
-        <div className="flex flex-col items-center justify-center text-base font-medium w-[95%]">
+        <div className="flex flex-col items-center justify-center text-base font-medium w-[90%]">
           <p
-            id="box-glass"
-            className="w-full flex text-sm items-center justify-between px-3 mt-[6px] rounded-full text-white  border border-white"
+            id="box-glass3"
+            className="w-full flex text-sm items-center justify-between px-4 py-[1px] mt-[6px] rounded-full text-white  border border-white"
           >
             {name}
-            <span className="rounded-full text-zinc-700">
+            <span className="rounded-full text-white">
               {description.edad}
             </span>
           </p>
