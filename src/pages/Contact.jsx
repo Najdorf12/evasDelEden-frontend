@@ -23,7 +23,7 @@ const Contact = () => {
       );
     }
   };
-  const wttp = "2615900535";
+  const wttp = "+54 9 3534 41-6561";
 
   return (
     <>
