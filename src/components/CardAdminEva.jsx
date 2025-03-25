@@ -1,4 +1,4 @@
-import imgWoman from "../assets/woman.jpg";
+import imgWoman from "../assets/bg/imgWoman.jpeg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
