@@ -28,7 +28,7 @@ const EvaDetail = () => {
   }, [id]);
 
   return (
-    <section className="relative bg-zinc-800 pb-12  w-full  flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24  min-h-screen">
+    <section className="relative bg-zinc-800 pb-12 w-full  flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24  min-h-screen">
       <nav className="absolute top-0 w-full flex -mt-5 justify-between items-center pr-3 z-50 lg:-mt-3 lg:px-[4%]">
         <div>
           <img src={logo} alt="logo" className="w-48 " />

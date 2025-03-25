@@ -295,7 +295,7 @@ const AdminPage = () => {
             backgroundImage:
               "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
           }}
-          className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[800px]"
+          className="max-w-md w-full  rounded-xl shadow-2xl shadow-black overflow-hidden py-8 px-4 space-y-8 xl:max-w-[900px]"
         >
           <h6 className="text-center font-title text-6xl font-extrabold text-white xl:text-8xl">
             ADMIN FORM

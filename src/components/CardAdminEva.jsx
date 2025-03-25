@@ -15,8 +15,8 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
   };
   return (
     <>
-      <section className="relative p-[6px]  min-w-[280px] border border-[#92856e]  max-w-[330px] rounded-3xl flex flex-col justify-center items-center hover:scale-105 duration-500 shadow-lg shadow-zinc-900">
-        <picture className="w-full h-[15rem] object-cover">
+      <section className="relative px-4 min-w-[350px] border border-[#92856e] min-h-[590px]  max-w-[330px] rounded-3xl flex flex-col justify-start items-center hover:scale-105 duration-500 shadow-lg shadow-zinc-900 xl:min-h-[590px]">
+        <picture className="w-full h-[15rem] mt-2 object-cover ">
           <Link to={`/${_id}`}>
             <img
               loading="lazy"
@@ -31,7 +31,7 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
             {name}
           </p>
 
-          <div className="mt-1 font-semibold font-text text-white tracking-wide rounded-lg flex justify-between items-center ">
+          <div className="mt-2 font-semibold font-text text-white tracking-wide rounded-lg flex justify-between items-center ">
             {category?.toUpperCase()}
             <p className="text-white ">{isActive ? "Activa" : "Inactiva"}</p>
           </div>
@@ -55,10 +55,10 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
               </li>
               <li className="">
                 <span className="text-stone-600">Peso:</span>{" "}
-                {description?.peso} 
+                {description?.peso}
               </li>
             </div>
-           
+
             <div className="flex justify-between items-center">
               <li className="">
                 <span className="text-stone-600">Medidas:</span>{" "}
@@ -79,14 +79,16 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
                 {description?.servicio}
               </li>
               <li>
-                <span className="text-stone-600">Descripción:</span>{" "}
+                <span className="text-stone-600 z-50 relative">
+                  Descripción:
+                </span>{" "}
                 {isExpanded
                   ? description?.extendDescription
                   : truncateText(description?.extendDescription, 100)}
                 {description?.extendDescription?.length > 100 && (
                   <span
                     onClick={toggleExpand}
-                    className="cursor-pointer text-[#426d89] ml-1 hover:underline"
+                    className="cursor-pointer text-[#426d89] ml-1 hover:underline "
                   >
                     {isExpanded ? "Ver menos" : "Ver más"}
                   </span>
@@ -95,23 +97,25 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
             </div>
           </ul>
 
-          <div className="w-full  mt-4 mb-1 font-normal">
-            <section className="flex justify-evenly items-center  mr-2 ">
-              <div className="flex items-center gap-2 text-[1rem] text-white">
-                <i
-                  onClick={() => selectEva(eva, _id)}
-                  className="bx bxs-edit-alt cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
-                ></i>
-                Editar
-              </div>
-              <div className="flex items-center gap-2 text-[1rem]  text-white">
-                <i
-                  onClick={() => deleteEva(_id)}
-                  className="bx bxs-trash-alt  cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
-                ></i>
-                Eliminar
-              </div>
-            </section>
+          <div
+            className={`w-full absolute ${
+              isExpanded ? "relative mt-7" : "absolute"
+            } bottom-4  left-0 font-normal flex justify-center items-center gap-12`}
+          >
+            <div className="flex items-center gap-2 text-[1rem] text-white">
+              <i
+                onClick={() => selectEva(eva, _id)}
+                className="bx bxs-edit-alt cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
+              ></i>
+              Editar
+            </div>
+            <div className="flex items-center gap-2 text-[1rem] text-white">
+              <i
+                onClick={() => deleteEva(_id)}
+                className="bx bxs-trash-alt  cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
+              ></i>
+              Eliminar
+            </div>
           </div>
         </article>
       </section>
