@@ -2,9 +2,25 @@ import imgWoman from "../assets/bg/imgWoman.jpeg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
-  const { _id, name, wttp, category, location, description, images, isActive } =
-    eva;
+const CardAdminEva = ({ eva, onDelete, onEdit }) => {
+  if (!eva) {
+    return <div className="text-white">Cargando datos...</div>;
+  }
+
+  // Desestructuración después de la validación
+  const { 
+    _id = '', 
+    name = '', 
+    wttp = '', 
+    category = '', 
+    location = '', 
+    description = {}, 
+    images = [], 
+    videos = [], 
+    isActive = false 
+  } = eva;
+
+  const hasValidImages = images.length > 0 && images[0]?.secure_url;
 
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpand = () => setIsExpanded(!isExpanded);
@@ -21,7 +37,7 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
             <img
               loading="lazy"
               className="w-full h-full rounded-2xl object-cover"
-              src={!images[0]?.secure_url ? imgWoman : images[0]?.secure_url}
+              src={hasValidImages ? images[0].secure_url : imgWoman}
             />
           </Link>
         </picture>
@@ -104,14 +120,14 @@ const CardAdminEva = ({ eva, selectEva, deleteEva }) => {
           >
             <div className="flex items-center gap-2 text-[1rem] text-white">
               <i
-                onClick={() => selectEva(eva, _id)}
+                onClick={onEdit}
                 className="bx bxs-edit-alt cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
               ></i>
               Editar
             </div>
             <div className="flex items-center gap-2 text-[1rem] text-white">
               <i
-                onClick={() => deleteEva(_id)}
+                onClick={onDelete}
                 className="bx bxs-trash-alt  cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
               ></i>
               Eliminar

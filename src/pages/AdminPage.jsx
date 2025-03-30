@@ -4,7 +4,6 @@ import imgLogo from "/0003.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import { useCookies } from "react-cookie";
 import { getEvas } from "../api/handlers";
 import axios from "../api/axios";
 
@@ -15,13 +14,11 @@ const AdminPage = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const [allEvas, setAllEvas] = useState([]);
   const [evaSelected, setEvaSelected] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const [images, setImages] = useState([]);
-  const [videos, setVideos] = useState([]); // Estado para videos
+  const [videos, setVideos] = useState([]);
   const [loadingImage, setLoadingImage] = useState(false);
   const [loadingVideo, setLoadingVideo] = useState(false);
 
@@ -35,12 +32,13 @@ const AdminPage = () => {
     const fetchEvas = async () => {
       try {
         const evasData = await getEvas();
-        setAllEvas(evasData);
+        // Filtrar elementos undefined/null
+        setAllEvas(evasData.filter((eva) => eva != null));
       } catch (error) {
         console.error("Failed to fetch evas:", error);
+        setAllEvas([]); // Establecer array vacío en caso de error
       }
     };
-
     fetchEvas();
   }, []);
 
@@ -74,8 +72,10 @@ const AdminPage = () => {
         extendDescription: evaSelected.description?.extendDescription,
         isActive: false,
         images: evaSelected.images,
+        videos: evaSelected.videos,
       });
       setImages(evaSelected.images || []);
+      setVideos(evaSelected.videos || []);
     } else {
       reset({
         name: "",
@@ -93,6 +93,7 @@ const AdminPage = () => {
         extendDescription: "",
       });
       setImages([]);
+      setVideos([]);
     }
   }, [evaSelected]);
 
@@ -104,11 +105,15 @@ const AdminPage = () => {
       })
       .catch((error) => console.error(error));
   };
-
-  const selectEva = (eva, _id) => {
-    setEvaSelected(eva);
+  const createEva = async (data) => {
+    try {
+      const response = await axios.post("/evas", data);
+      return response.data;
+    } catch (error) {
+      console.error("Error al crear la Eva:", error);
+      throw error;
+    }
   };
-
   const deleteEva = (id) => {
     axios
       .delete(`/evas/${id}`)
@@ -118,51 +123,14 @@ const AdminPage = () => {
       .catch((error) => console.error(error));
   };
 
-  const editEva = (eva, id) => {
-    const {
-      name,
-      location,
-      category,
-      wttp,
-      isActive,
-      edad,
-      altura,
-      peso,
-      medidas,
-      depilacion,
-      horario,
-      servicio,
-      extendDescription,
-    } = eva;
-    const evaToEdit = {
-      name,
-      location,
-      category,
-      wttp,
-      isActive,
-      description: {
-        edad,
-        altura,
-        peso,
-        medidas,
-        depilacion,
-        horario,
-        servicio,
-        extendDescription,
-      },
-    };
-
-    axios
-      .put(`/evas/${eva._id}`, evaToEdit)
-      .then((res) => {
-        const updatedEva = res.data;
-        const updatedEvas = allEvas.map((item) =>
-          item._id === updatedEva._id ? updatedEva : item
-        );
-        setAllEvas(updatedEvas);
-        setEvaSelected(null);
-      })
-      .catch((error) => console.error(error));
+  const editEva = async (data) => {
+    try {
+      const response = await axios.put(`/evas/${data._id}`, data);
+      return response.data;
+    } catch (error) {
+      console.error("Error al editar la Eva:", error);
+      throw error;
+    }
   };
   async function handleImage(e) {
     const files = e.target.files;
@@ -220,7 +188,7 @@ const AdminPage = () => {
               (image) => image.public_id !== img.public_id
             ),
           }))
-        ); 
+        );
       })
       .catch((error) => {
         console.error("Error al eliminar imagen de Cloudinary", error);
@@ -263,23 +231,45 @@ const AdminPage = () => {
     }
   }
 
-  // Función para eliminar videos seleccionados
-  function handleDeleteVideo(event) {
-    setVideos(videos.filter((e) => e !== event));
-  }
+  const handleDeleteVideo = (video) => {
+    const newVideos = videos.filter((v) => v.public_id !== video.public_id);
+    setVideos(newVideos);
 
-  const submit = (data) => {
-    if (evaSelected !== null) {
-      editEva(data);
-    } else {
-      const newEva = {
-        name: data.name,
-        wttp: data.wttp,
-        location: data.location,
-        category: data.category,
-        images: images,
-        videos: videos, // Incluir los videos en el nuevo objeto EVA
-        isActive: data.isActive,
+    if (evaSelected) {
+      setEvaSelected({
+        ...evaSelected,
+        videos: evaSelected.videos.filter(
+          (v) => v.public_id !== video.public_id
+        ),
+      });
+    }
+
+    // Eliminar de Cloudinary y MongoDB
+    axios
+      .delete(`evas/delete-video/${encodeURIComponent(video.public_id)}`)
+      .then(() => {
+        console.log("Video eliminado de Cloudinary");
+        // Actualizar la lista de evas
+        setAllEvas((prevEvas) =>
+          prevEvas.map((evas) => ({
+            ...evas,
+            videos: evas.videos.filter((v) => v.public_id !== video.public_id),
+          }))
+        );
+      })
+      .catch((error) => {
+        console.error("Error al eliminar video de Cloudinary", error);
+        // Revertir cambios si falla
+        setVideos(videos);
+        if (evaSelected) {
+          setEvaSelected(evaSelected);
+        }
+      });
+  };
+  const submit = async (data) => {
+    try {
+      const evaData = {
+        ...data,
         description: {
           edad: data.edad,
           altura: data.altura,
@@ -290,21 +280,38 @@ const AdminPage = () => {
           horario: data.horario,
           extendDescription: data.extendDescription,
         },
+        images: images.length > 0 ? images : evaSelected?.images || [],
+        videos: videos.length > 0 ? videos : evaSelected?.videos || [],
       };
-      axios
-        .post("/evas", newEva)
-        .then((res) => {
-          const createdEva = res.data;
-          setAllEvas([...allEvas, createdEva]);
-        })
-        .catch((error) => console.error(error));
+  
+      if (evaSelected) {
+        // Editar Eva existente
+        const response = await axios.put(`/evas/${evaSelected._id}`, evaData);
+        const updatedEva = response.data;
+        
+        setAllEvas(prevEvas =>
+          prevEvas.map(eva => (eva._id === updatedEva._id ? updatedEva : eva))
+        );
+      } else {
+        // Crear nueva Eva
+        const response = await axios.post('/evas', evaData);
+        const newEva = response.data;
+        
+        setAllEvas(prevEvas => [...prevEvas, newEva]);
+      }
+  
+      // Reset después de éxito
+      setEvaSelected(null);
+      reset();
+      setImages([]);
+      setVideos([]);
+      alert("Eva guardada exitosamente");
+    } catch (error) {
+      console.error("Error al guardar la Eva:", error);
+      alert("Error al guardar la Eva");
     }
-    reset();
-    setImages([]);
-    setVideos([]);
-    alert("EVA CREADA EXITOSAMENTE");
   };
-
+  
   return (
     <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
@@ -642,7 +649,7 @@ const AdminPage = () => {
                   <button
                     type="button"
                     onClick={() => handleDeleteVideo(video)}
-                    className="absolute right-0 top-0 px-2 border-2 border-gray-400  flex items-center rounded-sm font-bold text-white bg-red-700"
+                    className="absolute right-0 top-0 px-2 border-2 border-gray-400 flex items-center rounded-sm font-bold text-white bg-red-700"
                   >
                     X
                   </button>
@@ -666,16 +673,21 @@ const AdminPage = () => {
         </section>
 
         <section className="flex flex-wrap  gap-y-6 gap-x-4 my-16 justify-center items-center md:gap-y-10 xl:mt-24 xl:gap-x-10 xl:gap-y-8 xl:px-[10%]">
-          {allEvas !== null &&
-            allEvas?.map((eva, index) => (
-              <div key={eva?._id || index}>
-                <CardAdminEva
-                  eva={eva}
-                  selectEva={selectEva}
-                  deleteEva={deleteEva}
-                />
-              </div>
-            ))}
+          {allEvas && allEvas.length > 0 ? (
+            allEvas.map((eva, index) =>
+              eva ? ( // Verificación adicional
+                <div key={eva._id || index}>
+                  <CardAdminEva
+                    eva={eva}
+                    onEdit={() => setEvaSelected(eva)}
+                    onDelete={() => deleteEva(eva._id)}
+                  />
+                </div>
+              ) : null
+            )
+          ) : (
+            <div className="text-white">No hay Evas disponibles</div>
+          )}
         </section>
 
         <div className="absolute bottom-0 text-zinc-700 font-normal">
