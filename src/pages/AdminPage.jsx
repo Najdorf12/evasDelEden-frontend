@@ -57,7 +57,7 @@ const AdminPage = () => {
   };
 
   useEffect(() => {
-    if (evaSelected !== null) {
+    if (evaSelected) {
       reset({
         _id: evaSelected._id,
         name: evaSelected.name,
@@ -73,7 +73,9 @@ const AdminPage = () => {
         horario: evaSelected.description?.horario,
         extendDescription: evaSelected.description?.extendDescription,
         isActive: false,
+        images: evaSelected.images,
       });
+      setImages(evaSelected.images || []);
     } else {
       reset({
         name: "",
@@ -90,6 +92,7 @@ const AdminPage = () => {
         horario: "",
         extendDescription: "",
       });
+      setImages([]);
     }
   }, [evaSelected]);
 
@@ -110,14 +113,12 @@ const AdminPage = () => {
     axios
       .delete(`/evas/${id}`)
       .then(() => {
-        // Filtrar la EVA eliminada del estado actual
         setAllEvas((prevEvas) => prevEvas.filter((eva) => eva._id !== id));
       })
       .catch((error) => console.error(error));
   };
 
   const editEva = (eva, id) => {
-    console.log("editEva eva", eva);
     const {
       name,
       location,
@@ -193,9 +194,43 @@ const AdminPage = () => {
       setLoadingImage(false);
     }
   }
-  function handleDelete(event) {
-    setImages(images.filter((e) => e !== event));
-  }
+  const handleDeleteImage = (img) => {
+    const newImages = images.filter(
+      (image) => image.public_id !== img.public_id
+    );
+    setImages(newImages);
+
+    if (evaSelected) {
+      setEvaSelected({
+        ...evaSelected,
+        images: evaSelected.images.filter(
+          (image) => image.public_id !== img.public_id
+        ),
+      });
+    } // 3. Eliminar de Cloudinary y MongoDB
+    axios
+      .delete(`evas/delete-image/${encodeURIComponent(img.public_id)}`)
+      .then(() => {
+        console.log("Imagen eliminada de Cloudinary");
+        // 4. Actualizar la lista de eventos
+        setAllEvas((prevEvas) =>
+          prevEvas.map((evas) => ({
+            ...evas,
+            images: evas.images.filter(
+              (image) => image.public_id !== img.public_id
+            ),
+          }))
+        ); 
+      })
+      .catch((error) => {
+        console.error("Error al eliminar imagen de Cloudinary", error);
+        // Revertir cambios si falla
+        setImages(images);
+        if (evaSelected) {
+          setEvaSelected(evaSelected);
+        }
+      });
+  };
 
   async function handleVideo(e) {
     const files = e.target.files;
@@ -557,7 +592,7 @@ const AdminPage = () => {
                     <div key={img?.public_id} className="relative">
                       <button
                         type="button"
-                        onClick={() => handleDelete(img)}
+                        onClick={() => handleDeleteImage(img)}
                         className="absolute right-0 px-2 border-2 border-gray-400  flex items-center rounded-sm font-bold text-white bg-red-700"
                       >
                         X
@@ -586,7 +621,7 @@ const AdminPage = () => {
                   id="videoUpload"
                   accept="video/*"
                   onChange={handleVideo}
-                  className="hidden" 
+                  className="hidden"
                 />
                 <label
                   htmlFor="videoUpload"

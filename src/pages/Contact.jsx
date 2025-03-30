@@ -24,6 +24,7 @@ const Contact = () => {
     }
   };
   const wttp = "+54 9 3534 41-6561";
+  const wttp2 = "+54 9 ";
 
   return (
     <>
@@ -70,21 +71,20 @@ const Contact = () => {
           >
             <li className="flex items-start gap-3">
               <i className="bx bxs-chevrons-right text-xl text-purple-400"></i>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, unde!
+              Portal para visitantes y clientes anunciantes mayores de 18 años
             </li>
             <li className="flex items-start gap-3">
               <i className="bx bxs-chevrons-right text-xl text-purple-400"></i>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, unde!
+              Nuestro portal se reserva el derecho de publicación.
             </li>
-            <li className="flex items-start gap-3">
-              <i className="bx bxs-chevrons-right text-xl text-purple-400"></i>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, unde!
+            <li className="flex items-start gap-3 md:w-[500px] lg:text-wrap">
+              <i className="bx bxs-chevrons-right text-xl text-purple-400 "></i>
+              EvasDelEden no es una agencia por tal motivo no se  responsabiliza
+              por las publicaciones de las escorts.
             </li>
           </ul>
           <Link
-            to={`https://api.whatsapp.com/send/?phone=${
-              wttp
-            }&text=${encodeURIComponent(
+            to={`https://api.whatsapp.com/send/?phone=${wttp}&text=${encodeURIComponent(
               `Hola, me gustaría publicarme en evasdeleden.com y conocer más sobre sus servicios.`
             )}`}
             target="_blank"
