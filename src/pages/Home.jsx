@@ -245,7 +245,7 @@ const Home = () => {
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-purple-400"></i>
                 {category?._id}
               </h5>
-              <div className="pl-2 mt-9 lg:mt-4 w-full flex flex-wrap justify-start items-center gap-1 md:gap-2 lg:gap-4 ">
+              <div className="pl-2 mt-9 lg:mt-4 w-full flex flex-wrap justify-start items-center gap-1 md:gap-2 lg:gap-3 ">
                 {category?.evas?.map((eva, i) => (
                   <CardEva eva={eva} key={i} />
                 ))}

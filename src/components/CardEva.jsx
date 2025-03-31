@@ -4,7 +4,10 @@ const CardEva = ({ eva }) => {
   const { _id, name, location, description, images } = eva;
 
   return (
-    <div className="relative w-[48%] h-[400px] md:h-[500px] lg:w-[30%] lg:h-[550px]">
+    <Link
+      to={`/${_id}`}
+      className="relative w-[48%] h-[400px] md:h-[500px] lg:w-[30%] lg:h-[550px]"
+    >
       <figure className="w-full h-full">
         {images?.length > 0 ? (
           <img
@@ -19,20 +22,18 @@ const CardEva = ({ eva }) => {
         )}
       </figure>
       <article className="absolute inset-0 flex flex-col items-center justify-between  font-text2">
-        <div className="flex flex-col items-center justify-center text-base font-medium w-[90%]">
+        <div className="flex flex-col items-center justify-center text-base font-medium w-[90%] md:w-[60%] py-[2px]">
           <p
             id="box-glass3"
-            className="w-full flex text-sm items-center justify-between px-4 py-[1px] mt-[6px] rounded-full text-white  border border-white"
+            className="w-full flex text-sm items-center justify-between px-4 py-[1px] mt-[6px] rounded-full text-white  border border-white  xl:text-base"
           >
             {name}
-            <span className="rounded-full text-white">
-              {description.edad}
-            </span>
+            <span className="rounded-full text-white">{description.edad}</span>
           </p>
         </div>
         <p className="mb-2 text-lg text-white font-medium">{location}</p>
       </article>
-    </div>
+    </Link>
   );
 };
 
