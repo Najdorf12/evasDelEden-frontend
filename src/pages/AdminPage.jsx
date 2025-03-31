@@ -132,6 +132,7 @@ const AdminPage = () => {
       throw error;
     }
   };
+
   async function handleImage(e) {
     const files = e.target.files;
     const data = new FormData();
@@ -283,23 +284,23 @@ const AdminPage = () => {
         images: images.length > 0 ? images : evaSelected?.images || [],
         videos: videos.length > 0 ? videos : evaSelected?.videos || [],
       };
-  
+
       if (evaSelected) {
         // Editar Eva existente
         const response = await axios.put(`/evas/${evaSelected._id}`, evaData);
         const updatedEva = response.data;
-        
-        setAllEvas(prevEvas =>
-          prevEvas.map(eva => (eva._id === updatedEva._id ? updatedEva : eva))
+
+        setAllEvas((prevEvas) =>
+          prevEvas.map((eva) => (eva._id === updatedEva._id ? updatedEva : eva))
         );
       } else {
         // Crear nueva Eva
-        const response = await axios.post('/evas', evaData);
+        const response = await axios.post("/evas", evaData);
         const newEva = response.data;
-        
-        setAllEvas(prevEvas => [...prevEvas, newEva]);
+
+        setAllEvas((prevEvas) => [...prevEvas, newEva]);
       }
-  
+
       // Reset después de éxito
       setEvaSelected(null);
       reset();
@@ -311,7 +312,7 @@ const AdminPage = () => {
       alert("Error al guardar la Eva");
     }
   };
-  
+
   return (
     <section className="relative w-full bg-zinc-800 min-h-[140vh] flex flex-col items-center  pb-10">
       <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
@@ -649,7 +650,7 @@ const AdminPage = () => {
                   <button
                     type="button"
                     onClick={() => handleDeleteVideo(video)}
-                    className="absolute right-0 top-0 px-2 border-2 border-gray-400 flex items-center rounded-sm font-bold text-white bg-red-700"
+                    className="absolute right-0 top-0 px-2 border-2 border-gray-400 flex items-center rounded-sm font-bold text-white bg-red-700 z-50"
                   >
                     X
                   </button>
