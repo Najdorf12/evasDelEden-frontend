@@ -4,13 +4,13 @@ const CardEva = ({ eva }) => {
   const { _id, name, location, description, images } = eva;
 
   return (
-    <div className="h-full relative w-full">
+    <div className="relative w-[48%] h-[400px] md:h-[500px] lg:w-[30%] lg:h-[550px]">
       <figure className="w-full h-full">
         {images?.length > 0 ? (
           <img
             src={images[0]?.secure_url}
             alt={name}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover object-center rounded-lg"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gray-300 rounded-lg">

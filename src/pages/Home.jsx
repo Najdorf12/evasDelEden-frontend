@@ -1,20 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import Carrusel from "../components/Carrusel";
 import Footer from "../components/Footer";
 import AgeVerification from "../components/AgeVerification";
 import CardEva from "../components/CardEva";
 import { getEvasFilterByCategoryAndLocation } from "../api/handlers";
-import {
-  Carousel,
-  CarouselButtons,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselItem,
-  CarouselNextButton,
-  CarouselPrevButton,
-  CarouselSlides,
-} from "keep-react";
+1;
 import logo from "/0004.png";
 
 const Home = () => {
@@ -31,7 +21,6 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState("Mendoza");
   const [allEvas, setAllEvas] = useState([]);
   const [userLocation, setUserLocation] = useState(null);
-
 
   useEffect(() => {
     const storedVerification = sessionStorage.getItem("isVerified");
@@ -65,6 +54,7 @@ const Home = () => {
 
     fetchEvas();
   }, [selectedLocation]);
+  console.log(allEvas);
 
   if (!isVerified) {
     return <AgeVerification onConfirm={handleVerification} />;
@@ -72,7 +62,7 @@ const Home = () => {
 
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 xl:pb-20 2xl:pb-28">
-      <section className="w-full flex flex-col items-center z-50">
+      <section className="w-full flex flex-col items-center z-50 pb-3 xl:pb-4">
         <nav className="w-full flex justify-between items-center pr-2 -mt-6 z-50 -ml-2 xl:-mt-4">
           <div>
             <img src={logo} className="w-52 xl:w-56 " alt="logo" />
@@ -250,36 +240,18 @@ const Home = () => {
                 style={{
                   boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
                 }}
-                className="text-base text-stone-500 mb-6 mt-2 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg xl:mb-7"
+                className="text-base text-stone-500 ml-2 font-medium font-text2 self-start pl-2 min-w-32  border border-stone-600 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg xl:mb-7"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-purple-400"></i>
                 {category?._id}
               </h5>
-              <Carousel options={{ slidesToScroll: 2 }}>
-                <CarouselSlides className="flex">
-                  {category?.evas?.map((eva) => (
-                    <CarouselItem
-                      key={eva?._id}
-                      className="flex-[0_0_50%] h-[23rem] pl-2 rounded-sm max-w-[300px] md:h-[25rem] 2xl:h-[28rem]"
-                    >
-                      <Link
-                        to={`/${eva?._id}`}
-                        className="block w-full h-full relative z-20 rounded-sm"
-                      >
-                        <CardEva eva={eva} />
-                      </Link>
-                    </CarouselItem>
-                  ))}
-                </CarouselSlides>
-                <CarouselControl>
-                  <CarouselButtons>
-                    <CarouselPrevButton />
-                    <CarouselNextButton />
-                  </CarouselButtons>
-                  <CarouselIndicators />
-                </CarouselControl>
-              </Carousel>
-              <div className="w-full my-8 h-6 flex justify-center items-center">
+              <div className="pl-2 mt-9 lg:mt-4 w-full flex flex-wrap justify-start items-center gap-1 md:gap-2 lg:gap-4 ">
+                {category?.evas?.map((eva, i) => (
+                  <CardEva eva={eva} key={i} />
+                ))}
+              </div>
+
+              <div className="w-full my-16 h-6 flex justify-center items-center">
                 <div className="loader">
                   <div className="circle">
                     <div className="dot"></div>
@@ -305,9 +277,7 @@ const Home = () => {
       </section>
 
       <div className="w-full flex justify-center flex-col items-center mt-8 gap-16 xl:mt-24">
-        <article
-          className="relative text-center font-text3 text-stone-500  self-center min-h-[320px] lg:min-h-[250px] w-[95%] pl-4 px-3 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 max-w-[750px] 2xl:max-w-[950px] 2xl:py-20"
-        >
+        <article className="relative text-center font-text3 text-stone-500  self-center min-h-[320px] lg:min-h-[250px] w-[95%] pl-4 px-3 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 max-w-[750px] 2xl:max-w-[950px] 2xl:py-20">
           <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700">
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
@@ -322,7 +292,7 @@ const Home = () => {
           </div>
           <div className="text-xl text-whiteCustom lg:text-2xl 2xl:text-3xl">
             Guía de las mejores escorts independientes.
-          </div> 
+          </div>
           <p className="text-base 2xl:text-lg">
             Todas los anuncios y publicaciones de productos o servicios son
             independientes.{" "}
@@ -336,27 +306,27 @@ const Home = () => {
         </article>
         <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col leading-[.9rem]  lg:px-0 lg:text-base lg:self-start">
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>Portal para
-            visitantes y clientes anunciantes mayores de 18 años
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
+            Portal para visitantes y clientes anunciantes mayores de 18 años
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>EvasDelEden no
-            es una agencia por tal motivo no se responsabiliza por las
-            publicaciones de las escorts.
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
+            EvasDelEden no es una agencia por tal motivo no se responsabiliza
+            por las publicaciones de las escorts.
           </li>
 
           <li className="flex justify-start items-start">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>EvasDelEden
-            presta el servicio de publicacion y asesoría gráfica.
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
+            EvasDelEden presta el servicio de publicacion y asesoría gráfica.
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>Todas las
-            fotografías son certificadas y verificadas como reales antes de ser
-            publicadas.
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
+            Todas las fotografías son certificadas y verificadas como reales
+            antes de ser publicadas.
           </li>
           <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>Nuestro portal
-            se reserva el derecho de publicación.
+            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
+            Nuestro portal se reserva el derecho de publicación.
           </li>
         </ul>
       </div>
