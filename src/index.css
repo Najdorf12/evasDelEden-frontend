@@ -82,8 +82,8 @@
 }
 /* SLIDER */
 .image-gallery-slide {
-  height: 500px;
-  width: 395px;
+  height: 600px;
+  width: 400px;
   border-radius: 12px;
 }
 .image-gallery-thumbnails-bottom {
@@ -120,13 +120,13 @@
 }
 @media (min-width: 1300px) {
   .image-gallery-slide {
-    height: 600px;
+    height: 750px;
+    width: 100%;
+    min-width: 500px;
     border-radius: 12px;
     align-self: center;
   }
-  .image-gallery-content .image-gallery-slide .image-gallery-image {
-    width: 650px;
-  }
+
   .image-gallery-left-nav .image-gallery-svg,
   .image-gallery-right-nav .image-gallery-svg {
     height: 100px;
