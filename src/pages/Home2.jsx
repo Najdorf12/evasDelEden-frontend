@@ -128,11 +128,11 @@ const Home2 = () => {
         </nav>
 
         <div className="self-start pl-3 flex flex-col items-start mt-2 xl:mt-0 2xl:mt-6 z-50 w-full">
-          <h1 className="font-title text-zinc-700 text-7xl lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem]">
+          <h1 className="font-title text-whiteCustom text-7xl lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem]">
             Evas del Eden
           </h1>
 
-          <h2 className="text-whiteCustom -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
+          <h2 className="text-zinc-500 -mt-2 text-2xl font-text2 lg:text-3xl xl:text-4xl 2xl:text-5xl">
             Escorts - Argentina
           </h2>
         </div>
