@@ -1,4 +1,3 @@
- import Home from "./pages/Home"; 
 import Home2 from "./pages/Home2";
 import AdminPage from "./pages/AdminPage";
 import Login from "./pages/login/Login";
@@ -13,7 +12,6 @@ function App() {
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Home2 />} />
-    <Route path="/home" element={<Home />} />
     <Route path="/:id" element={<EvaDetail />} />
     <Route path="/contacto" element={<Contact />} />
       <Route path="/login" element={<Login />} />

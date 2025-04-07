@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { locations } from "../api/Locations";
+import { locations } from "../api/locations";
 
 const LocationSelector = ({ register, setValue, watch }) => {
   const formValues = watch();
