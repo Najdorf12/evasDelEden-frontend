@@ -1,9 +1,9 @@
 const Footer = () => {
     return (
       <footer className="bg-zinc-800 text-stone-400 py-8 px-4">
-        <div className="mt-12 w-full flex justify-center flex-col items-start gap-16 lg:mt-16 xl:gap-24 ">
+        <div className="mt-14 w-full flex justify-center flex-col items-start gap-16 lg:mt-16 xl:gap-24 ">
           <article 
-            className="relative text-center font-text3 text-stone-500 self-center min-h-[320px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[850px] w-full px-6 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 2xl:py-16"
+            className="relative text-center font-text2 text-stone-500 self-center min-h-[320px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[850px] w-full px-6 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 2xl:py-16"
             aria-label="Aviso legal"
           >
             <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700" aria-hidden="true">
@@ -19,7 +19,7 @@ const Footer = () => {
               <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
             </div>
   
-            <h6 className="text-xl text-whiteCustom lg:text-2xl 2xl:text-3xl font-semibold">
+            <h6 className="text-xl text-whiteCustom lg:text-2xl 2xl:text-3xl ">
               Guía de las mejores escorts independientes en Argentina
             </h6>
             <p className="text-base 2xl:text-lg">
