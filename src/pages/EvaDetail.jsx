@@ -192,9 +192,10 @@ const EvaDetail = () => {
         <i className="bx bxs-cube-alt  text-zinc-700"></i>
       </div>
 
-      <footer className="absolute bottom-0 text-zinc-700 font-medium lg:text-zinc-500 ">
-        <Footer />
-      </footer>
+      <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-2 text-stone-600 w-full pr-3 lg:w-[90%] lg:pr-[5%] ">
+        <i className="bx bx-copyright text-2xl" aria-hidden="true"></i>
+        <p className="text-base font-text italic">EVAS DEL EDEN - 2025</p>
+      </div>
     </section>
   );
 };
