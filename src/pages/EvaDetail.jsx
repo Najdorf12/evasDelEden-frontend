@@ -44,12 +44,12 @@ const EvaDetail = () => {
       </nav>
 
       <section className="mt-16 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-3   lg:mt-24 lg:w-full 2xl:mt-28 ">
-        <div className="mt-5  flex flex-col items-center lg:mt-0  lg:w-[45%]">
+        <div className="mt-5 flex flex-col items-center lg:mt-0  lg:w-[45%]">
           <article
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
             }}
-            className="relative font-text3 text-stone-500 min-w-[370px]  w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-purple-200 max-w-[500px]  lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[580px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-5 2xl:pb-6 2xl:max-w-[640px]"
+            className="relative font-text3 text-stone-500 min-w-[380px]  w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-purple-200 max-w-[500px]  lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[580px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-5 2xl:pb-6 2xl:max-w-[640px]"
           >
             <div className="absolute top-1 right-2 xl:bottom-2 xl:right-3">
               <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
@@ -62,15 +62,22 @@ const EvaDetail = () => {
               {evaDetail?.name}
             </h5>
             <div className="h-[1px] w-[100%] bg-zinc-700 mt-3 xl:mt-4"></div>
-            <p className="font-text2 w-full text-lg mt-1 xl:text-xl xl:mt-2 2xl:mt-3 2xl:text-2xl text-stone-500 flex justify-between items-center">
-              {evaDetail?.location}
+            <div className="flex items-center mt-2 justify-between w-full text-lg xl:text-xl 2xl:text-2xl">
+              <p className="font-text2 w-full  text-stone-500 flex justify-between items-center">
+                {evaDetail?.detailLocation?.province}
+              </p>
               <div className="flex items-center gap-2 mr-2">
                 <i className="bx bxs-phone text-lg"></i> {evaDetail?.wttp}
               </div>
+            </div>
+            <p className="mt-1">
+              {evaDetail?.detailLocation?.city} -{" "}
+              {evaDetail?.detailLocation?.region}
             </p>
+
             <p
               style={{ filter: "drop-shadow(2px 3px 3px rgb(24 24 27))" }}
-              className="font-text3 font-medium text-stone-500 pr-8 text-balance mt-2  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-100 to-purple-200 text-base lg:text-lg lg:mt-3  xl:pr-[100px] 2xl:pr-[220px] 2xl:mt-4 2xl:text-xl"
+              className="font-text3 font-medium text-stone-500 pr-8 text-balance mt-4  text-transparent bg-clip-text bg-gradient-to-tr from-zinc-100 to-purple-200 text-base lg:text-lg lg:mt-3  xl:pr-[100px] 2xl:pr-[220px] 2xl:mt-4 2xl:text-xl"
             >
               {evaDetail.description?.servicio}{" "}
             </p>
