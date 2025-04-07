@@ -325,8 +325,8 @@ const Home2 = () => {
         </ul>
 
         {evasByCategory?.Platinum?.length > 0 && (
-          <div className="mt-9 flex flex-col w-full pl-4 items-start justify-start lg:mt-12">
-            <div className="text-base text-stone-500 ml-2 font-text2 self-start pl-2 w-40 border border-teal-700 rounded-lg flex justify-start items-center gap-2 lg:mb-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
+          <div className="mt-9 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-12">
+            <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-teal-700 rounded-lg flex justify-start items-center gap-2 lg:mb-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
               <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
               Platinum
             </div>
@@ -339,8 +339,8 @@ const Home2 = () => {
         )}
 
         {evasByCategory.Gold.length > 0 && (
-          <div className="mt-12 flex flex-col w-full pl-4 items-start justify-start lg:mt-16">
-            <div className="text-base text-stone-500 ml-2 font-text2 self-start pl-2 w-40 border border-amber-500 rounded-lg flex justify-start items-center gap-2  xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
+          <div className="mt-12 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-16">
+            <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-amber-500 rounded-lg flex justify-start items-center gap-2  xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
               <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-amber-500"></i>
               Gold
             </div>
@@ -353,8 +353,8 @@ const Home2 = () => {
         )}
 
         {evasByCategory.Silver.length > 0 && (
-          <div className="mt-12 flex flex-col w-full pl-4 items-start justify-start lg:mt-16">
-            <div className="text-base text-stone-500 ml-2 font-text2 self-start pl-2 w-40 border border-gray-400 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
+          <div className="mt-12 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-16">
+            <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-gray-400 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
               <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-gray-400"></i>
               Silver
             </div>
