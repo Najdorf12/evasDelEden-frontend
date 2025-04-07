@@ -77,7 +77,6 @@ const Home2 = () => {
     setSelectedRegion(regions[0]);
     setSelectedCity(locations[province][regions[0]][0]);
     setOpenDropdown({ ...openDropdown, province: false });
-    fetchEvasByProvince(province);
   };
 
   const handleRegionChange = (region) => {
@@ -313,7 +312,7 @@ const Home2 = () => {
             </div>
           </div>
         </div>
-        <ul className="font-text2 text-sm w-full flex items-start justify-start gap-3 mt-7 lg:mt-9 lg:gap-6 pl-4 overflow-hidden">
+        <ul className="font-text2 text-sm w-full flex items-start justify-start gap-3 mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden">
           <li className="border border-teal-700 pl-3 py-[2px] w-[120px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer">
             Platinum
           </li>
