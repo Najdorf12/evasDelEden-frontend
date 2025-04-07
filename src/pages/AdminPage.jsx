@@ -687,9 +687,7 @@ const AdminPage = () => {
           )}
         </section>
 
-        <div className="absolute bottom-0 text-zinc-700 font-normal">
-          <Footer />
-        </div>
+       
       </section>
     </section>
   );

@@ -149,9 +149,7 @@ const Login = () => {
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-0 text-gray-500">
-          <Footer />
-        </div>
+        
       </section>
     </>
   );

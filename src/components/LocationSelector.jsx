@@ -11,11 +11,9 @@ const LocationSelector = ({ register, setValue, watch }) => {
 
   const { province, region } = detailLocation;
   
-  // Obtener opciones disponibles
   const availableRegions = province ? Object.keys(locations[province] || {}) : [];
   const availableCities = (province && region) ? locations[province]?.[region] || [] : [];
 
-  // Efectos para manejar las dependencias
   useEffect(() => {
     if (!province) {
       setValue("detailLocation.province", "Mendoza");
@@ -30,7 +28,6 @@ const LocationSelector = ({ register, setValue, watch }) => {
     } else {
       setValue("detailLocation.region", "");
     }
-    // Resetear ciudad cuando cambia la provincia
     setValue("detailLocation.city", "");
   }, [province, availableRegions, setValue]);
 
@@ -46,7 +43,6 @@ const LocationSelector = ({ register, setValue, watch }) => {
 
   return (
     <div className="flex flex-col gap-6 xl:flex-row">
-      {/* Selector de Provincia */}
       <div className="relative font-text xl:w-1/3">
         <select
           className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent focus:outline-none focus:border-white"
@@ -65,7 +61,6 @@ const LocationSelector = ({ register, setValue, watch }) => {
         </label>
       </div>
 
-      {/* Selector de Región */}
       <div className="relative font-text xl:w-1/3">
         <select
           className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent focus:outline-none focus:border-white"
@@ -86,7 +81,6 @@ const LocationSelector = ({ register, setValue, watch }) => {
         </label>
       </div>
 
-      {/* Selector de Ciudad */}
       <div className="relative font-text xl:w-1/3">
         <select
           className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent focus:outline-none focus:border-white"
