@@ -32,7 +32,11 @@ const AgeVerification = ({ onConfirm }) => {
         id="verification"
         className="w-full h-screen absolute inset-0 lg:flex lg "
       >
-        <img src={imgAgeVerification} alt="" className="object-cover object-center w-full max-w-[400px] lg:w-[30%]" />
+        <img
+          src={imgAgeVerification}
+          alt=""
+          className="object-cover object-center w-full max-w-[400px] lg:w-[30%]"
+        />
       </section>
       <article
         id="box-glass"
@@ -66,9 +70,10 @@ const AgeVerification = ({ onConfirm }) => {
           </button>
         </div>
       </article>
-      <footer className="absolute bottom-0 text-white font-medium lg:text-zinc-500">
-        <Footer />
-      </footer>
+      <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-2 text-stone-400 w-full pr-3 lg:w-[90%] lg:pr-[5%] ">
+        <i className="bx bx-copyright text-2xl" aria-hidden="true"></i>
+        <p className="text-base font-text italic">EVAS DEL EDEN - 2025</p>
+      </div>
     </section>
   );
 };
