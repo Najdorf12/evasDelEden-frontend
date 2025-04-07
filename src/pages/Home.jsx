@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import AgeVerification from "../components/AgeVerification";
 import CardEva from "../components/CardEva";
-import { getEvasFilterByCategoryAndLocation } from "../api/handlers";
-1;
 import logo from "/0004.png";
 
 const Home = () => {
@@ -276,60 +274,7 @@ const Home = () => {
         })}
       </section>
 
-      <div className="w-full flex justify-center flex-col items-center mt-8 gap-16 xl:mt-24">
-        <article className="relative text-center font-text3 text-stone-500  self-center min-h-[320px] lg:min-h-[250px] w-[95%] pl-4 px-3 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 max-w-[750px] 2xl:max-w-[950px] 2xl:py-20">
-          <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700">
-            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
-          </div>
-          <div className="absolute top-1 right-2 xl:bottom-2 xl:right-3  text-stone-700">
-            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
-          </div>
-          <div className="absolute bottom-1 left-2 xl:bottom-2 xl:left-3 text-stone-700">
-            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
-          </div>
-          <div className="absolute bottom-1 right-2 xl:left  text-stone-700">
-            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
-          </div>
-          <div className="text-xl text-whiteCustom lg:text-2xl 2xl:text-3xl">
-            Guía de las mejores escorts independientes.
-          </div>
-          <p className="text-base 2xl:text-lg">
-            Todas los anuncios y publicaciones de productos o servicios son
-            independientes.{" "}
-            <strong>
-              EvasdelEden no posee relación ni vinculación laboral con los
-              anunciantes
-            </strong>{" "}
-            . Sólo publicamos fotografías y textos a expresa voluntad de los
-            anunciantes. El sitio es un medio visual publicitario.
-          </p>
-        </article>
-        <ul className="text-[12px] font-text2 text-balance text-stone-500 px-3 flex flex-col leading-[.9rem]  lg:px-0 lg:text-base lg:self-start">
-          <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
-            Portal para visitantes y clientes anunciantes mayores de 18 años
-          </li>
-          <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
-            EvasDelEden no es una agencia por tal motivo no se responsabiliza
-            por las publicaciones de las escorts.
-          </li>
-
-          <li className="flex justify-start items-start">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
-            EvasDelEden presta el servicio de publicacion y asesoría gráfica.
-          </li>
-          <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
-            Todas las fotografías son certificadas y verificadas como reales
-            antes de ser publicadas.
-          </li>
-          <li className="flex justify-start items-start ">
-            <i className="bx bx-chevrons-right text-lg -mt-2 lg:text-2xl lg:-mt-1"></i>
-            Nuestro portal se reserva el derecho de publicación.
-          </li>
-        </ul>
-      </div>
+    
       <footer className="absolute left-0 bottom-0 text-zinc-700 flex justify-center font-medium w-full">
         <Footer />
       </footer>

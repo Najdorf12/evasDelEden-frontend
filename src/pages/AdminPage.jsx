@@ -2,9 +2,10 @@ import Footer from "../components/Footer";
 import CardAdminEva from "../components/CardAdminEva";
 import imgLogo from "/0003.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { getEvas } from "../api/handlers";
+import LocationSelector from "../components/LocationSelector";
 import axios from "../api/axios";
 
 const AdminPage = () => {
@@ -12,10 +13,21 @@ const AdminPage = () => {
     handleSubmit,
     register,
     reset,
+    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      detailLocation: {
+        province: "Mendoza",
+        region: "",
+        city: "",
+      },
+    },
+  });
+
   const [allEvas, setAllEvas] = useState([]);
   const [evaSelected, setEvaSelected] = useState(null);
+  const [value, setValue] = useState(null);
 
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -61,6 +73,11 @@ const AdminPage = () => {
         name: evaSelected.name,
         wttp: evaSelected.wttp,
         location: evaSelected.location,
+        detailLocation: evaSelected.detailLocation || {
+          province: "Mendoza",
+          region: "",
+          city: "",
+        },
         category: evaSelected.category,
         edad: evaSelected.description?.edad,
         altura: evaSelected.description?.altura,
@@ -70,7 +87,7 @@ const AdminPage = () => {
         servicio: evaSelected.description?.servicio,
         horario: evaSelected.description?.horario,
         extendDescription: evaSelected.description?.extendDescription,
-        isActive: false,
+        isActive: evaSelected.isActive,
         images: evaSelected.images,
         videos: evaSelected.videos,
       });
@@ -81,6 +98,11 @@ const AdminPage = () => {
         name: "",
         wttp: "",
         location: "",
+        detailLocation: {
+          province: "Mendoza",
+          region: "",
+          city: "",
+        },
         category: "",
         isActive: false,
         edad: "",
@@ -95,7 +117,7 @@ const AdminPage = () => {
       setImages([]);
       setVideos([]);
     }
-  }, [evaSelected]);
+  }, [evaSelected, reset]);
 
   const logout = () => {
     axios
@@ -105,15 +127,7 @@ const AdminPage = () => {
       })
       .catch((error) => console.error(error));
   };
-  const createEva = async (data) => {
-    try {
-      const response = await axios.post("/evas", data);
-      return response.data;
-    } catch (error) {
-      console.error("Error al crear la Eva:", error);
-      throw error;
-    }
-  };
+
   const deleteEva = (id) => {
     axios
       .delete(`/evas/${id}`)
@@ -121,16 +135,6 @@ const AdminPage = () => {
         setAllEvas((prevEvas) => prevEvas.filter((eva) => eva._id !== id));
       })
       .catch((error) => console.error(error));
-  };
-
-  const editEva = async (data) => {
-    try {
-      const response = await axios.put(`/evas/${data._id}`, data);
-      return response.data;
-    } catch (error) {
-      console.error("Error al editar la Eva:", error);
-      throw error;
-    }
   };
 
   async function handleImage(e) {
@@ -267,8 +271,11 @@ const AdminPage = () => {
         }
       });
   };
+
   const submit = async (data) => {
-    try {
+    console.log("Datos completos:", data);
+    console.log("Ubicación:", data.detailLocation);
+      try {
       const evaData = {
         ...data,
         description: {
@@ -310,7 +317,7 @@ const AdminPage = () => {
     } catch (error) {
       console.error("Error al guardar la Eva:", error);
       alert("Error al guardar la Eva");
-    }
+    } 
   };
 
   return (
@@ -402,24 +409,13 @@ const AdminPage = () => {
                   Category
                 </label>
               </div>
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="location"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="location"
-                  {...register("location", {
-                    required: {
-                      value: true,
-                      message: "Location is required",
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Location
-                </label>
-              </div>
             </div>
+
+            <LocationSelector
+              register={register}
+              setValue={setValue}
+              watch={watch}
+            />
 
             <div className="flex flex-col gap-6 xl:flex xl:flex-row">
               <div className="relative font-text xl:w-1/2">

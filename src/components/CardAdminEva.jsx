@@ -8,16 +8,16 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
   }
 
   // Desestructuración después de la validación
-  const { 
-    _id = '', 
-    name = '', 
-    wttp = '', 
-    category = '', 
-    location = '', 
-    description = {}, 
-    images = [], 
-    videos = [], 
-    isActive = false 
+  const {
+    _id = "",
+    name = "",
+    wttp = "",
+    category = "",
+    location = "",
+    detailLocation = {},
+    description = {},
+    images = [],
+    isActive = false,
   } = eva;
 
   const hasValidImages = images.length > 0 && images[0]?.secure_url;
@@ -29,6 +29,7 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
     if (text?.length <= maxLength) return text;
     return text?.slice(0, maxLength) + "...";
   };
+
   return (
     <>
       <section className="relative px-4 min-w-[350px] border border-[#92856e] min-h-[590px]  max-w-[330px] rounded-3xl flex flex-col justify-start items-center hover:scale-105 duration-500 shadow-lg shadow-zinc-900 xl:min-h-[590px]">
@@ -51,15 +52,22 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
             {category?.toUpperCase()}
             <p className="text-white ">{isActive ? "Activa" : "Inactiva"}</p>
           </div>
-
-          <div className="flex justify-between text-stone-400 font-semibold">
-            <p>{location}</p>
-            <p className="flex items-center gap-1">
-              <i className="bx bxl-whatsapp text-xl"></i>
-              {wttp}
-            </p>
+          <div className="flex justify-between text-stone-400 py-1">
+            {detailLocation ? (
+              <>
+                <p>{detailLocation.province || location}</p>
+                <p>{detailLocation.city || "Ciudad "}</p>
+                <p>{detailLocation.region || "Región "}</p>
+              </>
+            ) : (
+              <p className="col-span-3">Ubicación no disponible</p>
+            )}
           </div>
           <ul className="flex flex-col text-sm text-stone-400">
+            <li className="flex items-center gap-1">
+              <i className="bx bxl-whatsapp text-xl"></i>
+              {wttp}
+            </li>
             <div className="flex justify-between items-center">
               <li className="">
                 <span className="text-stone-600 ">Edad:</span>{" "}
