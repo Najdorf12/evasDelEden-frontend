@@ -24,14 +24,14 @@ const Home2 = () => {
     const storedVerification = sessionStorage.getItem("isVerified");
     if (storedVerification === "true") {
       setIsVerified(true);
+      fetchInitialData();
     }
-    fetchEvasByProvince("Mendoza");
   }, []);
 
-  const fetchEvasByProvince = async (province) => {
+  const fetchInitialData = async () => {
     setIsLoading(true);
     try {
-      const data = await getEvasByProvince(province);
+      const data = await getEvasByProvince("Mendoza");
       setAllEvas(data);
     } catch (error) {
       console.error("Error fetching Evas:", error);
@@ -106,14 +106,18 @@ const Home2 = () => {
   if (!isVerified) {
     return <AgeVerification onConfirm={handleVerification} />;
   }
-
   return (
     <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-14 lg:px-14 xl:px-24 xl:pb-20 2xl:pb-28">
       <section className="w-full flex flex-col items-center z-50 pb-3 xl:pb-4">
         <nav className="w-full flex justify-between items-center pr-2 -mt-3 z-50 -ml-2 xl:-mt-4">
-          <div>
-            <img src={logo} className="w-44 xl:w-56 " alt="logo" />
-          </div>
+          <img
+            src={logo}
+            className="w-44 xl:w-56"
+            alt="logo"
+            loading="lazy"
+            width="224"
+            height="auto"
+          />
           <Link to={"/contacto"}>
             <button
               id="btn-evadetail"
