@@ -1,14 +1,12 @@
 import { useEffect, useState, useMemo, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
-import { getEvasByProvince } from "../api/handlers";
 import { locations } from "../api/locations";
+import { preloadData, getCachedData } from "../api/preload";
 const Footer = lazy(() => import("../components/Footer"));
 const AgeVerification = lazy(() => import("../components/AgeVerification"));
 import CardEva from "../components/CardEva";
 import logo from "/0004.png";
-import { preloadData } from "../api/preload";
-
-preloadData();
+import { getEvasByProvince } from "../api/handlers";
 
 const Home2 = () => {
   const [isVerified, setIsVerified] = useState(false);
@@ -24,22 +22,42 @@ const Home2 = () => {
   });
 
   useEffect(() => {
-    const storedVerification = sessionStorage.getItem("isVerified");
-    if (storedVerification === "true") {
-      setIsVerified(true);
-      if (allEvas.length === 0) {
-        fetchInitialData();
+    getEvasByProvince(selectedProvince).then((data) => {
+      setAllEvas(data);
+    });
+  }, [selectedProvince]);
+  useEffect(() => {
+    const verifyAndLoad = async () => {
+      const storedVerification = sessionStorage.getItem("isVerified");
+      if (storedVerification === "true") {
+        setIsVerified(true);
+        await loadData();
       }
-    }
+    };
+
+    verifyAndLoad();
+
+    return () => {
+    };
   }, []);
 
-  const fetchInitialData = async () => {
+  const loadData = async () => {
     setIsLoading(true);
     try {
-      const data = await getEvasByProvince("Mendoza");
+      // Intenta obtener datos del caché primero
+      const cachedData = getCachedData();
+
+      if (cachedData) {
+        setAllEvas(cachedData);
+        return;
+      }
+
+      // Si no hay datos en caché, hace la solicitud
+      const data = await preloadData();
       setAllEvas(data);
     } catch (error) {
-      console.error("Error fetching Evas:", error);
+      console.error("Error loading data:", error);
+      // Puedes agregar un estado de error aquí si lo necesitas
     } finally {
       setIsLoading(false);
     }
@@ -57,6 +75,7 @@ const Home2 = () => {
       return true;
     });
   }, [allEvas, selectedRegion, selectedCity, selectedProvince]);
+
   const evasByCategory = useMemo(() => {
     const grouped = {
       Platinum: [],
@@ -65,12 +84,12 @@ const Home2 = () => {
     };
 
     filteredEvas?.forEach((eva) => {
-      if (eva.category === "Platinum") {
-        grouped.Platinum.push(eva);
-      } else if (eva.category === "Gold") {
-        grouped.Gold.push(eva);
+      if (eva?.category === "Platinum") {
+        grouped.Platinum?.push(eva);
+      } else if (eva?.category === "Gold") {
+        grouped.Gold?.push(eva);
       } else {
-        grouped.Silver.push(eva);
+        grouped.Silver?.push(eva);
       }
     });
 
@@ -342,35 +361,35 @@ const Home2 = () => {
                 Platinum
               </div>
               <div className="mt-6 flex flex-wrap justify-start gap-2 md:gap-6 lg:mt-3">
-                {evasByCategory.Platinum.map((eva) => (
+                {evasByCategory.Platinum?.map((eva) => (
                   <CardEva key={eva._id} eva={eva} />
                 ))}
               </div>
             </div>
           )}
 
-          {evasByCategory.Gold.length > 0 && (
+          {evasByCategory?.Gold?.length > 0 && (
             <div className="mt-12 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-16">
               <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-amber-500 rounded-lg flex justify-start items-center gap-2  xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-amber-500"></i>
                 Gold
               </div>
               <div className="mt-6 flex flex-wrap justify-start gap-2 md:gap-6">
-                {evasByCategory.Gold.map((eva) => (
+                {evasByCategory.Gold?.map((eva) => (
                   <CardEva key={eva._id} eva={eva} />
                 ))}
               </div>
             </div>
           )}
 
-          {evasByCategory.Silver.length > 0 && (
+          {evasByCategory.Silver?.length > 0 && (
             <div className="mt-12 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-16">
               <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-gray-400 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-gray-400"></i>
                 Silver
               </div>
               <div className="mt-6 flex flex-wrap justify-start gap-2 md:gap-6">
-                {evasByCategory.Silver.map((eva) => (
+                {evasByCategory.Silver?.map((eva) => (
                   <CardEva key={eva._id} eva={eva} />
                 ))}
               </div>

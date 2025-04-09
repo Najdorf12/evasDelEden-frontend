@@ -1,8 +1,52 @@
+// src/api/preload.js
 import { getEvasByProvince } from "./handlers";
 
-export const preloadData = () => {
-    const storedVerification = sessionStorage.getItem("isVerified");
-    if (storedVerification === "true") {
-      getEvasByProvince("Mendoza").catch(() => {});
-    }
+let cache = {
+  data: null,
+  promise: null,
+  timestamp: null
+};
+
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos de cache
+
+export const preloadData = async () => {
+  // Verificar si hay datos válidos en caché
+  if (cache.data && cache.timestamp && Date.now() - cache.timestamp < CACHE_DURATION) {
+    return cache.data;
+  }
+  // Si ya hay una solicitud en curso, retornar esa promesa
+  if (cache.promise) {
+    return cache.promise;
+  }
+
+  try {
+    cache.promise = getEvasByProvince("Mendoza")
+      .then(data => {
+        cache.data = data;
+        cache.timestamp = Date.now();
+        return data;
+      })
+      .finally(() => {
+        cache.promise = null;
+      });
+
+    return await cache.promise;
+  } catch (error) {
+    cache.promise = null;
+    throw error;
+  }
+};
+
+export const getCachedData = () => {
+  return cache.data && cache.timestamp && Date.now() - cache.timestamp < CACHE_DURATION 
+    ? cache.data 
+    : null;
+};
+
+export const clearCache = () => {
+  cache = {
+    data: null,
+    promise: null,
+    timestamp: null
   };
+};

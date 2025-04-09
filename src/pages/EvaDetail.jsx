@@ -3,12 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "../api/axios";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import Footer from "../components/Footer";
 import logo from "/0004.png";
 
 const EvaDetail = () => {
   const { id, name } = useParams();
-  console.log(id, name);
   const [evaDetail, setEvaDetail] = useState({});
   const images2 =
     evaDetail?.images?.map((image) => ({

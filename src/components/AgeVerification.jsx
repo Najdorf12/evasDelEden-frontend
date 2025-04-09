@@ -1,15 +1,18 @@
-import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
 import logo from "/0004.png";
 import imgAgeVerification from "../assets/bg/bg1-removebg.png";
+import { preloadData } from "../api/preload";
 
 const AgeVerification = ({ onConfirm }) => {
-  const navigate = useNavigate();
-
-  const handleYes = () => {
-    onConfirm();
-    navigate("/");
+  const handleConfirm = async () => {
+    try {
+      await preloadData();
+      sessionStorage.setItem("isVerified", "true");
+      onConfirm(); // Esto redirigirá a Home2
+    } catch (error) {
+      console.error("Error preloading data:", error);
+    }
   };
+
 
   const handleNo = () => {
     alert("Lo siento, debes ser mayor de edad para acceder al sitio.");
@@ -58,7 +61,7 @@ const AgeVerification = ({ onConfirm }) => {
         <div className="flex justify-evenly items-center gap-4 font-text font-medium text-base mt-2 l xl:text-lg lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
             className="rounded-full px-7 py-[2px] border border-purple-300 lg:px-10 text-purple-300 bg-zinc-700 shadow-lg shadow-zinc-900 2xl:px-12"
-            onClick={handleYes}
+            onClick={handleConfirm}
           >
             Sí, soy mayor.
           </button>

@@ -6,13 +6,13 @@ import Register from "./pages/login/Register";
 import Contact from "./pages/Contact";
 import EvaDetail from "./pages/EvaDetail";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { getEvasByProvince } from "./api/handlers";
+import { preloadData } from './api/preload';
 
 function App() {
   useEffect(() => {
     const storedVerification = sessionStorage.getItem("isVerified");
     if (storedVerification === "true") {
-      getEvasByProvince("Mendoza").catch(() => {});
+      preloadData();
     }
   }, []);
 
