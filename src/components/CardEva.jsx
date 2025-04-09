@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import alternativeImage from "../assets/bg/imgWoman.jpeg"; // Import a default image if needed
 
 const CardEva = ({ eva }) => {
   const { _id, name, detailLocation, description, images } = eva;
@@ -19,13 +18,8 @@ const CardEva = ({ eva }) => {
             className="w-full h-full object-cover object-center rounded-xl"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center rounded-lg">
-            <img
-              src={alternativeImage}
-              alt="Imagen alternativa"
-              loading="lazy"
-              className="w-full h-full object-cover object-center rounded-lg"
-            />
+          <div className="w-full h-full bg-zinc-700 text-zinc-500 flex items-center justify-center rounded-lg">
+            Imagen no disponible
           </div>
         )}
       </figure>

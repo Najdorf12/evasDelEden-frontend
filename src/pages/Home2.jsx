@@ -134,7 +134,7 @@ const Home2 = () => {
     );
   }
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-zinc-800">
+    <div className="flex flex-col min-h-[100dvh] bg-zinc-800 w-full overflow-hidden">
       <main className="bg-zinc-800 relative overflow-hidden min-h-[100dvh] pb-32 lg:px-14 xl:px-24 xl:pb-40 2xl:pb-48">
         <section className="w-full flex flex-col items-center z-50 pb-3 xl:pb-4">
           <nav className="w-full flex justify-between items-center pr-2 -mt-3 z-50 -ml-2 xl:-mt-4">

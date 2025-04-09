@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { preloadData } from './api/preload';
 
 // Componente de carga (puedes personalizarlo)
-const Loading = () => <div className="loading-spinner">Cargando...</div>;
+const Loading = () => <div className="loading-spinner bg-zinc-800 min-h-screen w-full"></div>;
 
 // Carga diferida de todos los componentes de ruta
 const Home2 = lazy(() => import("./pages/Home2"));

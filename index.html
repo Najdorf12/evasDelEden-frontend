@@ -26,10 +26,21 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.evasdeleden.com" />
+
+    <link rel="preconnect" href="https://unpkg.com" />
     <link
+      rel="preload"
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      />
+    </noscript>
+
     <link rel="preload" as="image" href="/0004.png" />
     <link rel="preload" as="image" href="/src/assets/bg/bg1-removebg.png" />
     <link
