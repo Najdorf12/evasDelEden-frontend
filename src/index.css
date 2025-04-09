@@ -50,11 +50,6 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20x);
 }
-#box-glass4 {
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-}
-
 .container-checkbox {
   cursor: pointer;
 }

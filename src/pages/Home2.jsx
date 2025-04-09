@@ -37,27 +37,21 @@ const Home2 = () => {
 
     verifyAndLoad();
 
-    return () => {
-    };
+    return () => {};
   }, []);
 
   const loadData = async () => {
     setIsLoading(true);
     try {
-      // Intenta obtener datos del caché primero
       const cachedData = getCachedData();
-
       if (cachedData) {
         setAllEvas(cachedData);
         return;
       }
-
-      // Si no hay datos en caché, hace la solicitud
       const data = await preloadData();
       setAllEvas(data);
     } catch (error) {
       console.error("Error loading data:", error);
-      // Puedes agregar un estado de error aquí si lo necesitas
     } finally {
       setIsLoading(false);
     }
@@ -71,7 +65,6 @@ const Home2 = () => {
       if (selectedCity && selectedCity !== firstCity) {
         return eva.detailLocation.city === selectedCity;
       }
-
       return true;
     });
   }, [allEvas, selectedRegion, selectedCity, selectedProvince]);
@@ -95,6 +88,7 @@ const Home2 = () => {
 
     return grouped;
   }, [filteredEvas]);
+
   const handleProvinceChange = (province) => {
     setSelectedProvince(province);
     const regions = Object.keys(locations[province]);
@@ -124,6 +118,22 @@ const Home2 = () => {
   const handleVerification = () => {
     setIsVerified(true);
     sessionStorage.setItem("isVerified", "true");
+  };
+  const scrollToCategory = (category) => {
+    const sectionId = `${category.toLowerCase()}-section`;
+    const element = document.getElementById(sectionId);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      element.classList.add("highlight");
+      setTimeout(() => {
+        element.classList.remove("highlight");
+      }, 2000);
+    }
   };
 
   if (!isVerified) {
@@ -343,19 +353,31 @@ const Home2 = () => {
             </div>
           </div>
           <ul className="font-text2 text-sm w-full flex items-start justify-start gap-3 mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden">
-            <li className="border border-teal-700 pl-3 py-[2px] w-[110px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer">
+            <li
+              onClick={() => scrollToCategory("platinum")}
+              className="border border-teal-700 pl-3 py-[2px] w-[110px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer"
+            >
               Platinum
             </li>
-            <li className="border border-amber-500 pl-3 py-[2px] w-[110px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer">
+            <li
+              onClick={() => scrollToCategory("gold")}
+              className="border border-amber-500 pl-3 py-[2px] w-[110px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer"
+            >
               Gold
             </li>
-            <li className="border border-gray-400 pl-3 py-[2px] w-[110px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer">
+            <li
+              onClick={() => scrollToCategory("silver")}
+              className="border border-gray-400 pl-3 py-[2px] w-[110px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer"
+            >
               Silver
             </li>
           </ul>
 
           {evasByCategory?.Platinum?.length > 0 && (
-            <div className="mt-10 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-12">
+            <div
+              id="platinum-section"
+              className="mt-10 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-12"
+            >
               <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-teal-700 rounded-lg flex justify-start items-center gap-2 lg:mb-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
                 Platinum
@@ -369,7 +391,10 @@ const Home2 = () => {
           )}
 
           {evasByCategory?.Gold?.length > 0 && (
-            <div className="mt-16 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-16">
+            <div
+              id="gold-section"
+              className="mt-16 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-20"
+            >
               <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-amber-500 rounded-lg flex justify-start items-center gap-2  xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-amber-500"></i>
                 Gold
@@ -383,7 +408,10 @@ const Home2 = () => {
           )}
 
           {evasByCategory.Silver?.length > 0 && (
-            <div className="mt-16 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-16">
+            <div
+              id="silver-section"
+              className="mt-16 flex flex-col w-full pl-4 min-h-[300px] items-start justify-start lg:mt-20"
+            >
               <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-gray-400 rounded-lg flex justify-start items-center gap-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-gray-400"></i>
                 Silver
