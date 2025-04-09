@@ -7,28 +7,26 @@ const AgeVerification = ({ onConfirm }) => {
     try {
       await preloadData();
       sessionStorage.setItem("isVerified", "true");
-      onConfirm(); // Esto redirigirá a Home2
+      onConfirm();
     } catch (error) {
       console.error("Error preloading data:", error);
     }
   };
-
-
   const handleNo = () => {
     alert("Lo siento, debes ser mayor de edad para acceder al sitio.");
   };
-
   return (
-    <section
-      style={{
-        background:
-          "linear-gradient(to left, #ada996, #f2f2f2, #dbdbdb, #eaeaea)",
-      }}
-      className="relative flex flex-col items-center pt-24 w-full h-[100dvh] overflow-hidden lg:bg-zinc-300 lg:pt-[10%]"
-    >
+    <section className="relative flex flex-col items-center pt-24 w-full h-[100dvh] overflow-hidden bg-zinc-300 lg:pt-[10%]">
       <nav className="absolute -top-6 right-2 z-50  lg:w-full lg:flex lg:justify-end  lg:top-3 ">
         <div className=" lg:mr-[3%] flex justify-center items-center ">
-          <img src={logo} className="w-52 2xl:w-56 " alt="img-verification" />
+          <img
+            src={logo}
+            width={208}
+            height={56}
+            alt="Logo Evas del Eden"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
       </nav>
       <section
@@ -36,8 +34,10 @@ const AgeVerification = ({ onConfirm }) => {
         className="w-full h-screen absolute inset-0 lg:flex lg "
       >
         <img
+          loading="eager"
           src={imgAgeVerification}
-          alt=""
+          fetchpriority="high"
+          alt="Ilustración verificación de edad"
           className="object-cover object-center w-full max-w-[400px] lg:w-[30%]"
         />
       </section>

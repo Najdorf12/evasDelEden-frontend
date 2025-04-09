@@ -8,20 +8,22 @@ const CardEva = ({ eva }) => {
   return (
     <Link
       to={`/${name}/${_id}`}
-      className="relative min-w-[200px] w-[48%] h-[400px] md:h-[500px] lg:w-[30%] max-w-[450px] lg:min-w-[380px] lg:h-[580px]"
+      className="relative min-w-[200px] w-[48%] min-h-[400px] h-[400px] md:h-[500px] lg:w-[30%] max-w-[450px] lg:min-w-[380px] lg:h-[580px]"
     >
       <figure className="w-full h-full">
         {images?.length > 0 ? (
           <img
             src={images[0]?.secure_url}
-            alt={name}
+            alt="Eva imagen"
+            loading="lazy"
             className="w-full h-full object-cover object-center rounded-xl"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center rounded-lg">
             <img
               src={alternativeImage}
-              alt=""
+              alt="Imagen alternativa"
+              loading="lazy"
               className="w-full h-full object-cover object-center rounded-lg"
             />
           </div>
