@@ -3,7 +3,7 @@ const Footer = () => {
       <footer className="bg-zinc-800 text-stone-400 py-8 px-4 relative pb-24">
         <div className="mt-14 w-full flex justify-center flex-col items-start gap-16 lg:mt-16 xl:gap-24 ">
           <article 
-            className="relative text-center font-text2 text-stone-500 self-center min-h-[320px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[850px] w-full px-6 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 2xl:py-16"
+            className="relative text-center font-text2 text-stone-500 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[850px] w-full px-4 py-12 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-12 2xl:py-16"
             aria-label="Aviso legal"
           >
             <div className="absolute top-1 left-2 xl:top-2 xl:left-3 text-stone-700" aria-hidden="true">
@@ -71,7 +71,7 @@ const Footer = () => {
           </nav>
         </div>
   
-        <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-2 w-full pr-3 lg:w-[90%] lg:pr-[5%] ">
+        <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-2 w-full -ml-4 lg:-ml-6 ">
           <i className="bx bx-copyright text-2xl" aria-hidden="true"></i>
           <p className="text-base font-text italic">
             EVAS DEL EDEN - 2025
