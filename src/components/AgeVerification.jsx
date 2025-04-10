@@ -77,6 +77,20 @@ const AgeVerification = ({ onConfirm }) => {
         <i className="bx bx-copyright text-2xl" aria-hidden="true"></i>
         <p className="text-base font-text italic">EVAS DEL EDEN - 2025</p>
       </div>
+      <p className="sr-only">
+        Evas del Edén es una plataforma para adultos que ofrece contenido
+        exclusivo para mayores de 18 años. Nuestro sitio presenta servicios
+        relacionados con el entretenimiento para adultos y se dirige a un
+        público responsable. Nos comprometemos a ofrecer una experiencia segura,
+        privada y de calidad. Los usuarios deben aceptar los términos antes de
+        acceder. Escorts en Mendoza. Encuentra escorts - prostitutas de lujo en
+        Mendoza, Buenos Aires, Córdoba y Santa Fe. Discreción, elegancia y
+        servicios VIP. ¡Conócenos! Sexo en Mendoza - putas - milfs - prostitutas
+        - acompañantes de lujo. Perfiles verificados y total discreción
+        acompañantes, prostitutas, prostitutas mendoza, escorts, putas, putas
+        mendoza, escorts mendoza, escorts buenos aires,escorts cordoba, lujo,
+        discreción, mujeres elegantes. Perfiles verificados y total discreción.
+      </p>
     </section>
   );
 };
