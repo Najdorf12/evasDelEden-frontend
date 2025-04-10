@@ -34,7 +34,7 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
     <>
       <section className="relative px-4 min-w-[350px] border border-[#92856e] min-h-[590px]  max-w-[330px] rounded-3xl flex flex-col justify-start items-center hover:scale-105 duration-500 shadow-lg shadow-zinc-900 xl:min-h-[590px]">
         <picture className="w-full h-[15rem] mt-2 object-cover ">
-          <Link to={`/${_id}`}>
+          <Link to={`/${name}/${_id}`}>
             <img
               loading="lazy"
               className="w-full h-full rounded-2xl object-cover"
