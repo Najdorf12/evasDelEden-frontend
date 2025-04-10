@@ -7,7 +7,7 @@ const CardEva = ({ eva }) => {
   return (
     <Link
       to={`/${name}/${_id}`}
-      className="relative w-[48%] min-h-[400px] h-[400px] md:h-[500px] lg:w-[30%] max-w-[450px] lg:min-w-[380px] lg:h-[580px]"
+      className="relative w-[48%] min-w-[185px] min-h-[400px] h-[400px] md:h-[500px] lg:w-[30%] max-w-[450px] lg:min-w-[380px] lg:h-[580px]"
     >
       <figure className="w-full h-full">
         {images?.length > 0 ? (
