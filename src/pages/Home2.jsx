@@ -376,7 +376,7 @@ const Home2 = () => {
           {evasByCategory?.Platinum?.length > 0 && (
             <div
               id="platinum-section"
-              className="mt-10 flex flex-col w-full px-2 bg-red-500 min-h-[300px] items-start justify-start lg:mt-12"
+              className="mt-10 flex flex-col w-full px-2 min-h-[300px] items-start justify-start lg:mt-12"
             >
               <div className="text-base text-zinc-500 ml-2 font-text2 self-start pl-2 w-40 border border-teal-700 rounded-lg flex justify-start items-center gap-2 lg:mb-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
