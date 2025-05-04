@@ -1,8 +1,7 @@
-import Footer from "../components/Footer";
 import CardAdminEva from "../components/CardAdminEva";
 import imgLogo from "/0003.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { getEvas } from "../api/handlers";
 import LocationSelector from "../components/LocationSelector";
@@ -33,26 +32,7 @@ const AdminPage = () => {
   const [videos, setVideos] = useState([]);
   const [loadingImage, setLoadingImage] = useState(false);
   const [loadingVideo, setLoadingVideo] = useState(false);
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    verifyAuth();
-  }, []);
-
-  useEffect(() => {
-    const fetchEvas = async () => {
-      try {
-        const evasData = await getEvas();
-        // Filtrar elementos undefined/null
-        setAllEvas(evasData.filter((eva) => eva != null));
-      } catch (error) {
-        console.error("Failed to fetch evas:", error);
-        setAllEvas([]); // Establecer array vacío en caso de error
-      }
-    };
-    fetchEvas();
-  }, []);
 
   const verifyAuth = async () => {
     try {
@@ -65,6 +45,21 @@ const AdminPage = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    verifyAuth();
+
+    const fetchEvas = async () => {
+      try {
+        const evasData = await getEvas();
+        setAllEvas(evasData.filter((eva) => eva != null));
+      } catch (error) {
+        console.error("Failed to fetch evas:", error);
+        setAllEvas([]);
+      }
+    };
+    fetchEvas();
+  }, []);
 
   useEffect(() => {
     if (evaSelected) {
@@ -139,143 +134,139 @@ const AdminPage = () => {
 
   async function handleImage(e) {
     const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "evasDelEden");
-    data.append("folder", "evasDelEden");
+    if (!files || files.length === 0) return;
 
     setLoadingImage(true);
+
+    const formData = new FormData();
+    formData.append("image", files[0]);
+
     try {
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/najdorf/image/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-      const file = await res.json();
-      setImages([
-        ...images,
-        {
-          public_id: file.public_id,
-          secure_url: file.secure_url,
+      const response = await axios.post("/upload/image", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-      ]);
+      });
+
+      const uploadedImage = response.data;
+      setImages((prev) => [...prev, uploadedImage]);
     } catch (error) {
-      console.log(error);
+      console.error("Error uploading image:", error);
+      alert("Error al subir la imagen");
     } finally {
       setLoadingImage(false);
     }
   }
-  const handleDeleteImage = (img) => {
-    const newImages = images.filter(
-      (image) => image.public_id !== img.public_id
-    );
-    setImages(newImages);
 
-    if (evaSelected) {
-      setEvaSelected({
-        ...evaSelected,
-        images: evaSelected.images.filter(
-          (image) => image.public_id !== img.public_id
-        ),
-      });
-    } // 3. Eliminar de Cloudinary y MongoDB
-    axios
-      .delete(`evas/delete-image/${encodeURIComponent(img.public_id)}`)
-      .then(() => {
-        console.log("Imagen eliminada de Cloudinary");
-        // 4. Actualizar la lista de eventos
-        setAllEvas((prevEvas) =>
-          prevEvas.map((evas) => ({
-            ...evas,
-            images: evas.images.filter(
-              (image) => image.public_id !== img.public_id
-            ),
-          }))
-        );
-      })
-      .catch((error) => {
-        console.error("Error al eliminar imagen de Cloudinary", error);
-        // Revertir cambios si falla
-        setImages(images);
-        if (evaSelected) {
-          setEvaSelected(evaSelected);
-        }
-      });
+  const handleDeleteImage = async (img) => {
+    if (!window.confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
+      return;
+    }
+    try {
+      const newImages = images.filter(
+        (image) => image.public_id !== img.public_id
+      );
+      setImages(newImages);
+
+      if (evaSelected) {
+        setEvaSelected({
+          ...evaSelected,
+          images: evaSelected.images.filter(
+            (image) => image.public_id !== img.public_id
+          ),
+        });
+      }
+
+      await axios.delete(`/upload/image/${encodeURIComponent(img.public_id)}`);
+
+      console.log("Imagen eliminada de R2");
+
+      setAllEvas((prevEvas) =>
+        prevEvas.map((evas) => ({
+          ...evas,
+          images: evas.images.filter(
+            (image) => image.public_id !== img.public_id
+          ),
+        }))
+      );
+    } catch (error) {
+      console.error("Error al eliminar imagen de R2", error);
+      setImages(images);
+      if (evaSelected) {
+        setEvaSelected(evaSelected);
+      }
+      alert("Error al eliminar la imagen");
+    }
   };
 
   async function handleVideo(e) {
     const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "evasDelEdenVideos");
-    data.append("folder", "evasDelEdenVideos"); // Carpeta diferente para videos
+    if (!files || files.length === 0) return;
 
     setLoadingVideo(true);
+
+    const formData = new FormData();
+    formData.append("video", files[0]);
+
     try {
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/najdorf/video/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-      const file = await res.json();
-      setVideos([
-        ...videos,
-        {
-          public_id: file.public_id,
-          secure_url: file.secure_url,
+      const response = await axios.post("/upload/video", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-      ]);
+      });
+
+      const uploadedVideo = response.data;
+      setVideos((prev) => [...prev, uploadedVideo]);
     } catch (error) {
-      console.log(error);
+      console.error("Error uploading video:", error);
+      alert("Error al subir el video");
     } finally {
       setLoadingVideo(false);
     }
   }
 
-  const handleDeleteVideo = (video) => {
-    const newVideos = videos.filter((v) => v.public_id !== video.public_id);
-    setVideos(newVideos);
-
-    if (evaSelected) {
-      setEvaSelected({
-        ...evaSelected,
-        videos: evaSelected.videos.filter(
-          (v) => v.public_id !== video.public_id
-        ),
-      });
+  const handleDeleteVideo = async (video) => {
+    if (!window.confirm("¿Estás seguro de que quieres eliminar este video?")) {
+      return;
     }
+    try {
+      const newVideos = videos.filter((v) => v.public_id !== video.public_id);
+      setVideos(newVideos);
 
-    // Eliminar de Cloudinary y MongoDB
-    axios
-      .delete(`evas/delete-video/${encodeURIComponent(video.public_id)}`)
-      .then(() => {
-        console.log("Video eliminado de Cloudinary");
-        // Actualizar la lista de evas
-        setAllEvas((prevEvas) =>
-          prevEvas.map((evas) => ({
-            ...evas,
-            videos: evas.videos.filter((v) => v.public_id !== video.public_id),
-          }))
-        );
-      })
-      .catch((error) => {
-        console.error("Error al eliminar video de Cloudinary", error);
-        // Revertir cambios si falla
-        setVideos(videos);
-        if (evaSelected) {
-          setEvaSelected(evaSelected);
-        }
-      });
+      if (evaSelected) {
+        setEvaSelected({
+          ...evaSelected,
+          videos: evaSelected.videos.filter(
+            (v) => v.public_id !== video.public_id
+          ),
+        });
+      }
+
+      await axios.delete(
+        `/upload/video/${encodeURIComponent(video.public_id)}`
+      );
+
+      console.log("Video eliminado de R2");
+
+      setAllEvas((prevEvas) =>
+        prevEvas.map((evas) => ({
+          ...evas,
+          videos: evas.videos.filter((v) => v.public_id !== video.public_id),
+        }))
+      );
+    } catch (error) {
+      console.error("Error al eliminar video de R2", error);
+      setVideos(videos);
+      if (evaSelected) {
+        setEvaSelected(evaSelected);
+      }
+      alert("Error al eliminar el video");
+    }
   };
 
   const submit = async (data) => {
     console.log("Datos completos:", data);
-    console.log("Ubicación:", data.detailLocation);
-      try {
+    try {
       const evaData = {
         ...data,
         description: {
@@ -293,7 +284,6 @@ const AdminPage = () => {
       };
 
       if (evaSelected) {
-        // Editar Eva existente
         const response = await axios.put(`/evas/${evaSelected._id}`, evaData);
         const updatedEva = response.data;
 
@@ -301,14 +291,12 @@ const AdminPage = () => {
           prevEvas.map((eva) => (eva._id === updatedEva._id ? updatedEva : eva))
         );
       } else {
-        // Crear nueva Eva
         const response = await axios.post("/evas", evaData);
         const newEva = response.data;
 
         setAllEvas((prevEvas) => [...prevEvas, newEva]);
       }
 
-      // Reset después de éxito
       setEvaSelected(null);
       reset();
       setImages([]);
@@ -317,7 +305,7 @@ const AdminPage = () => {
     } catch (error) {
       console.error("Error al guardar la Eva:", error);
       alert("Error al guardar la Eva");
-    } 
+    }
   };
 
   return (
@@ -589,7 +577,7 @@ const AdminPage = () => {
                 </label>
               </div>
               {loadingImage ? (
-                <h3>Cargando imagen...</h3>
+                <div className="text-zinc-400">Cargando imagen...</div>
               ) : (
                 <div className="flex flex-wrap justify-center items-center  gap-3 xl:gap-7">
                   {images?.map((img) => (
@@ -597,12 +585,12 @@ const AdminPage = () => {
                       <button
                         type="button"
                         onClick={() => handleDeleteImage(img)}
-                        className="absolute right-0 px-2 border-2 border-gray-400  flex items-center rounded-sm font-bold text-white bg-red-700"
+                        className="absolute right-0 px-2 border-2 border-gray-400 flex items-center rounded-sm font-bold text-white bg-red-700"
                       >
                         X
                       </button>
                       <img
-                        className="w-32 h-32 object-cover  2xl:w-36 2xl:h-36"
+                        className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
                         src={img?.secure_url}
                         alt=""
                         width="300px"
@@ -612,51 +600,51 @@ const AdminPage = () => {
                 </div>
               )}
             </div>
-            <div className="relative font-text flex flex-col justify-center items-center gap-3">
+            <div className="flex flex-col items-center gap-3 font-text">
               <label
                 htmlFor="videoUpload"
-                className="font-light text-gray-400 text-lg"
+                className="font-light text-gray-400 text-xl"
               >
                 Videos
               </label>
               <div className="relative">
                 <input
-                  type="file"
                   id="videoUpload"
+                  type="file"
+                  name="video"
                   accept="video/*"
-                  onChange={handleVideo}
+                  onChange={(e) => handleVideo(e)}
                   className="hidden"
                 />
                 <label
                   htmlFor="videoUpload"
-                  className="rounded-lg flex-1 appearance-none w-full max-w-[400px] py-3 px-12 border border-zinc-500 bg-zinc-700 text-white placeholder-white text-sm focus:outline-none focus:border-transparent cursor-pointer "
+                  className="rounded-lg flex-1 appearance-none w-full max-w-[400px] py-3 px-12 border border-zinc-500 text-white placeholder-white text-sm focus:outline-none focus:border-transparent cursor-pointer bg-zinc-700"
                 >
                   Seleccionar archivo
                 </label>
               </div>
-              {loadingVideo && <p>Cargando video...</p>}
-            </div>
-            {/* Mostrar videos cargados */}
-            <div className="flex flex-wrap justify-center items-center gap-3 xl:gap-7">
-              {videos?.map((video) => (
-                <div
-                  key={video?.public_id}
-                  className="flex items-center relative"
-                >
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteVideo(video)}
-                    className="absolute right-0 top-0 px-2 border-2 border-gray-400 flex items-center rounded-sm font-bold text-white bg-red-700 z-50"
-                  >
-                    X
-                  </button>
-                  <video
-                    src={video?.secure_url}
-                    controls
-                    className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
-                  />
+              {loadingVideo ? (
+                <div className="text-zinc-400">Cargando video...</div>
+              ) : (
+                <div className="flex flex-wrap justify-center items-center gap-3 xl:gap-7">
+                  {videos?.map((video) => (
+                    <div key={video?.public_id} className="relative">
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteVideo(video)}
+                        className="absolute right-0 px-2 border-2 border-gray-400 flex items-center rounded-sm font-bold text-white bg-red-700 z-50"
+                      >
+                        X
+                      </button>
+                      <video
+                        className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
+                        src={video?.secure_url}
+                        controls
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
             <div className="flex items-center justify-center ">
               <button
@@ -686,8 +674,6 @@ const AdminPage = () => {
             <div className="text-white">No hay Evas disponibles</div>
           )}
         </section>
-
-       
       </section>
     </section>
   );

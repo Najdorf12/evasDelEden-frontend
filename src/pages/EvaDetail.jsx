@@ -7,6 +7,7 @@ import logo from "/0004.png";
 
 const EvaDetail = () => {
   const { id, name } = useParams();
+  console.log(id)
   const [evaDetail, setEvaDetail] = useState({});
   const images2 =
     evaDetail?.images?.map((image) => ({
