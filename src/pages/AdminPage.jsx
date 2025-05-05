@@ -27,6 +27,7 @@ const AdminPage = () => {
   const [allEvas, setAllEvas] = useState([]);
   const [evaSelected, setEvaSelected] = useState(null);
   const [value, setValue] = useState(null);
+  const [error, setError] = useState(null);
 
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -265,7 +266,6 @@ const AdminPage = () => {
   };
 
   const submit = async (data) => {
-    console.log("Datos completos:", data);
     try {
       const evaData = {
         ...data,
@@ -286,14 +286,12 @@ const AdminPage = () => {
       if (evaSelected) {
         const response = await axios.put(`/evas/${evaSelected._id}`, evaData);
         const updatedEva = response.data;
-
         setAllEvas((prevEvas) =>
           prevEvas.map((eva) => (eva._id === updatedEva._id ? updatedEva : eva))
         );
       } else {
         const response = await axios.post("/evas", evaData);
         const newEva = response.data;
-
         setAllEvas((prevEvas) => [...prevEvas, newEva]);
       }
 
@@ -304,7 +302,31 @@ const AdminPage = () => {
       alert("Eva guardada exitosamente");
     } catch (error) {
       console.error("Error al guardar la Eva:", error);
-      alert("Error al guardar la Eva");
+
+      if (error.response && error.response.status === 500) {
+        const errorMessage = error.response.data.message;
+
+        if (
+          errorMessage.includes("duplicate key error") &&
+          errorMessage.includes("wttp")
+        ) {
+          const dupValueMatch = errorMessage.match(/wttp: "([^"]+)"/);
+          const dupValue = dupValueMatch ? dupValueMatch[1] : "";
+
+          alert(
+            `Error: El número de WhatsApp ${dupValue} ya está registrado. Por favor, usa otro número.`
+          );
+
+          setError("wttp", {
+            type: "manual",
+            message: "Este WhatsApp ya está registrado",
+          });
+
+          return;
+        }
+      }
+
+      alert("Error al guardar la Eva. Por favor intenta nuevamente.");
     }
   };
 
@@ -344,6 +366,11 @@ const AdminPage = () => {
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
             <div className="flex flex-col gap-8 xl:flex xl:flex-row ">
               <div className="relative font-text xl:w-1/2">
+                {errors?.name && (
+                  <p className="text-red-500 text-xs mt-1 absolute right-6">
+                    {errors.name.message}
+                  </p>
+                )}
                 <input
                   autoComplete="off"
                   placeholder="Joe Doe"
@@ -361,6 +388,11 @@ const AdminPage = () => {
                 </label>
               </div>
               <div className="relative font-text xl:w-1/2">
+                {errors?.wttp && (
+                  <p className="text-red-500 text-xs mt-1 absolute right-6">
+                    {errors.wttp.message}
+                  </p>
+                )}
                 <input
                   autoComplete="off"
                   placeholder="john@example.com"
@@ -381,6 +413,11 @@ const AdminPage = () => {
 
             <div className="flex flex-col gap-6 xl:flex xl:flex-row  ">
               <div className="relative font-text xl:w-1/2">
+                {errors?.category && (
+                  <p className="text-red-500 text-xs mt-1 absolute right-6">
+                    {errors.category.message}
+                  </p>
+                )}
                 <input
                   autoComplete="off"
                   placeholder="category"
@@ -403,6 +440,7 @@ const AdminPage = () => {
               register={register}
               setValue={setValue}
               watch={watch}
+              errors={errors}
             />
 
             <div className="flex flex-col gap-6 xl:flex xl:flex-row">

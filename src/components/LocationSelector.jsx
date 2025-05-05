@@ -1,18 +1,21 @@
 import { useEffect } from "react";
 import { locations } from "../api/locations";
 
-const LocationSelector = ({ register, setValue, watch }) => {
+const LocationSelector = ({ register, setValue, watch, errors }) => {
   const formValues = watch();
   const detailLocation = formValues.detailLocation || {
     province: "Mendoza",
     region: "",
-    city: ""
+    city: "",
   };
 
   const { province, region } = detailLocation;
-  
-  const availableRegions = province ? Object.keys(locations[province] || {}) : [];
-  const availableCities = (province && region) ? locations[province]?.[region] || [] : [];
+
+  const availableRegions = province
+    ? Object.keys(locations[province] || {})
+    : [];
+  const availableCities =
+    province && region ? locations[province]?.[region] || [] : [];
 
   useEffect(() => {
     if (!province) {
@@ -47,7 +50,7 @@ const LocationSelector = ({ register, setValue, watch }) => {
         <select
           className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent focus:outline-none focus:border-white"
           {...register("detailLocation.province", {
-            required: "Provincia es requerida"
+            required: "Provincia es requerida",
           })}
         >
           {Object.keys(locations).map((prov) => (
@@ -62,14 +65,21 @@ const LocationSelector = ({ register, setValue, watch }) => {
       </div>
 
       <div className="relative font-text xl:w-1/3">
+        {errors?.detailLocation?.region && (
+          <p className="text-red-500 text-xs mt-1 absolute right-6">
+            {errors.detailLocation.region.message}
+          </p>
+        )}
         <select
           className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent focus:outline-none focus:border-white"
           {...register("detailLocation.region", {
-            required: "Región es requerida"
+            required: "Región es requerida",
           })}
           disabled={!province || availableRegions.length === 0}
         >
-          <option value="">{availableRegions.length ? "Seleccione región" : "No hay regiones"}</option>
+          <option value="">
+            {availableRegions.length ? "Seleccione región" : "No hay regiones"}
+          </option>
           {availableRegions.map((reg) => (
             <option key={reg} value={reg} className="bg-zinc-800">
               {reg}
@@ -82,14 +92,21 @@ const LocationSelector = ({ register, setValue, watch }) => {
       </div>
 
       <div className="relative font-text xl:w-1/3">
+      {errors?.detailLocation?.city && (
+          <p className="text-red-500 text-xs mt-1 absolute right-6">
+            {errors.detailLocation.city.message}
+          </p>
+        )}
         <select
           className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent focus:outline-none focus:border-white"
           {...register("detailLocation.city", {
-            required: "Ciudad es requerida"
+            required: "Ciudad es requerida",
           })}
           disabled={!region || availableCities.length === 0}
         >
-          <option value="">{availableCities.length ? "Seleccione ciudad" : "No hay ciudades"}</option>
+          <option value="">
+            {availableCities.length ? "Seleccione ciudad" : "No hay ciudades"}
+          </option>
           {availableCities.map((cit, index) => (
             <option key={`${cit}-${index}`} value={cit} className="bg-zinc-800">
               {cit}
