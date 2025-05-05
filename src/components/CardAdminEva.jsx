@@ -3,11 +3,18 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const CardAdminEva = ({ eva, onDelete, onEdit }) => {
+  const formatUrl = (url) => {
+    if (!url) return null;
+    return url.replace(
+      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket/",
+      "https://media.evasdeleden.com/"
+    );
+  };
+
   if (!eva) {
     return <div className="text-white">Cargando datos...</div>;
   }
 
-  // Desestructuración después de la validación
   const {
     _id = "",
     name = "",
@@ -38,7 +45,7 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
             <img
               loading="lazy"
               className="w-full h-full rounded-2xl object-cover"
-              src={hasValidImages ? images[0].secure_url : imgWoman}
+              src={formatUrl(images[0]?.secure_url)}
             />
           </Link>
         </picture>
