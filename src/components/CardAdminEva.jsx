@@ -6,7 +6,7 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
   const formatUrl = (url) => {
     if (!url) return null;
     return url.replace(
-      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket/",
+      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket/evas-images",
       "https://media.evasdeleden.com/"
     );
   };
