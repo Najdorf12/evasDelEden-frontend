@@ -92,7 +92,7 @@ const LocationSelector = ({ register, setValue, watch, errors }) => {
       </div>
 
       <div className="relative font-text xl:w-1/3">
-      {errors?.detailLocation?.city && (
+        {errors?.detailLocation?.city && (
           <p className="text-red-500 text-xs mt-1 absolute right-6">
             {errors.detailLocation.city.message}
           </p>
