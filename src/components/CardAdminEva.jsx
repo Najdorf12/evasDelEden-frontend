@@ -6,8 +6,8 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
   const formatUrl = (url) => {
     if (!url) return null;
     return url.replace(
-      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket/evas-images",
-      "https://media.evasdeleden.com/"
+      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket",
+      "https://media.evasdeleden.com"
     );
   };
 
@@ -46,6 +46,11 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
               loading="lazy"
               className="w-full h-full rounded-2xl object-cover"
               src={formatUrl(images[0]?.secure_url)}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = imgWoman; // Tu imagen de respaldo
+              }}
+              alt={`Imagen de ${name}`}
             />
           </Link>
         </picture>
