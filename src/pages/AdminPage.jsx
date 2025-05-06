@@ -629,7 +629,7 @@ const AdminPage = () => {
                       </button>
                       <img
                         className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
-                        src={img?.secure_url}
+                        src={formatUrl(images[0]?.secure_url)}
                         alt=""
                         width="300px"
                       />
@@ -676,7 +676,7 @@ const AdminPage = () => {
                       </button>
                       <video
                         className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
-                        src={video?.secure_url}
+                        src={formatUrl(video[0]?.secure_url)}
                         controls
                       />
                     </div>
