@@ -54,8 +54,8 @@ const EvaDetail = () => {
         </Link>
       </nav>
 
-      <section className="mt-16 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-3   lg:mt-24 lg:w-full 2xl:mt-28 ">
-        <div className="mt-5 flex flex-col items-center lg:mt-0  lg:w-[45%]">
+      <section className="mt-16 relative  flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-3   lg:mt-24 w-full 2xl:mt-28 ">
+        <div className="mt-5 flex flex-col items-center  lg:mt-0  lg:w-[45%]">
           <article
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
@@ -113,10 +113,10 @@ const EvaDetail = () => {
             </Link>
           </article>
 
-          <div className="mt-7 lg:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden ">
+          <div className="mt-7  lg:mt-8 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden ">
             <figure
               loading="lazy"
-              className="imgs w-full flex items-center justify-center shadow-lg shadow-zinc-900"
+              className="imgs  flex items-center justify-center shadow-lg shadow-zinc-900"
             >
               <ImageGallery
                 items={images2}
@@ -129,8 +129,8 @@ const EvaDetail = () => {
           </div>
         </div>
 
-        <article className="mt-4 px-3  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center lg:mt-12 xl:pl-10 ">
-          <h5
+        <article className="mt-4 px-3 w-full  lg:w-[50%] flex flex-col justify-center items-center lg:items-start lg:justify-center lg:mt-12 xl:pl-10">
+          <div
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
             }}
@@ -138,8 +138,8 @@ const EvaDetail = () => {
           >
             <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
             Info
-          </h5>
-          <ul className="font-text2 text-stone-400 flex flex-col gap-3 text-base mt-5 lg:max-w-[80%] xl:text-lg  2xl:text-xl lg:gap-4 xl:mt-6">
+          </div>
+          <ul className="font-text2 w-full text-stone-400 flex flex-col gap-3 text-base mt-5 lg:max-w-[80%] xl:text-lg  2xl:text-xl lg:gap-4 xl:mt-6">
             <li className="border border-stone-700 rounded-full pl-3 pr-6 py-[2px] lg:py-1  flex items-center gap-3 shadow-md shadow-zinc-900">
               Horario: <span>{evaDetail.description?.horario} </span>
             </li>
@@ -190,9 +190,9 @@ const EvaDetail = () => {
               >
                 {/* Video */}
                 <video
-                  className="w-full h-auto rounded-lg border-[2px] border-stone-700 shadow-lg shadow-zinc-900 object-cover object-center"
+                  className="w-full h-[500px] rounded-lg border-[2px] border-stone-700 shadow-lg shadow-zinc-900 object-cover object-center"
                   controls
-                  src={video?.secure_url}
+                  src={formatUrl(video?.secure_url)}
                 />
               </div>
             ))

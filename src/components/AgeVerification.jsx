@@ -38,7 +38,7 @@ const AgeVerification = ({ onConfirm }) => {
           src={imgAgeVerification}
           fetchpriority="high"
           alt="Ilustración verificación de edad"
-          className="object-cover object-center w-full max-w-[400px] lg:w-[30%]"
+          className="object-cover object-center w-full h-full md:w-[30%]"
         />
       </section>
       <article
