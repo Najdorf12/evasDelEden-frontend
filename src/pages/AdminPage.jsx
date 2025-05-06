@@ -264,7 +264,17 @@ const AdminPage = () => {
       alert("Error al eliminar el video");
     }
   };
+  const formatUrl = (url) => {
+    if (!url) return imgWoman;
 
+    const newUrl = url.replace(
+      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket",
+      "https://media.evasdeleden.com"
+    );
+
+    return newUrl.includes("media.evasdeleden.com") ? newUrl : "";
+  };
+  
   const submit = async (data) => {
     try {
       const evaData = {
