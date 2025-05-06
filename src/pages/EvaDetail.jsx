@@ -7,12 +7,23 @@ import logo from "/0004.png";
 
 const EvaDetail = () => {
   const { id, name } = useParams();
-  console.log(id)
   const [evaDetail, setEvaDetail] = useState({});
+
+  const formatUrl = (url) => {
+    if (!url) return logo;
+
+    const newUrl = url.replace(
+      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket",
+      "https://media.evasdeleden.com"
+    );
+
+    return newUrl.includes("media.evasdeleden.com") ? newUrl : "";
+  };
+
   const images2 =
     evaDetail?.images?.map((image) => ({
-      original: image?.secure_url,
-      thumbnail: image?.secure_url,
+      original: formatUrl(image?.secure_url),
+      thumbnail: formatUrl(image?.secure_url),
     })) || [];
 
   useEffect(() => {

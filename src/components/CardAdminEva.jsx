@@ -30,8 +30,6 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
     isActive = false,
   } = eva;
 
-  const hasValidImages = images.length > 0 && images[0]?.secure_url;
-
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleExpand = () => setIsExpanded(!isExpanded);
 

@@ -5,12 +5,20 @@ const CardEva = ({ eva }) => {
   const locationString = `${detailLocation.city}, ${detailLocation.region}`;
 
   const formatUrl = (url) => {
-    if (!url) return null;
-    return url.replace(
-      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket/",
-      "https://media.evasdeleden.com/"
+    if (!url) return imgWoman;
+
+    const newUrl = url.replace(
+      "https://cdd7ac2c93559289745bebf529967fc9.r2.cloudflarestorage.com/evas-bucket",
+      "https://media.evasdeleden.com"
     );
+
+    return newUrl.includes("media.evasdeleden.com") ? newUrl : "";
   };
+
+  if (!eva) {
+    return <div className="text-zinc-700 mt-3">Cargando datos...</div>;
+  }
+
   return (
     <Link
       to={`/${name}/${_id}`}
@@ -19,14 +27,10 @@ const CardEva = ({ eva }) => {
       <figure className="w-full h-full">
         {images?.length > 0 ? (
           <img
-            src={formatUrl(images[0]?.secure_url)}
-            alt="Eva imagen"
             loading="lazy"
             className="w-full h-full object-cover object-center rounded-xl"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "ruta/a/imagen/por/defecto.jpg";
-            }}
+            src={formatUrl(images[0]?.secure_url)}
+            alt={`Imagen de ${name}`}
           />
         ) : (
           <div className="w-full h-full bg-zinc-700 text-zinc-500 flex items-center justify-center rounded-lg">
