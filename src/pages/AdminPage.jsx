@@ -170,6 +170,7 @@ const AdminPage = () => {
       setLoadingImage(false);
     }
   }
+
   const handleDeleteImage = async (img) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
       return;
