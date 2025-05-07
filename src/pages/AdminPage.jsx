@@ -144,7 +144,7 @@ const AdminPage = () => {
     formData.append("image", file);
 
     try {
-      const response = await instance.post("/upload/image", formData, {
+      const response = await axios.post("/upload/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -170,7 +170,6 @@ const AdminPage = () => {
       setLoadingImage(false);
     }
   }
-
   const handleDeleteImage = async (img) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
       return;

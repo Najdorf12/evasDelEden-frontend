@@ -1,15 +1,16 @@
 import axios from "axios";
 
-const instance = axios.create({
+// Crear instancia configurada
+const configuredAxios = axios.create({
   baseURL: "https://evas-del-eden-backend.vercel.app/api",
   withCredentials: true,
-  maxContentLength: 120 * 1024 * 1024, // Coincide con tu backend (120MB)
+  maxContentLength: 120 * 1024 * 1024, // 120MB
   maxBodyLength: 120 * 1024 * 1024,
-  timeout: 300000 // 5 minutos (verifica límite de Vercel)
+  timeout: 300000 // 5 minutos
 });
 
-// Interceptor para manejar errores globalmente
-instance.interceptors.response.use(
+// Configurar interceptores
+configuredAxios.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.code === 'ECONNABORTED') {
@@ -19,4 +20,11 @@ instance.interceptors.response.use(
   }
 );
 
-export default instance;
+// Exportar como "axios" manteniendo todas las funcionalidades originales
+const customAxios = Object.assign(
+  (url, config) => configuredAxios(url, config),
+  axios, // Mantener métodos estáticos (axios.get, axios.post, etc.)
+  configuredAxios // Mantener la instancia configurada
+);
+
+export default customAxios;
