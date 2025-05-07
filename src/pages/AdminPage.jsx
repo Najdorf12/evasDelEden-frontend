@@ -136,25 +136,36 @@ const AdminPage = () => {
   async function handleImage(e) {
     const files = e.target.files;
     if (!files || files.length === 0) return;
-  
+
     setLoadingImage(true);
-  
+
+    const file = files[0];
     const formData = new FormData();
-    formData.append("image", files[0]);
-  
+    formData.append("image", file);
+
     try {
-      const response = await axios.post("/upload/image", formData, {
+      const response = await instance.post("/upload/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        withCredentials: true // Mantenlo si es necesario para la autenticación
+        onUploadProgress: (progressEvent) => {
+          const percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total
+          );
+          // Actualiza estado o muestra progreso
+          console.log(`Progreso: ${percentCompleted}%`);
+        },
       });
-  
+
       const uploadedImage = response.data;
       setImages((prev) => [...prev, uploadedImage]);
     } catch (error) {
       console.error("Error uploading image:", error);
-      alert(`Error al subir la imagen: ${error.response?.data?.message || error.message}`);
+      const errorMsg =
+        error.response?.data?.message ||
+        error.message ||
+        "Error desconocido al subir la imagen";
+      alert(`Error: ${errorMsg}`);
     } finally {
       setLoadingImage(false);
     }
@@ -640,7 +651,7 @@ const AdminPage = () => {
                       </button>
                       <img
                         className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
-                        src={formatUrl(images?.secure_url)}
+                        src={formatUrl(img?.secure_url)}
                         alt=""
                         width="300px"
                       />
