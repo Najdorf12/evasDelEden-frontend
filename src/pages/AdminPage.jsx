@@ -136,36 +136,50 @@ const AdminPage = () => {
   async function handleImage(e) {
     const files = e.target.files;
     if (!files || files.length === 0) return;
-
+  
     setLoadingImage(true);
-
+  
     const file = files[0];
     const formData = new FormData();
     formData.append("image", file);
-
+  
     try {
       const response = await axios.post("/upload/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
         onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
-          );
-          // Actualiza estado o muestra progreso
-          console.log(`Progreso: ${percentCompleted}%`);
+          if (progressEvent.total) {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            console.log(`Progreso: ${percentCompleted}%`);
+            // Puedes actualizar el estado aquí si lo necesitas
+          }
         },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity
       });
-
+  
       const uploadedImage = response.data;
       setImages((prev) => [...prev, uploadedImage]);
+      
     } catch (error) {
-      console.error("Error uploading image:", error);
-      const errorMsg =
-        error.response?.data?.message ||
-        error.message ||
-        "Error desconocido al subir la imagen";
-      alert(`Error: ${errorMsg}`);
+      console.error("Error subiendo imagen:", error);
+      
+      let errorMsg = "Error al subir la imagen";
+      if (error.response) {
+        if (error.response.status === 413) {
+          errorMsg = "El archivo es demasiado grande (máximo 120MB)";
+        } else {
+          errorMsg = error.response.data?.message || errorMsg;
+        }
+      } else if (error.message) {
+        errorMsg = error.message;
+      }
+  
+      alert(errorMsg);
+      
     } finally {
       setLoadingImage(false);
     }
