@@ -21,7 +21,7 @@ const Login = () => {
       const timer = setTimeout(() => {
         setLoginError([]);
       }, 5000);
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer);z
     }
   }, [loginError]);
 

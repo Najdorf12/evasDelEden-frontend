@@ -147,6 +147,7 @@ const AdminPage = () => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        // withCredentials: true, // prueba quitando esto si no es estrictamente necesario
       });
 
       const uploadedImage = response.data;
@@ -157,7 +158,7 @@ const AdminPage = () => {
     } finally {
       setLoadingImage(false);
     }
-  }
+}
 
   const handleDeleteImage = async (img) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
@@ -639,7 +640,7 @@ const AdminPage = () => {
                       </button>
                       <img
                         className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
-                        src={formatUrl(images[0]?.secure_url)}
+                        src={formatUrl(images?.secure_url)}
                         alt=""
                         width="300px"
                       />
@@ -686,7 +687,7 @@ const AdminPage = () => {
                       </button>
                       <video
                         className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36"
-                        src={formatUrl(video[0]?.secure_url)}
+                        src={formatUrl(video?.secure_url)}
                         controls
                       />
                     </div>
