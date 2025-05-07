@@ -136,29 +136,29 @@ const AdminPage = () => {
   async function handleImage(e) {
     const files = e.target.files;
     if (!files || files.length === 0) return;
-
+  
     setLoadingImage(true);
-
+  
     const formData = new FormData();
     formData.append("image", files[0]);
-
+  
     try {
       const response = await axios.post("/upload/image", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        // withCredentials: true, // prueba quitando esto si no es estrictamente necesario
+        withCredentials: true // Mantenlo si es necesario para la autenticación
       });
-
+  
       const uploadedImage = response.data;
       setImages((prev) => [...prev, uploadedImage]);
     } catch (error) {
       console.error("Error uploading image:", error);
-      alert("Error al subir la imagen");
+      alert(`Error al subir la imagen: ${error.response?.data?.message || error.message}`);
     } finally {
       setLoadingImage(false);
     }
-}
+  }
 
   const handleDeleteImage = async (img) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
