@@ -54,8 +54,8 @@ const EvaDetail = () => {
         </Link>
       </nav>
 
-      <section className="mt-16 relative  flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-3   lg:mt-24 w-full 2xl:mt-28 ">
-        <div className="mt-5 flex flex-col items-center  lg:mt-0  lg:w-[45%]">
+      <section className="mt-16 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-2 lg:pl-5  lg:mt-24 w-full 2xl:mt-28 ">
+        <div className="mt-5 flex flex-col items-center lg:mt-0 lg:w-[45%] ">
           <article
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
@@ -169,35 +169,31 @@ const EvaDetail = () => {
           </ul>
         </article>
       </section>
-      <section className="mt-4 px-3 flex flex-col justify-center items-center xl:mt-12 ">
+      <section className="mt-4 w-full px-3 flex flex-col justify-center items-center xl:mt-12">
         <h5
           style={{
             boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
           }}
-          className="text-base text-stone-500 mt-5  font-medium font-text2  pl-2 pr-4 w-36  border border-stone-600 rounded-lg flex justify-start items-center gap-2  lg:text-lg lg:w-44 xl:text-xl xl:w-52"
+          className="text-base text-stone-500 mt-5 font-medium font-text2 pl-2 pr-4 w-36 border border-stone-600 rounded-lg flex justify-start items-center gap-2 lg:text-lg lg:w-44 xl:text-xl xl:w-52"
         >
           <i className="bx bxs-cube-alt text-xl xl:text-2xl 2xl:text-3xl text-purple-400"></i>
           Videos
         </h5>
 
-        {/* Contenedor de videos */}
-        <div className="flex flex-wrap self-center justify-center items-center gap-4 mt-6 w-full lg:mt-12 lg:gap-6 lg:px-[5%] ">
+        <div className="flex flex-wrap justify-center items-start gap-6 mt-6 w-full lg:mt-12 lg:gap-12">
           {evaDetail?.videos?.length > 0 ? (
             evaDetail?.videos?.map((video, index) => (
-              <div
-                key={index}
-                className="w-[90%] max-w-[320px] flex justify-center"
-              >
-                {/* Video */}
+              <div key={index} className="w-[95%] flex-shrink-0 md:w-[400px] ">
+              
                 <video
-                  className="w-full h-[500px] rounded-lg border-[2px] border-stone-700 shadow-lg shadow-zinc-900 object-cover object-center"
+                  className="w-full h-auto rounded-lg border-[2px] border-stone-700 shadow-lg shadow-zinc-900 object-cover object-center lg:h-[750px]"
                   controls
                   src={formatUrl(video?.secure_url)}
                 />
               </div>
             ))
           ) : (
-            <p className="pl-1 self-start text-stone-500 text-balance max-w-[300px] text-sm -mt-2 md:text-nowrap  xl:text-base xl:mt-2 2xl:text-lg">
+            <p className="pl-1 text-stone-500 text-balance max-w-[300px] text-sm -mt-2 md:text-nowrap xl:text-base xl:mt-2 2xl:text-lg">
               No hay videos disponibles para esta Eva
             </p>
           )}
