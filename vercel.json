@@ -25,23 +25,8 @@
         {
           "key": "Access-Control-Allow-Credentials",
           "value": "true"
-        },
-        {
-          "key": "Access-Control-Max-Age",
-          "value": "86400"
         }
       ]
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/upload/image",
-      "headers": {
-        "Access-Control-Allow-Origin": "https://evasdeleden.com, https://www.evasdeleden.com, http://localhost:5173",
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
     }
   ]
 }
