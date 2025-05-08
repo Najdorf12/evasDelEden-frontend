@@ -139,126 +139,57 @@ const AdminPage = () => {
   
     setLoadingImage(true);
   
+    const file = files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+  
     try {
-      const file = files[0];
-      console.log('Iniciando subida para archivo:', file.name);
-      
-      // 1. Obtener URL firmada
-      const signedUrlResponse = await axios.post('/upload/generate-presigned-url', {
-        fileName: file.name,
-        fileType: file.type,
-        folder: 'evas-images'
-      });
-  
-      if (!signedUrlResponse?.data?.success) {
-        throw new Error(signedUrlResponse?.data?.message || 'Error al obtener URL firmada');
-      }
-  
-      const { url, publicUrl, key } = signedUrlResponse.data.data;
-      console.log('URL firmada obtenida:', { url, publicUrl, key });
-  
-      // 2. Subir a R2 con manejo de CORS
-      const uploadResponse = await fetch(url, {
-        method: 'PUT',
-        body: file,
+      const response = await axios.post("/upload/image", formData, {
         headers: {
-          'Content-Type': file.type,
-          'Origin': window.location.origin // Añade el origen actual
+          "Content-Type": "multipart/form-data",
         },
-        mode: 'cors' // Fuerza el modo CORS
+        onUploadProgress: (progressEvent) => {
+          if (progressEvent.total) {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            console.log(`Progreso: ${percentCompleted}%`);
+            // Puedes actualizar el estado aquí si lo necesitas
+          }
+        },
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity
       });
   
-      if (!uploadResponse.ok) {
-        const errorText = await uploadResponse.text();
-        throw new Error(`Error al subir archivo: ${uploadResponse.status} - ${errorText}`);
-      }
-  
-      // 3. Guardar referencia
-      const saveResponse = await axios.post('/upload/save-reference', {
-        publicUrl,
-        key,
-        size: file.size,
-        type: file.type
-      });
-  
-      const uploadedImage = saveResponse.data;
+      const uploadedImage = response.data;
       setImages((prev) => [...prev, uploadedImage]);
       
     } catch (error) {
       console.error("Error subiendo imagen:", error);
-      alert(error.message || "Error al subir la imagen. Verifica la consola para más detalles.");
+      
+      let errorMsg = "Error al subir la imagen";
+      if (error.response) {
+        if (error.response.status === 413) {
+          errorMsg = "El archivo es demasiado grande (máximo 120MB)";
+        } else {
+          errorMsg = error.response.data?.message || errorMsg;
+        }
+      } else if (error.message) {
+        errorMsg = error.message;
+      }
+  
+      alert(errorMsg);
+      
     } finally {
       setLoadingImage(false);
     }
   }
 
-  async function handleVideo(e) {
-    const files = e.target.files;
-    if (!files || files.length === 0) return;
-
-    setLoadingVideo(true);
-
-    try {
-      const file = files[0];
-
-      // 1. Obtener URL firmada del backend
-      const signedUrlResponse = await axios.post(
-        "/api/upload/generate-presigned-url",
-        {
-          fileName: file.name,
-          fileType: file.type,
-          folder: "evas-videos",
-        }
-      );
-
-      const { url, publicUrl, key } = signedUrlResponse.data;
-
-      // 2. Subir directamente a Cloudflare R2
-      const uploadResponse = await fetch(url, {
-        method: "PUT",
-        body: file,
-        headers: {
-          "Content-Type": file.type,
-        },
-      });
-
-      if (!uploadResponse.ok) {
-        throw new Error("Upload failed");
-      }
-
-      // 3. Guardar la referencia en tu backend
-      const saveResponse = await axios.post("/api/upload/save-reference", {
-        publicUrl,
-        key,
-        size: file.size,
-        type: file.type,
-      });
-
-      const uploadedVideo = saveResponse.data;
-
-      setVideos((prev) => [...prev, uploadedVideo]);
-    } catch (error) {
-      console.error("Error subiendo video:", error);
-      let errorMsg = "Error al subir el video";
-      if (error.response) {
-        errorMsg = error.response.data?.message || errorMsg;
-      }
-      alert(errorMsg);
-    } finally {
-      setLoadingVideo(false);
-    }
-  }
-
-  // Modifica también tu función handleDeleteImage para manejar la nueva estructura:
   const handleDeleteImage = async (img) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar esta imagen?")) {
       return;
     }
     try {
-      // Primero eliminar de R2 y de la base de datos
-      await axios.delete(`/upload/image/${encodeURIComponent(img.public_id)}`);
-
-      // Luego actualizar el estado local
       const newImages = images.filter(
         (image) => image.public_id !== img.public_id
       );
@@ -273,6 +204,10 @@ const AdminPage = () => {
         });
       }
 
+      await axios.delete(`/upload/image/${encodeURIComponent(img.public_id)}`);
+
+      console.log("Imagen eliminada de R2");
+
       setAllEvas((prevEvas) =>
         prevEvas.map((evas) => ({
           ...evas,
@@ -282,21 +217,46 @@ const AdminPage = () => {
         }))
       );
     } catch (error) {
-      console.error("Error al eliminar imagen", error);
+      console.error("Error al eliminar imagen de R2", error);
+      setImages(images);
+      if (evaSelected) {
+        setEvaSelected(evaSelected);
+      }
       alert("Error al eliminar la imagen");
     }
   };
 
-  // Similar para handleDeleteVideo
+  async function handleVideo(e) {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    setLoadingVideo(true);
+
+    const formData = new FormData();
+    formData.append("video", files[0]);
+
+    try {
+      const response = await axios.post("/upload/video", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      const uploadedVideo = response.data;
+      setVideos((prev) => [...prev, uploadedVideo]);
+    } catch (error) {
+      console.error("Error uploading video:", error);
+      alert("Error al subir el video");
+    } finally {
+      setLoadingVideo(false);
+    }
+  }
+
   const handleDeleteVideo = async (video) => {
     if (!window.confirm("¿Estás seguro de que quieres eliminar este video?")) {
       return;
     }
     try {
-      await axios.delete(
-        `/upload/video/${encodeURIComponent(video.public_id)}`
-      );
-
       const newVideos = videos.filter((v) => v.public_id !== video.public_id);
       setVideos(newVideos);
 
@@ -309,6 +269,12 @@ const AdminPage = () => {
         });
       }
 
+      await axios.delete(
+        `/upload/video/${encodeURIComponent(video.public_id)}`
+      );
+
+      console.log("Video eliminado de R2");
+
       setAllEvas((prevEvas) =>
         prevEvas.map((evas) => ({
           ...evas,
@@ -316,11 +282,14 @@ const AdminPage = () => {
         }))
       );
     } catch (error) {
-      console.error("Error al eliminar video", error);
+      console.error("Error al eliminar video de R2", error);
+      setVideos(videos);
+      if (evaSelected) {
+        setEvaSelected(evaSelected);
+      }
       alert("Error al eliminar el video");
     }
   };
-
   const formatUrl = (url) => {
     if (!url) return "";
 
