@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Configurar la instancia por defecto
-axios.defaults.baseURL = "http://localhost:1212/api"; // https://evas-del-eden-backend.vercel.app/api
+axios.defaults.baseURL = " https://evas-del-eden-backend.vercel.app/api"; //http://localhost:1212/api https://evas-del-eden-backend.vercel.app/api
 axios.defaults.withCredentials = true;
 axios.defaults.maxContentLength = 120 * 1024 * 1024;
 axios.defaults.maxBodyLength = 120 * 1024 * 1024;
