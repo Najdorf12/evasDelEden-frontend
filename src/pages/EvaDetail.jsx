@@ -60,7 +60,7 @@ const EvaDetail = () => {
             style={{
               boxShadow: "8px 8px 16px #171718, -8px -8px 16px #37373c",
             }}
-            className="relative font-text3 text-stone-500 min-w-[380px]  w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-purple-200 max-w-[500px]  lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[580px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-5 2xl:pb-6 2xl:max-w-[640px]"
+            className="relative font-text3 text-stone-500 min-w-[380px]  w-[95%] pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-2xl border border-purple-200 max-w-[500px]  lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[580px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-4 2xl:pb-5 2xl:max-w-[640px]"
           >
             <div className="absolute top-1 right-2 xl:bottom-2 xl:right-3">
               <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
@@ -73,11 +73,11 @@ const EvaDetail = () => {
               {evaDetail?.name}
             </h5>
             <div className="h-[1px] w-[100%] bg-zinc-700 mt-3 xl:mt-4"></div>
-            <div className="flex items-center mt-2 justify-between w-full text-lg xl:text-xl 2xl:text-2xl">
+            <div className="flex items-center mt-2 justify-between w-full text-lg lg:mt-3 xl:text-xl 2xl:text-2xl">
               <p className="font-text2 w-full  text-stone-500 flex justify-between items-center">
                 {evaDetail?.detailLocation?.province}
               </p>
-              <div className="flex items-center gap-2 mr-2">
+              <div className="flex items-center gap-1 lg:gap-2 mr-2 text-sm text-nowrap lg:text-base xl:text-lg">
                 <i className="bx bxs-phone text-lg"></i> {evaDetail?.wttp}
               </div>
             </div>

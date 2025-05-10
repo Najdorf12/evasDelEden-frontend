@@ -10,11 +10,9 @@ let cache = {
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutos de cache
 
 export const preloadData = async () => {
-  // Verificar si hay datos válidos en caché
   if (cache.data && cache.timestamp && Date.now() - cache.timestamp < CACHE_DURATION) {
     return cache.data;
   }
-  // Si ya hay una solicitud en curso, retornar esa promesa
   if (cache.promise) {
     return cache.promise;
   }
