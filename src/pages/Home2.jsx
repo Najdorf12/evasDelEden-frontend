@@ -23,9 +23,13 @@ const Home2 = () => {
 
   useEffect(() => {
     getEvasByProvince(selectedProvince).then((data) => {
+      console.log("Ejecutando getEvasByProvince:");
       setAllEvas(data);
+      console.log("getEvasByProvince:", data);
+
     });
   }, [selectedProvince]);
+
   useEffect(() => {
     const verifyAndLoad = async () => {
       const storedVerification = sessionStorage.getItem("isVerified");

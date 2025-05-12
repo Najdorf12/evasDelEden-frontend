@@ -5,6 +5,7 @@ import { preloadData } from "../api/preload";
 const AgeVerification = ({ onConfirm }) => {
   const handleConfirm = async () => {
     try {
+      console.log("Preloading data...");
       await preloadData();
       sessionStorage.setItem("isVerified", "true");
       onConfirm();
