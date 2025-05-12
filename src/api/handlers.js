@@ -13,7 +13,6 @@ export const getEvas = async () => {
 export const getEvasByProvince = async (province) => {
   try {
     const response = await axios.get(`/evas/by-province/${province}`);
-    console.log("Response from getEvasByProvince:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching Evas by province:", error);
