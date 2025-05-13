@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import axios from "../../api/axios";
-import Footer from "../../components/Footer";
+import axios from "../../api/axiosRender";
 import imgLogo from "/0003.png";
 
 const Register = () => {

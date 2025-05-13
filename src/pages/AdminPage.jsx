@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { getEvas } from "../api/handlers";
 import LocationSelector from "../components/LocationSelector";
-import axios from "../api/axios";
+import axios from "../api/axiosRender";
 
 const AdminPage = () => {
   const {
@@ -154,7 +154,6 @@ const AdminPage = () => {
               (progressEvent.loaded * 100) / progressEvent.total
             );
             console.log(`Progreso: ${percentCompleted}%`);
-            // Puedes actualizar el estado aquí si lo necesitas
           }
         },
         maxContentLength: Infinity,
