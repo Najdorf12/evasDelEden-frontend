@@ -1,31 +1,6 @@
-import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import logo from "/0004.png";
-import axios from "../api/axios";
 
 const Contact = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = async (data) => {
-    console.log(data);
-    try {
-      const response = await axios.post("/send-email", data);
-      console.log("Correo enviado:", response.data);
-    } catch (err) {
-      console.error(
-        "Error al enviar el correo:",
-        err.response?.data || err.message
-      );
-    }
-  };
-  const wttp = "+54 9 3534 41-6561";
-  const wttp2 = "+54 9 ";
-
   return (
     <>
       <section className="relative flex flex-col items-center w-full h-[100dvh] overflow-hidden lg:bg-zinc-300">
