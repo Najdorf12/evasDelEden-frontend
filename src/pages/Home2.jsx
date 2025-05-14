@@ -352,7 +352,7 @@ const Home2 = () => {
               </div>
             </div>
           </div>
-          <ul className="font-text2 text-sm w-full flex items-start justify-start gap-3 mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden">
+          <ul className="font-text2 text-sm w-full flex items-start justify-start gap-4 mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden">
             <li
               onClick={() => scrollToCategory("platinum")}
               className="border border-teal-700 pl-3 py-[2px] w-[110px] md:w-[150px] text-stone-600 rounded-3xl hover:text-whiteCustom cursor-pointer"
@@ -382,7 +382,7 @@ const Home2 = () => {
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
                 Platinum
               </div>
-              <div className="mt-6 flex flex-wrap justify-start gap-2 md:gap-6 lg:mt-3">
+              <div className="mt-6 flex flex-wrap justify-start gap-1 md:gap-6 lg:mt-3">
                 {evasByCategory.Platinum?.map((eva) => (
                   <CardEva key={eva._id} eva={eva} />
                 ))}
@@ -399,7 +399,7 @@ const Home2 = () => {
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-amber-500"></i>
                 Gold
               </div>
-              <div className="mt-6 flex flex-wrap justify-start gap-2 md:gap-6">
+              <div className="mt-6 flex flex-wrap justify-start gap-1 md:gap-6">
                 {evasByCategory.Gold?.map((eva) => (
                   <CardEva key={eva._id} eva={eva} />
                 ))}
@@ -416,7 +416,7 @@ const Home2 = () => {
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-gray-400"></i>
                 Silver
               </div>
-              <div className="mt-6 flex flex-wrap justify-start gap-2 md:gap-6">
+              <div className="mt-6 flex flex-wrap justify-start gap-1 md:gap-5">
                 {evasByCategory.Silver?.map((eva) => (
                   <CardEva key={eva._id} eva={eva} />
                 ))}
