@@ -11,8 +11,8 @@ import { getEvasByProvince } from "../api/handlers";
 const Home2 = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [selectedProvince, setSelectedProvince] = useState("Mendoza");
-  const [selectedRegion, setSelectedRegion] = useState("Gran Mendoza");
-  const [selectedCity, setSelectedCity] = useState("Mendoza Capital");
+  const [selectedRegion, setSelectedRegion] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
   const [allEvas, setAllEvas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [openDropdown, setOpenDropdown] = useState({
@@ -56,18 +56,30 @@ const Home2 = () => {
       setIsLoading(false);
     }
   };
-
   const filteredEvas = useMemo(() => {
-    return allEvas?.filter((eva) => {
-      if (eva.detailLocation.region !== selectedRegion) return false;
+    // Primero filtramos por provincia
+    const evasFromProvince = allEvas?.filter(
+      (eva) => eva.detailLocation.province === selectedProvince
+    );
 
-      const firstCity = locations[selectedProvince][selectedRegion][0];
-      if (selectedCity && selectedCity !== firstCity) {
-        return eva.detailLocation.city === selectedCity;
-      }
-      return true;
-    });
-  }, [allEvas, selectedRegion, selectedCity, selectedProvince]);
+    // Si no hay región seleccionada o es la primera carga, mostrar todas
+    if (!selectedRegion) return evasFromProvince;
+
+    // Si hay región seleccionada, filtrar por región
+    const evasFromRegion = evasFromProvince?.filter(
+      (eva) => eva.detailLocation.region === selectedRegion
+    );
+
+    // Si no hay ciudad seleccionada o es la primera ciudad de la región, mostrar todas de la región
+    const firstCity =
+      selectedRegion && locations[selectedProvince][selectedRegion][0];
+    if (!selectedCity || selectedCity === firstCity) return evasFromRegion;
+
+    // Finalmente, filtrar por ciudad si está seleccionada
+    return evasFromRegion?.filter(
+      (eva) => eva.detailLocation.city === selectedCity
+    );
+  }, [allEvas, selectedProvince, selectedRegion, selectedCity]);
 
   const evasByCategory = useMemo(() => {
     const grouped = {
@@ -91,9 +103,8 @@ const Home2 = () => {
 
   const handleProvinceChange = (province) => {
     setSelectedProvince(province);
-    const regions = Object.keys(locations[province]);
-    setSelectedRegion(regions[0]);
-    setSelectedCity(locations[province][regions[0]][0]);
+    setSelectedRegion(null);
+    setSelectedCity(null);
     setOpenDropdown({ ...openDropdown, province: false });
   };
 
@@ -244,7 +255,7 @@ const Home2 = () => {
                     className="inline-flex w-full justify-between items-center rounded-md px-3 py-[6px] text-sm  text-zinc-100 shadow-xs ring-1 ring-zinc-600 hover:bg-purple-600 "
                     onClick={() => toggleDropdown("region")}
                   >
-                    {selectedRegion}
+                    {selectedRegion || "Selecciona tu región"}
                     <svg
                       className={`-mr-1 size-5 text-gray-400 transition-transform ${
                         openDropdown.region ? "rotate-180" : ""
@@ -303,7 +314,7 @@ const Home2 = () => {
                     className="inline-flex w-full justify-between items-center text-sm rounded-md px-3 py-[6px]  text-zinc-100 shadow-xs ring-1 ring-zinc-600 hover:bg-purple-600 "
                     onClick={() => toggleDropdown("city")}
                   >
-                    {selectedCity}
+                    {selectedCity || "Selecciona tu ciudad"}
                     <svg
                       className={`-mr-1 size-5 text-gray-400 transition-transform ${
                         openDropdown.city ? "rotate-180" : ""
