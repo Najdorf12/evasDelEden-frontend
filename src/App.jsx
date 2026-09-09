@@ -1,8 +1,13 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { preloadData } from './api/preload';
+import ModeloLogin from "./pages/modelo/ModeloLogin";
+import ModeloRegister from "./pages/modelo/ModeloRegister";
+import ModeloDashboard from "./pages/modelo/ModeloDashboard";
+import { preloadData } from "./api/preload";
 
-const Loading = () => <div className="loading-spinner bg-zinc-800 min-h-screen w-full"></div>;
+const Loading = () => (
+  <div className="loading-spinner bg-zinc-800 min-h-screen w-full"></div>
+);
 
 const Home2 = lazy(() => import("./pages/Home2"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
@@ -29,6 +34,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/modelo/login" element={<ModeloLogin />} />
+          <Route path="/modelo/register" element={<ModeloRegister />} />
+          <Route path="/modelo/dashboard" element={<ModeloDashboard />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

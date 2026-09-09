@@ -2,7 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "../../api/axiosRender";
-import imgLogo from "/0003.png"
+import imgLogo from "/0003.png";
+import icon from "/icon14.png";
+import icon2 from "/icon13.png";
 
 const Login = () => {
   const [loginError, setLoginError] = useState([]);
@@ -20,7 +22,7 @@ const Login = () => {
       const timer = setTimeout(() => {
         setLoginError([]);
       }, 5000);
-      return () => clearTimeout(timer);z
+      return () => clearTimeout(timer);
     }
   }, [loginError]);
 
@@ -41,33 +43,28 @@ const Login = () => {
 
   return (
     <>
-      <section
-        style={{
-          backgroundImage:
-            "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
-        }}
-        className="h-screen w-full flex flex-col gap-14 items-center 2xl:gap-24 "
-      >
-        <nav className="font-text2 text-lg px-3 relative flex justify-between items-center w-full mt-2 xl:px-6 xl:mt-3 xl:text-xl   ">
-          <picture className=" flex items-center justify-center rounded-full w-[120px] lg:w-[150px] 2xl:w-[180px]  ">
+      <section className="h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
+        <nav className="absolute top-0 font-text2 text-lg px-3  flex justify-between items-center w-full mt-1 xl:px-6 xl:mt-3 xl:text-xl">
+          <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
             <img src={imgLogo} className="rounded-full" alt="logo" />
           </picture>
-          <ul className="flex gap-6 xl:gap-10 2xl:gap-12">
-            <li className="text-gray-50 border-l-2 pl-2 xl:pl-3 py-1 hover:scale-105 hover:text-white duration-500 ">
-              <Link to={"/"}>Home </Link>
-            </li>
-          </ul>
+          <Link to={"/"}>
+            <button
+              className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-sm  lg:px-10 md:text-base 3xl:text-lg"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
+            >
+              Inicio
+            </button>
+          </Link>
         </nav>
 
-        <div
-          style={{
-            backgroundImage:
-              "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
-          }}
-          className="max-w-md w-[95%] rounded-xl shadow-2xl shadow-gray-900 overflow-hidden py-8 px-4 space-y-8"
-        >
+        <div className="relative max-w-md w-[95%] rounded-xl shadow-2xl border-purple-600 border overflow-hidden py-8 px-4 flex flex-col gap-6 xl:max-w-lg bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900">
+          <img src={icon2} alt="icon" className="w-12 absolute top-3 right-3" />
+          <img src={icon2} alt="icon" className="w-12 absolute top-3 left-3" />
           <h2 className="text-center font-title text-6xl font-extrabold text-white">
-            Welcome
+            Bienvenido
           </h2>
           {loginError?.map((error, i) => (
             <div
@@ -78,7 +75,7 @@ const Login = () => {
             </div>
           ))}
           <p className="font-text text-center text-gray-200">
-            Sign in to your account
+            Ingresá a tu cuenta
           </p>
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
             <div className="relative font-text">
@@ -134,21 +131,32 @@ const Login = () => {
             </div>
 
             <button
-              className="w-full font-text  py-2 px-4 border-[1px] border-slate-300 hover:bg-zinc-600 rounded-md shadow-lg text-white font-semibold transition duration-200"
+              className="w-full font-text py-2 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-md shadow-lg text-white font-semibold transition duration-200 "
               type="submit"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
             >
               Sign In
             </button>
           </form>
-          <div className="text-center text-gray-300 font-text">
-            Don't have an account?
-            <Link className="text-white ml-2 hover:underline" to="/register">
+          <div className="text-center text-zinc-300 font-text">
+            No tienes una?
+            <Link
+              className="text-purple-500 ml-2 hover:underline"
+              to="/register"
+            >
               {" "}
-              Register
+              Registrate
             </Link>
           </div>
         </div>
-        
+        <div className="absolute bottom-1 left-1 rotate-[90deg] z-100 w-16 h-16 lg:h-28 lg:w-28 lg:left-2 lg:bottom-0">
+          <img src={icon} alt="icon-home" className="w-full h-full" />
+        </div>
+        <div className="absolute bottom-1 right-1 z-100 w-16 h-16 lg:h-28 lg:w-28 lg:right-2 lg:bottom-0">
+          <img src={icon} alt="icon-home" className="w-full h-full" />
+        </div>
       </section>
     </>
   );

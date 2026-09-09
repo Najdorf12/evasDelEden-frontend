@@ -24,6 +24,7 @@ const config = {
         text: ["Roboto", "sans-serif"],
         text2: ["Montserrat", "sans-serif"],
         text3: ["Poppins", "sans-serif"],
+        cursive:["Pinyon Script", "cursive"]
       },
     },
   },

@@ -36,22 +36,21 @@ const Register = () => {
   };
 
   return (
-    <section
-      style={{
-        backgroundImage:
-          "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
-      }}
-      className="h-screen w-full flex flex-col  gap-14 items-center xl:gap-0  2xl:gap-20 "
-    >
-      <nav className="font-text2 text-lg px-3 relative flex justify-between items-center w-full mt-2  xl:mt-3 xl:text-xl  lg:px-12  ">
-        <picture className="flex items-center justify-center rounded-full w-[120px] lg:w-[150px] 2xl:w-[180px] ">
+    <section className="h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 ">
+      <nav className="absolute top-0 font-text2 text-lg px-3  flex justify-between items-center w-full mt-1 xl:px-6 xl:mt-3 xl:text-xl">
+        <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
           <img src={imgLogo} className="rounded-full" alt="logo" />
         </picture>
-        <ul className="flex gap-6 xl:gap-10 2xl:gap-12">
-          <li className="text-gray-50 border-l-2 pl-2 xl:pl-3 py-1 hover:scale-105 hover:text-white duration-500 ">
-            <Link to={"/"}>Home </Link>
-          </li>
-        </ul>
+        <Link to={"/"}>
+          <button
+            className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-sm  lg:px-10 md:text-base 3xl:text-lg"
+            style={{
+              boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+            }}
+          >
+            Inicio
+          </button>
+        </Link>
       </nav>
       <div
         style={{
@@ -148,21 +147,20 @@ const Register = () => {
           </div>
 
           <button
-            className="w-full font-text  py-2 px-4 border-[1px] border-slate-300 hover:bg-gray-300 rounded-md shadow-lg text-white font-semibold transition duration-200 hover:text-gray-600"
+            className="w-full font-text  py-2 px-4 border-[1px] border-slate-300 hover:bg-gray-300 rounded-md shadow-lg text-white font-semibold transition duration-200 "
             type="submit"
           >
             Register
           </button>
         </form>
-        <div className="text-center text-gray-100 font-text">
-          Do you have an account?
-          <Link className="text-white ml-1 hover:underline" to="/login">
+        <div className="text-center text-zinc-100 font-text">
+          Ya tienes una cuenta?
+          <Link className="text-purple-600 ml-1 hover:underline" to="/login">
             {" "}
-            Login
+            Ingresa
           </Link>
         </div>
       </div>
-     
     </section>
   );
 };

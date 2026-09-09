@@ -1,4 +1,139 @@
+import icon from "/icon14.png";
 import logo from "/0004.png";
+import { Link } from "react-router-dom";
+
+const Contact = () => {
+  const wttp = "+54 9 353 441-6561";
+
+  return (
+    <section className="text-balance h-screen w-full bg-gradient-to-l from-zinc-900 via-purple-900 to-zinc-900  text-stone-400 flex flex-col gap-4 px-6 items-center justify-center  relative border-t border-purple-400 ">
+      <nav className="absolute top-0 font-text2 text-lg px-2 flex justify-between items-center w-full mt-1 lg:px-12 xl:mt-3 xl:text-xl">
+        <picture className=" flex items-center justify-center rounded-full w-[120px] lg:w-[150px] 2xl:w-[180px]">
+          <img src={logo} className="rounded-full" alt="logo" />
+        </picture>
+        <div className="flex gap-2 lg:gap-4">
+          <Link to={"/"}>
+            <button
+              className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-xs  lg:px-10 md:text-base 3xl:text-lg"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
+            >
+              Inicio
+            </button>
+          </Link>
+          <Link to={"/modelo/login"}>
+            <button
+              className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-xs  lg:px-10 md:text-base 3xl:text-lg"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
+            >
+              Publicar
+            </button>
+          </Link>
+        </div>
+      </nav>
+
+      <div className="text-center text-zinc-100 font-title text-5xl lg:text-8xl">
+        CONTACTO
+      </div>
+      <div className="w-full flex justify-center flex-col items-start gap-10 ">
+        <article
+          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[880px] w-full px-4 pt-8 pb-8 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:pt-12 xl:pb-8 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
+          aria-label="Aviso legal"
+        >
+          <div
+            className="absolute top-1 left-2 xl:top-2 xl:left-3 text-purple-700"
+            aria-hidden="true"
+          >
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+          <div
+            className="absolute top-1 right-2 xl:bottom-2 xl:right-3 text-purple-700"
+            aria-hidden="true"
+          >
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+          <div
+            className="absolute bottom-1 left-2 xl:bottom-2 xl:left-3 text-purple-700"
+            aria-hidden="true"
+          >
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+          <div
+            className="absolute bottom-1 right-2 xl:left text-purple-700"
+            aria-hidden="true"
+          >
+            <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
+          </div>
+
+          <h6 className="text-base text-purple-400 lg:text-xl 2xl:text-2xl ">
+            Contactate para publicarte con nosotros y conocer nuestros
+            servicios, productos disponibles como así también promociones de
+            publicación
+          </h6>
+          <div className="text-sm flex flex-col gap-2 lg:text-base lg:mt-3">
+            <div className="max-w-[500px] ">
+             Portal para visitantes y clientes anunciantes mayores de 18 años 
+            </div>
+            <div className="max-w-[500px]">
+             Nuestro portal se reserva el derecho de publicación 
+            </div>
+            <div className="max-w-[500px]">
+           EvasDelEden no es una agencia por tal motivo no se responsabiliza
+              por las publicaciones de las escorts 
+            </div>
+          </div>
+          <div className="flex justify-center items-center gap-2">
+            <Link
+              to={`https://api.whatsapp.com/send/?phone=${wttp}&text=${encodeURIComponent(
+                `Hola, me gustaría publicarme en evasdeleden.com y conocer más sobre sus servicios.`,
+              )}`}
+              target="_blank"
+            >
+              <button
+                className="mt-4 font-text py-1.5 px-16 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-purple-400 transition duration-200 text-sm lg:mt-6  lg:px-10 md:text-base 3xl:text-lg"
+                style={{
+                  boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+                }}
+              >
+                Escribenos al WhatsApp
+              </button>
+            </Link>
+          </div>
+        </article>
+      </div>
+      <div className="absolute bottom-2 right-2 z-100 w-12 h-12 lg:h-20 lg:w-20 lg:right-4 lg:bottom-3">
+        <img src={icon} alt="icon-home" className="w-full h-full" />
+      </div>
+      <p className="absolute lg:right-12 text-2xl text-zinc-300 bottom-2 w-full text-center lg:text-3xl"></p>
+      <div className="absolute bottom-2 left-2 rotate-[90deg] z-100 w-12 h-12 lg:h-20 lg:w-20 lg:left-3 lg:bottom-3">
+        <img src={icon} alt="icon-home" className="w-full h-full" />
+      </div>
+      {/*   <div className="absolute top-2 right-2 z-100 w-12 h-12 lg:h-20 lg:w-20 lg:right-4 lg:top-4">
+        <img src={icon} alt="icon-home" className="w-full h-full" />
+      </div> */}
+      <p className="absolute lg:right-12 text-2xl text-zinc-300 bottom-2 w-full text-center lg:text-3xl"></p>
+      {/*  <div className="absolute top-2 left-2 rotate-[90deg] z-100 w-12 h-12 lg:h-20 lg:w-20 lg:left-3 lg:top-4">
+        <img src={icon} alt="icon-home" className="w-full h-full" />
+      </div> */}
+      <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-1 w-full -ml-4 lg:-ml-6  ">
+        <i
+          className="bx bx-copyright text-lg xl:text-xl text-purple-400"
+          aria-hidden="true"
+        ></i>
+        <p className="text-xs md:text-sm font-text italic 3xl:text-base text-zinc-400">
+          EVAS DEL EDEN - 2026
+        </p>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
+
+/* import logo from "/0004.png";
 import { Link } from "react-router-dom";
 
 const Contact = () => {
@@ -80,3 +215,4 @@ const Contact = () => {
   );
 };
 export default Contact;
+ */

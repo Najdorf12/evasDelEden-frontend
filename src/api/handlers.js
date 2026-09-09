@@ -1,4 +1,4 @@
-import axios from "./axiosVercel";
+import axios from "./axiosRender";
 
 export const getEvas = async () => {
   try {

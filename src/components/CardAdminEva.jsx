@@ -40,8 +40,8 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
 
   return (
     <>
-      <section className="relative px-4 min-w-[350px] border border-[#92856e] min-h-[590px]  max-w-[330px] rounded-3xl flex flex-col justify-start items-center hover:scale-105 duration-500 shadow-lg shadow-zinc-900 xl:min-h-[590px]">
-        <picture className="w-full h-[15rem] mt-2 object-cover ">
+      <section className="relative min-w-[370px] border border-purple-600 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900 min-h-[560px] max-w-96  rounded-3xl flex flex-col justify-start items-center hover:scale-105 duration-500 shadow-lg shadow-zinc-900 xl:min-h-[560px] ">
+        <picture className="w-full h-[12rem] mt-2 object-cover ">
           <Link to={`/${name}/${_id}`}>
             <img
               loading="lazy"
@@ -56,8 +56,8 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
           </Link>
         </picture>
 
-        <article className="h-full mt-3 flex flex-col text-base w-full px-2">
-          <p className="text-xl  font-text text-center  text-white leading-5 border-b border-[#92856e] py-2 ">
+        <article className="h-full font-text mt-3 flex flex-col text-sm w-full px-3">
+          <p className="text-3xl font-title text-center  text-white leading-5 border-b border-purple-600 py-2 ">
             {name}
           </p>
 
@@ -65,7 +65,7 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
             {category?.toUpperCase()}
             <p className="text-white ">{isActive ? "Activa" : "Inactiva"}</p>
           </div>
-          <div className="flex justify-between text-stone-400 py-1">
+          <div className="flex justify-between text-zinc-300 py-2">
             {detailLocation ? (
               <>
                 <p>{detailLocation.province || location}</p>
@@ -76,47 +76,47 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
               <p className="col-span-3">Ubicación no disponible</p>
             )}
           </div>
-          <ul className="flex flex-col text-sm text-stone-400">
+          <ul className="flex flex-col text-sm text-zinc-300">
             <li className="flex items-center gap-1">
               <i className="bx bxl-whatsapp text-xl"></i>
               {wttp}
             </li>
             <div className="flex justify-between items-center">
               <li className="">
-                <span className="text-stone-600 ">Edad:</span>{" "}
+                <span className="text-purple-700 ">Edad:</span>{" "}
                 {description?.edad}{" "}
               </li>
               <li className="">
-                <span className="text-stone-600 ">Altura:</span>{" "}
+                <span className="text-purple-700 ">Altura:</span>{" "}
                 {description?.altura}
               </li>
               <li className="">
-                <span className="text-stone-600">Peso:</span>{" "}
+                <span className="text-purple-700">Peso:</span>{" "}
                 {description?.peso}
               </li>
             </div>
 
             <div className="flex justify-between items-center">
               <li className="">
-                <span className="text-stone-600">Medidas:</span>{" "}
+                <span className="text-purple-700">Medidas:</span>{" "}
                 {description?.medidas}
               </li>
               <li className="">
-                <span className="text-stone-600">Depilacion:</span>{" "}
+                <span className="text-purple-700">Depilacion:</span>{" "}
                 {description?.depilacion}
               </li>
             </div>
             <li className="">
-              <span className="text-stone-600">Horario:</span>{" "}
+              <span className="text-purple-700">Horario:</span>{" "}
               {description?.horario}
             </li>
             <div className="flex flex-col ">
               <li>
-                <span className="text-stone-600">Servicio:</span>{" "}
+                <span className="text-purple-700">Servicio:</span>{" "}
                 {description?.servicio}
               </li>
               <li>
-                <span className="text-stone-600 z-50 relative">
+                <span className="text-purple-700 z-50 relative">
                   Descripción:
                 </span>{" "}
                 {isExpanded
@@ -125,7 +125,7 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
                 {description?.extendDescription?.length > 100 && (
                   <span
                     onClick={toggleExpand}
-                    className="cursor-pointer text-[#426d89] ml-1 hover:underline "
+                    className="cursor-pointer text-purple-400 ml-1 hover:underline "
                   >
                     {isExpanded ? "Ver menos" : "Ver más"}
                   </span>
@@ -142,14 +142,14 @@ const CardAdminEva = ({ eva, onDelete, onEdit }) => {
             <div className="flex items-center gap-2 text-[1rem] text-white">
               <i
                 onClick={onEdit}
-                className="bx bxs-edit-alt cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
+                className="bx bxs-edit-alt cursor-pointer text-purple-500 hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
               ></i>
               Editar
             </div>
             <div className="flex items-center gap-2 text-[1rem] text-white">
               <i
                 onClick={onDelete}
-                className="bx bxs-trash-alt  cursor-pointer text-[#426d89] hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
+                className="bx bxs-trash-alt  cursor-pointer text-red-600 hover:scale-110 hover:text-gray-100 duration-300 text-2xl"
               ></i>
               Eliminar
             </div>

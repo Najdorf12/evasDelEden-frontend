@@ -22,13 +22,13 @@ const CardEva = ({ eva }) => {
   return (
     <Link
       to={`/${name}/${_id}`}
-      className="relative w-[48%] h-[390px] md:h-[500px] max-w-[450px] lg:w-[360px] lg:h-[600px] xl:w-[380px]"
+      className="relative w-[48%] h-[390px] md:h-[500px] max-w-[450px] lg:w-[360px] lg:h-[600px] xl:w-[380px]  "
     >
       <figure className="w-full h-full">
         {images?.length > 0 ? (
           <img
             loading="lazy"
-            className="w-full h-full object-cover object-center rounded-xl"
+            className="w-full h-full object-cover object-center rounded-xl border-[2px] border-purple-800 "
             src={formatUrl(images[0]?.secure_url)}
             alt={`Imagen de ${name}`}
           />
@@ -42,7 +42,7 @@ const CardEva = ({ eva }) => {
         <div className="flex flex-col items-center justify-center text-balance text-base font-medium w-[90%] md:w-[60%] py-[2px]">
           <p
             id="box-glass3"
-            className="w-full flex text-sm  items-center justify-between px-4 py-[1px] mt-[6px] rounded-lg text-white border border-white xl:text-base"
+            className="w-full flex text-sm  items-center justify-between px-4 py-[1px] mt-[6px] rounded-lg text-white border-[2px] border-purple-800 xl:text-base"
           >
             {name}
             <span className="rounded-full text-white">{description?.edad}</span>
