@@ -146,6 +146,7 @@ const ModeloLogin = () => {
             {" "}
             Registrate
           </Link>
+          <div className="text-xs mt-2 text-purple-400"> - Olvidé mi contraseña - </div>
         </div>
       </div>
       <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-0 text-zinc-700 w-full pr-3 lg:w-[90%] lg:pr-[5%] ">

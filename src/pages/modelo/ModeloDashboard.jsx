@@ -15,6 +15,39 @@ const gradientBg = {
     "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
 };
 
+/* ---------- OPCIONES PREDEFINIDAS ---------- */
+const range = (from, to) =>
+  Array.from({ length: to - from + 1 }, (_, i) => String(from + i));
+
+const EDADES = range(18, 60);
+const ALTURAS = range(145, 195); // cm
+const PESOS = range(40, 120); // kg
+const BUSTO = range(70, 130);
+const CINTURA = range(50, 100);
+const CADERA = range(80, 140);
+
+// Editá esta lista con los servicios reales de tu plataforma
+const SERVICIOS = [
+  "Acompañamiento",
+  "Salidas / Eventos",
+  "Masajes",
+  "Videollamadas",
+  "Viajes",
+  "Atiendo en mi domicilio",
+  "Voy a hotel / domicilio",
+];
+
+const HORARIOS = ["Mañana", "Tarde", "Noche", "Madrugada"];
+
+const FRASES_RAPIDAS = [
+  "Simpática y atenta",
+  "Trato amable y discreto",
+  "Foto 100% real",
+  "Atención personalizada",
+  "Ambiente reservado y cómodo",
+  "Puntualidad",
+];
+
 const FormInput = ({
   label,
   error,
@@ -61,6 +94,143 @@ const SectionCard = ({ title, subtitle, children }) => (
     {children}
   </div>
 );
+
+/* ---------- SELECT SIMPLE (edad, altura, peso) ---------- */
+const SelectInput = ({ label, name, register, value, options }) => {
+  // Si ya hay un valor guardado que no está en la lista, lo mantenemos
+  const list =
+    value && !options.includes(String(value))
+      ? [String(value), ...options]
+      : options;
+
+  return (
+    <div className="font-text">
+      <label htmlFor={name} className="text-sm text-purple-200">
+        {label}
+      </label>
+      <select
+        id={name}
+        {...register(name)}
+        className="mt-1 h-10 w-full border-b-2 border-purple-400 bg-transparent text-zinc-200 transition-colors focus:border-purple-600 focus:outline-none"
+      >
+        <option value="" className="bg-zinc-900">
+          Seleccionar
+        </option>
+        {list.map((o) => (
+          <option key={o} value={o} className="bg-zinc-900">
+            {o}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+/* ---------- MEDIDAS: 3 selects que arman "90-60-90" ---------- */
+const MedidasSelector = ({ register, value, onChange }) => {
+  const [busto = "", cintura = "", cadera = ""] = String(value || "")
+    .split("-")
+    .map((s) => s.trim());
+
+  const update = (index, newValue) => {
+    const parts = [busto, cintura, cadera];
+    parts[index] = newValue;
+    onChange(parts.every((p) => !p) ? "" : parts.join("-"));
+  };
+
+  const selectClass =
+    "h-10 w-full border-b-2 border-purple-400 bg-transparent text-zinc-200 focus:border-purple-600 focus:outline-none";
+
+  const fields = [
+    { label: "Busto", options: BUSTO, current: busto },
+    { label: "Cintura", options: CINTURA, current: cintura },
+    { label: "Cadera", options: CADERA, current: cadera },
+  ];
+
+  return (
+    <div className="font-text">
+      <p className="text-sm text-purple-200">Medidas (cm)</p>
+      <input type="hidden" {...register("medidas")} />
+      <div className="mt-1 grid grid-cols-3 gap-3">
+        {fields.map((f, i) => (
+          <select
+            key={f.label}
+            aria-label={f.label}
+            value={f.current}
+            onChange={(e) => update(i, e.target.value)}
+            className={selectClass}
+          >
+            <option value="" className="bg-zinc-900">
+              {f.label}
+            </option>
+            {f.options.map((o) => (
+              <option key={o} value={o} className="bg-zinc-900">
+                {o}
+              </option>
+            ))}
+          </select>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* ---------- CHIPS (simple o múltiple) ---------- */
+const OptionButtons = ({
+  label,
+  options,
+  value,
+  onChange,
+  multiple = false,
+}) => {
+  const selectedValues = multiple
+    ? String(value || "")
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean)
+    : [value].filter(Boolean);
+
+  const toggleOption = (option) => {
+    if (!multiple) {
+      onChange(option === value ? "" : option);
+      return;
+    }
+
+    const nextValues = selectedValues.includes(option)
+      ? selectedValues.filter((item) => item !== option)
+      : [...selectedValues, option];
+
+    onChange(nextValues.join(", "));
+  };
+
+  return (
+    <fieldset className="space-y-3 font-text">
+      <legend className="mb-3 text-sm text-purple-200">{label}</legend>
+
+      <div className="flex flex-wrap gap-2">
+        {options.map((option) => {
+          const selected = selectedValues.includes(option);
+
+          return (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => toggleOption(option)}
+              className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
+                selected
+                  ? "border-purple-400 bg-purple-700 text-white"
+                  : "border-zinc-600 bg-black/20 text-zinc-300 hover:border-purple-400"
+              }`}
+            >
+              {option}
+            </button>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+};
 
 const ModeloDashboard = () => {
   const {
@@ -124,7 +294,22 @@ const ModeloDashboard = () => {
             altura: eva.description?.altura,
             peso: eva.description?.peso,
             medidas: eva.description?.medidas,
-            depilacion: eva.description?.depilacion,
+            depilacionDetalle: [
+              "Completa",
+              "Natural",
+              "Otro / Prefiero especificar",
+            ].includes(eva.description?.depilacion)
+              ? ""
+              : eva.description?.depilacion || "",
+            depilacion: [
+              "Completa",
+              "Natural",
+              "Otro / Prefiero especificar",
+            ].includes(eva.description?.depilacion)
+              ? eva.description?.depilacion
+              : eva.description?.depilacion
+                ? "Otro / Prefiero especificar"
+                : "",
             servicio: eva.description?.servicio,
             horario: eva.description?.horario,
             extendDescription: eva.description?.extendDescription,
@@ -260,7 +445,10 @@ const ModeloDashboard = () => {
         altura: data.altura,
         peso: data.peso,
         medidas: data.medidas,
-        depilacion: data.depilacion,
+        depilacion:
+          data.depilacion === "Otro / Prefiero especificar"
+            ? data.depilacionDetalle || data.depilacion
+            : data.depilacion,
         servicio: data.servicio,
         horario: data.horario,
         extendDescription: data.extendDescription,
@@ -493,21 +681,80 @@ const ModeloDashboard = () => {
               subtitle="Opcional, pero ayuda a que te encuentren"
             >
               <div className="grid gap-6 xl:grid-cols-2 ">
-                <FormInput label="Edad" name="edad" register={register} />
-                <FormInput label="Altura" name="altura" register={register} />
-                <FormInput label="Medidas" name="medidas" register={register} />
-                <FormInput label="Peso" name="peso" register={register} />
-                <FormInput
-                  label="Depilación"
-                  name="depilacion"
+                <SelectInput
+                  label="Edad (años)"
+                  name="edad"
                   register={register}
+                  value={watch("edad")}
+                  options={EDADES}
                 />
-                <FormInput
-                  label="Servicio"
-                  name="servicio"
+                <SelectInput
+                  label="Altura (cm)"
+                  name="altura"
                   register={register}
+                  value={watch("altura")}
+                  options={ALTURAS}
                 />
-                <FormInput label="Horario" name="horario" register={register} />
+                <SelectInput
+                  label="Peso (kg)"
+                  name="peso"
+                  register={register}
+                  value={watch("peso")}
+                  options={PESOS}
+                />
+                <MedidasSelector
+                  register={register}
+                  value={watch("medidas")}
+                  onChange={(v) =>
+                    setValue("medidas", v, { shouldDirty: true })
+                  }
+                />
+
+                {/* Depilación */}
+                <div className="space-y-3">
+                  <OptionButtons
+                    label="Depilación"
+                    options={[
+                      "Completa",
+                      "Natural",
+                      "Otro / Prefiero especificar",
+                    ]}
+                    value={watch("depilacion")}
+                    onChange={(value) =>
+                      setValue("depilacion", value, { shouldDirty: true })
+                    }
+                  />
+
+                  {watch("depilacion") === "Otro / Prefiero especificar" && (
+                    <input
+                      {...register("depilacionDetalle")}
+                      placeholder="Especificá tu preferencia..."
+                      className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-white outline-none focus:border-purple-300"
+                    />
+                  )}
+                </div>
+
+                {/* Servicio: chips de selección múltiple */}
+                <OptionButtons
+                  label="¿Qué servicios ofrecés? (podés elegir varios)"
+                  options={SERVICIOS}
+                  multiple
+                  value={watch("servicio")}
+                  onChange={(value) =>
+                    setValue("servicio", value, { shouldDirty: true })
+                  }
+                />
+
+                {/* Horario: selección múltiple */}
+                <OptionButtons
+                  label="¿En qué horarios estás disponible? (podés elegir varios)"
+                  options={HORARIOS}
+                  multiple
+                  value={watch("horario")}
+                  onChange={(value) =>
+                    setValue("horario", value, { shouldDirty: true })
+                  }
+                />
               </div>
             </SectionCard>
 
@@ -515,11 +762,31 @@ const ModeloDashboard = () => {
               title="Descripción"
               subtitle="Contales un poco más sobre vos"
             >
+              <div className="flex flex-wrap gap-2">
+                {FRASES_RAPIDAS.map((frase) => (
+                  <button
+                    key={frase}
+                    type="button"
+                    onClick={() => {
+                      const actual = watch("extendDescription") || "";
+                      if (actual.includes(frase)) return;
+                      setValue(
+                        "extendDescription",
+                        actual ? `${actual.trim()} ${frase}.` : `${frase}.`,
+                        { shouldDirty: true },
+                      );
+                    }}
+                    className="rounded-lg border border-zinc-600 bg-black/20 px-3 py-1.5 text-xs text-zinc-300 transition-colors hover:border-purple-400 font-text"
+                  >
+                    + {frase}
+                  </button>
+                ))}
+              </div>
               <textarea
                 className="text-white bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-sm xl:text-base rounded-lg p-3 transition-colors"
                 {...register("extendDescription")}
                 rows="5"
-                placeholder="Escribí acá tu descripción..."
+                placeholder="Tocá las frases de arriba o escribí lo que quieras..."
               />
             </SectionCard>
 
