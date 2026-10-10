@@ -37,7 +37,7 @@ const Contact = () => {
         </div>
       </nav>
 
-      <div className="text-center text-zinc-100 font-title text-6xl lg:text-8xl">
+      <div className="text-center text-zinc-100 font-title text-6xl lg:text-7xl xl:text-8xl">
         CONTACTO
       </div>
       <div className="w-full flex justify-center flex-col items-start gap-10 ">

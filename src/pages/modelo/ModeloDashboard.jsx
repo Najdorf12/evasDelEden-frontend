@@ -609,7 +609,7 @@ const ModeloDashboard = () => {
               Hola, {modelo?.username}
             </h6>
             {myEva && (
-              <p
+              <div
                 className={`inline-flex items-center gap-2 mt-4 text-sm font-text font-semibold px-3 py-1 rounded-full ${
                   myEva.status === "approved"
                     ? "bg-green-500/10 text-green-400"
@@ -623,11 +623,18 @@ const ModeloDashboard = () => {
                       : "bg-yellow-400"
                   }`}
                 />
+
                 {myEva.status === "approved"
                   ? "Tu perfil está aprobado"
                   : "Pendiente de aprobación"}
-              </p>
+              </div>
             )}
+            <div className="text-zinc-300 text-xs mt-6 text-balance">
+              Aquí puedes editar o cambiar al plan que mas se ajuste a vos. Una
+              vez que finalices, pulsa el botón que se encuentra al final del
+              formulario para que tu informacion aparezca visible en la pagina
+              principal
+            </div>
           </div>
 
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
@@ -936,7 +943,7 @@ const ModeloDashboard = () => {
             <h6 className="font-title text-3xl text-white text-center xl:text-4xl">
               Tu perfil publicado
             </h6>
-            <p className="text-zinc-300 text-sm lg:text-base font-text text-center">
+            <p className="text-zinc-300 text-sm lg:text-base font-text pl-1">
               Para editar tus datos, fotos o videos usá el formulario de
               arriba.Se guarda todo junto al tocar "Actualizar perfil".
             </p>
@@ -989,6 +996,16 @@ const ModeloDashboard = () => {
             </div>
           </section>
         )}
+        <div className="text-zinc-400 mt-16 px-4 text-sm">
+          Desde esta sección podés editar tu información, actualizar tus datos y
+          elegir el plan que mejor se adapte a vos. Revisá que toda la
+          información esté correcta y que tus preferencias estén actualizadas
+          para que tu perfil represente lo que querés mostrar. Cuando termines,
+          pulsá el botón Guardar cambios al final del formulario para confirmar
+          la actualización. Una vez guardados, los cambios se verán reflejados
+          en tu perfil de la página principal. ¡Mantené tu perfil actualizado
+          para ofrecer la mejor experiencia a quienes te visitan!
+        </div>
         <PaymentInfoModal
           open={paymentModal.open}
           category={paymentModal.category}
