@@ -42,7 +42,7 @@ const Contact = () => {
       </div>
       <div className="w-full flex justify-center flex-col items-start gap-10 ">
         <article
-          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[830px] w-full px-4 py-10 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-14 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
+          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[830px] w-full px-4 py-10 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:pt-14 xl:pb-12 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
           aria-label="Aviso legal"
         >
           <div
@@ -70,12 +70,12 @@ const Contact = () => {
             <i className="bx bxs-cube-alt text-3xl xl:text-4xl 2xl:text-5xl"></i>
           </div>
 
-          <h6 className="text-base text-purple-400 lg:text-xl 2xl:text-2xl ">
+          <h6 className="text-base text-purple-400 lg:text-xl 2xl:text-2xl text-balance xl:max-w-[700px]">
             Contactate para publicarte con nosotros y conocer nuestros
             servicios, productos disponibles como así también promociones de
             publicación
           </h6>
-          <div className="text-xs sm:text-sm mt-3 flex flex-col text-start pl-3 gap-2 lg:text-center lg:max-w-[700px] lg:text-base lg:mt-4">
+          <div className="text-xs md:text-sm mt-3 flex flex-col text-start pl-3 gap-2 lg:text-center lg:max-w-[700px] lg:text-base lg:mt-4">
             <div className=" ">
               Portal para visitantes y clientes anunciantes mayores de 18 años
             </div>
@@ -104,6 +104,9 @@ const Contact = () => {
         >
           Escribenos al WhatsApp
         </button>
+      </Link>
+      <Link to={"/"}>
+        <div className="text-sm text-zinc-400">Volver al Inicio</div>
       </Link>
       <div className="absolute bottom-2 right-2 z-100 w-12 h-12 lg:h-20 lg:w-20 lg:right-4 lg:bottom-3">
         <img src={icon} alt="icon-home" className="w-full h-full" />
