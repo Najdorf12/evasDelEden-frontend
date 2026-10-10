@@ -42,7 +42,7 @@ const Contact = () => {
       </div>
       <div className="w-full flex justify-center flex-col items-start gap-10 ">
         <article
-          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[880px] w-full px-4 py-10 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:pt-12 xl:pb-8 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
+          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[830px] w-full px-4 py-10 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:py-14 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
           aria-label="Aviso legal"
         >
           <div
@@ -75,14 +75,14 @@ const Contact = () => {
             servicios, productos disponibles como así también promociones de
             publicación
           </h6>
-          <div className="text-xs sm:text-sm mt-3 flex flex-col text-start pl-3 gap-2 lg:text-base lg:mt-3">
-            <div className="max-w-[500px] ">
+          <div className="text-xs sm:text-sm mt-3 flex flex-col text-start pl-3 gap-2 lg:text-center lg:max-w-[700px] lg:text-base lg:mt-4">
+            <div className=" ">
               Portal para visitantes y clientes anunciantes mayores de 18 años
             </div>
-            <div className="max-w-[500px]">
+            <div className="">
               Nuestro portal se reserva el derecho de publicación
             </div>
-            <div className="max-w-[500px]">
+            <div className="">
               EvasDelEden no es una agencia por tal motivo no se responsabiliza
               por las publicaciones de las escorts
             </div>

@@ -47,7 +47,7 @@ const AgeVerification = ({ onConfirm }) => {
       </nav>
       <article
         id="box-glass"
-        className="flex flex-col justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 border-[2px] border-purple-600 font-text items-center gap-3 z-50 py-9 px-2 w-[95%] rounded-3xl max-w-[650px] xl:max-w-[800px] xl:py-9 2xl:max-w-[750px] lg:gap-5 "
+        className="flex flex-col justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 border-[2px] border-purple-600 font-text items-center gap-3 z-50 py-9 px-2 w-[95%] rounded-3xl max-w-[650px] xl:max-w-[750px] xl:py-12 2xl:max-w-[800px] lg:gap-5 "
       >
         <h6 className="text-[2.70rem] text-zinc-200 font-title font-semibold lg:text-5xl xl:text-6xl">
           Verificación de Edad
