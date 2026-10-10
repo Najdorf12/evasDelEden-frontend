@@ -6,41 +6,41 @@ const Contact = () => {
   const wttp = "+54 9 353 441-6561";
 
   return (
-    <section className="text-balance h-screen w-full bg-gradient-to-l from-zinc-900 via-purple-900 to-zinc-900  text-stone-400 flex flex-col gap-4 px-6 items-center justify-center  relative border-t border-purple-400 ">
+    <section className="text-balance h-[100dvh] w-full bg-gradient-to-l from-zinc-900 via-purple-900 to-zinc-900  text-stone-400 flex flex-col gap-4 px-6 items-center pt-24  relative border-t border-purple-400 ">
       <nav className="absolute top-0 font-text2 text-lg px-2 flex justify-between items-center w-full mt-1 lg:px-12 xl:mt-3 xl:text-xl">
-        <picture className=" flex items-center justify-center rounded-full w-[120px] lg:w-[150px] 2xl:w-[180px]">
+        <picture className=" flex items-center justify-center rounded-full w-[126px] lg:w-[150px] 2xl:w-[180px]">
           <img src={logo} className="rounded-full" alt="logo" />
         </picture>
         <div className="flex gap-2 lg:gap-4">
-          <Link to={"/"}>
-            <button
-              className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-xs  lg:px-10 md:text-base 3xl:text-lg"
-              style={{
-                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
-              }}
-            >
-              Inicio
-            </button>
-          </Link>
           <Link to={"/modelo/login"}>
             <button
-              className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-xs  lg:px-10 md:text-base 3xl:text-lg"
+              className="w-full font-text py-1.5 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
               style={{
                 boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
               }}
             >
-              Publicar
+              Iniciar Sesión
+            </button>
+          </Link>
+          <Link to={"/contacto"}>
+            <button
+              className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
+            >
+              Contacto
             </button>
           </Link>
         </div>
       </nav>
 
-      <div className="text-center text-zinc-100 font-title text-5xl lg:text-8xl">
+      <div className="text-center text-zinc-100 font-title text-6xl lg:text-8xl">
         CONTACTO
       </div>
       <div className="w-full flex justify-center flex-col items-start gap-10 ">
         <article
-          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[880px] w-full px-4 pt-8 pb-8 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:pt-12 xl:pb-8 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
+          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[880px] w-full px-4 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:pt-12 xl:pb-8 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
           aria-label="Aviso legal"
         >
           <div
@@ -73,16 +73,16 @@ const Contact = () => {
             servicios, productos disponibles como así también promociones de
             publicación
           </h6>
-          <div className="text-sm flex flex-col gap-2 lg:text-base lg:mt-3">
+          <div className="text-xs sm:text-sm mt-3 flex flex-col text-start pl-3 gap-2 lg:text-base lg:mt-3">
             <div className="max-w-[500px] ">
-             Portal para visitantes y clientes anunciantes mayores de 18 años 
+              Portal para visitantes y clientes anunciantes mayores de 18 años
             </div>
             <div className="max-w-[500px]">
-             Nuestro portal se reserva el derecho de publicación 
+              Nuestro portal se reserva el derecho de publicación
             </div>
             <div className="max-w-[500px]">
-           EvasDelEden no es una agencia por tal motivo no se responsabiliza
-              por las publicaciones de las escorts 
+              EvasDelEden no es una agencia por tal motivo no se responsabiliza
+              por las publicaciones de las escorts
             </div>
           </div>
           <div className="flex justify-center items-center gap-2">
