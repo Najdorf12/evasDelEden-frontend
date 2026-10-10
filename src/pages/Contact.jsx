@@ -95,7 +95,7 @@ const Contact = () => {
         target="_blank"
       >
         <button
-          className="mt-3 font-text py-1.5 px-16 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-purple-400 transition duration-200 text-sm lg:mt-6  lg:px-10 md:text-base 3xl:text-lg"
+          className="mt-6 font-text py-1.5 px-16 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-purple-400 transition duration-200 text-sm lg:mt-6  lg:px-10 md:text-base 3xl:text-lg"
           style={{
             boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
           }}
