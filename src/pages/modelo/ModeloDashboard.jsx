@@ -84,7 +84,7 @@ const FormInput = ({
 const SectionCard = ({ title, subtitle, children }) => (
   <div className="bg-black/20 backdrop-blur-sm rounded-xl py-5 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900">
     <div>
-      <h3 className="font-title text-3xl text-white xl:text-4xl">{title}</h3>
+      <h3 className="font-title text-3xl text-zinc-300 xl:text-4xl">{title}</h3>
       {subtitle && (
         <p className="text-zinc-300 text-sm font-text mt-1 lg:text-base">
           {subtitle}
@@ -219,7 +219,7 @@ const OptionButtons = ({
               onClick={() => toggleOption(option)}
               className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
                 selected
-                  ? "border-purple-400 bg-purple-700 text-white"
+                  ? "border-purple-400 bg-purple-700 text-zinc-300"
                   : "border-zinc-600 bg-black/20 text-zinc-300 hover:border-purple-400"
               }`}
             >
@@ -548,7 +548,7 @@ const ModeloDashboard = () => {
   if (loading) {
     return (
       <section className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
-        <p className="text-white font-text animate-pulse">Cargando...</p>
+        <p className="text-zinc-300 font-text animate-pulse">Cargando...</p>
       </section>
     );
   }
@@ -562,7 +562,7 @@ const ModeloDashboard = () => {
         <div className="flex items-center justify-center gap-3 pt-0 pr-2 lg:gap-6 ">
           <Link to={"/"}>
             <button
-              className="w-full font-text py-1.5 px-6 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
+              className="w-full font-text py-1.5 px-6 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
               style={{
                 boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
               }}
@@ -573,7 +573,7 @@ const ModeloDashboard = () => {
 
           <button
             onClick={logout}
-            className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
+            className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
             }}
@@ -585,15 +585,15 @@ const ModeloDashboard = () => {
 
       <section className="mt-9 w-full flex flex-col items-center px-4 gap-8 xl:mt-2 xl:gap-10">
         <article className="self-start lg:text-center lg:self-center">
-          <div className="text-zinc-200 text-4xl font-title lg:text-6xl">
+          <div className="text-zinc-300 text-4xl font-title lg:text-6xl">
             Panel de Control
           </div>
-          <p className="text-zinc-500 mt-1 lg:text-xl lg:mt-3">
+          <p className="text-zinc-400 mt-1 lg:text-xl lg:mt-3">
             Crea, edita y organiza el contenido de forma sencilla
           </p>
         </article>
         {/* ---------- FORMULARIO ---------- */}
-        <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y  border-purple-600 shadow-black overflow-hidden py-8 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
+        <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y  border-purple-600 shadow-black overflow-hidden pt-12 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
           <div className="text-center ">
             <h6 className="font-title text-4xl font-bold text-zinc-200 xl:text-6xl">
               <img
@@ -629,7 +629,7 @@ const ModeloDashboard = () => {
                   : "Pendiente de aprobación"}
               </div>
             )}
-            <div className="text-zinc-300 text-xs mt-6 text-balance px-1 leading-5">
+            <div className="text-zinc-400 text-xs mt-6 text-balance px-1 leading-5">
               Desde esta sección podés editar tu información, actualizar tus
               datos y elegir el plan que mejor se adapte a vos. Revisá que toda
               la información esté correcta y que tus preferencias estén
@@ -739,7 +739,7 @@ const ModeloDashboard = () => {
                     <input
                       {...register("depilacionDetalle")}
                       placeholder="Especificá tu preferencia..."
-                      className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-white outline-none focus:border-purple-300"
+                      className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
                     />
                   )}
                 </div>
@@ -793,7 +793,7 @@ const ModeloDashboard = () => {
                 ))}
               </div>
               <textarea
-                className="text-white bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-sm xl:text-base rounded-lg p-3 transition-colors"
+                className="text-zinc-300 bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-sm xl:text-base rounded-lg p-3 transition-colors"
                 {...register("extendDescription")}
                 rows="5"
                 placeholder="Tocá las frases de arriba o escribí lo que quieras..."
@@ -815,7 +815,7 @@ const ModeloDashboard = () => {
                 />
                 <label
                   htmlFor="imageUpload"
-                  className="rounded-lg w-full max-w-[320px] -mt-2 py-3 px-8 border border-purple-500 text-white text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start"
+                  className="rounded-lg w-full max-w-[320px] -mt-2 py-3 px-8 border border-purple-500 text-zinc-300 text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start"
                 >
                   {loadingImage ? "Subiendo..." : "+ Agregar imagen"}
                 </label>
@@ -826,7 +826,7 @@ const ModeloDashboard = () => {
                         <button
                           type="button"
                           onClick={() => handleDeleteImage(img)}
-                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-white bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
+                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-zinc-300 bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
                         >
                           ×
                         </button>
@@ -872,7 +872,7 @@ const ModeloDashboard = () => {
                 />
                 <label
                   htmlFor="videoUpload"
-                  className="rounded-lg w-full max-w-[320px] py-3 px-8 border border-purple-500 text-white text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start -mt-2"
+                  className="rounded-lg w-full max-w-[320px] py-3 px-8 border border-purple-500 text-zinc-300 text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start -mt-2"
                 >
                   {loadingVideo ? "Subiendo..." : "+ Agregar video"}
                 </label>
@@ -883,7 +883,7 @@ const ModeloDashboard = () => {
                         <button
                           type="button"
                           onClick={() => handleDeleteVideo(video)}
-                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-white bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
+                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-zinc-300 bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
                         >
                           x
                         </button>
@@ -923,7 +923,7 @@ const ModeloDashboard = () => {
                 {saving
                   ? "Guardando..."
                   : myEva
-                    ? "Actualizar perfil"
+                    ? "Guardar Cambios"
                     : "Crear perfil"}
               </button>
             </div>
@@ -943,7 +943,7 @@ const ModeloDashboard = () => {
         {/* ---------- RESUMEN / MI PERFIL ---------- */}
         {myEva && (
           <section className="max-w-md mt-9 w-full rounded-2xl bg-gradient-to-tr border border-purple-500 from-zinc-900 via-purple-950 to-zinc-900 overflow-hidden py-8 px-4 space-y-6 xl:max-w-[900px] xl:px-8 text-balance">
-            <h6 className="font-title text-3xl text-white text-center xl:text-4xl">
+            <h6 className="font-title text-3xl text-zinc-300 text-center xl:text-4xl">
               Tu perfil publicado
             </h6>
             <p className="text-zinc-300 text-sm lg:text-base font-text pl-1">
@@ -964,7 +964,7 @@ const ModeloDashboard = () => {
               )}
 
               <div className="font-text text-zinc-300 space-y-2 mt-2 flex-1">
-                <p className="text-white text-3xl font-title lg:text-4xl">
+                <p className="text-zinc-300 text-3xl font-title lg:text-4xl">
                   {myEva.name}
                 </p>
                 <p className="text-sm  lg:text-base">
@@ -1004,10 +1004,13 @@ const ModeloDashboard = () => {
           elegir el plan que mejor se adapte a vos. Revisá que toda la
           información esté correcta y que tus preferencias estén actualizadas
           para que tu perfil represente lo que querés mostrar. Cuando termines,
-          pulsá el botón Guardar cambios al final del formulario para confirmar
-          la actualización. Una vez guardados, los cambios se verán reflejados
-          en tu perfil de la página principal. <span className="text-zinc-300">¡Mantené tu perfil actualizado
-          para ofrecer la mejor experiencia a quienes te visitan!</span>
+          pulsá el botón *Guardar Cambios* al final del formulario para
+          confirmar la actualización. Una vez guardados, los cambios se verán
+          reflejados en tu perfil de la página principal.{" "}
+          <span className="text-zinc-300">
+            ¡Mantené tu perfil actualizado para ofrecer la mejor experiencia a
+            quienes te visitan!
+          </span>
         </div>
         <PaymentInfoModal
           open={paymentModal.open}
