@@ -167,7 +167,7 @@ const Home2 = () => {
           <nav className="w-full flex justify-end xl:pr-12  -mt-1 z-50  xl:-mt-5">
             <img
               src={logo}
-              className="w-36 xl:w-52  absolute -left-0 -top-1.5 lg:left-12"
+              className="w-36 xl:w-52 absolute -left-0 -top-1.5 lg:left-12"
               alt="logo"
               loading="eager"
               width="224"
@@ -202,7 +202,7 @@ const Home2 = () => {
             <div className="self-start pl-3 flex flex-col items-start mt-9 xl:mt-12 2xl:mt-6 z-50 w-full ">
               <h1 className="font-title relative text-whiteCustom text-7xl lg:text-[10rem] xl:text-[11rem] 2xl:text-[13rem]">
                 Evas del Eden{" "}
-                <div className="absolute top-1 -right-20 z-100 w-16 h-16 lg:h-36 lg:w-36 lg:-right-[200px] lg:top-4">
+                <div className="absolute top-5 -right-16 z-100 w-12 h-12 lg:h-36 lg:w-36 lg:-right-[200px] lg:top-4">
                   <img src={icon} alt="icon-home" className="w-full h-full" />
                 </div>
               </h1>
@@ -397,23 +397,23 @@ const Home2 = () => {
             <ul className="font-text2 text-sm w-full flex items-start justify-start gap-4 mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden lg:text-base">
               <li
                 onClick={() => scrollToCategory("platinum")}
-                className="border-[2px] border-teal-700 pl-2 py-[2px] w-[122px] md:w-[150px] text-teal-700 rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] border-teal-800 pl-2 py-[2px] w-[122px] md:w-[150px] text-teal-600 rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
                 Platinum
               </li>
               <li
                 onClick={() => scrollToCategory("gold")}
-                className="border-[2px] text-amber-500 border-amber-500 pl-2 py-[2px] w-[122px] md:w-[150px] rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] text-amber-500 border-amber-700 pl-2 py-[2px] w-[122px] md:w-[150px] rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
               >
-                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-amber-500"></i>
+                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-amber-700"></i>
                 Gold
               </li>
               <li
                 onClick={() => scrollToCategory("silver")}
-                className="border-[2px] border-slate-400 pl-2 py-[2px] w-[122px] md:w-[150px] text-slate-400 rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] border-slate-600 pl-2 py-[2px] w-[122px] md:w-[150px] text-slate-400 rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
               >
-                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-slate-400"></i>
+                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-slate-600"></i>
                 Silver
               </li>
             </ul>
@@ -424,9 +424,10 @@ const Home2 = () => {
               id="platinum-section"
               className="mt-10 flex flex-col w-full px-2 min-h-[300px] items-center justify-center lg:mt-12 lg:px-12"
             >
-              <div className="text-base text-teal-600 ml-2 font-text2 self-start pl-2 w-40 border-[2px] border-teal-700 rounded-lg flex justify-start items-center gap-2 lg:self-center  lg:mb-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
+              <div className="text-base text-teal-600 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-teal-800 rounded-lg flex justify-start items-center gap-2 lg:self-center  lg:mb-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
                 Platinum
+                <div className="w-32 h-[1px] bg-teal-800"></div>
               </div>
               <div className="mt-6 flex flex-wrap justify-center gap-1 md:gap-3 lg:mt-3">
                 {evasByCategory.Platinum?.map((eva) => (
@@ -441,9 +442,10 @@ const Home2 = () => {
               id="gold-section"
               className="mt-10 flex flex-col w-full px-2 min-h-[300px] items-center justify-center lg:mt-12 lg:px-12"
             >
-              <div className="text-base text-amber-500 ml-2 font-text2 self-start pl-2 w-40 border-[2px] border-amber-500 rounded-lg flex justify-start items-center gap-2 lg:self-center  xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
+              <div className="text-base text-amber-500 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-amber-700 rounded-lg flex justify-start items-center gap-2 lg:self-center  xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-amber-500"></i>
                 Gold
+                <div className="w-32 h-[1px] bg-amber-700"></div>
               </div>
               <div className="mt-6 flex flex-wrap justify-center gap-1 md:gap-3 ">
                 {evasByCategory.Gold?.map((eva) => (
@@ -458,9 +460,10 @@ const Home2 = () => {
               id="silver-section"
               className="mt-10 flex flex-col w-full px-2 min-h-[300px] items-center justify-center  lg:mt-12 lg:px-12"
             >
-              <div className="text-base text-slate-400 ml-2 font-text2 self-start pl-2 w-40 border-[2px] border-slate-400 rounded-lg flex justify-start items-center gap-2 lg:self-center xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
-                <i className="bx bxs-cube-alt text-xl  xl:text-3xl 2xl:text-4xl text-slate-400"></i>
+              <div className="text-base text-slate-400 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-slate-500 rounded-lg flex justify-start items-center gap-2 lg:self-center xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
+                <i className="bx bxs-cube-alt text-xl  xl:text-3xl 2xl:text-4xl text-slate-500"></i>
                 Silver
+                <div className="w-32 h-[1px] bg-slate-500"></div>
               </div>
               <div className="mt-6 flex flex-wrap justify-center gap-1 md:gap-3 ">
                 {evasByCategory.Silver?.map((eva) => (

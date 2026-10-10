@@ -23,7 +23,7 @@ const AgeVerification = ({ onConfirm }) => {
   };
 
   return (
-    <section className="relative flex flex-col items-center pt-24 w-full h-[100dvh] overflow-hidden bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 lg:pt-[7%]">
+    <section className="relative flex flex-col items-center pt-24  w-full h-[100dvh] overflow-hidden bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 lg:pt-[7%]">
       <div className="absolute bottom-2 right-2 z-100 w-20 h-20 lg:h-28 lg:w-28 lg:right-3 lg:bottom-3">
         <img src={icon} alt="icon-home" className="w-full h-full" />
       </div>
@@ -47,12 +47,12 @@ const AgeVerification = ({ onConfirm }) => {
       </nav>
       <article
         id="box-glass"
-        className="flex flex-col justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 border-[2px] border-purple-600 font-text items-center gap-3 z-50 py-6 px-2 w-[95%] rounded-3xl max-w-[650px] xl:max-w-[800px] xl:py-9 2xl:max-w-[750px] lg:gap-5 "
+        className="flex flex-col justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 border-[2px] border-purple-600 font-text items-center gap-3 z-50 py-9 px-2 w-[95%] rounded-3xl max-w-[650px] xl:max-w-[800px] xl:py-9 2xl:max-w-[750px] lg:gap-5 "
       >
         <h6 className="text-[2.70rem] text-zinc-200 font-title font-semibold lg:text-5xl xl:text-6xl">
           Verificación de Edad
         </h6>
-        <p className="text-zinc-400 text-sm text-center text-balance lg:text-base lg:px-12">
+        <p className="text-zinc-400 text-sm  text-balance px-2 lg:text-base lg:px-12">
           Sitio para mayores de 18 años. Contenido explicito solo para adultos.
           La interaccion de los usuarios con la plataforma es exclusiva
           responsabilidad de los mismos y los anunciantes del sitio. Al ingresar
@@ -86,7 +86,7 @@ const AgeVerification = ({ onConfirm }) => {
         </p>
         <div className="flex justify-evenly items-center gap-4 font-text text-base mt-2 xl:text-lg lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
-            className="rounded-xl px-7 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
+            className="rounded-xl px-9 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
             onClick={handleConfirm}
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
@@ -95,7 +95,7 @@ const AgeVerification = ({ onConfirm }) => {
             Sí, soy mayor.
           </button>
           <button
-            className="rounded-xl px-7 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
+            className="rounded-xl px-9 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
             onClick={handleNo}
           >
             No, soy menor.
