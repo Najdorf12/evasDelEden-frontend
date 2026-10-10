@@ -554,7 +554,7 @@ const ModeloDashboard = () => {
   }
 
   return (
-    <section className="relative w-full bg-gradient-to-r  from-zinc-900 via-purple-950 to-zinc-900 min-h-screen flex flex-col items-center pb-16">
+    <section className="relative w-full bg-gradient-to-r  from-zinc-900 via-purple-950 to-zinc-900 min-h-screen flex flex-col items-center pb-32">
       <nav className="font-text text-base relative flex justify-between items-center w-full mt-2 px-2 xl:mt-3 xl:px-12 2xl:text-lg">
         <picture className="flex items-center justify-center w-[120px] lg:w-[180px] 2xl:w-[180px]">
           <img src={imgLogo} alt="logo" />
@@ -629,11 +629,14 @@ const ModeloDashboard = () => {
                   : "Pendiente de aprobación"}
               </div>
             )}
-            <div className="text-zinc-300 text-xs mt-6 text-balance">
-              Aquí puedes editar o cambiar al plan que mas se ajuste a vos. Una
-              vez que finalices, pulsa el botón que se encuentra al final del
-              formulario para que tu informacion aparezca visible en la pagina
-              principal
+            <div className="text-zinc-300 text-xs mt-6 text-balance px-1 leading-5">
+              Desde esta sección podés editar tu información, actualizar tus
+              datos y elegir el plan que mejor se adapte a vos. Revisá que toda
+              la información esté correcta y que tus preferencias estén
+              actualizadas. Cuando termines, pulsá el botón *Guardar Cambios* al
+              final del formulario para confirmar la actualización. Una vez
+              guardados, los cambios se verán reflejados en tu perfil de la
+              página principal
             </div>
           </div>
 
@@ -945,7 +948,7 @@ const ModeloDashboard = () => {
             </h6>
             <p className="text-zinc-300 text-sm lg:text-base font-text pl-1">
               Para editar tus datos, fotos o videos usá el formulario de
-              arriba.Se guarda todo junto al tocar "Actualizar perfil".
+              arriba.Se guarda todo junto al pulsar "Actualizar perfil".
             </p>
             <div className="bg-black/20 border border-purple-600 backdrop-blur-sm rounded-xl p-5 flex flex-col gap-4 xl:flex-row xl:items-center xl:gap-6">
               {images[0]?.secure_url ? (
@@ -996,15 +999,15 @@ const ModeloDashboard = () => {
             </div>
           </section>
         )}
-        <div className="text-zinc-400 mt-16 px-4 text-sm">
+        <div className="text-zinc-500 mt-16 px-4 text-sm border p-6 border-zinc-600 rounded-lg">
           Desde esta sección podés editar tu información, actualizar tus datos y
           elegir el plan que mejor se adapte a vos. Revisá que toda la
           información esté correcta y que tus preferencias estén actualizadas
           para que tu perfil represente lo que querés mostrar. Cuando termines,
           pulsá el botón Guardar cambios al final del formulario para confirmar
           la actualización. Una vez guardados, los cambios se verán reflejados
-          en tu perfil de la página principal. ¡Mantené tu perfil actualizado
-          para ofrecer la mejor experiencia a quienes te visitan!
+          en tu perfil de la página principal. <span className="text-zinc-300">¡Mantené tu perfil actualizado
+          para ofrecer la mejor experiencia a quienes te visitan!</span>
         </div>
         <PaymentInfoModal
           open={paymentModal.open}
