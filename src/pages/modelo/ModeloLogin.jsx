@@ -47,16 +47,16 @@ const ModeloLogin = () => {
         <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
           <img src={imgLogo} className="rounded-full" alt="logo" />
         </picture>
-             <Link to={"/"}>
-            <button
-              className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-sm  lg:px-10 md:text-base 3xl:text-lg"
-              style={{
-                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
-              }}
-            >
-              Inicio
-            </button>
-          </Link>
+        <Link to={"/"}>
+          <button
+            className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-sm  lg:px-10 md:text-base 3xl:text-lg"
+            style={{
+              boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+            }}
+          >
+            Inicio
+          </button>
+        </Link>
       </nav>
 
       <div className="relative max-w-md w-[95%] rounded-xl shadow-2xl border-purple-600 border overflow-hidden py-8 px-4 flex flex-col gap-6 xl:max-w-lg bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900">
@@ -120,7 +120,7 @@ const ModeloLogin = () => {
               className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm"
               htmlFor="password"
             >
-              Password
+              Contraseña
               <p className="error absolute left-32 -top-2 m-2 text-base font-semibold text-[#da8e88] w-64">
                 {errors.password?.message}
               </p>
@@ -146,7 +146,10 @@ const ModeloLogin = () => {
             {" "}
             Registrate
           </Link>
-          <div className="text-xs mt-2 text-purple-400"> - Olvidé mi contraseña - </div>
+          <div className="text-xs mt-2 text-purple-400">
+            {" "}
+            - Olvidé mi contraseña -{" "}
+          </div>
         </div>
       </div>
       <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-0 text-zinc-700 w-full pr-3 lg:w-[90%] lg:pr-[5%] ">
