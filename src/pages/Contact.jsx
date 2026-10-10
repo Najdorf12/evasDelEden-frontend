@@ -40,7 +40,7 @@ const Contact = () => {
       </div>
       <div className="w-full flex justify-center flex-col items-start gap-10 ">
         <article
-          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[880px] w-full px-4 py-9 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:pt-12 xl:pb-8 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
+          className="relative text-center font-text2 text-zinc-200 self-center min-h-[330px] max-w-[700px] md:self-center lg:min-h-[250px] xl:max-w-[880px] w-full px-4 py-10 flex flex-col justify-center items-center gap-3 text-balance rounded-2xl border border-purple-400 xl:pt-12 xl:pb-8 2xl:py-16 bg-gradient-to-tl from-zinc-900 via-purple-900 to-zinc-900"
           aria-label="Aviso legal"
         >
           <div
@@ -85,25 +85,24 @@ const Contact = () => {
               por las publicaciones de las escorts
             </div>
           </div>
-          <div className="flex justify-center items-center gap-2">
-            <Link
-              to={`https://api.whatsapp.com/send/?phone=${wttp}&text=${encodeURIComponent(
-                `Hola, me gustaría publicarme en evasdeleden.com y conocer más sobre sus servicios.`,
-              )}`}
-              target="_blank"
-            >
-              <button
-                className="mt-4 font-text py-1.5 px-16 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-purple-400 transition duration-200 text-sm lg:mt-6  lg:px-10 md:text-base 3xl:text-lg"
-                style={{
-                  boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
-                }}
-              >
-                Escribenos al WhatsApp
-              </button>
-            </Link>
-          </div>
+          <div className="flex justify-center items-center gap-2"></div>
         </article>
       </div>
+      <Link
+        to={`https://api.whatsapp.com/send/?phone=${wttp}&text=${encodeURIComponent(
+          `Hola, me gustaría publicarme en evasdeleden.com y conocer más sobre sus servicios.`,
+        )}`}
+        target="_blank"
+      >
+        <button
+          className="mt-3 font-text py-1.5 px-16 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-purple-400 transition duration-200 text-sm lg:mt-6  lg:px-10 md:text-base 3xl:text-lg"
+          style={{
+            boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+          }}
+        >
+          Escribenos al WhatsApp
+        </button>
+      </Link>
       <div className="absolute bottom-2 right-2 z-100 w-12 h-12 lg:h-20 lg:w-20 lg:right-4 lg:bottom-3">
         <img src={icon} alt="icon-home" className="w-full h-full" />
       </div>
