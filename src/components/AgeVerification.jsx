@@ -24,26 +24,17 @@ const AgeVerification = ({ onConfirm }) => {
 
   return (
     <section className="relative flex flex-col items-center pt-24  w-full h-[100dvh] overflow-hidden bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 lg:pt-[7%]">
-      <div className="absolute bottom-2 right-2 z-100 w-20 h-20 lg:h-28 lg:w-28 lg:right-3 lg:bottom-3">
+      <div className="absolute bottom-2 right-2 z-100 w-16 h-16 lg:h-28 lg:w-28 lg:right-3 lg:bottom-3">
         <img src={icon} alt="icon-home" className="w-full h-full" />
       </div>
-      <div className="absolute bottom-2 left-2 rotate-[90deg] z-100 w-20 h-20 lg:h-28 lg:w-28 lg:left-3 lg:bottom-3">
+      <div className="absolute bottom-2 left-2 rotate-[90deg] z-100 w-16 h-16 lg:h-28 lg:w-28 lg:left-3 lg:bottom-3">
         <img src={icon} alt="icon-home" className="w-full h-full" />
       </div>
       <nav className="absolute top-0 font-text2 text-lg px-3  flex justify-between items-center w-full mt-1 xl:px-6 xl:mt-3 xl:text-xl">
         <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
           <img src={logo} className="rounded-full" alt="logo" />
         </picture>
-        {/* <Link to={"/model/login"}>
-          <button
-            className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-sm  lg:px-10 md:text-base 3xl:text-lg"
-            style={{
-              boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
-            }}
-          >
-            Iniciar Sesión
-          </button>
-        </Link> */}
+     
       </nav>
       <article
         id="box-glass"
@@ -81,24 +72,24 @@ const AgeVerification = ({ onConfirm }) => {
           </select>
         </div>
 
-        <p className="text-lg font-text mt-1 font-medium text-zinc-200 lg:text-lg xl:text-xl 2xl:text-2xl">
+        <p className="text-lg font-text mt-3 font-medium text-zinc-200 lg:text-lg xl:text-xl 2xl:text-2xl">
           ¿Eres mayor de edad?
         </p>
-        <div className="flex justify-evenly items-center gap-4 font-text text-base mt-2 xl:text-lg lg:gap-6 2xl:gap-10 2xl:text-xl">
+        <div className="flex justify-evenly items-center gap-2 font-text text-sm mt-2 xl:text-lg lg:gap-6 2xl:gap-10 2xl:text-xl">
           <button
-            className="rounded-xl px-9 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
+            className="rounded-lg px-10 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
             onClick={handleConfirm}
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
             }}
           >
-            Sí, soy mayor.
+            Sí, soy mayor
           </button>
           <button
-            className="rounded-xl px-9 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
+            className="rounded-lg px-10 py-[4px] border border-purple-500 lg:px-10 text-zinc-200  shadow-lg shadow-zinc-900 xl:px-14"
             onClick={handleNo}
           >
-            No, soy menor.
+            No, soy menor
           </button>
         </div>
       </article>
