@@ -35,7 +35,7 @@ const AgeVerification = ({ onConfirm }) => {
   };
 
   return (
-    <section className="relative flex flex-col items-center pt-24  w-full h-[100dvh] overflow-hidden bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 lg:pt-[7%]">
+    <section className="relative flex flex-col items-center pt-24 w-full h-[100dvh] overflow-hidden bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 lg:pt-[5%]">
       {isLoading && (
         <div className="fixed inset-0 z-[99999] flex flex-col items-center justify-center gap-5 bg-zinc-950/95">
           <Loader />
@@ -64,20 +64,20 @@ const AgeVerification = ({ onConfirm }) => {
       </nav>
       <article
         id="box-glass"
-        className="flex flex-col justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 border-[2px] border-purple-600 font-text items-center gap-3 z-50 py-9 px-2 w-[95%] rounded-3xl max-w-[650px] xl:max-w-[750px] xl:py-12 2xl:max-w-[800px] lg:gap-5 "
+        className="flex flex-col justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 border-[2px] border-purple-600 font-text items-center gap-3 z-50 py-9 px-2 w-[95%] rounded-3xl max-w-[650px] xl:max-w-[790px] xl:py-12 2xl:max-w-[800px] lg:gap-5 "
       >
         <h6 className="text-[2.70rem] text-zinc-200 font-title font-semibold lg:text-5xl xl:text-6xl">
           Verificación de Edad
         </h6>
-        <p className="text-zinc-400 text-sm  text-balance px-2 lg:text-base lg:px-12">
+        <p className="text-zinc-400 text-sm  text-balance px-2 text-center xl:text-base lg:px-12 max-w-[600px] xl:max-w-[740px] ">
           Sitio para mayores de 18 años. Contenido explicito solo para adultos.
           La interaccion de los usuarios con la plataforma es exclusiva
           responsabilidad de los mismos y los anunciantes del sitio. Al ingresar
           al sitio asumo toda la responsabilidad de la interacción en el mismo
-          eximiendo de responsabilidad a los responsables de EvasdelEden.
+          eximiendo de responsabilidad a los responsables de EvasdelEden
         </p>
 
-        <div className="flex justify-center items-center gap-4 mt-1 w-full px-3">
+        <div className="flex justify-center items-center gap-4 mt-1 w-full px-3 max-w-[500px]  xl:max-w-[630px]">
           <CustomSelect
             id="age-province"
             label="Seleccioná tu Provincia"
