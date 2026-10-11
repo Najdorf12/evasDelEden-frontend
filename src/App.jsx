@@ -5,8 +5,8 @@ import ModeloLogin from "./pages/modelo/ModeloLogin";
 import ModeloRegister from "./pages/modelo/ModeloRegister";
 import ModeloDashboard from "./pages/modelo/ModeloDashboard";
 import PageLoader from "./components/PageLoader";
+import ScrollToTop from "./components/ScrollToTop";
 
-// Mientras se descarga el código de una página (lazy), se ve el mismo loader
 const Loading = () => <PageLoader show text="Cargando página..." />;
 
 const Home2 = lazy(() => import("./pages/Home2"));
@@ -19,6 +19,7 @@ const EvaDetail = lazy(() => import("./pages/EvaDetail"));
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Home2 />} />
