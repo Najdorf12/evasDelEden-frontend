@@ -1,11 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import icon from "/icon14.png";
 
-/* =====================================================================
-   Componentes y opciones compartidas entre el panel de las modelos
-   y el panel de admin. Ubicación sugerida: src/components/
-   ===================================================================== */
-
-/* ---------- OPCIONES PREDEFINIDAS ---------- */
 const range = (from, to) =>
   Array.from({ length: to - from + 1 }, (_, i) => String(from + i));
 
@@ -77,8 +72,9 @@ export const FormInput = ({
 
 /* ---------- TARJETA DE SECCIÓN ---------- */
 export const SectionCard = ({ title, subtitle, children }) => (
-  <div className="bg-black/20 backdrop-blur-sm rounded-xl py-5 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900">
+  <div className="relative bg-black/20 rounded-xl pt-6 pb-7 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900">
     <div>
+      <img src={icon} alt="icon" className="w-12 absolute right-4 top-4" />
       <h3 className="font-title text-3xl text-zinc-300 xl:text-4xl">{title}</h3>
       {subtitle && (
         <p className="text-zinc-300 text-sm font-text mt-1 lg:text-base">

@@ -9,6 +9,8 @@ const CustomSelect = ({
   placeholder = "Seleccionar",
   disabled = false,
   className = "",
+  clearable = true, // si es false, no aparece la opción de limpiar
+  clearLabel = "Limpiar selección",
 }) => {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -22,7 +24,7 @@ const CustomSelect = ({
       ? [current, ...normalizedOptions]
       : normalizedOptions;
 
-  const items = ["", ...list];
+  const items = clearable ? ["", ...list] : list;
 
   useEffect(() => {
     if (!open) return;
@@ -42,6 +44,11 @@ const CustomSelect = ({
     };
   }, [open]);
 
+  // Si se deshabilita mientras está abierto, se cierra
+  useEffect(() => {
+    if (disabled) setOpen(false);
+  }, [disabled]);
+
   const selectOption = (option) => {
     onChange(option);
     setOpen(false);
@@ -50,13 +57,12 @@ const CustomSelect = ({
   return (
     <div
       ref={wrapperRef}
-      className={`relative w-full font-text z-1000 ${open ? "z-50" : ""} ${className}`}
+      className={`relative w-full font-text ${
+        open ? "z-[9999]" : "z-0"
+      } ${className}`}
     >
       {label && (
-        <label
-          htmlFor={id}
-          className="mb-1 block text-sm text-purple-200"
-        >
+        <label htmlFor={id} className="mb-1 block text-sm text-purple-200">
           {label}
         </label>
       )}
@@ -120,7 +126,7 @@ const CustomSelect = ({
                       : "text-zinc-300 hover:bg-purple-600/20 hover:text-white"
                   }`}
               >
-                {option || "Limpiar selección"}
+                {option || clearLabel}
               </li>
             );
           })}

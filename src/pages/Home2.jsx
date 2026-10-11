@@ -5,6 +5,7 @@ import { preloadData, getCachedData } from "../api/preload";
 const Footer = lazy(() => import("../components/Footer"));
 const AgeVerification = lazy(() => import("../components/AgeVerification"));
 import CardEva from "../components/CardEva";
+import CustomSelect from "../components/CustomSelect";
 import logo from "/0004.png";
 import { getEvasByProvince } from "../api/handlers";
 import icon from "/icon14.png";
@@ -16,11 +17,6 @@ const Home2 = () => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [allEvas, setAllEvas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState({
-    province: false,
-    region: false,
-    city: false,
-  });
 
   useEffect(() => {
     getEvasByProvince(selectedProvince).then((data) => {
@@ -105,29 +101,28 @@ const Home2 = () => {
     return grouped;
   }, [filteredEvas]);
 
+  // La provincia no se puede "limpiar" (clearable={false}), por eso no llega vacía
   const handleProvinceChange = (province) => {
+    if (!province) return;
     setSelectedProvince(province);
     setSelectedRegion(null);
     setSelectedCity(null);
-    setOpenDropdown({ ...openDropdown, province: false });
   };
 
+  // Si llega vacío ("Todas las regiones") se limpian región y ciudad
   const handleRegionChange = (region) => {
+    if (!region) {
+      setSelectedRegion(null);
+      setSelectedCity(null);
+      return;
+    }
     setSelectedRegion(region);
     setSelectedCity(locations[selectedProvince][region][0]);
-    setOpenDropdown({ ...openDropdown, region: false });
   };
 
+  // Si llega vacío ("Todas las ciudades") se muestran todas las de la región
   const handleCityChange = (city) => {
-    setSelectedCity(city);
-    setOpenDropdown({ ...openDropdown, city: false });
-  };
-
-  const toggleDropdown = (dropdown) => {
-    setOpenDropdown({
-      ...openDropdown,
-      [dropdown]: !openDropdown[dropdown],
-    });
+    setSelectedCity(city || null);
   };
 
   const handleVerification = (province) => {
@@ -213,184 +208,70 @@ const Home2 = () => {
               </h2>
             </div>
 
+            {/* ---------- FILTROS DE UBICACIÓN ---------- */}
             <div className="mt-7 w-full font-text3 flex flex-col md:flex-row items-start justify-start gap-3 px-4 lg:mt-9 max-w-[900px] self-start ">
+              {/* Provincia */}
               <div className="flex w-full gap-3 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
-                <label className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base">
+                <label
+                  htmlFor="home-province"
+                  className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base"
+                >
                   Provincia
                 </label>
                 <div className="relative inline-block text-left w-[250px]">
-                  <div>
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-between items-center rounded-md px-3 py-[6px] text-sm lg:text-base  text-zinc-100 shadow-xs ring-1 ring-zinc-600 hover:bg-purple-700 bg-purple-600"
-                      onClick={() => toggleDropdown("province")}
-                    >
-                      {selectedProvince}
-                      <svg
-                        className={`-mr-1 size-5 text-slate-400 transition-transform ${
-                          openDropdown.province ? "rotate-180" : ""
-                        }`}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {openDropdown.province && (
-                    <div
-                      className="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-md sha bg-zinc-700dow-lg ring-1 ring-zinc-700 focus:outline-none"
-                      role="menu"
-                    >
-                      <div className="max-h-60 overflow-y-auto" role="none">
-                        {Object.keys(locations).map((province) => (
-                          <button
-                            key={province}
-                            className={`block w-full px-4 py-[6px] bg-zinc-700 text-stone-400 text-left text-sm z-50 relative ${
-                              selectedProvince === province
-                                ? "bg-purple-600 text-white "
-                                : "text-purple-300 hover:bg-purple-600"
-                            }`}
-                            role="menuitem"
-                            onClick={() => handleProvinceChange(province)}
-                          >
-                            {province}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <CustomSelect
+                    id="home-province"
+                    value={selectedProvince}
+                    onChange={handleProvinceChange}
+                    options={Object.keys(locations)}
+                    placeholder="Selecciona tu provincia"
+                    clearable={false}
+                  />
                 </div>
               </div>
 
+              {/* Región */}
               <div className="flex w-full gap-3 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
-                <label className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base">
+                <label
+                  htmlFor="home-region"
+                  className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base"
+                >
                   Región
                 </label>
                 <div className="relative inline-block text-left w-[250px]">
-                  <div>
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-between items-center rounded-md px-3 py-[6px] text-sm lg:text-base  text-zinc-100 shadow-xs ring-1 ring-zinc-600 hover:bg-purple-600 "
-                      onClick={() => toggleDropdown("region")}
-                    >
-                      {selectedRegion || "Selecciona tu región"}
-                      <svg
-                        className={`-mr-1 size-5 text-slate-400 transition-transform ${
-                          openDropdown.region ? "rotate-180" : ""
-                        }`}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {openDropdown.region && (
-                    <div
-                      className="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-md bg-zinc-700 shadow-lg ring-1 ring-zinc-700 focus:outline-none"
-                      role="menu"
-                    >
-                      <div
-                        className="py-1 max-h-60 overflow-y-auto"
-                        role="none"
-                      >
-                        {selectedProvince &&
-                          Object.keys(locations[selectedProvince])?.map(
-                            (region) => (
-                              <button
-                                id="box-glass3"
-                                key={region}
-                                className={`block w-full px-4 py-[6px] bg-zinc-700 text-stone-400 text-left text-sm z-40 ${
-                                  selectedRegion === region
-                                    ? "bg-purple-600 text-white "
-                                    : "text-gray-300 hover:bg-purple-600"
-                                }`}
-                                role="menuitem"
-                                onClick={() => handleRegionChange(region)}
-                              >
-                                {region}
-                              </button>
-                            ),
-                          )}
-                      </div>
-                    </div>
-                  )}
+                  <CustomSelect
+                    id="home-region"
+                    value={selectedRegion || ""}
+                    onChange={handleRegionChange}
+                    options={Object.keys(locations[selectedProvince] || {})}
+                    placeholder="Selecciona tu región"
+                    clearLabel="Todas las regiones"
+                  />
                 </div>
               </div>
 
+              {/* Ciudad */}
               <div className="flex w-full gap-3 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
-                <label className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base">
+                <label
+                  htmlFor="home-city"
+                  className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base"
+                >
                   Ciudad
                 </label>
                 <div className="relative inline-block text-left w-[250px]">
-                  <div>
-                    <button
-                      type="button"
-                      className="inline-flex w-full justify-between items-center text-sm lg:text-base rounded-md px-3 py-[6px]  text-zinc-100 shadow-xs ring-1 ring-zinc-600 hover:bg-purple-600 "
-                      onClick={() => toggleDropdown("city")}
-                    >
-                      {selectedCity || "Selecciona tu ciudad"}
-                      <svg
-                        className={`-mr-1 size-5 text-slate-400 transition-transform ${
-                          openDropdown.city ? "rotate-180" : ""
-                        }`}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {openDropdown.city && (
-                    <div
-                      className="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-md bg-zinc-700 shadow-lg ring-1 ring-zinc-700 focus:outline-none"
-                      role="menu"
-                    >
-                      <div
-                        className="py-1 max-h-60 overflow-y-auto"
-                        role="none"
-                      >
-                        {selectedProvince &&
-                          selectedRegion &&
-                          locations[selectedProvince][selectedRegion]?.map(
-                            (city) => (
-                              <button
-                                id="box-glass3"
-                                key={city}
-                                className={`block w-full px-4 py-[6px] bg-zinc-700 text-stone-400 text-left text-sm z-30 ${
-                                  selectedCity === city
-                                    ? "bg-purple-600 text-white "
-                                    : "text-purple-300 hover:bg-purple-600"
-                                }`}
-                                role="menuitem"
-                                onClick={() => handleCityChange(city)}
-                              >
-                                {city}
-                              </button>
-                            ),
-                          )}
-                      </div>
-                    </div>
-                  )}
+                  <CustomSelect
+                    id="home-city"
+                    value={selectedCity || ""}
+                    onChange={handleCityChange}
+                    options={
+                      selectedRegion
+                        ? locations[selectedProvince]?.[selectedRegion] || []
+                        : []
+                    }
+                    placeholder="Selecciona tu ciudad"
+                    clearLabel="Todas las ciudades"
+                    disabled={!selectedRegion}
+                  />
                 </div>
               </div>
             </div>
