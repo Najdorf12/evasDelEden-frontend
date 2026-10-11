@@ -7,6 +7,14 @@ import { getEvas } from "../api/handlers";
 import LocationSelector from "../components/LocationSelector";
 import axios from "../api/axiosRender";
 import icon from "/icon14.png";
+import {
+  SectionCard,
+  FormInput,
+  PhysicalFields,
+  DescriptionField,
+  DEPILACION_OPTIONS,
+  OTRO_LABEL,
+} from "../components/ProfileFormFields";
 
 const PendingEvaCard = ({ eva, onApprove, onReject, formatUrl }) => (
   <div className="w-[280px] bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900 border border-purple-600 rounded-xl overflow-hidden shadow-lg">
@@ -51,12 +59,24 @@ const PendingEvaCard = ({ eva, onApprove, onReject, formatUrl }) => (
     </div>
   </div>
 );
+
+// Separa la depilación guardada en { opción, detalle } para el formulario
+const splitDepilacion = (value) => {
+  const isPreset = DEPILACION_OPTIONS.includes(value);
+  return {
+    depilacion: isPreset ? value : value ? OTRO_LABEL : "",
+    depilacionDetalle: isPreset ? "" : value || "",
+  };
+};
+
 const AdminPage = () => {
   const {
     handleSubmit,
     register,
     reset,
     watch,
+    setValue,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -70,8 +90,6 @@ const AdminPage = () => {
 
   const [allEvas, setAllEvas] = useState([]);
   const [evaSelected, setEvaSelected] = useState(null);
-  const [value, setValue] = useState(null);
-  const [error, setError] = useState(null);
 
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
@@ -143,7 +161,7 @@ const AdminPage = () => {
         altura: evaSelected.description?.altura,
         peso: evaSelected.description?.peso,
         medidas: evaSelected.description?.medidas,
-        depilacion: evaSelected.description?.depilacion,
+        ...splitDepilacion(evaSelected.description?.depilacion),
         servicio: evaSelected.description?.servicio,
         horario: evaSelected.description?.horario,
         extendDescription: evaSelected.description?.extendDescription,
@@ -170,6 +188,7 @@ const AdminPage = () => {
         peso: "",
         medidas: "",
         depilacion: "",
+        depilacionDetalle: "",
         servicio: "",
         horario: "",
         extendDescription: "",
@@ -353,14 +372,20 @@ const AdminPage = () => {
 
   const submit = async (data) => {
     try {
+      // depilacionDetalle es solo auxiliar del formulario, no se envía suelto
+      const { depilacionDetalle, ...formData } = data;
+
       const evaData = {
-        ...data,
+        ...formData,
         description: {
           edad: data.edad,
           altura: data.altura,
           peso: data.peso,
           medidas: data.medidas,
-          depilacion: data.depilacion,
+          depilacion:
+            data.depilacion === OTRO_LABEL
+              ? depilacionDetalle || data.depilacion
+              : data.depilacion,
           servicio: data.servicio,
           horario: data.horario,
           extendDescription: data.extendDescription,
@@ -504,7 +529,7 @@ const AdminPage = () => {
       )}
       {/* HISTORIAS */}
       {pendingStories.length > 0 && (
-      <section className="w-full flex flex-col items-center gap-6 mt-7 xl:mt-20 xl:px-[10%] ">
+        <section className="w-full flex flex-col items-center gap-6 mt-7 xl:mt-20 xl:px-[10%] ">
           <div className="text-center w-full ">
             <h6 className="font-title text-2xl text-zinc-200 xl:text-5xl">
               Historias Pendientes de aprobación
@@ -530,315 +555,168 @@ const AdminPage = () => {
         </section>
       )}
       <section className="mt-12 w-full flex flex-col items-center px-4   bg-gradient-r from-zinc-900 via-purple-950 to-zinc-900">
-        <section className="relative max-w-md w-full  rounded-xl bg-gradient-tr from-zinc-900 via-purple-950 to-zinc-900 border border-purple-600 overflow-hidden py-8 px-4 flex flex-col gap-4 lg:max-w-[880px] xl:max-w-[1100px] ">
-          <img src={icon} alt="icon" className="w-10 absolute top-3 right-3" />
-          <img src={icon} alt="icon" className="w-10 absolute top-3 left-3" />
-
-          <h6 className="text-center font-title text-6xl font-extrabold text-white xl:text-8xl">
-            ADMIN FORM
-          </h6>
-          <p className="text-center text-gray-200 font-text text-base xl:text-xl ">
-            Create your bitch
-          </p>
-          <form onSubmit={handleSubmit(submit)} className="space-y-6">
-            <div className="flex flex-col gap-8 xl:flex xl:flex-row ">
-              <div className="relative font-text xl:w-1/2">
-                {errors?.name && (
-                  <p className="text-red-500 text-xs mt-1 absolute right-6">
-                    {errors.name.message}
-                  </p>
-                )}
-                <input
-                  autoComplete="off"
-                  placeholder="Joe Doe"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="name"
-                  {...register("name", {
-                    required: {
-                      value: true,
-                      message: "Name is required",
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Name
-                </label>
-              </div>
-              <div className="relative font-text xl:w-1/2">
-                {errors?.wttp && (
-                  <p className="text-red-500 text-xs mt-1 absolute right-6">
-                    {errors.wttp.message}
-                  </p>
-                )}
-                <input
-                  autoComplete="off"
-                  placeholder="john@example.com"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white "
-                  name="wttp"
-                  {...register("wttp", {
-                    required: {
-                      value: true,
-                      message: "Whatsapp is required",
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Whatsapp
-                </label>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6 xl:flex xl:flex-row  ">
-              <div className="relative font-text xl:w-1/2">
-                {errors?.category && (
-                  <p className="text-red-500 text-xs mt-1 absolute right-6">
-                    {errors.category.message}
-                  </p>
-                )}
-                <input
-                  autoComplete="off"
-                  placeholder="category"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="category"
-                  {...register("category", {
-                    required: {
-                      value: true,
-                      message: "Category is required",
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Category
-                </label>
-              </div>
-            </div>
-
-            <LocationSelector
-              register={register}
-              setValue={setValue}
-              watch={watch}
-              errors={errors}
+        {/* ---------- FORMULARIO ---------- */}
+        <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y border-purple-600 shadow-black overflow-hidden pt-12 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
+          <div className="text-center">
+            <img
+              src={icon}
+              alt="icon"
+              className="w-10 absolute top-3 right-3"
             />
+            <img src={icon} alt="icon" className="w-10 absolute top-3 left-3" />
 
-            <div className="flex flex-col gap-6 xl:flex xl:flex-row">
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="edad"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="edad"
-                  {...register("edad", {
-                    required: {
-                      value: false,
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Edad
-                </label>
-              </div>
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="altura"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="altura"
-                  {...register("altura", {
-                    required: {
-                      value: false,
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Altura
-                </label>
-              </div>
-            </div>
+            <h6 className="font-title text-6xl font-extrabold text-white xl:text-8xl">
+              ADMIN FORM
+            </h6>
+            <p className="text-gray-200 font-text text-base mt-3 xl:text-xl">
+              Create your bitch
+            </p>
+          </div>
 
-            <div className="flex flex-col gap-6 xl:flex xl:flex-row xl:gap-6">
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="medidas"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="medidas"
-                  {...register("medidas", {
-                    required: {
-                      value: false,
-                    },
-                  })}
+          <form onSubmit={handleSubmit(submit)} className="space-y-6">
+            <SectionCard
+              title="Datos básicos"
+              subtitle="Nombre, contacto y categoría"
+            >
+              <div className="grid gap-6 xl:grid-cols-2">
+                <FormInput
+                  label="Nombre"
+                  name="name"
+                  register={register}
+                  error={errors.name}
+                  required
                 />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Medidas
-                </label>
-              </div>
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="peso"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="peso"
-                  {...register("peso", {
-                    required: {
-                      value: false,
-                    },
-                  })}
+                <FormInput
+                  label="Whatsapp"
+                  name="wttp"
+                  register={register}
+                  error={errors.wttp}
+                  required
                 />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Peso
-                </label>
+                <FormInput
+                  label="Categoría"
+                  name="category"
+                  register={register}
+                  error={errors.category}
+                  required
+                />
+                <div className="flex items-center gap-6 font-text">
+                  <p className="text-sm text-purple-200">¿Perfil activo?</p>
+                  <label className="container-checkbox">
+                    <input type="checkbox" {...register("isActive")} />
+                    <svg viewBox="0 0 64 64" height="2em" width="2em">
+                      <path
+                        d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                        pathLength="575.0541381835938"
+                        className="path"
+                      ></path>
+                    </svg>
+                  </label>
+                </div>
               </div>
-            </div>
+            </SectionCard>
 
-            <div className="flex flex-col gap-6 xl:flex xl:flex-row xl:gap-6">
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="depilacion"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="depilacion"
-                  {...register("depilacion", {
-                    required: {
-                      value: false,
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Depilación
-                </label>
-              </div>
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="servicio"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="servicio"
-                  {...register("servicio", {
-                    required: {
-                      value: false,
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Servicio
-                </label>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6 xl:flex xl:flex-row xl:gap-6">
-              <div className="relative font-text xl:w-1/2">
-                <input
-                  autoComplete="off"
-                  placeholder="horario"
-                  className="peer h-10 w-full border-b-2 border-gray-300 text-white bg-transparent placeholder-transparent focus:outline-none focus:border-white"
-                  name="horario"
-                  {...register("horario", {
-                    required: {
-                      value: false,
-                    },
-                  })}
-                />
-                <label className="absolute left-0 -top-3.5 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-zinc-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
-                  Horario
-                </label>
-              </div>
-              <div className="relative font-text flex gap-6 items-center">
-                <p className="text-zinc-400">Is Active?</p>
-                <label className="container-checkbox">
-                  <input type="checkbox" {...register("isActive")} />
-                  <svg viewBox="0 0 64 64" height="2em" width="2em">
-                    <path
-                      d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                      pathLength="575.0541381835938"
-                      className="path"
-                    ></path>
-                  </svg>
-                </label>
-              </div>
-            </div>
-            <div className="relative font-text text-zinc-400  flex gap-2 flex-col justify-center items-center">
-              <p className="self-start text-base">Descripción</p>{" "}
-              <textarea
-                placeholder=""
-                className=" text-white bg-transparent border-[2px]  w-full xl:text-base rounded-lg p-2"
-                name="extendDescription"
-                id="extendDescription"
-                {...register("extendDescription")}
-                rows="5"
-                cols="30"
+            <SectionCard
+              title="Ubicación"
+              subtitle="Dónde te van a poder buscar los clientes"
+            >
+              <LocationSelector
+                register={register}
+                setValue={setValue}
+                watch={watch}
+                errors={errors}
               />
-            </div>
-            <div className="flex flex-col items-center gap-3 font-text">
-              <label
-                htmlFor="imageUpload"
-                className="font-light text-zinc-300 text-xl"
-              >
-                Imágenes
-              </label>
-              <div className="relative mt-3">
+            </SectionCard>
+
+            <SectionCard
+              title="Datos físicos"
+              subtitle="Opcional, pero ayuda a que la encuentren"
+            >
+              <PhysicalFields
+                register={register}
+                watch={watch}
+                setValue={setValue}
+                resetKey={evaSelected?._id || "new"}
+              />
+            </SectionCard>
+
+            <SectionCard
+              title="Descripción"
+              subtitle="Contá un poco más sobre ella"
+            >
+              <DescriptionField
+                register={register}
+                watch={watch}
+                setValue={setValue}
+              />
+            </SectionCard>
+
+            <SectionCard
+              title="Imágenes"
+              subtitle="La primera impresión. Subí las mejores fotos"
+            >
+              <div className="flex flex-col items-center gap-6">
                 <input
                   id="imageUpload"
                   type="file"
                   name="image"
-                  accept=".jpg, .png, .jpeg"
+                  accept=".jpg,.png,.jpeg"
                   onChange={(e) => handleImage(e)}
                   className="hidden"
+                  disabled={loadingImage}
                 />
                 <label
                   htmlFor="imageUpload"
-                  className="rounded-lg flex-1 appearance-none w-full max-w-[400px] py-3 px-12 border border-purple-300 text-white placeholder-white text-sm focus:outline-none focus:border-transparent cursor-pointer bg-purple-900"
+                  className="rounded-lg w-full max-w-[320px] -mt-2 py-3 px-8 border border-purple-500 text-zinc-300 text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start"
                 >
-                  Seleccionar archivo
+                  {loadingImage ? "Subiendo..." : "+ Agregar imagen"}
                 </label>
+                {images?.length > 0 && (
+                  <div className="flex flex-wrap justify-center gap-6 mt-5 xl:gap-4">
+                    {images.map((img, index) => (
+                      <div key={img?.public_id} className="relative group">
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteImage(img)}
+                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-zinc-300 bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
+                        >
+                          ×
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleSetCoverImage(img)}
+                          title={
+                            index === 0 ? "Portada actual" : "Usar como portada"
+                          }
+                          className={`absolute -top-2 -left-2 w-9 h-9 flex items-center justify-center rounded-full text-base shadow-md z-10 transition-colors ${
+                            index === 0
+                              ? "bg-amber-400 text-zinc-900 border border-white"
+                              : "text-zinc-900 border border-white"
+                          }`}
+                        >
+                          ★
+                        </button>
+                        <img
+                          className={`w-32 h-44 object-cover rounded-lg xl:w-40 xl:h-56 border-[2px] ${
+                            index === 0
+                              ? "border-amber-400 "
+                              : "border-purple-600"
+                          }`}
+                          src={formatUrl(img?.secure_url)}
+                          alt=""
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              {loadingImage ? (
-                <div className="text-zinc-400">Cargando imagen...</div>
-              ) : (
-                <div className="flex flex-wrap justify-center items-center mt-6  gap-3 xl:gap-7">
-                  {images?.map((img, index) => (
-                    <div key={img?.public_id} className="relative">
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteImage(img)}
-                        className="absolute right-0 px-2 border-2 border-zinc-400 flex items-center rounded-md font-semibold text-white bg-red-700"
-                      >
-                        X
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => handleSetCoverImage(img)}
-                        title={
-                          index === 0 ? "Portada actual" : "Usar como portada"
-                        }
-                        className={`absolute left-0 px-2 border-2 flex items-center rounded-sm text-sm font-bold z-10 ${
-                          index === 0
-                            ? "bg-amber-400 border-amber-400 text-zinc-900"
-                            : "bg-zinc-800 border-zinc-400 text-amber-400"
-                        }`}
-                      >
-                        ★
-                      </button>
-                      <img
-                        className={`w-32 h-32 object-cover 2xl:w-36 2xl:h-36 border border-purple-600 rounded-md ${
-                          index === 0 ? "ring-2 ring-amber-400" : ""
-                        }`}
-                        src={formatUrl(img?.secure_url)}
-                        alt=""
-                        width="300px"
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="flex flex-col items-center gap-3 font-text">
-              <label
-                htmlFor="videoUpload"
-                className="font-light text-zinc-300 text-xl"
-              >
-                Videos
-              </label>
-              <div className="relative mt-3">
+              <div className="text-zinc-500 text-sm">
+                La portada solo se puede cambiar al editar una Eva ya guardada.
+              </div>
+            </SectionCard>
+
+            <SectionCard title="Videos" subtitle="Opcional">
+              <div className="flex flex-col items-center gap-4">
                 <input
                   id="videoUpload"
                   type="file"
@@ -846,46 +724,46 @@ const AdminPage = () => {
                   accept="video/*"
                   onChange={(e) => handleVideo(e)}
                   className="hidden"
+                  disabled={loadingVideo}
                 />
                 <label
                   htmlFor="videoUpload"
-                  className="rounded-lg flex-1 appearance-none w-full max-w-[400px] py-3 px-12 border border-purple-300 text-white placeholder-white text-sm focus:outline-none focus:border-transparent cursor-pointer bg-purple-900"
+                  className="rounded-lg w-full max-w-[320px] py-3 px-8 border border-purple-500 text-zinc-300 text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start -mt-2"
                 >
-                  Seleccionar archivo
+                  {loadingVideo ? "Subiendo..." : "+ Agregar video"}
                 </label>
+                {videos?.length > 0 && (
+                  <div className="flex flex-wrap justify-center gap-3 mt-5 xl:gap-4">
+                    {videos.map((video) => (
+                      <div key={video?.public_id} className="relative group">
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteVideo(video)}
+                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-zinc-300 bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
+                        >
+                          x
+                        </button>
+                        <video
+                          className="w-32 h-44 object-cover rounded-lg xl:w-40 xl:h-56 border-[2px] border-purple-600"
+                          src={formatUrl(video?.secure_url)}
+                          controls
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              {loadingVideo ? (
-                <div className="text-zinc-400">Cargando video...</div>
-              ) : (
-                <div className="flex flex-wrap justify-center items-center gap-3 mt-6 xl:gap-7">
-                  {videos?.map((video) => (
-                    <div key={video?.public_id} className="relative">
-                      <button
-                        type="button"
-                        onClick={() => handleDeleteVideo(video)}
-                        className="absolute right-0 px-2 border-2 border-zinc-400 flex items-center rounded-sm font-bold text-white bg-red-700 z-50"
-                      >
-                        X
-                      </button>
-                      <video
-                        className="w-32 h-32 object-cover 2xl:w-36 2xl:h-36 rounded-md border border-purple-600"
-                        src={formatUrl(video?.secure_url)}
-                        controls
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <div className="flex items-center justify-center ">
+            </SectionCard>
+
+            <div className="flex items-center justify-center pt-2">
               <button
-                className="w-full font-text py-2 px-4 border-[1px] border-purple-500 bg-purple-950 rounded-md shadow-lg text-purple-200 font-semibold transition duration-200 lg:py-4 hover:bg-purple-900"
+                className="w-full font-text py-2 px-4 border-[1px] border-purple-500  rounded-md shadow-lg text-purple-200 font-semibold transition duration-200 lg:py-4 hover:bg-purple-900"
                 type="submit"
                 style={{
                   boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
                 }}
               >
-                CARGAR EVA
+                {evaSelected ? "GUARDAR CAMBIOS" : "CARGAR EVA"}
               </button>
             </div>
           </form>
@@ -940,8 +818,12 @@ const PendingStoryCard = ({ eva, story, onApprove, onReject, formatUrl }) => (
       </span>
     </div>
     <div className="p-3 space-y-2 font-text">
-      <p className="text-white text-base font-semibold truncate lg:text-lg">{eva.name}</p>
-      <p className="text-zinc-400 text-xs lg:text-base">Categoría: <span className="text-purple-500">{eva.category}</span>  </p>
+      <p className="text-white text-base font-semibold truncate lg:text-lg">
+        {eva.name}
+      </p>
+      <p className="text-zinc-400 text-xs lg:text-base">
+        Categoría: <span className="text-purple-500">{eva.category}</span>{" "}
+      </p>
       <div className="flex gap-2 pt-1">
         <button
           onClick={() => onApprove(eva._id, story._id)}
