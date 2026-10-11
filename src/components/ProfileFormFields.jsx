@@ -540,7 +540,7 @@ export const PhysicalFields = ({
         {/* Servicio */}
         <OptionButtons
           key={`servicio-${resetKey}`}
-          label="¿Qué servicios ofrecés? (podés elegir varios)"
+          label="¿Qué servicio ofrece? (podés elegir varios)"
           options={SERVICIOS}
           multiple
           allowOther
@@ -552,7 +552,7 @@ export const PhysicalFields = ({
         {/* Horario */}
         <OptionButtons
           key={`horario-${resetKey}`}
-          label="¿En qué horarios estás disponible? (podés elegir varios)"
+          label="¿En qué horarios está disponible? (podés elegir varios)"
           options={HORARIOS}
           multiple
           allowOther
