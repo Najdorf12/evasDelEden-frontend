@@ -6,11 +6,14 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import logo from "/0004.png";
 import icon from "/icon7.png";
 import CommentsSection from "../components/CommentsSection";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
 
 const EvaDetail = () => {
   const { id, name } = useParams();
   const [evaDetail, setEvaDetail] = useState({});
-
+  const [isLoading, setIsLoading] = useState(true);
+  const showLoader = usePageLoader(isLoading);
   const formatUrl = (url) => {
     if (!url) return logo;
 
@@ -29,19 +32,36 @@ const EvaDetail = () => {
     })) || [];
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchEvaData = async () => {
+      setIsLoading(true);
+
       try {
         const productResponse = await axios.get(`/evas/${id}`);
-        setEvaDetail(productResponse?.data);
+
+        if (isMounted) {
+          setEvaDetail(productResponse?.data);
+        }
       } catch (error) {
-        console.error(error);
+        console.error("Error al cargar el perfil:", error);
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
     };
+
     fetchEvaData();
+
+    return () => {
+      isMounted = false;
+    };
   }, [id]);
 
   return (
     <section className="relative bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 pb-20 w-full flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24  min-h-screen">
+      <PageLoader show={showLoader} />
       <nav className="absolute top-0 w-full flex -mt-1 justify-between items-center pr-3.5 z-50 lg:mt-2 lg:px-[5%] ">
         <Link to={"/"}>
           {" "}
@@ -200,10 +220,9 @@ const EvaDetail = () => {
             ))
           ) : (
             <div className="relative py-2 px-4 border border-purple-600 rounded-xl flex justify-center items-center">
-
-            <p className="text-zinc-500">
-              Aún no hay videos disponibles para esta Eva
-            </p>
+              <p className="text-zinc-500">
+                Aún no hay videos disponibles para esta Eva
+              </p>
             </div>
           )}
         </div>

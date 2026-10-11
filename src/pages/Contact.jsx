@@ -1,12 +1,16 @@
 import icon from "/icon14.png";
 import logo from "/0004.png";
 import { Link } from "react-router-dom";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
 
 const Contact = () => {
   const wttp = "+54 9 353 441-6561";
+  const showLoader = usePageLoader(false);
 
   return (
     <section className="text-balance h-[100dvh] w-full bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 text-stone-400 flex flex-col gap-4 px-6 items-center pt-24  relative border-t border-purple-400 ">
+      <PageLoader show={showLoader} />
       <nav className="absolute top-0 font-text2 text-lg px-2 flex justify-between items-center w-full  lg:px-12 xl:mt-3 xl:text-xl">
         <picture className=" flex items-center justify-center rounded-full w-[126px] lg:w-[150px] 2xl:w-[180px]">
           <Link to={"/"}>

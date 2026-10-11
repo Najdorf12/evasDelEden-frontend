@@ -9,14 +9,25 @@ import CustomSelect from "../components/CustomSelect";
 import logo from "/0004.png";
 import { getEvasByProvince } from "../api/handlers";
 import icon from "/icon14.png";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
 
 const Home2 = () => {
-  const [isVerified, setIsVerified] = useState(false);
-  const [selectedProvince, setSelectedProvince] = useState("Mendoza");
+  // Se lee de sessionStorage desde el primer render para que, al volver
+  // desde otra página, no aparezca un instante la verificación de edad.
+  const [isVerified, setIsVerified] = useState(
+    () => sessionStorage.getItem("isVerified") === "true",
+  );
+  const [selectedProvince, setSelectedProvince] = useState(
+    () => sessionStorage.getItem("userProvince") || "Mendoza",
+  );
   const [selectedRegion, setSelectedRegion] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
   const [allEvas, setAllEvas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Loader: visible mientras carga o hasta cumplir el tiempo mínimo
+  const showLoader = usePageLoader(isLoading);
 
   useEffect(() => {
     getEvasByProvince(selectedProvince).then((data) => {
@@ -157,6 +168,7 @@ const Home2 = () => {
   }
   return (
     <div className="flex flex-col min-h-[100dvh] bg-zinc-800 w-full overflow-hidden">
+      <PageLoader show={showLoader} />
       <main className="bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900  relative overflow-hidden min-h-[100dvh] pb-28 lg:pb-44">
         <section className="w-full flex flex-col items-center z-50 pb-3 xl:pb-4 ">
           <nav className="w-full flex justify-end xl:pr-12  -mt-1 z-50  xl:-mt-5">

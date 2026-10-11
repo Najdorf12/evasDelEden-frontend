@@ -5,26 +5,52 @@ import { locations } from "../api/locations";
 import { Link } from "react-router-dom";
 import icon from "/icon14.png";
 import CustomSelect from "../components/CustomSelect";
+import Loader from "../components/Loader";
 
 const AgeVerification = ({ onConfirm }) => {
   const [province, setProvince] = useState("Mendoza");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleConfirm = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
+
     try {
       await preloadData();
+
       sessionStorage.setItem("isVerified", "true");
       sessionStorage.setItem("userProvince", province);
+
       onConfirm(province);
     } catch (error) {
       console.error("Error preloading data:", error);
+      alert("No pudimos cargar los perfiles. Intentá nuevamente.");
+       setIsLoading(false);  
     }
   };
+
   const handleNo = () => {
     alert("Lo siento, debes ser mayor de edad para acceder al sitio.");
   };
 
   return (
     <section className="relative flex flex-col items-center pt-24  w-full h-[100dvh] overflow-hidden bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 lg:pt-[7%]">
+      {isLoading && (
+        <div className="fixed inset-0 z-[99999] flex flex-col items-center justify-center gap-5 bg-zinc-950/95">
+          <Loader />
+          <p className="font-text text-xs mt-12 text-zinc-400">Cargando...</p>
+          <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-1 w-full -ml-4 lg:-ml-6  ">
+            <i
+              className="bx bx-copyright text-lg xl:text-xl text-purple-400"
+              aria-hidden="true"
+            ></i>
+            <p className="text-xs md:text-sm font-text italic 3xl:text-base text-zinc-400">
+              EVAS DEL EDEN - 2026
+            </p>
+          </div>
+        </div>
+      )}
       <div className="absolute bottom-2 right-2 z-100 w-16 h-16 lg:h-28 lg:w-28 lg:right-3 lg:bottom-3">
         <img src={icon} alt="icon-home" className="w-full h-full" />
       </div>
@@ -52,7 +78,6 @@ const AgeVerification = ({ onConfirm }) => {
         </p>
 
         <div className="flex justify-center items-center gap-4 mt-1 w-full px-3">
-         
           <CustomSelect
             id="age-province"
             label="Seleccioná tu Provincia"
@@ -84,12 +109,15 @@ const AgeVerification = ({ onConfirm }) => {
           </button>
         </div>
       </article>
-      <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-0 text-zinc-700 w-full pr-3 lg:w-[90%] lg:pr-[5%] ">
-        <i className="bx bx-copyright text-2xl" aria-hidden="true"></i>
-        <p className="text-xs md:text-sm font-text italic lg:text-base">
-          EVAS DEL EDEN - 2026
-        </p>
-      </div>
+          <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-1 w-full -ml-4 lg:-ml-6  ">
+            <i
+              className="bx bx-copyright text-lg xl:text-xl text-purple-400"
+              aria-hidden="true"
+            ></i>
+            <p className="text-xs md:text-sm font-text italic 3xl:text-base text-zinc-400">
+              EVAS DEL EDEN - 2026
+            </p>
+          </div>
     </section>
   );
 };

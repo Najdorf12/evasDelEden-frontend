@@ -1,13 +1,13 @@
-import { useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import ModeloLogin from "./pages/modelo/ModeloLogin";
 import ModeloRegister from "./pages/modelo/ModeloRegister";
 import ModeloDashboard from "./pages/modelo/ModeloDashboard";
-import { preloadData } from "./api/preload";
+import PageLoader from "./components/PageLoader";
 
-const Loading = () => (
-  <div className="loading-spinner bg-zinc-800 min-h-screen w-full"></div>
-);
+// Mientras se descarga el código de una página (lazy), se ve el mismo loader
+const Loading = () => <PageLoader show text="Cargando página..." />;
 
 const Home2 = lazy(() => import("./pages/Home2"));
 const AdminPage = lazy(() => import("./pages/AdminPage"));
@@ -17,13 +17,6 @@ const Contact = lazy(() => import("./pages/Contact"));
 const EvaDetail = lazy(() => import("./pages/EvaDetail"));
 
 function App() {
-  useEffect(() => {
-    const storedVerification = sessionStorage.getItem("isVerified");
-    if (storedVerification === "true") {
-      preloadData();
-    }
-  }, []);
-
   return (
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
