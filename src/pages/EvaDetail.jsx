@@ -177,7 +177,7 @@ const EvaDetail = () => {
         </article>
       </section>
 
-      <section className="mt-9 w-full px-3 flex flex-col justify-center items-center xl:mt-12">
+      <section className="mt-9 w-full px-1 flex flex-col justify-center items-center xl:mt-12">
         <div className="text-lg text-zinc-200  font-medium font-text2  py-1 rounded-lg flex justify-start items-center gap-10 lg:gap-20 lg:text-lg xl:text-2xl  ">
           <img src={icon} alt="icon" className="w-12 lg:w-20" />
           Videos
@@ -192,7 +192,7 @@ const EvaDetail = () => {
                 className="relative w-[48%] h-[390px] md:h-[500px] max-w-[450px] lg:w-[360px] lg:h-[600px] xl:w-[380px]  "
               >
                 <video
-                  className="w-full h-full rounded-lg border-[4px] border-purple-900  object-cover object-center "
+                  className="w-full h-full rounded-lg border-[1px] border-purple-900  object-cover object-center "
                   controls
                   src={formatUrl(video?.secure_url)}
                 />

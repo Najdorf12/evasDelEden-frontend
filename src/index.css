@@ -91,7 +91,7 @@
   width: 100%;
   min-width:390px;
   object-fit: cover;
-  border: 3px solid #59168b;
+  border: 1px solid #59168b;
 }
 .image-gallery-bullets .image-gallery-bullet {
   background-color: #000000;

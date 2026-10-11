@@ -639,7 +639,7 @@ const ModeloDashboard = () => {
                   : "Pendiente de aprobación"}
               </div>
             )}
-            <div className="text-zinc-400 text-xs mt-6 text-balance px-1 leading-5">
+            <div className="text-zinc-400 text-xs mt-6 text-balance px-1 leading-5 lg:text-base">
               Desde esta sección podés editar tu información, actualizar tus
               datos y elegir el plan que mejor se adapte a vos. Cuando termines,
               pulsá el botón *Guardar Cambios* al final del formulario para
@@ -868,7 +868,7 @@ const ModeloDashboard = () => {
               <div className="text-zinc-500 text-sm">
                 Solo las fotos GUARDADAS pueden ser seleccionadas como la
                 principal del Perfil / Portada
-              </div> 
+              </div>
             </SectionCard>
 
             <SectionCard title="Videos" subtitle="Opcional">
@@ -1010,14 +1010,14 @@ const ModeloDashboard = () => {
             </div>
           </section>
         )}
-        <div className="text-zinc-500 mt-16 px-4 text-sm border p-6 border-zinc-600 rounded-lg">
+        <div className="text-zinc-500 mt-16 px-4 text-sm border p-6 border-zinc-600 rounded-lg max-w-[900px] lg:text-base lg:p-9">
           Desde esta sección podés editar tu información, actualizar tus datos y
           elegir el plan que mejor se adapte a vos. Revisá que toda la
           información esté correcta y que tus preferencias estén actualizadas
           para que tu perfil represente lo que querés mostrar. Cuando termines,
           pulsá el botón *Guardar Cambios* al final del formulario para
           confirmar la actualización. Una vez guardados, los cambios se verán
-          reflejados en tu perfil de la página principal.{" "}
+          reflejados en tu perfil de la página principal. <br />
           <span className="text-zinc-300">
             ¡Mantené tu perfil actualizado para ofrecer la mejor experiencia a
             quienes te visitan!
