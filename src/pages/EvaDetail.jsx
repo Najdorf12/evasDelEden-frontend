@@ -63,15 +63,17 @@ const EvaDetail = () => {
     <section className="relative bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 pb-20 w-full flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24  min-h-screen">
       <PageLoader show={showLoader} />
       <nav className="w-full flex justify-end xl:pr-12  -mt-1 z-50  xl:-mt-5">
-        <img
-          src={logo}
-          className="w-36 xl:w-52 absolute -left-0 -top-1.5 lg:left-12"
-          alt="logo"
-          loading="eager"
-          width="224"
-          height="auto"
-          fetchpriority="high"
-        />
+        <Link to={"/"}>
+          <img
+            src={logo}
+            className="w-36 xl:w-52 absolute -left-0 -top-1.5 lg:left-12"
+            alt="logo"
+            loading="eager"
+            width="224"
+            height="auto"
+            fetchpriority="high"
+          />
+        </Link>
         <div className="flex items-center justify-center gap-3 pt-5 pr-2 lg:gap-6 lg:pt-12">
           <Link to={"/modelo/login"}>
             <button
@@ -83,7 +85,7 @@ const EvaDetail = () => {
               Iniciar Sesión
             </button>
           </Link>
-          <Link to={"/contacto"}>
+          <Link to={"/"}>
             <button
               className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
               style={{

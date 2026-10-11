@@ -807,7 +807,6 @@ const ModeloDashboard = () => {
       },
     });
   };
-
   if (loading) {
     return (
       <section className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
@@ -1259,14 +1258,16 @@ const ModeloDashboard = () => {
             </div>
 
             <div className="flex flex-col justify-center pt-2 gap-3">
+              <Link to={`/${myEva?.name}/${myEva?._id}`} >
               <button
-                onClick={handleDeleteProfile}
-                disabled={deleting}
+              /*   onClick={handleDeleteProfile}
+                disabled={deleting} */
                 className="font-text text-xs border border-purple-800 px-6 py-2 text-purple-600 hover:bg-purple-900 hover:text-zinc-100 rounded-lg disabled:opacity-50 flex items-center gap-2"
               >
                 <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i> 
                 Ir a mi Perfil
               </button>
+              </Link>
               <button
                 onClick={handleDeleteProfile}
                 disabled={deleting}
