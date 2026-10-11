@@ -287,24 +287,24 @@ const Home2 = () => {
                 </div>
               </div>
             </div>
-            <ul className="font-text2 text-sm w-full flex items-start justify-start gap-4 mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden lg:text-base">
+            <ul className="font-text2 text-sm w-full flex items-start justify-start gap-[9px] mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden lg:text-base">
               <li
                 onClick={() => scrollToCategory("platinum")}
-                className="border-[2px] border-teal-800 pl-2 py-[2px] w-[122px] md:w-[150px] text-teal-600 rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] border-teal-800 pl-2 py-[1px] w-[122px] md:w-[150px] text-teal-600 rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
                 Platinum
               </li>
               <li
                 onClick={() => scrollToCategory("gold")}
-                className="border-[2px] text-amber-500 border-amber-700 pl-2 py-[2px] w-[122px] md:w-[150px] rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] text-amber-500 border-amber-700 pl-2 py-[1px] w-[122px] md:w-[150px] rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-amber-700"></i>
                 Gold
               </li>
               <li
                 onClick={() => scrollToCategory("silver")}
-                className="border-[2px] border-slate-600 pl-2 py-[2px] w-[122px] md:w-[150px] text-slate-400 rounded-xl hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] border-slate-600 pl-2 py-[1px] w-[122px] md:w-[150px] text-slate-400 rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
               >
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-slate-600"></i>
                 Silver
