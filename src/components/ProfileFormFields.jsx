@@ -209,7 +209,7 @@ export const CustomSelect = ({
       className={`relative font-text ${open ? "z-40" : ""}`}
     >
       {label && (
-        <label htmlFor={id} className="text-sm text-purple-200">
+        <label htmlFor={id} className="text-xs text-purple-200">
           {label}
         </label>
       )}
@@ -508,7 +508,7 @@ export const PhysicalFields = ({
           onChange={setField("medidas")}
         />
       </div>
-      <div className="w-full flex flex-col gap-3">
+      <div className="w-full flex flex-col gap-3 text-xs">
         {/* Depilación */}
         <div className="">
           <OptionButtons

@@ -291,9 +291,9 @@ const CustomSelect = ({
                 onMouseEnter={() => setActiveIndex(i)}
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => select(opt)}
-                className={`cursor-pointer px-3 py-2 text-sm transition-colors ${
+                className={`cursor-pointer px-3 py-2 text-xs transition-colors ${
                   isSelected
-                    ? "bg-purple-700 text-zinc-100"
+                    ? "bg-purple-800 text-zinc-100"
                     : isActive
                       ? "bg-purple-900/70 text-zinc-100"
                       : isClear
@@ -331,7 +331,7 @@ const MedidasSelector = ({ register, value, onChange }) => {
 
   return (
     <div className="font-text">
-      <p className="text-sm text-purple-200">Medidas (cm)</p>
+      <p className="text-xs text-purple-200">Medidas (cm)</p>
       <input type="hidden" {...register("medidas")} />
       <div className="grid grid-cols-3 gap-3">
         {fields.map((f, i) => (
@@ -423,14 +423,14 @@ const OptionButtons = ({
   };
 
   const chipClass = (selected) =>
-    `rounded-lg border px-4 py-2 text-sm transition-colors ${
+    `rounded-lg border px-5 py-1.5 text-xs transition-colors ${
       selected
-        ? "border-purple-400 bg-purple-700 text-zinc-300"
+        ? "border-purple-600 bg-purple-800 text-zinc-300"
         : "border-zinc-600 bg-black/20 text-zinc-300 hover:border-purple-400"
     }`;
 
   return (
-    <fieldset className="space-y-3 font-text">
+    <fieldset className="flex flex-col gap-4 font-text">
       <legend className="mb-3 text-sm text-purple-200">{label}</legend>
 
       <div className="flex flex-wrap gap-2">
@@ -474,7 +474,7 @@ const OptionButtons = ({
           }}
           maxLength={60}
           placeholder={otherPlaceholder}
-          className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-sm text-zinc-300 outline-none focus:border-purple-300"
+          className="h-10 w-full rounded-lg  border border-purple-500 bg-transparent px-3 text-xs xl:text-base text-zinc-300 outline-none focus:border-purple-300"
         />
       )}
     </fieldset>
@@ -846,7 +846,7 @@ const ModeloDashboard = () => {
         </div>
       </nav>
 
-      <section className="mt-9 w-full flex flex-col items-center px-3 gap-8 xl:mt-2 xl:gap-10">
+      <section className="mt-7 w-full flex flex-col items-center px-3 gap-8 xl:mt-2 xl:gap-10">
         <article className="self-start lg:text-center lg:self-center">
           <div className="text-zinc-300 text-4xl font-title lg:text-6xl">
             Panel de Control
@@ -968,7 +968,7 @@ const ModeloDashboard = () => {
                 />
 
                 {/* Depilación */}
-                <div className="space-y-3">
+                <div className="flex flex-col gap-3">
                   <OptionButtons
                     label="Depilación"
                     options={[
@@ -986,7 +986,7 @@ const ModeloDashboard = () => {
                     <input
                       {...register("depilacionDetalle")}
                       placeholder="Especificá tu preferencia..."
-                      className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
+                      className="text-xs xl:text-base h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
                     />
                   )}
                 </div>
@@ -1011,6 +1011,7 @@ const ModeloDashboard = () => {
                   otherPlaceholder="Escribí tu horario (ej: 14 a 18 hs)"
                   value={watch("horario")}
                   onChange={setField("horario")}
+             
                 />
               </div>
             </SectionCard>
@@ -1040,7 +1041,7 @@ const ModeloDashboard = () => {
                 ))}
               </div>
               <textarea
-                className="text-zinc-300 bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-sm xl:text-base rounded-lg p-3 transition-colors"
+                className="text-zinc-300 bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-xs xl:text-base rounded-lg p-3 transition-colors"
                 {...register("extendDescription")}
                 rows="5"
                 placeholder="Tocá las frases de arriba o escribí lo que quieras..."
