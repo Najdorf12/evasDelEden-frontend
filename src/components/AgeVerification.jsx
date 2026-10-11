@@ -69,7 +69,7 @@ const AgeVerification = ({ onConfirm }) => {
         <h6 className="text-[2.70rem] text-zinc-200 font-title font-semibold lg:text-5xl xl:text-6xl">
           Verificación de Edad
         </h6>
-        <p className="text-zinc-400 text-xs  text-balance px-2 text-center md:text-sm xl:text-base lg:px-12 max-w-[600px] xl:max-w-[740px] ">
+        <p className="text-zinc-400 text-sm  text-balance px-2 text-center md:text-sm xl:text-base lg:px-12 max-w-[600px] xl:max-w-[740px] ">
           Sitio para mayores de 18 años. Contenido explicito solo para adultos.
           La interaccion de los usuarios con la plataforma es exclusiva
           responsabilidad de los mismos y los anunciantes del sitio. Al ingresar
