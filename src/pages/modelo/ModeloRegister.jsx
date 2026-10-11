@@ -37,14 +37,14 @@ const ModeloRegister = () => {
   };
 
   return (
-    <section className=" h-screen w-full flex flex-col items-center justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
-      <nav className="font-text2 text-lg px-3 absolute top-0 flex justify-between items-center w-full mt-1 xl:px-6 xl:mt-3 xl:text-xl">
+    <section className=" h-screen w-full flex flex-col items-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
+      <nav className="font-text2 text-lg px-3 absolute top-0 flex justify-between items-center w-full xl:px-6 xl:mt-3 xl:text-xl">
         <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
           <img src={imgLogo} className="rounded-full" alt="logo" />
         </picture>
         <Link to={"/"}>
           <button
-            className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-sm  lg:px-10 md:text-base 3xl:text-lg"
+            className="w-full font-text py-1.5 px-9 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white transition duration-200 text-xs  lg:px-10 md:text-base 3xl:text-lg"
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
             }}
@@ -53,7 +53,7 @@ const ModeloRegister = () => {
           </button>
         </Link>
       </nav>
-      <div className="relative z-12 max-w-md w-[95%] rounded-xl shadow-2xl border-purple-600 border overflow-hidden py-8 px-4 flex flex-col gap-6 xl:max-w-lg bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900">
+      <div className="mt-24 relative z-12 max-w-md w-[95%] rounded-xl shadow-2xl border-purple-600 border overflow-hidden py-8 px-4 flex flex-col gap-6 xl:max-w-lg bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900">
         <img src={icon2} alt="icon" className="w-12 absolute top-3 right-3" />
         <img src={icon2} alt="icon" className="w-12 absolute top-3 left-3" />
         {registerError?.map((error, i) => (
@@ -160,9 +160,12 @@ const ModeloRegister = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-0 text-zinc-700 w-full pr-3 lg:w-[90%] lg:pr-[5%] ">
-        <i className="bx bx-copyright text-2xl" aria-hidden="true"></i>
-        <p className="text-xs md:text-sm font-text italic lg:text-base">
+      <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-1 w-full -ml-4 lg:-ml-6  ">
+        <i
+          className="bx bx-copyright text-lg xl:text-xl text-purple-400"
+          aria-hidden="true"
+        ></i>
+        <p className="text-xs md:text-sm font-text italic 3xl:text-base text-zinc-400">
           EVAS DEL EDEN - 2026
         </p>
       </div>

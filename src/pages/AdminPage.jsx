@@ -473,7 +473,7 @@ const AdminPage = () => {
   };
   return (
     <section className="relative w-full bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 min-h-[140vh] flex flex-col items-center  pb-10">
-      <div className="font-text text-base  relative flex justify-between items-center w-full  mt-2 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
+      <div className="font-text text-base  relative flex justify-between items-center w-full  mt-0 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
         <picture className=" flex items-center justify-center w-[120px] lg:w-[150px] 2xl:w-[180px] ">
           <img src={imgLogo} alt="logo" />
         </picture>
@@ -496,7 +496,7 @@ const AdminPage = () => {
         <div className="text-zinc-200 text-4xl font-title lg:text-6xl ">
           Panel de Control
         </div>
-        <p className="text-zinc-400 mt-2 lg:text-xl lg:mt-3">
+        <p className="text-zinc-400 mt-1 lg:text-xl lg:mt-3">
           Crea, edita y organiza el contenido de forma sencilla
         </p>
       </article>
@@ -554,7 +554,7 @@ const AdminPage = () => {
           </div>
         </section>
       )}
-      <section className="mt-12 w-full flex flex-col items-center px-4   bg-gradient-r from-zinc-900 via-purple-950 to-zinc-900">
+      <section className="mt-7 w-full flex flex-col items-center px-4  bg-gradient-r from-zinc-900 via-purple-950 to-zinc-900">
         {/* ---------- FORMULARIO ---------- */}
         <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y border-purple-600 shadow-black overflow-hidden pt-16 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
           <div className="text-center">
