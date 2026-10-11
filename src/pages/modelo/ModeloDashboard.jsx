@@ -84,8 +84,9 @@ const FormInput = ({
 );
 
 const SectionCard = ({ title, subtitle, children }) => (
-  <div className="bg-black/20 backdrop-blur-sm rounded-xl py-5 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900">
+  <div className="bg-black/20 backdrop-blur-sm rounded-xl pt-6 pb-7 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900">
     <div>
+      <img src={icon} alt="icon" className="w-12 absolute right-4 top-4" />
       <h3 className="font-title text-3xl text-zinc-300 xl:text-4xl">{title}</h3>
       {subtitle && (
         <p className="text-zinc-300 text-sm font-text mt-1 lg:text-base">
@@ -215,7 +216,10 @@ const CustomSelect = ({
   };
 
   return (
-    <div ref={wrapperRef} className={`relative font-text ${open ? "z-40" : ""}`}>
+    <div
+      ref={wrapperRef}
+      className={`relative font-text ${open ? "z-40" : ""}`}
+    >
       {label && (
         <label htmlFor={id} className="text-sm text-purple-200">
           {label}
@@ -358,9 +362,7 @@ const OptionButtons = ({
   const [otherOpen, setOtherOpen] = useState(false);
   const otherInputRef = useRef(null);
 
-  const rawTokens = multiple
-    ? String(value || "").split(",")
-    : [value || ""];
+  const rawTokens = multiple ? String(value || "").split(",") : [value || ""];
 
   const selectedValues = rawTokens
     .map((item) => String(item).trim())
@@ -378,10 +380,7 @@ const OptionButtons = ({
 
   // Arma el string final: opciones elegidas (en orden) + texto libre
   const buildValue = (known, custom) =>
-    [
-      ...options.filter((o) => known.includes(o)),
-      custom.trim() ? custom : "",
-    ]
+    [...options.filter((o) => known.includes(o)), custom.trim() ? custom : ""]
       .filter(Boolean)
       .join(", ");
 
@@ -922,17 +921,6 @@ const ModeloDashboard = () => {
                   required
                 />
               </div>
-              <SectionCard
-                title="Categoría"
-                subtitle="Elegí el plan que mejor se adapte a vos"
-              >
-                <CategorySelect
-                  register={register}
-                  watch={watch}
-                  setValue={setValue}
-                  error={errors.category}
-                />
-              </SectionCard>
             </SectionCard>
 
             <SectionCard
@@ -1174,6 +1162,17 @@ const ModeloDashboard = () => {
                 }
               />
             </SectionCard>
+            <SectionCard
+              title="Categoría"
+              subtitle="Elegí el plan que mejor se adapte a vos"
+            >
+              <CategorySelect
+                register={register}
+                watch={watch}
+                setValue={setValue}
+                error={errors.category}
+              />
+            </SectionCard>
             <div className="flex items-center justify-center pt-2">
               <button
                 disabled={saving}
@@ -1205,20 +1204,26 @@ const ModeloDashboard = () => {
 
         {/* ---------- RESUMEN / MI PERFIL ---------- */}
         {myEva && (
-          <section className="max-w-md mt-9 w-full rounded-2xl bg-gradient-to-tr border border-purple-500 from-zinc-900 via-purple-950 to-zinc-900 overflow-hidden py-8 px-4 space-y-6 xl:max-w-[900px] xl:px-8 text-balance">
-            <h6 className="font-title text-3xl text-zinc-300 text-center xl:text-4xl">
+          <section className="relative max-w-md mt-9 w-full rounded-2xl bg-gradient-to-tr border border-purple-500 from-zinc-900 via-purple-950 to-zinc-900 overflow-hidden pt-3 pb-6 px-4 space-y-6 xl:max-w-[900px] xl:px-8 text-balance">
+            <img
+              src={icon}
+              alt="icon"
+              className="w-12 absolute right-4 top-4"
+            />
+
+            <h6 className="font-title text-3xl text-zinc-300 text-start xl:text-4xl">
               Tu perfil publicado
             </h6>
-            <p className="text-zinc-300 text-sm lg:text-base font-text pl-1">
-              Para editar tus datos, fotos o videos usá el formulario de
-              arriba.Se guarda todo junto al pulsar "Actualizar perfil".
+            <p className="text-zinc-400 text-xs lg:text-base font-text pl-1">
+              Para editar tus datos, fotos o videos usá el formulario de arriba.
+              Se guarda todo junto al pulsar "Guardar Cambios".
             </p>
-            <div className="bg-black/20 border border-purple-600 backdrop-blur-sm rounded-xl p-5 flex flex-col gap-4 xl:flex-row xl:items-center xl:gap-6">
+            <div className="bg-black/20 border border-purple-600 backdrop-blur-sm rounded-xl p-4 flex flex-col gap-4 xl:flex-row xl:items-center xl:gap-6">
               {images[0]?.secure_url ? (
                 <img
                   src={formatUrl(images[0].secure_url)}
                   alt=""
-                  className="w-full h-48 object-cover rounded-lg xl:w-40 xl:h-40 xl:shrink-0 border border-purple-600"
+                  className="w-full max-h-72 object-cover rounded-lg xl:w-40 xl:h-40 xl:shrink-0 border border-purple-600"
                 />
               ) : (
                 <div className="w-full h-48 xl:w-40 xl:h-40 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 text-sm font-text xl:shrink-0">
@@ -1227,7 +1232,7 @@ const ModeloDashboard = () => {
               )}
 
               <div className="font-text text-zinc-300 space-y-2 mt-2 flex-1">
-                <p className="text-zinc-300 text-3xl font-title lg:text-4xl">
+                <p className="text-zinc-200 text-3xl font-title lg:text-4xl">
                   {myEva.name}
                 </p>
                 <p className="text-sm  lg:text-base">
@@ -1250,7 +1255,15 @@ const ModeloDashboard = () => {
               </div>
             </div>
 
-            <div className="flex justify-center pt-2">
+            <div className="flex flex-col justify-center pt-2 gap-3">
+              <button
+                onClick={handleDeleteProfile}
+                disabled={deleting}
+                className="font-text text-xs border border-purple-800 px-6 py-2 text-purple-600 hover:bg-purple-900 hover:text-zinc-100 rounded-lg disabled:opacity-50 flex items-center gap-2"
+              >
+                <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i> 
+                Ir a mi Perfil
+              </button>
               <button
                 onClick={handleDeleteProfile}
                 disabled={deleting}
