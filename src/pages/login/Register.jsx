@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "../../api/axiosRender";
 import imgLogo from "/0003.png";
+import PageLoader from "../../components/PageLoader";
+import usePageLoader from "../../hooks/usePageLoader";
 
 const Register = () => {
   const {
@@ -12,7 +14,7 @@ const Register = () => {
   } = useForm();
 
   const [registerError, setRegisterError] = useState([]);
-
+const showLoader = usePageLoader(false);
   const navigate = useNavigate();
 
   useEffect(() => {

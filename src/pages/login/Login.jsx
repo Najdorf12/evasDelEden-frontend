@@ -5,10 +5,12 @@ import axios from "../../api/axiosRender";
 import imgLogo from "/0003.png";
 import icon from "/icon14.png";
 import icon2 from "/icon13.png";
+import PageLoader from "../../components/PageLoader";
+import usePageLoader from "../../hooks/usePageLoader";
 
 const Login = () => {
   const [loginError, setLoginError] = useState([]);
-
+const showLoader = usePageLoader(false);
   const {
     handleSubmit,
     register,

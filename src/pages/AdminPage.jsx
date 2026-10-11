@@ -7,6 +7,9 @@ import { getEvas } from "../api/handlers";
 import LocationSelector from "../components/LocationSelector";
 import axios from "../api/axiosRender";
 import icon from "/icon14.png";
+import PageLoader from "../components/PageLoader";
+import usePageLoader from "../hooks/usePageLoader";
+
 import {
   SectionCard,
   FormInput,
@@ -90,7 +93,7 @@ const AdminPage = () => {
 
   const [allEvas, setAllEvas] = useState([]);
   const [evaSelected, setEvaSelected] = useState(null);
-
+  const showLoader = usePageLoader(false);
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const [loadingImage, setLoadingImage] = useState(false);
@@ -473,6 +476,7 @@ const AdminPage = () => {
   };
   return (
     <section className="relative w-full bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 min-h-[140vh] flex flex-col items-center  pb-10">
+      <PageLoader show={showLoader} />
       <nav className="font-text text-base relative flex justify-between items-center w-full mt-2 px-1 xl:mt-3 xl:px-12 2xl:text-lg">
         <picture className="flex items-center justify-center w-[120px] lg:w-[180px] 2xl:w-[180px]">
           <img src={imgLogo} alt="logo" />

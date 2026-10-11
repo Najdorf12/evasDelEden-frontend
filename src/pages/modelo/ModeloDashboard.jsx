@@ -9,6 +9,8 @@ import CategorySelect from "../../components/CategorySelect";
 import Modal from "../../components/Modal";
 import StoriesManager from "../../components/StoriesManager";
 import PaymentInfoModal from "../../components/PaymentInfoModal";
+import PageLoader from "../../components/PageLoader";
+import usePageLoader from "../../hooks/usePageLoader";
 
 const gradientBg = {
   backgroundImage:
@@ -498,7 +500,7 @@ const ModeloDashboard = () => {
   const [modelo, setModelo] = useState(null);
   const [myEva, setMyEva] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const showLoader = usePageLoader(false);
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const [loadingImage, setLoadingImage] = useState(false);
@@ -807,16 +809,17 @@ const ModeloDashboard = () => {
       },
     });
   };
-  if (loading) {
+  /* if (loading) {
     return (
       <section className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
         <p className="text-zinc-300 font-text animate-pulse">Cargando...</p>
       </section>
     );
-  }
+  } */
 
   return (
     <section className="relative w-full bg-gradient-to-r  from-zinc-900 via-purple-950 to-zinc-900 min-h-screen flex flex-col items-center pb-32">
+      <PageLoader show={showLoader} />
       <nav className="font-text text-base relative flex justify-between items-center w-full mt-2 px-1 xl:mt-3 xl:px-12 2xl:text-lg">
         <picture className="flex items-center justify-center w-[120px] lg:w-[180px] 2xl:w-[180px]">
           <img src={imgLogo} alt="logo" />
@@ -1011,7 +1014,6 @@ const ModeloDashboard = () => {
                   otherPlaceholder="Escribí tu horario (ej: 14 a 18 hs)"
                   value={watch("horario")}
                   onChange={setField("horario")}
-             
                 />
               </div>
             </SectionCard>

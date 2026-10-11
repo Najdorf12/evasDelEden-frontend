@@ -5,10 +5,12 @@ import axios from "../../api/axiosRender";
 import imgLogo from "/0003.png";
 import icon from "/icon14.png";
 import icon2 from "/icon13.png";
+import PageLoader from "../../components/PageLoader";
+import usePageLoader from "../../hooks/usePageLoader";
 
 const ModeloLogin = () => {
   const [loginError, setLoginError] = useState([]);
-
+  const showLoader = usePageLoader(false);
   const {
     handleSubmit,
     register,
@@ -43,6 +45,8 @@ const ModeloLogin = () => {
 
   return (
     <section className="h-screen w-full flex flex-col items-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
+      <PageLoader show={showLoader} />
+      <PageLoader show={showLoader} />
       <nav className="absolute top-0 font-text2 text-lg px-3  flex justify-between items-center w-full  xl:px-6 xl:mt-3 xl:text-xl">
         <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
           <img src={imgLogo} className="rounded-full" alt="logo" />
