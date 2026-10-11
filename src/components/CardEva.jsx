@@ -28,7 +28,7 @@ const CardEva = ({ eva }) => {
         {images?.length > 0 ? (
           <img
             loading="lazy"
-            className="w-full h-full object-cover object-center rounded-xl border-[2px] border-purple-800 "
+            className="w-full h-full object-cover object-center rounded-xl border-[1px] border-purple-900 "
             src={formatUrl(images[0]?.secure_url)}
             alt={`Imagen de ${name}`}
           />
@@ -42,7 +42,7 @@ const CardEva = ({ eva }) => {
         <div className="flex flex-col items-center justify-center text-balance text-base font-medium w-[90%] md:w-[60%] py-[2px]">
           <p
             id="box-glass3"
-            className="w-full flex text-sm  items-center justify-between px-4 py-[1px] mt-[6px] rounded-lg text-white border-[2px] border-purple-800 xl:text-base"
+            className="w-full flex text-sm  items-center justify-between px-4 py-[1px] mt-[6px] rounded-lg text-white border-[2px] border-zinc-400 xl:text-base"
           >
             {name}
             <span className="rounded-full text-white">{description?.edad}</span>

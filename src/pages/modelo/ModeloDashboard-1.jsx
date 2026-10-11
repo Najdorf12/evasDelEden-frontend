@@ -15,6 +15,39 @@ const gradientBg = {
     "linear-gradient(to right top, #426d89, #3f637a, #3c596b, #394f5d, #36454f, #344149, #333c43, #31383d, #31383d, #31383d, #31383d, #31383d)",
 };
 
+/* ---------- OPCIONES PREDEFINIDAS ---------- */
+const range = (from, to) =>
+  Array.from({ length: to - from + 1 }, (_, i) => String(from + i));
+
+const EDADES = range(18, 60);
+const ALTURAS = range(145, 195); // cm
+const PESOS = range(40, 120); // kg
+const BUSTO = range(70, 130);
+const CINTURA = range(50, 100);
+const CADERA = range(80, 140);
+
+// Editá esta lista con los servicios reales de tu plataforma
+const SERVICIOS = [
+  "Acompañamiento",
+  "Salidas / Eventos",
+  "Masajes",
+  "Videollamadas",
+  "Viajes",
+  "Atiendo en mi domicilio",
+  "Voy a hotel / domicilio",
+];
+
+const HORARIOS = ["Mañana", "Tarde", "Noche", "Madrugada"];
+
+const FRASES_RAPIDAS = [
+  "Simpática y atenta",
+  "Trato amable y discreto",
+  "Foto 100% real",
+  "Atención personalizada",
+  "Ambiente reservado y cómodo",
+  "Puntualidad",
+];
+
 const FormInput = ({
   label,
   error,
@@ -51,7 +84,7 @@ const FormInput = ({
 const SectionCard = ({ title, subtitle, children }) => (
   <div className="bg-black/20 backdrop-blur-sm rounded-xl py-5 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900">
     <div>
-      <h3 className="font-title text-3xl text-white xl:text-4xl">{title}</h3>
+      <h3 className="font-title text-3xl text-zinc-300 xl:text-4xl">{title}</h3>
       {subtitle && (
         <p className="text-zinc-300 text-sm font-text mt-1 lg:text-base">
           {subtitle}
@@ -61,6 +94,143 @@ const SectionCard = ({ title, subtitle, children }) => (
     {children}
   </div>
 );
+
+/* ---------- SELECT SIMPLE (edad, altura, peso) ---------- */
+const SelectInput = ({ label, name, register, value, options }) => {
+  // Si ya hay un valor guardado que no está en la lista, lo mantenemos
+  const list =
+    value && !options.includes(String(value))
+      ? [String(value), ...options]
+      : options;
+
+  return (
+    <div className="font-text">
+      <label htmlFor={name} className="text-sm text-purple-200">
+        {label}
+      </label>
+      <select
+        id={name}
+        {...register(name)}
+        className="mt-1 h-10 w-full border-b-2 border-purple-400 bg-transparent text-zinc-200 transition-colors focus:border-purple-600 focus:outline-none"
+      >
+        <option value="" className="bg-zinc-900">
+          Seleccionar
+        </option>
+        {list.map((o) => (
+          <option key={o} value={o} className="bg-zinc-900">
+            {o}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+/* ---------- MEDIDAS: 3 selects que arman "90-60-90" ---------- */
+const MedidasSelector = ({ register, value, onChange }) => {
+  const [busto = "", cintura = "", cadera = ""] = String(value || "")
+    .split("-")
+    .map((s) => s.trim());
+
+  const update = (index, newValue) => {
+    const parts = [busto, cintura, cadera];
+    parts[index] = newValue;
+    onChange(parts.every((p) => !p) ? "" : parts.join("-"));
+  };
+
+  const selectClass =
+    "h-10 w-full border-b-2 border-purple-400 bg-transparent text-zinc-200 focus:border-purple-600 focus:outline-none";
+
+  const fields = [
+    { label: "Busto", options: BUSTO, current: busto },
+    { label: "Cintura", options: CINTURA, current: cintura },
+    { label: "Cadera", options: CADERA, current: cadera },
+  ];
+
+  return (
+    <div className="font-text">
+      <p className="text-sm text-purple-200">Medidas (cm)</p>
+      <input type="hidden" {...register("medidas")} />
+      <div className="mt-1 grid grid-cols-3 gap-3">
+        {fields.map((f, i) => (
+          <select
+            key={f.label}
+            aria-label={f.label}
+            value={f.current}
+            onChange={(e) => update(i, e.target.value)}
+            className={selectClass}
+          >
+            <option value="" className="bg-zinc-900">
+              {f.label}
+            </option>
+            {f.options.map((o) => (
+              <option key={o} value={o} className="bg-zinc-900">
+                {o}
+              </option>
+            ))}
+          </select>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+/* ---------- CHIPS (simple o múltiple) ---------- */
+const OptionButtons = ({
+  label,
+  options,
+  value,
+  onChange,
+  multiple = false,
+}) => {
+  const selectedValues = multiple
+    ? String(value || "")
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean)
+    : [value].filter(Boolean);
+
+  const toggleOption = (option) => {
+    if (!multiple) {
+      onChange(option === value ? "" : option);
+      return;
+    }
+
+    const nextValues = selectedValues.includes(option)
+      ? selectedValues.filter((item) => item !== option)
+      : [...selectedValues, option];
+
+    onChange(nextValues.join(", "));
+  };
+
+  return (
+    <fieldset className="space-y-3 font-text">
+      <legend className="mb-3 text-sm text-purple-200">{label}</legend>
+
+      <div className="flex flex-wrap gap-2">
+        {options.map((option) => {
+          const selected = selectedValues.includes(option);
+
+          return (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => toggleOption(option)}
+              className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
+                selected
+                  ? "border-purple-400 bg-purple-700 text-zinc-300"
+                  : "border-zinc-600 bg-black/20 text-zinc-300 hover:border-purple-400"
+              }`}
+            >
+              {option}
+            </button>
+          );
+        })}
+      </div>
+    </fieldset>
+  );
+};
 
 const ModeloDashboard = () => {
   const {
@@ -221,7 +391,17 @@ const ModeloDashboard = () => {
       setMyEva(response.data);
     } catch (error) {
       console.error(error);
-      alert(error.response?.data?.message || "Error al eliminar la imagen");
+      alert(
+        (
+          <div className="bg-red-600 w-full h-full absolute inset-0 z-10000">
+            BIEN
+          </div>
+        ) || (
+          <div className="bg-red-600 w-full h-full absolute inset-0 z-10000">
+            ERROR
+          </div>
+        ),
+      );
     }
   };
 
@@ -378,13 +558,13 @@ const ModeloDashboard = () => {
   if (loading) {
     return (
       <section className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
-        <p className="text-white font-text animate-pulse">Cargando...</p>
+        <p className="text-zinc-300 font-text animate-pulse">Cargando...</p>
       </section>
     );
   }
 
   return (
-    <section className="relative w-full bg-gradient-to-r  from-zinc-900 via-purple-950 to-zinc-900 min-h-screen flex flex-col items-center pb-16">
+    <section className="relative w-full bg-gradient-to-r  from-zinc-900 via-purple-950 to-zinc-900 min-h-screen flex flex-col items-center pb-32">
       <nav className="font-text text-base relative flex justify-between items-center w-full mt-2 px-2 xl:mt-3 xl:px-12 2xl:text-lg">
         <picture className="flex items-center justify-center w-[120px] lg:w-[180px] 2xl:w-[180px]">
           <img src={imgLogo} alt="logo" />
@@ -392,7 +572,7 @@ const ModeloDashboard = () => {
         <div className="flex items-center justify-center gap-3 pt-0 pr-2 lg:gap-6 ">
           <Link to={"/"}>
             <button
-              className="w-full font-text py-1.5 px-6 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
+              className="w-full font-text py-1.5 px-6 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
               style={{
                 boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
               }}
@@ -403,7 +583,7 @@ const ModeloDashboard = () => {
 
           <button
             onClick={logout}
-            className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
+            className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
             }}
@@ -415,17 +595,17 @@ const ModeloDashboard = () => {
 
       <section className="mt-9 w-full flex flex-col items-center px-4 gap-8 xl:mt-2 xl:gap-10">
         <article className="self-start lg:text-center lg:self-center">
-          <div className="text-zinc-200 text-4xl font-title lg:text-6xl">
+          <div className="text-zinc-300 text-4xl font-title lg:text-6xl">
             Panel de Control
           </div>
-          <p className="text-zinc-500 mt-1 lg:text-xl lg:mt-3">
+          <p className="text-zinc-400 mt-1 lg:text-xl lg:mt-3">
             Crea, edita y organiza el contenido de forma sencilla
           </p>
         </article>
         {/* ---------- FORMULARIO ---------- */}
-        <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y  border-purple-600 shadow-black overflow-hidden py-8 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
+        <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y  border-purple-600 shadow-black overflow-hidden pt-12 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
           <div className="text-center ">
-            <h6 className="font-title text-4xl font-bold text-zinc-200 xl:text-6xl">
+            <h6 className="font-title text-4xl font-bold text-zinc-100 xl:text-6xl">
               <img
                 src={icon}
                 alt="icon"
@@ -439,7 +619,7 @@ const ModeloDashboard = () => {
               Hola, {modelo?.username}
             </h6>
             {myEva && (
-              <p
+              <div
                 className={`inline-flex items-center gap-2 mt-4 text-sm font-text font-semibold px-3 py-1 rounded-full ${
                   myEva.status === "approved"
                     ? "bg-green-500/10 text-green-400"
@@ -453,11 +633,18 @@ const ModeloDashboard = () => {
                       : "bg-yellow-400"
                   }`}
                 />
+
                 {myEva.status === "approved"
                   ? "Tu perfil está aprobado"
                   : "Pendiente de aprobación"}
-              </p>
+              </div>
             )}
+            <div className="text-zinc-400 text-xs mt-6 text-balance px-1 leading-5 lg:text-base">
+              Desde esta sección podés editar tu información, actualizar tus
+              datos y elegir el plan que mejor se adapte a vos. Cuando termines,
+              pulsá el botón *Guardar Cambios* al final del formulario para
+              confirmar la actualización
+            </div>
           </div>
 
           <form onSubmit={handleSubmit(submit)} className="space-y-6">
@@ -511,10 +698,34 @@ const ModeloDashboard = () => {
               subtitle="Opcional, pero ayuda a que te encuentren"
             >
               <div className="grid gap-6 xl:grid-cols-2 ">
-                <FormInput label="Edad" name="edad" register={register} />
-                <FormInput label="Altura" name="altura" register={register} />
-                <FormInput label="Medidas" name="medidas" register={register} />
-                <FormInput label="Peso" name="peso" register={register} />
+                <SelectInput
+                  label="Edad (años)"
+                  name="edad"
+                  register={register}
+                  value={watch("edad")}
+                  options={EDADES}
+                />
+                <SelectInput
+                  label="Altura (cm)"
+                  name="altura"
+                  register={register}
+                  value={watch("altura")}
+                  options={ALTURAS}
+                />
+                <SelectInput
+                  label="Peso (kg)"
+                  name="peso"
+                  register={register}
+                  value={watch("peso")}
+                  options={PESOS}
+                />
+                <MedidasSelector
+                  register={register}
+                  value={watch("medidas")}
+                  onChange={(v) =>
+                    setValue("medidas", v, { shouldDirty: true })
+                  }
+                />
 
                 {/* Depilación */}
                 <div className="space-y-3">
@@ -535,46 +746,32 @@ const ModeloDashboard = () => {
                     <input
                       {...register("depilacionDetalle")}
                       placeholder="Especificá tu preferencia..."
-                      className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-white outline-none focus:border-purple-300"
+                      className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
                     />
                   )}
                 </div>
-                {/* Servicio: por ahora, texto libre con Lorem ipsum como ejemplo */}
-                <div className="space-y-2 font-text">
-                  <label className="text-sm text-purple-200" htmlFor="servicio">
-                    Servicio
-                  </label>
 
-                  <textarea
-                    id="servicio"
-                    {...register("servicio")}
-                    rows={3}
-                    placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
-                    className="w-full rounded-lg border-2 border-purple-600 bg-transparent p-3 text-sm text-white outline-none transition-colors focus:border-white xl:text-base"
-                  />
-                  <p className="text-xs text-zinc-400">
-                    Podés describir brevemente el servicio que ofrecés.
-                  </p>
-                </div>
-
-                {/* Horario */}
+                {/* Servicio: chips de selección múltiple */}
                 <OptionButtons
-                  label="¿En qué horarios estás disponible?"
-                  options={["Mañana", "Tarde", "Noche", "Madrugada"]}
+                  label="¿Qué servicios ofrecés? (podés elegir varios)"
+                  options={SERVICIOS}
+                  multiple
+                  value={watch("servicio")}
+                  onChange={(value) =>
+                    setValue("servicio", value, { shouldDirty: true })
+                  }
+                />
+
+                {/* Horario: selección múltiple */}
+                <OptionButtons
+                  label="¿En qué horarios estás disponible? (podés elegir varios)"
+                  options={HORARIOS}
+                  multiple
                   value={watch("horario")}
                   onChange={(value) =>
                     setValue("horario", value, { shouldDirty: true })
                   }
                 />
-                {/*  <FormInput
-                  label="Servicio"
-                  name="servicio"
-                  register={register}
-                />  <FormInput
-                  label="Depilación"
-                  name="depilacion"
-                  register={register}
-                /> */}
               </div>
             </SectionCard>
 
@@ -582,11 +779,31 @@ const ModeloDashboard = () => {
               title="Descripción"
               subtitle="Contales un poco más sobre vos"
             >
+              <div className="flex flex-wrap gap-2">
+                {FRASES_RAPIDAS.map((frase) => (
+                  <button
+                    key={frase}
+                    type="button"
+                    onClick={() => {
+                      const actual = watch("extendDescription") || "";
+                      if (actual.includes(frase)) return;
+                      setValue(
+                        "extendDescription",
+                        actual ? `${actual.trim()} ${frase}.` : `${frase}.`,
+                        { shouldDirty: true },
+                      );
+                    }}
+                    className="rounded-lg border border-zinc-600 bg-black/20 px-3 py-1.5 text-xs text-zinc-300 transition-colors hover:border-purple-400 font-text"
+                  >
+                    + {frase}
+                  </button>
+                ))}
+              </div>
               <textarea
-                className="text-white bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-sm xl:text-base rounded-lg p-3 transition-colors"
+                className="text-zinc-300 bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-sm xl:text-base rounded-lg p-3 transition-colors"
                 {...register("extendDescription")}
                 rows="5"
-                placeholder="Escribí acá tu descripción..."
+                placeholder="Tocá las frases de arriba o escribí lo que quieras..."
               />
             </SectionCard>
 
@@ -605,7 +822,7 @@ const ModeloDashboard = () => {
                 />
                 <label
                   htmlFor="imageUpload"
-                  className="rounded-lg w-full max-w-[320px] -mt-2 py-3 px-8 border border-purple-500 text-white text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start"
+                  className="rounded-lg w-full max-w-[320px] -mt-2 py-3 px-8 border border-purple-500 text-zinc-300 text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start"
                 >
                   {loadingImage ? "Subiendo..." : "+ Agregar imagen"}
                 </label>
@@ -616,7 +833,7 @@ const ModeloDashboard = () => {
                         <button
                           type="button"
                           onClick={() => handleDeleteImage(img)}
-                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-white bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
+                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-zinc-300 bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
                         >
                           ×
                         </button>
@@ -628,8 +845,8 @@ const ModeloDashboard = () => {
                           }
                           className={`absolute -top-2 -left-2 w-9 h-9 flex items-center justify-center rounded-full text-base shadow-md z-10 transition-colors ${
                             index === 0
-                              ? "bg-amber-400 text-zinc-900"
-                              : "text-zinc-900"
+                              ? "bg-amber-400 text-zinc-900 border border-white"
+                              : "text-zinc-900 border border-white"
                           }`}
                         >
                           ★
@@ -637,7 +854,7 @@ const ModeloDashboard = () => {
                         <img
                           className={`w-32 h-44 object-cover rounded-lg xl:w-40 xl:h-56 border-[2px] ${
                             index === 0
-                              ? "border-amber-400"
+                              ? "border-amber-400 "
                               : "border-purple-600"
                           }`}
                           src={formatUrl(img?.secure_url)}
@@ -647,6 +864,10 @@ const ModeloDashboard = () => {
                     ))}
                   </div>
                 )}
+              </div>
+              <div className="text-zinc-500 text-sm">
+                Solo las fotos GUARDADAS pueden ser seleccionadas como la
+                principal del Perfil / Portada
               </div>
             </SectionCard>
 
@@ -662,7 +883,7 @@ const ModeloDashboard = () => {
                 />
                 <label
                   htmlFor="videoUpload"
-                  className="rounded-lg w-full max-w-[320px] py-3 px-8 border border-purple-500 text-white text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start -mt-2"
+                  className="rounded-lg w-full max-w-[320px] py-3 px-8 border border-purple-500 text-zinc-300 text-sm text-center cursor-pointer bg-white/5 hover:bg-white/10 transition-colors font-text hover:bg-purple-900 lg:self-start -mt-2"
                 >
                   {loadingVideo ? "Subiendo..." : "+ Agregar video"}
                 </label>
@@ -673,7 +894,7 @@ const ModeloDashboard = () => {
                         <button
                           type="button"
                           onClick={() => handleDeleteVideo(video)}
-                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-white bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
+                          className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center rounded-md font-semibold text-zinc-300 bg-red-600 hover:bg-red-500 text-xs shadow-md z-10"
                         >
                           x
                         </button>
@@ -713,7 +934,7 @@ const ModeloDashboard = () => {
                 {saving
                   ? "Guardando..."
                   : myEva
-                    ? "Actualizar perfil"
+                    ? "Guardar Cambios"
                     : "Crear perfil"}
               </button>
             </div>
@@ -733,12 +954,12 @@ const ModeloDashboard = () => {
         {/* ---------- RESUMEN / MI PERFIL ---------- */}
         {myEva && (
           <section className="max-w-md mt-9 w-full rounded-2xl bg-gradient-to-tr border border-purple-500 from-zinc-900 via-purple-950 to-zinc-900 overflow-hidden py-8 px-4 space-y-6 xl:max-w-[900px] xl:px-8 text-balance">
-            <h6 className="font-title text-3xl text-white text-center xl:text-4xl">
+            <h6 className="font-title text-3xl text-zinc-300 text-center xl:text-4xl">
               Tu perfil publicado
             </h6>
-            <p className="text-zinc-300 text-sm lg:text-base font-text text-center">
+            <p className="text-zinc-300 text-sm lg:text-base font-text pl-1">
               Para editar tus datos, fotos o videos usá el formulario de
-              arriba.Se guarda todo junto al tocar "Actualizar perfil".
+              arriba.Se guarda todo junto al pulsar "Actualizar perfil".
             </p>
             <div className="bg-black/20 border border-purple-600 backdrop-blur-sm rounded-xl p-5 flex flex-col gap-4 xl:flex-row xl:items-center xl:gap-6">
               {images[0]?.secure_url ? (
@@ -754,7 +975,7 @@ const ModeloDashboard = () => {
               )}
 
               <div className="font-text text-zinc-300 space-y-2 mt-2 flex-1">
-                <p className="text-white text-3xl font-title lg:text-4xl">
+                <p className="text-zinc-300 text-3xl font-title lg:text-4xl">
                   {myEva.name}
                 </p>
                 <p className="text-sm  lg:text-base">
@@ -789,6 +1010,19 @@ const ModeloDashboard = () => {
             </div>
           </section>
         )}
+        <div className="text-zinc-500 mt-16 px-4 text-sm border p-6 border-zinc-600 rounded-lg max-w-[900px] lg:text-base lg:p-9">
+          Desde esta sección podés editar tu información, actualizar tus datos y
+          elegir el plan que mejor se adapte a vos. Revisá que toda la
+          información esté correcta y que tus preferencias estén actualizadas
+          para que tu perfil represente lo que querés mostrar. Cuando termines,
+          pulsá el botón *Guardar Cambios* al final del formulario para
+          confirmar la actualización. Una vez guardados, los cambios se verán
+          reflejados en tu perfil de la página principal. <br />
+          <span className="text-zinc-300">
+            ¡Mantené tu perfil actualizado para ofrecer la mejor experiencia a
+            quienes te visitan!
+          </span>
+        </div>
         <PaymentInfoModal
           open={paymentModal.open}
           category={paymentModal.category}
@@ -812,59 +1046,3 @@ const ModeloDashboard = () => {
 };
 
 export default ModeloDashboard;
-
-const OptionButtons = ({
-  label,
-  options,
-  value,
-  onChange,
-  multiple = false,
-}) => {
-  const selectedValues = multiple
-    ? String(value || "")
-        .split(",")
-        .map((item) => item.trim())
-        .filter(Boolean)
-    : [value].filter(Boolean);
-
-  const toggleOption = (option) => {
-    if (!multiple) {
-      onChange(option === value ? "" : option);
-      return;
-    }
-
-    const nextValues = selectedValues.includes(option)
-      ? selectedValues.filter((item) => item !== option)
-      : [...selectedValues, option];
-
-    onChange(nextValues.join(", "));
-  };
-
-  return (
-    <fieldset className="space-y-3 font-text">
-      <legend className="mb-3 text-sm text-purple-200">{label}</legend>
-
-      <div className="flex flex-wrap gap-2">
-        {options.map((option) => {
-          const selected = selectedValues.includes(option);
-
-          return (
-            <button
-              key={option}
-              type="button"
-              aria-pressed={selected}
-              onClick={() => toggleOption(option)}
-              className={`rounded-lg border px-4 py-2 text-sm transition-colors ${
-                selected
-                  ? "border-purple-400 bg-purple-700 text-white"
-                  : "border-zinc-600 bg-black/20 text-zinc-300 hover:border-purple-400"
-              }`}
-            >
-              {option}
-            </button>
-          );
-        })}
-      </div>
-    </fieldset>
-  );
-};
