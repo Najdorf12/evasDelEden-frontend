@@ -473,24 +473,34 @@ const AdminPage = () => {
   };
   return (
     <section className="relative w-full bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 min-h-[140vh] flex flex-col items-center  pb-10">
-      <div className="font-text text-base  relative flex justify-between items-center w-full  mt-0 px-3 xl:mt-3 xl:px-12 2xl:text-lg">
-        <picture className=" flex items-center justify-center w-[120px] lg:w-[150px] 2xl:w-[180px] ">
+      <nav className="font-text text-base relative flex justify-between items-center w-full mt-2 px-1 xl:mt-3 xl:px-12 2xl:text-lg">
+        <picture className="flex items-center justify-center w-[120px] lg:w-[180px] 2xl:w-[180px]">
           <img src={imgLogo} alt="logo" />
         </picture>
+        <div className="flex items-center justify-center gap-3 pt-0 pr-2 lg:gap-6 ">
+          <Link to={"/"}>
+            <button
+              className="w-full font-text py-1.5 px-6 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
+            >
+              Inicio
+            </button>
+          </Link>
 
-        <ul className="flex gap-4 xl:gap-8 2xl:gap-12 text-sm lg:text-base 2xl:text-lg">
-          <li className="text-zinc-100 border-l-2 border-purple-500 pl-2 py-1 hover:scale-105 hover:text-white duration-500 ">
-            <Link to={"/"}>Home</Link>
-          </li>
-
-          <li
-            onClick={() => logout()}
-            className="text-purple-700 border-l-2 pl-2 py-1 border-purple-700 cursor-pointer  hover:scale-105 hover:text-white duration-500"
+          <button
+            onClick={logout}
+            className="w-full flex items-center gap-1 font-text pl-2 pr-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
+            style={{
+              boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+            }}
           >
-            Cerrar Sesión
-          </li>
-        </ul>
-      </div>
+            <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i>{" "}
+            Cerrar sesión
+          </button>
+        </div>
+      </nav>
 
       <article className="self-start lg:text-center lg:self-center pl-5 mt-6 lg:mt-2 relative w-full">
         <div className="text-zinc-200 text-4xl font-title lg:text-6xl ">
@@ -566,7 +576,7 @@ const AdminPage = () => {
             <img src={icon} alt="icon" className="w-10 absolute top-3 left-3" />
 
             <h6 className="font-title text-5xl font-extrabold text-white xl:text-8xl">
-              BIENVENIDO ADMIN 
+              BIENVENIDO ADMIN
             </h6>
             <p className="text-zinc-400 font-text text-base mt-2 xl:text-xl">
               Create your bitch

@@ -817,7 +817,7 @@ const ModeloDashboard = () => {
 
   return (
     <section className="relative w-full bg-gradient-to-r  from-zinc-900 via-purple-950 to-zinc-900 min-h-screen flex flex-col items-center pb-32">
-      <nav className="font-text text-base relative flex justify-between items-center w-full mt-2 px-2 xl:mt-3 xl:px-12 2xl:text-lg">
+      <nav className="font-text text-base relative flex justify-between items-center w-full mt-2 px-1 xl:mt-3 xl:px-12 2xl:text-lg">
         <picture className="flex items-center justify-center w-[120px] lg:w-[180px] 2xl:w-[180px]">
           <img src={imgLogo} alt="logo" />
         </picture>
@@ -835,17 +835,18 @@ const ModeloDashboard = () => {
 
           <button
             onClick={logout}
-            className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
+            className="w-full flex items-center gap-1 font-text pl-2 pr-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-zinc-300 text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
             }}
           >
+            <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i>{" "}
             Cerrar sesión
           </button>
         </div>
       </nav>
 
-      <section className="mt-9 w-full flex flex-col items-center px-4 gap-8 xl:mt-2 xl:gap-10">
+      <section className="mt-9 w-full flex flex-col items-center px-3 gap-8 xl:mt-2 xl:gap-10">
         <article className="self-start lg:text-center lg:self-center">
           <div className="text-zinc-300 text-4xl font-title lg:text-6xl">
             Panel de Control
@@ -921,7 +922,6 @@ const ModeloDashboard = () => {
                 />
               </div>
             </SectionCard>
-
 
             <SectionCard
               title="Ubicación"
@@ -1256,15 +1256,15 @@ const ModeloDashboard = () => {
             </div>
 
             <div className="flex flex-col justify-center pt-2 gap-3">
-              <Link to={`/${myEva?.name}/${myEva?._id}`} >
-              <div
-              /*   onClick={handleDeleteProfile}
+              <Link to={`/${myEva?.name}/${myEva?._id}`}>
+                <div
+                  /*   onClick={handleDeleteProfile}
                 disabled={deleting} */
-                className="font-text text-xs border border-purple-800 px-6 py-2 text-purple-600 hover:bg-purple-900 hover:text-zinc-100 rounded-lg disabled:opacity-50 flex items-center gap-2"
-              >
-                <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i> 
-                Ir a mi Perfil
-              </div>
+                  className="font-text text-xs border border-purple-800 px-6 py-2 text-purple-600 hover:bg-purple-900 hover:text-zinc-100 rounded-lg disabled:opacity-50 flex items-center gap-2"
+                >
+                  <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i>
+                  Ir a mi Perfil
+                </div>
               </Link>
               <button
                 onClick={handleDeleteProfile}
