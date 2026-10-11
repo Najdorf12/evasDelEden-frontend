@@ -421,7 +421,7 @@ export const OptionButtons = ({
     <fieldset className=" font-text">
       <legend className="mb-3 text-sm text-purple-200">{label}</legend>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mb-4">
         {options.map((option) => {
           const selected = selectedValues.includes(option);
 
@@ -462,13 +462,12 @@ export const OptionButtons = ({
           }}
           maxLength={60}
           placeholder={otherPlaceholder}
-          className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-sm text-zinc-300 outline-none focus:border-purple-300"
+          className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-xs text-zinc-300 outline-none focus:border-purple-300"
         />
       )}
     </fieldset>
   );
 };
-
 
 export const PhysicalFields = ({
   register,
@@ -502,12 +501,14 @@ export const PhysicalFields = ({
         onChange={setField("peso")}
         options={PESOS}
       />
-      <MedidasSelector
-        register={register}
-        value={watch("medidas")}
-        onChange={setField("medidas")}
-      />
-      <div className="w-full flex flex-col gap-6">
+      <div className="mb-3">
+        <MedidasSelector
+          register={register}
+          value={watch("medidas")}
+          onChange={setField("medidas")}
+        />
+      </div>
+      <div className="w-full flex flex-col gap-3">
         {/* Depilación */}
         <div className="">
           <OptionButtons
