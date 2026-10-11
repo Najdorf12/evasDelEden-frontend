@@ -84,7 +84,7 @@ const FormInput = ({
 );
 
 const SectionCard = ({ title, subtitle, children }) => (
-  <div className="bg-black/20 backdrop-blur-sm rounded-xl pt-6 pb-7 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900">
+  <div className="relative bg-black/20 backdrop-blur-sm rounded-xl pt-6 pb-7 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900 z-10">
     <div>
       <img src={icon} alt="icon" className="w-12 absolute right-4 top-4" />
       <h3 className="font-title text-3xl text-zinc-300 xl:text-4xl">{title}</h3>
@@ -923,6 +923,8 @@ const ModeloDashboard = () => {
               </div>
             </SectionCard>
 
+<div className="bg-red-400 w-full relative z-500000">
+
             <SectionCard
               title="Ubicación"
               subtitle="Dónde te van a poder buscar los clientes"
@@ -934,6 +936,7 @@ const ModeloDashboard = () => {
                 errors={errors}
               />
             </SectionCard>
+</div>
 
             <SectionCard
               title="Datos físicos"

@@ -50,7 +50,7 @@ const CustomSelect = ({
   return (
     <div
       ref={wrapperRef}
-      className={`relative w-full font-text ${open ? "z-50" : ""} ${className}`}
+      className={`relative w-full font-text z-1000 ${open ? "z-50" : ""} ${className}`}
     >
       {label && (
         <label
