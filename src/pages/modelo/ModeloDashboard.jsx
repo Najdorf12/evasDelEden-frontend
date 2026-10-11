@@ -922,7 +922,6 @@ const ModeloDashboard = () => {
               </div>
             </SectionCard>
 
-<div className="bg-red-400 w-full relative z-500000">
 
             <SectionCard
               title="Ubicación"
@@ -935,7 +934,6 @@ const ModeloDashboard = () => {
                 errors={errors}
               />
             </SectionCard>
-</div>
 
             <SectionCard
               title="Datos físicos"
@@ -1259,14 +1257,14 @@ const ModeloDashboard = () => {
 
             <div className="flex flex-col justify-center pt-2 gap-3">
               <Link to={`/${myEva?.name}/${myEva?._id}`} >
-              <button
+              <div
               /*   onClick={handleDeleteProfile}
                 disabled={deleting} */
                 className="font-text text-xs border border-purple-800 px-6 py-2 text-purple-600 hover:bg-purple-900 hover:text-zinc-100 rounded-lg disabled:opacity-50 flex items-center gap-2"
               >
                 <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i> 
                 Ir a mi Perfil
-              </button>
+              </div>
               </Link>
               <button
                 onClick={handleDeleteProfile}
