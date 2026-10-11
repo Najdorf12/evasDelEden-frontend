@@ -6,11 +6,19 @@ const Contact = () => {
   const wttp = "+54 9 353 441-6561";
 
   return (
-    <section className="text-balance h-[100dvh] w-full bg-gradient-to-l from-zinc-900 via-purple-900 to-zinc-900  text-stone-400 flex flex-col gap-4 px-6 items-center pt-24  relative border-t border-purple-400 ">
-      <nav className="absolute top-0 font-text2 text-lg px-2 flex justify-between items-center w-full mt-1 lg:px-12 xl:mt-3 xl:text-xl">
+    <section className="text-balance h-[100dvh] w-full bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 text-stone-400 flex flex-col gap-4 px-6 items-center pt-24  relative border-t border-purple-400 ">
+      <nav className="absolute top-0 font-text2 text-lg px-2 flex justify-between items-center w-full  lg:px-12 xl:mt-3 xl:text-xl">
         <picture className=" flex items-center justify-center rounded-full w-[126px] lg:w-[150px] 2xl:w-[180px]">
           <Link to={"/"}>
-            <img src={logo} className="rounded-full" alt="logo" />
+            <img
+              src={logo}
+              className="w-36 xl:w-52 "
+              alt="logo"
+              loading="eager"
+              width="224"
+              height="auto"
+              fetchpriority="high"
+            />
           </Link>
         </picture>
         <div className="flex gap-2 lg:gap-4">

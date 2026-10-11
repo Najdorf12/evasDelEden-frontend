@@ -189,7 +189,7 @@ const EvaDetail = () => {
             evaDetail?.videos?.map((video, index) => (
               <div
                 key={index}
-                className="relative w-[48%] h-[390px] md:h-[500px] max-w-[450px] lg:w-[360px] lg:h-[600px] xl:w-[380px]  "
+                className="relative w-[48%] min-w-[190px] h-[390px] md:h-[500px] max-w-[450px] lg:w-[360px] lg:h-[600px] xl:w-[380px]  "
               >
                 <video
                   className="w-full h-full rounded-lg border-[1px] border-purple-900  object-cover object-center "
