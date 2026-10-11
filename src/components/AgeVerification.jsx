@@ -4,6 +4,7 @@ import { preloadData } from "../api/preload";
 import { locations } from "../api/locations";
 import { Link } from "react-router-dom";
 import icon from "/icon14.png";
+import CustomSelect from "../components/CustomSelect";
 
 const AgeVerification = ({ onConfirm }) => {
   const [province, setProvince] = useState("Mendoza");
@@ -34,7 +35,6 @@ const AgeVerification = ({ onConfirm }) => {
         <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
           <img src={logo} className="rounded-full" alt="logo" />
         </picture>
-     
       </nav>
       <article
         id="box-glass"
@@ -51,25 +51,16 @@ const AgeVerification = ({ onConfirm }) => {
           eximiendo de responsabilidad a los responsables de EvasdelEden.
         </p>
 
-        <div className="flex justify-center items-center gap-4 mt-1">
-          <label
-            htmlFor="provinceSelect"
-            className="text-purple-500 text-sm font-text lg:text-base xl:text-lg"
-          >
-            Elegí tu provincia
-          </label>
-          <select
-            id="provinceSelect"
+        <div className="flex justify-center items-center gap-4 mt-1 w-full px-3">
+         
+          <CustomSelect
+            id="age-province"
+            label="Seleccioná tu Provincia"
             value={province}
-            onChange={(e) => setProvince(e.target.value)}
-            className="rounded-lg pl-3 pr-9 py-1.5  text-sm border border-purple-500  bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900 text-zinc-200 focus:outline-none focus:border-purple-600 focus:bg-purple-950 lg:text-base xl:text-lg"
-          >
-            {Object.keys(locations).map((prov) => (
-              <option key={prov} value={prov}>
-                {prov}
-              </option>
-            ))}
-          </select>
+            onChange={setProvince}
+            options={Object.keys(locations)}
+            placeholder="Seleccioná tu provincia"
+          />
         </div>
 
         <p className="text-lg font-text mt-3 font-medium text-zinc-200 lg:text-lg xl:text-xl 2xl:text-2xl">

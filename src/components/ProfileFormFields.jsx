@@ -473,11 +473,7 @@ export const OptionButtons = ({
   );
 };
 
-/* ---------- BLOQUE COMPLETO: DATOS FÍSICOS ----------
-   Usar dentro de un <SectionCard>. Campos: edad, altura, peso, medidas,
-   depilacion (+ depilacionDetalle), servicio y horario.
-   resetKey: cambiá este valor (ej. el _id de la modelo) para reiniciar
-   el estado interno del chip "Otro" al cargar otro perfil. */
+
 export const PhysicalFields = ({
   register,
   watch,
