@@ -211,10 +211,10 @@ const Home2 = () => {
             {/* ---------- FILTROS DE UBICACIÓN ---------- */}
             <div className="mt-7 w-full font-text3 flex flex-col md:flex-row items-start justify-start gap-3 px-4 lg:mt-9 max-w-[900px] self-start ">
               {/* Provincia */}
-              <div className="flex w-full gap-3 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
+              <div className="flex w-full gap-1 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
                 <label
                   htmlFor="home-province"
-                  className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base"
+                  className="block text-zinc-500 text-sm w-[80px] lg:text-base"
                 >
                   Provincia
                 </label>
@@ -231,10 +231,10 @@ const Home2 = () => {
               </div>
 
               {/* Región */}
-              <div className="flex w-full gap-3 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
+              <div className="flex w-full gap-1 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
                 <label
                   htmlFor="home-region"
-                  className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base"
+                  className="block text-zinc-500 text-sm w-[80px] lg:text-base"
                 >
                   Región
                 </label>
@@ -251,10 +251,10 @@ const Home2 = () => {
               </div>
 
               {/* Ciudad */}
-              <div className="flex w-full gap-3 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
+              <div className="flex w-full gap-1 items-center justify-start lg:flex-col lg:items-start lg:gap-0">
                 <label
                   htmlFor="home-city"
-                  className="block text-zinc-500 text-sm w-[90px] lg:mb-2 lg:text-base"
+                  className="block text-zinc-500 text-sm w-[80px] lg:text-base"
                 >
                   Ciudad
                 </label>
