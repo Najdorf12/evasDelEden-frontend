@@ -51,7 +51,7 @@ export const FormInput = ({
   placeholder,
   ...rest
 }) => (
-  <div className="relative font-text">
+  <div className="relative font-text ">
     {error && (
       <p className="text-red-400 text-xs mb-1 xl:absolute xl:right-0 xl:-top-1 xl:mb-0">
         {error.message}
@@ -208,7 +208,10 @@ export const CustomSelect = ({
   };
 
   return (
-    <div ref={wrapperRef} className={`relative font-text ${open ? "z-40" : ""}`}>
+    <div
+      ref={wrapperRef}
+      className={`relative font-text ${open ? "z-40" : ""}`}
+    >
       {label && (
         <label htmlFor={id} className="text-sm text-purple-200">
           {label}
@@ -351,9 +354,7 @@ export const OptionButtons = ({
   const [otherOpen, setOtherOpen] = useState(false);
   const otherInputRef = useRef(null);
 
-  const rawTokens = multiple
-    ? String(value || "").split(",")
-    : [value || ""];
+  const rawTokens = multiple ? String(value || "").split(",") : [value || ""];
 
   const selectedValues = rawTokens
     .map((item) => String(item).trim())
@@ -371,10 +372,7 @@ export const OptionButtons = ({
 
   // Arma el string final: opciones elegidas (en orden) + texto libre
   const buildValue = (known, custom) =>
-    [
-      ...options.filter((o) => known.includes(o)),
-      custom.trim() ? custom : "",
-    ]
+    [...options.filter((o) => known.includes(o)), custom.trim() ? custom : ""]
       .filter(Boolean)
       .join(", ");
 
@@ -417,14 +415,14 @@ export const OptionButtons = ({
   };
 
   const chipClass = (selected) =>
-    `rounded-lg border px-4 py-2 text-sm transition-colors ${
+    `rounded-lg border px-6 py-2 text-xs md:text-sm xl:text-base transition-colors ${
       selected
         ? "border-purple-400 bg-purple-700 text-zinc-300"
         : "border-zinc-600 bg-black/20 text-zinc-300 hover:border-purple-400"
     }`;
 
   return (
-    <fieldset className="space-y-3 font-text">
+    <fieldset className=" font-text">
       <legend className="mb-3 text-sm text-purple-200">{label}</legend>
 
       <div className="flex flex-wrap gap-2">
@@ -490,7 +488,7 @@ export const PhysicalFields = ({
     setValue(name, value, { shouldDirty: true });
 
   return (
-    <div className="grid gap-6 xl:grid-cols-2">
+    <div className="grid gap-6 xl:grid-cols-2 ">
       <CustomSelect
         id="edad"
         label="Edad (años)"
@@ -517,51 +515,52 @@ export const PhysicalFields = ({
         value={watch("medidas")}
         onChange={setField("medidas")}
       />
+      <div className="w-full flex flex-col gap-6">
+        {/* Depilación */}
+        <div className="">
+          <OptionButtons
+            label="Depilación"
+            options={DEPILACION_OPTIONS}
+            value={watch("depilacion")}
+            onChange={setField("depilacion")}
+          />
 
-      {/* Depilación */}
-      <div className="space-y-3">
+          {watch("depilacion") === OTRO_LABEL && (
+            <input
+              {...register("depilacionDetalle")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") e.preventDefault();
+              }}
+              placeholder="Especificá tu preferencia..."
+              className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
+            />
+          )}
+        </div>
+
+        {/* Servicio */}
         <OptionButtons
-          label="Depilación"
-          options={DEPILACION_OPTIONS}
-          value={watch("depilacion")}
-          onChange={setField("depilacion")}
+          key={`servicio-${resetKey}`}
+          label="¿Qué servicios ofrecés? (podés elegir varios)"
+          options={SERVICIOS}
+          multiple
+          allowOther
+          otherPlaceholder="Escribí tu servicio..."
+          value={watch("servicio")}
+          onChange={setField("servicio")}
         />
 
-        {watch("depilacion") === OTRO_LABEL && (
-          <input
-            {...register("depilacionDetalle")}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") e.preventDefault();
-            }}
-            placeholder="Especificá tu preferencia..."
-            className="h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
-          />
-        )}
+        {/* Horario */}
+        <OptionButtons
+          key={`horario-${resetKey}`}
+          label="¿En qué horarios estás disponible? (podés elegir varios)"
+          options={HORARIOS}
+          multiple
+          allowOther
+          otherPlaceholder="Escribí tu horario (ej: 14 a 18 hs)"
+          value={watch("horario")}
+          onChange={setField("horario")}
+        />
       </div>
-
-      {/* Servicio */}
-      <OptionButtons
-        key={`servicio-${resetKey}`}
-        label="¿Qué servicios ofrecés? (podés elegir varios)"
-        options={SERVICIOS}
-        multiple
-        allowOther
-        otherPlaceholder="Escribí tu servicio..."
-        value={watch("servicio")}
-        onChange={setField("servicio")}
-      />
-
-      {/* Horario */}
-      <OptionButtons
-        key={`horario-${resetKey}`}
-        label="¿En qué horarios estás disponible? (podés elegir varios)"
-        options={HORARIOS}
-        multiple
-        allowOther
-        otherPlaceholder="Escribí tu horario (ej: 14 a 18 hs)"
-        value={watch("horario")}
-        onChange={setField("horario")}
-      />
     </div>
   );
 };

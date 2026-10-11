@@ -556,7 +556,7 @@ const AdminPage = () => {
       )}
       <section className="mt-12 w-full flex flex-col items-center px-4   bg-gradient-r from-zinc-900 via-purple-950 to-zinc-900">
         {/* ---------- FORMULARIO ---------- */}
-        <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y border-purple-600 shadow-black overflow-hidden pt-12 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
+        <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y border-purple-600 shadow-black overflow-hidden pt-16 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
           <div className="text-center">
             <img
               src={icon}
@@ -565,10 +565,10 @@ const AdminPage = () => {
             />
             <img src={icon} alt="icon" className="w-10 absolute top-3 left-3" />
 
-            <h6 className="font-title text-6xl font-extrabold text-white xl:text-8xl">
-              ADMIN FORM
+            <h6 className="font-title text-5xl font-extrabold text-white xl:text-8xl">
+              BIENVENIDO ADMIN 
             </h6>
-            <p className="text-gray-200 font-text text-base mt-3 xl:text-xl">
+            <p className="text-zinc-400 font-text text-base mt-2 xl:text-xl">
               Create your bitch
             </p>
           </div>
@@ -618,7 +618,7 @@ const AdminPage = () => {
 
             <SectionCard
               title="Ubicación"
-              subtitle="Dónde te van a poder buscar los clientes"
+              subtitle="Dónde la van a poder buscar los clientes"
             >
               <LocationSelector
                 register={register}
