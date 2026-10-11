@@ -62,26 +62,41 @@ const EvaDetail = () => {
   return (
     <section className="relative bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 pb-20 w-full flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24  min-h-screen">
       <PageLoader show={showLoader} />
-      <nav className="absolute top-0 w-full flex -mt-1 justify-between items-center pr-3.5 z-50 lg:mt-2 lg:px-[5%] ">
-        <Link to={"/"}>
-          {" "}
-          <div>
-            <img src={logo} alt="logo" className="w-36 ml-2 lg:w-40" />
-          </div>
-        </Link>
-        <Link to={"/"}>
-          <button
-            className="w-full font-text py-1.5 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
-            style={{
-              boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
-            }}
-          >
-            Volver al Inicio
-          </button>
-        </Link>
+      <nav className="w-full flex justify-end xl:pr-12  -mt-1 z-50  xl:-mt-5">
+        <img
+          src={logo}
+          className="w-36 xl:w-52 absolute -left-0 -top-1.5 lg:left-12"
+          alt="logo"
+          loading="eager"
+          width="224"
+          height="auto"
+          fetchpriority="high"
+        />
+        <div className="flex items-center justify-center gap-3 pt-5 pr-2 lg:gap-6 lg:pt-12">
+          <Link to={"/modelo/login"}>
+            <button
+              className="w-full font-text py-1.5 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200  lg:px-10 lg:text-base 3xl:text-lg"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
+            >
+              Iniciar Sesión
+            </button>
+          </Link>
+          <Link to={"/contacto"}>
+            <button
+              className="w-full font-text py-1.5 px-5 border-[1px] border-purple-500 hover:bg-purple-900 rounded-lg shadow-lg text-white text-xs transition duration-200 lg:px-10 lg:text-base 3xl:text-lg"
+              style={{
+                boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
+              }}
+            >
+              Volver
+            </button>
+          </Link>
+        </div>
       </nav>
 
-      <section className="mt-12 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-6 lg:pl-5 lg:mt-24 w-full 2xl:mt-28 ">
+      <section className="mt-3 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-6 lg:pl-5 lg:mt-24 w-full 2xl:mt-28 ">
         <div className="mt-7 lg:mt-4 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden lg:w-[40%]">
           <figure
             loading="lazy"
