@@ -391,7 +391,17 @@ const ModeloDashboard = () => {
       setMyEva(response.data);
     } catch (error) {
       console.error(error);
-      alert(error.response?.data?.message || "Error al eliminar la imagen");
+      alert(
+        (
+          <div className="bg-red-600 w-full h-full absolute inset-0 z-10000">
+            BIEN
+          </div>
+        ) || (
+          <div className="bg-red-600 w-full h-full absolute inset-0 z-10000">
+            ERROR
+          </div>
+        ),
+      );
     }
   };
 
@@ -595,7 +605,7 @@ const ModeloDashboard = () => {
         {/* ---------- FORMULARIO ---------- */}
         <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y  border-purple-600 shadow-black overflow-hidden pt-12 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
           <div className="text-center ">
-            <h6 className="font-title text-4xl font-bold text-zinc-200 xl:text-6xl">
+            <h6 className="font-title text-4xl font-bold text-zinc-100 xl:text-6xl">
               <img
                 src={icon}
                 alt="icon"
@@ -631,12 +641,9 @@ const ModeloDashboard = () => {
             )}
             <div className="text-zinc-400 text-xs mt-6 text-balance px-1 leading-5">
               Desde esta sección podés editar tu información, actualizar tus
-              datos y elegir el plan que mejor se adapte a vos. Revisá que toda
-              la información esté correcta y que tus preferencias estén
-              actualizadas. Cuando termines, pulsá el botón *Guardar Cambios* al
-              final del formulario para confirmar la actualización. Una vez
-              guardados, los cambios se verán reflejados en tu perfil de la
-              página principal
+              datos y elegir el plan que mejor se adapte a vos. Cuando termines,
+              pulsá el botón *Guardar Cambios* al final del formulario para
+              confirmar la actualización
             </div>
           </div>
 
@@ -838,8 +845,8 @@ const ModeloDashboard = () => {
                           }
                           className={`absolute -top-2 -left-2 w-9 h-9 flex items-center justify-center rounded-full text-base shadow-md z-10 transition-colors ${
                             index === 0
-                              ? "bg-amber-400 text-zinc-900"
-                              : "text-zinc-900"
+                              ? "bg-amber-400 text-zinc-900 border border-white"
+                              : "text-zinc-900 border border-white"
                           }`}
                         >
                           ★
@@ -847,7 +854,7 @@ const ModeloDashboard = () => {
                         <img
                           className={`w-32 h-44 object-cover rounded-lg xl:w-40 xl:h-56 border-[2px] ${
                             index === 0
-                              ? "border-amber-400"
+                              ? "border-amber-400 "
                               : "border-purple-600"
                           }`}
                           src={formatUrl(img?.secure_url)}
@@ -858,6 +865,10 @@ const ModeloDashboard = () => {
                   </div>
                 )}
               </div>
+              <div className="text-zinc-500 text-sm">
+                Solo las fotos GUARDADAS pueden ser seleccionadas como la
+                principal del Perfil / Portada
+              </div> 
             </SectionCard>
 
             <SectionCard title="Videos" subtitle="Opcional">
