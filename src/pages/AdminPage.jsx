@@ -502,7 +502,7 @@ const AdminPage = () => {
         </div>
       </nav>
 
-      <article className="self-start lg:text-center lg:self-center pl-5 mt-6 lg:mt-2 relative w-full">
+      <article className="self-start lg:text-center lg:self-center pl-3 mt-6 lg:mt-2 relative w-full">
         <div className="text-zinc-200 text-4xl font-title lg:text-6xl ">
           Panel de Control
         </div>
@@ -564,7 +564,7 @@ const AdminPage = () => {
           </div>
         </section>
       )}
-      <section className="mt-7 w-full flex flex-col items-center px-4  bg-gradient-r from-zinc-900 via-purple-950 to-zinc-900">
+      <section className="mt-7 w-full flex flex-col items-center px-3 bg-gradient-r from-zinc-900 via-purple-950 to-zinc-900">
         {/* ---------- FORMULARIO ---------- */}
         <section className="relative max-w-md w-full rounded-2xl shadow-2xl border-y border-purple-600 shadow-black overflow-hidden pt-16 pb-9 px-3 space-y-8 md:max-w-[700px] lg:max-w-[850px] xl:max-w-[1100px] xl:px-8">
           <div className="text-center">
