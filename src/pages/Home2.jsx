@@ -287,26 +287,26 @@ const Home2 = () => {
                 </div>
               </div>
             </div>
-            <ul className="font-text2 text-sm w-full flex items-start justify-start gap-[9px] mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden lg:text-base">
+            <ul className="font-text2 text-sm w-full flex items-start justify-start gap-[9px] mt-7 lg:mt-9 lg:gap-6 pl-3 overflow-hidden lg:pl-4 lg:text-base 3xl:text-lg">
               <li
                 onClick={() => scrollToCategory("platinum")}
-                className="border-[2px] border-teal-800 pl-2 py-[1px] w-[122px] md:w-[150px] text-teal-600 rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] border-teal-800 pl-2 py-[1px] w-[122px] md:w-[150px] text-teal-600 rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px] xl:w-[230px]"
               >
-                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
+                <i className="bx bxs-cube-alt text-xl lg:text-xl xl:text-2xl 2xl:text-2xl 3xl:text-3xl text-teal-700"></i>
                 Platinum
               </li>
               <li
                 onClick={() => scrollToCategory("gold")}
-                className="border-[2px] text-amber-500 border-amber-700 pl-2 py-[1px] w-[122px] md:w-[150px] rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] text-amber-500 border-amber-700 pl-2 py-[1px] w-[122px] md:w-[150px] rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px] xl:w-[230px]"
               >
-                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-amber-700"></i>
+                <i className="bx bxs-cube-alt text-xl lg:text-xl xl:text-2xl 2xl:text-2xl 3xl:text-3xl text-amber-700"></i>
                 Gold
               </li>
               <li
                 onClick={() => scrollToCategory("silver")}
-                className="border-[2px] border-slate-600 pl-2 py-[1px] w-[122px] md:w-[150px] text-slate-400 rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px]"
+                className="border-[2px] border-slate-600 pl-2 py-[1px] w-[122px] md:w-[150px] text-slate-400 rounded-lg hover:text-whiteCustom cursor-pointer flex items-center gap-2 lg:w-[200px] xl:w-[230px]"
               >
-                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-slate-600"></i>
+                <i className="bx bxs-cube-alt text-xl lg:text-xl xl:text-2xl 2xl:text-2xl 3xl:text-3xl text-slate-600"></i>
                 Silver
               </li>
             </ul>
@@ -315,9 +315,9 @@ const Home2 = () => {
           {evasByCategory?.Platinum?.length > 0 && (
             <div
               id="platinum-section"
-              className="mt-10 flex flex-col w-full px-2 min-h-[300px] items-center justify-center lg:mt-12 lg:px-12"
+              className="mt-10 flex flex-col w-full px-2 min-h-[300px]  items-center justify-center  lg:mt-12 lg:px-12"
             >
-              <div className="text-base text-teal-600 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-teal-800 rounded-lg flex justify-start items-center gap-2 lg:self-center  lg:mb-2 xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
+              <div className="text-base text-teal-600 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-teal-800 rounded-lg flex justify-start items-center gap-2 lg:self-start lg:ml-4  lg:mb-2 xl:w-56 lg:py-[3px] xl:gap-3 2xl:w-56 xl:text-lg ">
                 <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-teal-700"></i>
                 Platinum
                 <div className="w-32 h-[1px] bg-teal-800"></div>
@@ -331,12 +331,12 @@ const Home2 = () => {
           )}
 
           {evasByCategory?.Gold?.length > 0 && (
-            <div
+             <div
               id="gold-section"
-              className="mt-10 flex flex-col w-full px-2 min-h-[300px] items-center justify-center lg:mt-12 lg:px-12"
+              className="mt-10 flex flex-col w-full px-2 min-h-[300px]  items-center justify-center  lg:mt-12 lg:px-12"
             >
-              <div className="text-base text-amber-500 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-amber-700 rounded-lg flex justify-start items-center gap-2 lg:self-center  xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
-                <i className="bx bxs-cube-alt text-xl xl:text-3xl 2xl:text-4xl text-amber-500"></i>
+              <div className="text-base text-amber-600 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-amber-800 rounded-lg flex justify-start items-center gap-2 lg:self-start lg:ml-4  lg:mb-2 xl:w-56 lg:py-[3px] xl:gap-3 2xl:w-56 xl:text-lg ">
+                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-amber-700"></i>
                 Gold
                 <div className="w-32 h-[1px] bg-amber-700"></div>
               </div>
@@ -349,12 +349,12 @@ const Home2 = () => {
           )}
 
           {evasByCategory.Silver?.length > 0 && (
-            <div
+              <div
               id="silver-section"
-              className="mt-10 flex flex-col w-full px-2 min-h-[300px] items-center justify-center  lg:mt-12 lg:px-12"
+              className="mt-10 flex flex-col w-full px-2 min-h-[300px]  items-center justify-center  lg:mt-12 lg:px-12"
             >
-              <div className="text-base text-slate-400 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-slate-500 rounded-lg flex justify-start items-center gap-2 lg:self-center xl:w-48 xl:gap-3 2xl:w-56 xl:text-lg ">
-                <i className="bx bxs-cube-alt text-xl  xl:text-3xl 2xl:text-4xl text-slate-500"></i>
+              <div className="text-base text-slate-400 ml-2 font-text2 self-start pl-2 w-48 border-[2px] border-slate-600 rounded-lg flex justify-start items-center gap-2 lg:self-start lg:ml-4  lg:mb-2 xl:w-56 lg:py-[3px] xl:gap-3 2xl:w-56 xl:text-lg ">
+                <i className="bx bxs-cube-alt text-xl xl:text-xl 2xl:text-2xl text-slate-600"></i>
                 Silver
                 <div className="w-32 h-[1px] bg-slate-500"></div>
               </div>

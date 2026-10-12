@@ -81,7 +81,7 @@ const CustomSelect = ({
         className={`flex h-10 w-full items-center justify-between
           rounded-lg border border-purple-500/70 bg-zinc-900/80
           px-3 text-left text-sm text-zinc-200 outline-none
-          transition-colors focus:border-purple-300
+          transition-colors focus:border-purple-300 lg:mt-3
           ${disabled ? "cursor-not-allowed opacity-40" : "hover:border-purple-400"}
         `}
       >
