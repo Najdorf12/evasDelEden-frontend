@@ -174,7 +174,7 @@ const Home2 = () => {
           <nav className="w-full flex justify-end xl:pr-12  -mt-1 z-50  xl:-mt-5">
             <img
               src={logo}
-              className="w-36 xl:w-52 absolute -left-0 -top-1.5 lg:left-12"
+              className="w-[132px] xl:w-52 absolute -left-0 -top-1 lg:left-12"
               alt="logo"
               loading="eager"
               width="224"

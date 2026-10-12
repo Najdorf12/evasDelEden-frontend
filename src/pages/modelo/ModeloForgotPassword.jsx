@@ -60,20 +60,20 @@ const ModeloForgotPassword = () => {
         </Link>
       </nav>
 
-      <div className="relative self-center mt-24 max-w-md w-[95%] rounded-xl shadow-2xl border-purple-600 border overflow-hidden py-8 px-4 flex flex-col gap-6 xl:max-w-lg bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900">
+      <div className="relative self-center mt-24 max-w-md w-[95%] rounded-xl shadow-2xl border-purple-600 border overflow-hidden py-8 px-4 flex flex-col gap-6 xl:max-w-xl lg:pt-16 lg:pb-6 xl:mt-32 2xl:mt-36 3xl:max-w-2xl bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900 ">
         <img src={icon2} alt="icon" className="w-12 absolute top-3 right-3" />
         <img src={icon2} alt="icon" className="w-12 absolute top-3 left-3" />
-        <h5 className="text-center font-title text-5xl font-extrabold text-zinc-300 px-10">
+        <h5 className="text-center font-title text-5xl font-bold text-zinc-300 px-10 3xl:text-6xl">
           Recuperar contraseña
         </h5>
 
         {sent ? (
           <div className="font-text flex flex-col items-center gap-4 text-center">
-            <p className="bg-green-500/10 text-green-400 text-sm font-semibold rounded-lg px-3 py-3">
+            <p className="bg-green-500/10 text-green-400 text-sm font-semibold rounded-lg px-3 py-3 3xl:text-base">
               Si el email está registrado, te enviamos un link para restablecer
               tu contraseña.
             </p>
-            <p className="text-zinc-400 text-sm">
+            <p className="text-zinc-400 text-sm 3xl:text-base">
               Revisá tu bandeja de entrada y también la carpeta de spam. El link
               vale 60 minutos.
             </p>
@@ -89,7 +89,7 @@ const ModeloForgotPassword = () => {
           </div>
         ) : (
           <>
-            <p className="font-text text-center text-gray-200 text-sm">
+            <p className="font-text text-center text-gray-200 text-sm lg:text-base 33xl:">
               Ingresá el email con el que te registraste y te vamos a enviar un
               link para crear una contraseña nueva.
             </p>
@@ -121,7 +121,7 @@ const ModeloForgotPassword = () => {
 
               <button
                 disabled={sending}
-                className="w-full font-text py-2 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-md shadow-lg text-white font-semibold transition duration-200 disabled:opacity-50"
+                className="w-full font-text py-2 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-md shadow-lg text-white font-semibold transition duration-200 disabled:opacity-50 lg:text-lg"
                 type="submit"
                 style={{
                   boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",

@@ -60,13 +60,13 @@ const EvaDetail = () => {
   }, [id]);
 
   return (
-    <section className="relative bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 pb-20 w-full flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24  min-h-screen">
+    <section className="relative bg-gradient-to-r from-zinc-900 via-purple-950 to-zinc-900 pb-20 w-full flex flex-col items-center  overflow-hidden lg:pb-12 xl:pb-20 2xl:pb-24 min-h-screen">
       <PageLoader show={showLoader} />
-      <nav className="w-full flex justify-end xl:pr-12  -mt-1 z-50  xl:-mt-5">
+      <nav className="w-full flex justify-end xl:pr-12 -mt-1 z-50  xl:-mt-5">
         <Link to={"/"}>
           <img
             src={logo}
-            className="w-36 xl:w-52 absolute -left-0 -top-1.5 lg:left-12"
+            className="w-[132px] xl:w-52 absolute -left-0 -top-1 lg:left-12"
             alt="logo"
             loading="eager"
             width="224"
@@ -98,8 +98,8 @@ const EvaDetail = () => {
         </div>
       </nav>
 
-      <section className="mt-3 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-6 lg:pl-5 lg:mt-24 w-full 2xl:mt-28 ">
-        <div className="mt-7 lg:mt-4 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden lg:w-[40%]">
+      <section className="mt-3 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-6 lg:pl-5 lg:mt-10 w-full 2xl:mt-28 ">
+        <div className="mt-4 px-2 lg:mt-4 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden lg:w-[40%]">
           <figure
             loading="lazy"
             className="imgs flex items-center justify-center "

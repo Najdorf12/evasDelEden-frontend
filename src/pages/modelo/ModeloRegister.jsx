@@ -74,7 +74,7 @@ const ModeloRegister = () => {
         <p className="text-center text-gray-200 font-text text-base">
           Creá tu cuenta
         </p>
-        <form onSubmit={handleSubmit(submit)} className="space-y-6 ">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-6 lg:gap-7 ">
           <div className="relative font-text">
             <input
               autoComplete="off"
@@ -146,7 +146,7 @@ const ModeloRegister = () => {
           </div>
 
           <button
-            className="w-full font-text py-2 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-md shadow-lg text-white font-semibold transition duration-200 "
+            className="w-full font-text py-2 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-md shadow-lg text-white font-semibold transition duration-200 lg:text-lg "
             type="submit"
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",

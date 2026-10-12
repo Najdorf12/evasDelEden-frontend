@@ -65,7 +65,7 @@ const ModeloLogin = () => {
       <div className="relative self-center mt-24 max-w-md w-[95%] rounded-xl shadow-2xl border-purple-600 border overflow-hidden py-8 px-4 flex flex-col gap-6 xl:max-w-lg bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900">
         <img src={icon2} alt="icon" className="w-12 absolute top-3 right-3" />
         <img src={icon2} alt="icon" className="w-12 absolute top-3 left-3" />
-        <h5 className="text-center font-title text-6xl font-extrabold text-zinc-300">
+        <h5 className="text-center font-title text-6xl font-extrabold text-zinc-300 3xl:text-7xl">
           Bienvenida
         </h5>
         {loginError?.map((error, i) => (
@@ -79,7 +79,7 @@ const ModeloLogin = () => {
         <p className="font-text text-center text-gray-200">
           Ingresá a tu cuenta
         </p>
-        <form onSubmit={handleSubmit(submit)} className="space-y-6">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-6 lg:gap-9">
           <div className="relative font-text">
             <input
               autoComplete="off"
@@ -120,7 +120,7 @@ const ModeloLogin = () => {
               })}
             />
             <label
-              className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm"
+              className="absolute left-0 -top-3.5 text-gray-100 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm "
               htmlFor="password"
             >
               Contraseña
@@ -131,7 +131,7 @@ const ModeloLogin = () => {
           </div>
 
           <button
-            className="w-full font-text py-2 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-md shadow-lg text-white font-semibold transition duration-200 "
+            className="w-full font-text py-2 px-4 border-[1px] border-purple-500 hover:bg-purple-900 rounded-md shadow-lg text-white font-semibold transition duration-200 lg:text-lg "
             type="submit"
             style={{
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
