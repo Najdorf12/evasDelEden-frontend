@@ -843,7 +843,7 @@ const ModeloDashboard = () => {
               boxShadow: "8px 8px 16px #6e11b0, -3px -3px 3px #6e11b0",
             }}
           >
-            <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i>{" "}
+            <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl lg:text-2xl lg:py-[2px]"></i>{" "}
             Cerrar sesión
           </button>
         </div>
