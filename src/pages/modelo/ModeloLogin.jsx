@@ -46,7 +46,6 @@ const ModeloLogin = () => {
   return (
     <section className="h-screen w-full flex flex-col items-center bg-gradient-to-b from-zinc-900 via-purple-950 to-zinc-900">
       <PageLoader show={showLoader} />
-      <PageLoader show={showLoader} />
       <nav className="absolute top-0 font-text2 text-lg px-3  flex justify-between items-center w-full  xl:px-6 xl:mt-3 xl:text-xl">
         <picture className=" flex items-center justify-center rounded-full w-[140px] lg:w-[150px] 2xl:w-[180px]">
           <img src={imgLogo} className="rounded-full" alt="logo" />
@@ -150,10 +149,12 @@ const ModeloLogin = () => {
             {" "}
             Registrate
           </Link>
-          <div className="text-xs mt-2 text-purple-400">
-            {" "}
-            - Olvidé mi contraseña -{" "}
-          </div>
+          <Link
+            to="/modelo/forgot-password"
+            className="block text-xs mt-2 text-purple-400 hover:text-purple-300 hover:underline"
+          >
+            Olvidé mi contraseña
+          </Link>
         </div>
       </div>
       <div className="flex justify-center items-center gap-1 mt-8 absolute bottom-1 w-full -ml-4 lg:-ml-6  ">
