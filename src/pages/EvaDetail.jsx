@@ -99,10 +99,10 @@ const EvaDetail = () => {
       </nav>
 
       <section className="mt-3 relative flex flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-6 lg:pl-5 lg:mt-10 w-full 2xl:mt-28 ">
-        <div className="mt-4 px-2 lg:mt-4 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden lg:w-[40%]">
+        <div className="mt-4 px-2 lg:mt-4 2xl:mt-12 w-full flex justify-center object-cover items-center overflow-hidden lg:w-[42%]">
           <figure
             loading="lazy"
-            className="imgs flex items-center justify-center "
+            className="imgs flex items-center justify-center  "
           >
             <ImageGallery
               items={images2}
@@ -114,13 +114,13 @@ const EvaDetail = () => {
           </figure>
         </div>
 
-        <article className="mt-2 px-2 w-full lg:w-[50%] flex flex-col justify-center items-center ">
+        <article className="mt-2 px-2 w-full lg:w-[50%]  flex flex-col justify-center items-center ">
           <div className="mt-5 flex flex-col items-center lg:mt-0 w-full lg:items-start">
             <article
               style={{
                 boxShadow: "8px 8px 16px #171718, -8px -8px 16px #6e11b0",
               }}
-              className="relative font-text3 text-purple-900 min-w-[380px]  w-full pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-xl border border-purple-500 max-w-[500px]  lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[580px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-4 2xl:pb-5 2xl:max-w-[640px] bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900"
+              className="relative font-text3 text-purple-900 min-w-[380px]  w-full pl-4 pr-2 pt-6 pb-3 flex flex-col justify-center items-start text-balance rounded-xl border border-purple-500 max-w-[500px]  lg:pr-3 lg:pt-3 lg:pl-5 xl:max-w-[620px] xl:pl-6 2xl:pr-4 2xl:pt-4 xl:pb-4 2xl:pb-5 2xl:max-w-[640px] bg-gradient-to-tr from-zinc-900 via-purple-950 to-zinc-900"
             >
               <div className="absolute top-1 right-2 xl:bottom-2 xl:right-3">
                 <i className="bx bxs-cube-alt text-3xl xl:text-3xl 2xl:text-5xl"></i>

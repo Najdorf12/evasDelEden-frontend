@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&family=My+Soul&family=Pinyon+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&family=My+Soul&family=Pinyon+Script&display=swap");
 
 @import "keep-react/css";
 @tailwind base;
@@ -78,7 +78,6 @@
 }
 /* SLIDER */
 .image-gallery-slide {
-
   width: 400px;
   border-radius: 12px;
 }
@@ -89,7 +88,7 @@
   border-radius: 16px;
   height: 100%;
   width: 100%;
-  min-width:390px;
+  min-width: 390px;
   object-fit: cover;
   border: 1px solid #59168b;
 }
@@ -110,11 +109,12 @@
     color: white;
   }
   .image-gallery-slide {
-    height: 550px;
+    height: auto; /* antes: 550px */
     width: 550px;
     border-radius: 12px;
   }
 }
+
 @media (min-width: 1300px) {
   .image-gallery-slide {
     height: auto;
@@ -133,6 +133,13 @@
 @media (min-width: 1600px) {
   .image-gallery-content .image-gallery-slide .image-gallery-image {
     width: 700px;
+  }
+}
+@media (min-width: 1024px) {
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+     height: clamp(600px, 80vh, 800px); /* ajustá este valor a gusto */
+    max-height: none; /* anula el límite por defecto de la librería */
+    object-fit: cover;
   }
 }
 /* BUTTONS */
@@ -240,7 +247,7 @@
   border: 0;
 }
 
-/* From Uiverse.io by bociKond */ 
+/* From Uiverse.io by bociKond */
 #spinner {
   width: 70.4px;
   height: 70.4px;
