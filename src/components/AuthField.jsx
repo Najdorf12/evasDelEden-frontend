@@ -1,5 +1,4 @@
-/* Ubicación sugerida: src/components/AuthField.jsx
-   Input con label flotante, mismo estilo que el login. */
+
 const AuthField = ({
   id,
   label,

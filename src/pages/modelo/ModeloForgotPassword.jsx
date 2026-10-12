@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import axios from "../../api/axiosRender";
+import axios from "../../api/axiosVercel";
 import imgLogo from "/0003.png";
 import icon from "/icon14.png";
 import icon2 from "/icon13.png";
