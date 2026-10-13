@@ -70,7 +70,7 @@ const FormInput = ({
     <input
       autoComplete="off"
       placeholder={placeholder || label}
-      className="peer h-10 w-full border-b-2 border-purple-400 text-zinc-200 bg-transparent placeholder-transparent focus:outline-none focus:border-purple-600 transition-colors"
+      className="peer h-10 w-full border-b-2 border-purple-400 text-zinc-200 bg-transparent placeholder-transparent focus:outline-none focus:border-purple-600 transition-colors lg:text-base"
       {...register(
         name,
         required
@@ -79,19 +79,19 @@ const FormInput = ({
       )}
       {...rest}
     />
-    <label className="absolute left-0 -top-3.5 text-purple-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-purple-200 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm">
+    <label className="absolute left-0 -top-3.5 text-purple-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-purple-200 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-purple-500 peer-focus:text-sm lg:text-base">
       {label}
     </label>
   </div>
 );
 
 const SectionCard = ({ title, subtitle, children }) => (
-  <div className="relative bg-black/20 backdrop-blur-sm rounded-xl pt-6 pb-7 px-4 space-y-7 border border-purple-600 xl:p-7 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900 z-10 has-[[aria-expanded=true]]:z-50">
+  <div className="relative bg-black/20 backdrop-blur-sm rounded-xl pt-6 pb-7 px-4 space-y-7 border border-purple-600 xl:p-9 bg-gradient-to-tl from-zinc-900 via-purple-950 to-zinc-900 z-10 has-[[aria-expanded=true]]:z-50 ">
     <div>
       <img src={icon} alt="icon" className="w-12 absolute right-4 top-4" />
-      <h3 className="font-title text-3xl text-zinc-300 xl:text-4xl">{title}</h3>
+      <h3 className="font-title text-3xl text-zinc-300 lg:text-4xl xl:text-[2.6rem]">{title}</h3>
       {subtitle && (
-        <p className="text-zinc-300 text-sm font-text mt-1 lg:text-base">
+        <p className="text-zinc-300 text-sm font-text mt-1 lg:text-base lg:my-2 xl:text-lg">
           {subtitle}
         </p>
       )}
@@ -223,7 +223,7 @@ const CustomSelect = ({
       className={`relative font-text ${open ? "z-40" : ""}`}
     >
       {label && (
-        <label htmlFor={id} className="text-sm text-purple-200">
+        <label htmlFor={id} className="text-sm text-purple-200 lg:text-base">
           {label}
         </label>
       )}
@@ -248,7 +248,7 @@ const CustomSelect = ({
         onKeyUp={(e) => {
           if (e.key === " ") e.preventDefault();
         }}
-        className={`mt-1 flex h-10 w-full items-center justify-between border-b-2 bg-transparent text-left text-sm transition-colors focus:outline-none xl:text-base ${
+        className={`mt-1 flex h-10 w-full items-center justify-between border-b-2 bg-transparent text-left text-sm transition-colors focus:outline-none lg:text-base ${
           open
             ? "border-purple-600"
             : "border-purple-400 focus:border-purple-600"
@@ -258,7 +258,7 @@ const CustomSelect = ({
           {current ? (
             <>
               {shortLabel && (
-                <span className="mr-1.5 text-xs text-zinc-400">
+                <span className="mr-1.5 text-xs text-zinc-400 xl:text-base">
                   {shortLabel}
                 </span>
               )}
@@ -333,7 +333,7 @@ const MedidasSelector = ({ register, value, onChange }) => {
 
   return (
     <div className="font-text">
-      <p className="text-xs text-purple-200">Medidas (cm)</p>
+      <p className="text-xs text-purple-200 lg:text-base">Medidas (cm)</p>
       <input type="hidden" {...register("medidas")} />
       <div className="grid grid-cols-3 gap-3">
         {fields.map((f, i) => (
@@ -425,7 +425,7 @@ const OptionButtons = ({
   };
 
   const chipClass = (selected) =>
-    `rounded-lg border px-5 py-1.5 text-xs transition-colors ${
+    `rounded-lg border px-5 py-1.5 text-xs transition-colors lg:text-base lg:px-6 ${
       selected
         ? "border-purple-600 bg-purple-800 text-zinc-300"
         : "border-zinc-600 bg-black/20 text-zinc-300 hover:border-purple-400"
@@ -433,7 +433,9 @@ const OptionButtons = ({
 
   return (
     <fieldset className="flex flex-col gap-4 font-text">
-      <legend className="mb-3 text-sm text-purple-200">{label}</legend>
+      <legend className="mb-3 text-sm text-purple-200 lg:text-base">
+        {label}
+      </legend>
 
       <div className="flex flex-wrap gap-2">
         {options.map((option) => {
@@ -476,7 +478,7 @@ const OptionButtons = ({
           }}
           maxLength={60}
           placeholder={otherPlaceholder}
-          className="h-10 w-full rounded-lg  border border-purple-500 bg-transparent px-3 text-xs xl:text-base text-zinc-300 outline-none focus:border-purple-300"
+          className="h-10 w-full rounded-lg  border border-purple-500 bg-transparent px-3 text-xs lg:text-base text-zinc-300 outline-none focus:border-purple-300"
         />
       )}
     </fieldset>
@@ -969,52 +971,53 @@ const ModeloDashboard = () => {
                   value={watch("medidas")}
                   onChange={setField("medidas")}
                 />
+                <div className="flex flex-col gap-6 w-full lg:w-[200%]">
+                  <div className="flex flex-col gap-3">
+                    <OptionButtons
+                      label="Depilación"
+                      options={[
+                        "Completa",
+                        "Natural",
+                        "Otro / Prefiero especificar",
+                      ]}
+                      value={watch("depilacion")}
+                      onChange={(value) =>
+                        setValue("depilacion", value, { shouldDirty: true })
+                      }
+                    />
 
-                {/* Depilación */}
-                <div className="flex flex-col gap-3">
+                    {watch("depilacion") === "Otro / Prefiero especificar" && (
+                      <input
+                        {...register("depilacionDetalle")}
+                        placeholder="Especificá tu preferencia..."
+                        className="text-xs lg:text-base h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
+                      />
+                    )}
+                  </div>
+
+                  {/* Servicio: chips de selección múltiple + "Otro" */}
                   <OptionButtons
-                    label="Depilación"
-                    options={[
-                      "Completa",
-                      "Natural",
-                      "Otro / Prefiero especificar",
-                    ]}
-                    value={watch("depilacion")}
-                    onChange={(value) =>
-                      setValue("depilacion", value, { shouldDirty: true })
-                    }
+                    label="¿Qué servicios ofrecés? (podés elegir varios)"
+                    options={SERVICIOS}
+                    multiple
+                    allowOther
+                    otherPlaceholder="Escribí tu servicio..."
+                    value={watch("servicio")}
+                    onChange={setField("servicio")}
                   />
 
-                  {watch("depilacion") === "Otro / Prefiero especificar" && (
-                    <input
-                      {...register("depilacionDetalle")}
-                      placeholder="Especificá tu preferencia..."
-                      className="text-xs xl:text-base h-10 w-full rounded-lg border border-purple-500 bg-transparent px-3 text-zinc-300 outline-none focus:border-purple-300"
-                    />
-                  )}
+                  {/* Horario: selección múltiple + "Otro" */}
+                  <OptionButtons
+                    label="¿En qué horarios estás disponible? (podés elegir varios)"
+                    options={HORARIOS}
+                    multiple
+                    allowOther
+                    otherPlaceholder="Escribí tu horario (ej: 14 a 18 hs)"
+                    value={watch("horario")}
+                    onChange={setField("horario")}
+                  />
                 </div>
-
-                {/* Servicio: chips de selección múltiple + "Otro" */}
-                <OptionButtons
-                  label="¿Qué servicios ofrecés? (podés elegir varios)"
-                  options={SERVICIOS}
-                  multiple
-                  allowOther
-                  otherPlaceholder="Escribí tu servicio..."
-                  value={watch("servicio")}
-                  onChange={setField("servicio")}
-                />
-
-                {/* Horario: selección múltiple + "Otro" */}
-                <OptionButtons
-                  label="¿En qué horarios estás disponible? (podés elegir varios)"
-                  options={HORARIOS}
-                  multiple
-                  allowOther
-                  otherPlaceholder="Escribí tu horario (ej: 14 a 18 hs)"
-                  value={watch("horario")}
-                  onChange={setField("horario")}
-                />
+                {/* Depilación */}
               </div>
             </SectionCard>
 
@@ -1036,14 +1039,14 @@ const ModeloDashboard = () => {
                         { shouldDirty: true },
                       );
                     }}
-                    className="rounded-lg border border-zinc-600 bg-black/20 px-3 py-1.5 text-xs text-zinc-300 transition-colors hover:border-purple-400 font-text"
+                    className="rounded-lg border border-zinc-600 bg-black/20 px-3 py-1.5 text-xs text-zinc-300 transition-colors hover:border-purple-400 font-text lg:text-base lg:px-6"
                   >
                     + {frase}
                   </button>
                 ))}
               </div>
               <textarea
-                className="text-zinc-300 bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-xs xl:text-base rounded-lg p-3 transition-colors"
+                className="text-zinc-300 bg-transparent border-2 border-purple-600 focus:border-white outline-none w-full text-xs lg:text-base rounded-lg p-3 transition-colors"
                 {...register("extendDescription")}
                 rows="5"
                 placeholder="Tocá las frases de arriba o escribí lo que quieras..."
@@ -1207,7 +1210,7 @@ const ModeloDashboard = () => {
 
         {/* ---------- RESUMEN / MI PERFIL ---------- */}
         {myEva && (
-          <section className="relative max-w-md mt-9 w-full rounded-2xl bg-gradient-to-tr border border-purple-500 from-zinc-900 via-purple-950 to-zinc-900 overflow-hidden pt-3 pb-6 px-4 space-y-6 xl:max-w-[900px] xl:px-8 text-balance">
+          <section className="relative max-w-md mt-9 w-full rounded-2xl bg-gradient-to-tr border border-purple-500 from-zinc-900 via-purple-950 to-zinc-900 overflow-hidden pt-3 pb-6 px-4 space-y-6 xl:max-w-[950px] xl:px-8 text-balance lg:pb-9 lg:px-6">
             <img
               src={icon}
               alt="icon"
@@ -1221,7 +1224,7 @@ const ModeloDashboard = () => {
               Para editar tus datos, fotos o videos usá el formulario de arriba.
               Se guarda todo junto al pulsar "Guardar Cambios".
             </p>
-            <div className="bg-black/20 border border-purple-600 backdrop-blur-sm rounded-xl p-4 flex flex-col gap-4 xl:flex-row xl:items-center xl:gap-6">
+            <div className="bg-black/20 border border-purple-600 backdrop-blur-sm rounded-xl p-4 flex flex-col gap-4 xl:flex-row xl:items-center lg:p-6 xl:gap-6">
               {images[0]?.secure_url ? (
                 <img
                   src={formatUrl(images[0].secure_url)}
@@ -1263,18 +1266,18 @@ const ModeloDashboard = () => {
                 <div
                   /*   onClick={handleDeleteProfile}
                 disabled={deleting} */
-                  className="font-text text-xs border border-purple-800 px-6 py-2 text-purple-600 hover:bg-purple-900 hover:text-zinc-100 rounded-lg disabled:opacity-50 flex items-center gap-2"
+                  className="font-text text-xs border border-purple-800 px-6 py-2 text-purple-600 hover:bg-purple-900 hover:text-zinc-100 rounded-lg disabled:opacity-50 flex items-center gap-2 lg:text-base lg:gap-3"
                 >
-                  <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i>
+                  <i className="bx bxs-arrow-from-left  cursor-pointer text-purple-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl lg:text-3xl"></i>
                   Ir a mi Perfil
                 </div>
               </Link>
               <button
                 onClick={handleDeleteProfile}
                 disabled={deleting}
-                className="font-text text-xs border border-red-600 px-6 py-2 text-red-600 hover:text-red-300 rounded-lg disabled:opacity-50 flex items-center gap-2"
+                className="font-text text-xs border border-red-600 px-6 py-2 text-red-600 hover:text-red-300 rounded-lg disabled:opacity-50 flex items-center gap-2 lg:text-base lg:gap-3"
               >
-                <i className="bx bxs-trash-alt  cursor-pointer text-red-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl"></i>
+                <i className="bx bxs-trash-alt  cursor-pointer text-red-600 hover:scale-110 hover:text-gray-100 duration-300 text-xl lg:text-3xl"></i>
                 {deleting ? "Eliminando..." : "Eliminar mi perfil por completo"}
               </button>
             </div>
