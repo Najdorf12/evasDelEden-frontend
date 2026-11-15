@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { locations } from "../api/locations";
-import { preloadData, getCachedData } from "../api/preload";
 const Footer = lazy(() => import("../components/Footer"));
 const AgeVerification = lazy(() => import("../components/AgeVerification"));
 import CardEva from "../components/CardEva";
@@ -24,49 +23,67 @@ const Home2 = () => {
   const [selectedRegion, setSelectedRegion] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
   const [allEvas, setAllEvas] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [isWaking, setIsWaking] = useState(false);
 
   // Loader: visible mientras carga o hasta cumplir el tiempo mínimo
   const showLoader = usePageLoader(isLoading);
 
+  // Despierta el servidor de Render mientras el usuario ve la verificación de edad
   useEffect(() => {
-    getEvasByProvince(selectedProvince).then((data) => {
-      setAllEvas(data);
-    });
-  }, [selectedProvince]);
+    fetch("https://evasdeleden-backendrender.onrender.com/health").catch(
+      () => {},
+    );
+  }, []);
 
+  // Única fuente de datos
   useEffect(() => {
-    const verifyAndLoad = async () => {
-      const storedVerification = sessionStorage.getItem("isVerified");
-      const storedProvince = sessionStorage.getItem("userProvince");
-      if (storedVerification === "true") {
-        setIsVerified(true);
-        if (storedProvince) setSelectedProvince(storedProvince);
-        await loadData();
+    if (!isVerified) return;
+
+    let cancelled = false;
+    setIsLoading(true);
+    setLoadError(false);
+    setIsWaking(false);
+
+    // Si tarda más de 6 s, avisamos que el servidor está despertando
+    const wakingTimer = setTimeout(() => {
+      if (!cancelled) setIsWaking(true);
+    }, 6000);
+
+    const fetchWithRetry = async (retries = 3, delay = 4000) => {
+      for (let i = 0; i < retries; i++) {
+        try {
+          return await getEvasByProvince(selectedProvince);
+        } catch (err) {
+          if (i === retries - 1) throw err;
+          await new Promise((r) => setTimeout(r, delay));
+        }
       }
     };
 
-    verifyAndLoad();
+    fetchWithRetry()
+      .then((data) => {
+        if (!cancelled) setAllEvas(data || []);
+      })
+      .catch((err) => {
+        console.error("Error loading data:", err);
+        if (!cancelled) setLoadError(true);
+      })
+      .finally(() => {
+        clearTimeout(wakingTimer);
+        if (!cancelled) {
+          setIsLoading(false);
+          setIsWaking(false);
+        }
+      });
 
-    return () => {};
-  }, []);
+    return () => {
+      cancelled = true;
+      clearTimeout(wakingTimer);
+    };
+  }, [selectedProvince, isVerified]);
 
-  const loadData = async () => {
-    setIsLoading(true);
-    try {
-      const cachedData = getCachedData();
-      if (cachedData) {
-        setAllEvas(cachedData);
-        return;
-      }
-      const data = await preloadData();
-      setAllEvas(data);
-    } catch (error) {
-      console.error("Error loading data:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
   const filteredEvas = useMemo(() => {
     // Primero filtramos por provincia
     const evasFromProvince = allEvas?.filter(
@@ -331,7 +348,7 @@ const Home2 = () => {
           )}
 
           {evasByCategory?.Gold?.length > 0 && (
-             <div
+            <div
               id="gold-section"
               className="mt-10 flex flex-col w-full px-2 min-h-[300px]  items-center justify-center  lg:mt-12 lg:px-12"
             >
@@ -349,7 +366,7 @@ const Home2 = () => {
           )}
 
           {evasByCategory.Silver?.length > 0 && (
-              <div
+            <div
               id="silver-section"
               className="mt-10 flex flex-col w-full px-2 min-h-[300px]  items-center justify-center  lg:mt-12 lg:px-12"
             >
@@ -366,7 +383,25 @@ const Home2 = () => {
             </div>
           )}
 
-          {filteredEvas?.length === 0 && !isLoading && (
+          {isWaking && isLoading && (
+            <div className="text-zinc-300 mt-12 text-center px-4">
+              El servidor está despertando, puede tardar unos segundos…
+            </div>
+          )}
+
+          {loadError && !isLoading && (
+            <div className="text-whiteCustom mt-12 text-center px-4">
+              No pudimos cargar los datos.{" "}
+              <button
+                className="underline text-purple-400"
+                onClick={() => window.location.reload()}
+              >
+                Reintentar
+              </button>
+            </div>
+          )}
+
+          {!loadError && filteredEvas?.length === 0 && !isLoading && (
             <div className="text-whiteCustom mt-12">
               No se encontraron Evas en esta ubicación
             </div>
