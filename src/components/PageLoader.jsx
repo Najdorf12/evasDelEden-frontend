@@ -27,7 +27,7 @@ export default function PageLoader({ show = true, text = "Cargando..." }) {
     <div
       role="status"
       aria-live="polite"
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center gap-5 bg-zinc-950/85 backdrop-blur-sm transition-opacity  ${
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center gap-5 bg-zinc-950 backdrop-blur-sm transition-opacity  ${
         show ? "opacity-100" : "pointer-events-none opacity-0"
       }`}
       style={{ transitionDuration: `${FADE_MS}ms` }}
