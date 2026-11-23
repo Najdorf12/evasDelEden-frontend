@@ -1,4 +1,4 @@
- import axios from "axios";
+/* import axios from "axios";
 
 const axiosRender = axios.create({
   baseURL: "https://evasdeleden-backendrender.onrender.com/api",
@@ -18,9 +18,9 @@ axiosRender.interceptors.response.use(
   }
 );
 
-export default axiosRender; 
+export default axiosRender; */
 
-/* import axios from "axios";
+import axios from "axios";
 
 const axiosRender = axios.create({
   baseURL: "https://evas-del-eden-backend.vercel.app/api",
@@ -40,4 +40,4 @@ axiosRender.interceptors.response.use(
   }
 );
 
-export default axiosRender; */
+export default axiosRender;
