@@ -3,12 +3,7 @@ import Loader from "./Loader";
 
 const FADE_MS = 500;
 
-/**
- * Overlay de carga a pantalla completa.
- * - show: true mientras debe verse. Al pasar a false hace un fade-out
- *   suave y recién después se desmonta.
- * - text: mensaje debajo del loader.
- */
+
 export default function PageLoader({ show = true, text = "Cargando..." }) {
   const [mounted, setMounted] = useState(show);
 
